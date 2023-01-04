@@ -23,6 +23,11 @@ namespace MVC.Controllers
             return View();
         }
 
+        public IActionResult productDetail()
+        {
+            return View();
+        }
+
         public IActionResult contact()
         {
             return View();
