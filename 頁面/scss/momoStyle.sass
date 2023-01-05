@@ -40,59 +40,6 @@ $pcolor5: #631800
 .text-dark
     color: $tcolor4
 
-.btn-primary
-    color: $tcolor4
-    background-color: $tcolor3
-    border-color: $tcolor3
-
-    &:hover
-        color: $tcolor7
-        background-color: $tcolor3
-        border-color: $ocolor3
-
-    .btn-check:focus + &, .btn-primary:focus
-        color: $tcolor5
-        background-color: $tcolor3
-        border-color: $ocolor3
-        box-shadow: 0 0 0 0.25rem $tcolor4
-
-    .btn-check:checked + &, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle
-        color: $tcolor5
-        background-color: $tcolor3
-        border-color: $ocolor3
-
-    .btn-check:checked + &:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus
-        box-shadow: 0 0 0 0.25rem $tcolor4
-
-    &:disabled, .btn-primary.disabled
-        color: $tcolor5
-        background-color: $tcolor3
-        border-color: $tcolor3
-
-    .btn-outline-primary
-        color: $tcolor3 !important
-        border-color: $tcolor4 !important
-
-.btn-outline-primary:hover
-    color: $tcolor5
-    background-color: $tcolor3
-    border-color: $tcolor3
-
-.btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus
-    box-shadow: 0 0 0 0.25rem $tcolor4
-
-.btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show
-    color: $tcolor5
-    background-color: $tcolor3
-    border-color: $tcolor3
-
-.btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus
-    box-shadow: 0 0 0 0.25rem $tcolor4
-
-.btn-outline-primary:disabled, .btn-outline-primary.disabled
-    color: $tcolor3
-    background-color: transparent
-
 .momo-off-shelve
     border: none
     // font-weight: 700
@@ -122,3 +69,78 @@ $pcolor5: #631800
 
 .momo-cart-border
     border: 1px solid black
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus
+    color: #000
+    background-color: $ocolor2
+    border-color: $ocolor2
+    box-shadow: 0 0 0 .25rem rgba($pcolor5, 0.5)
+
+.btn-check:checked+.btn-primary,
+.btn-check:active+.btn-primary,
+.btn-primary:active,
+.btn-primary.active,
+.show>.btn-primary.dropdown-toggle
+    color: #000
+    background-color: $ocolor2
+    border-color: $ocolor2
+
+.btn-check:checked+.btn-primary:focus,
+.btn-check:active+.btn-primary:focus,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.show>.btn-primary.dropdown-toggle:focus
+    box-shadow: 0 0 0 .25rem rgba($pcolor5, 0.5)
+
+.btn-primary
+    color: $tcolor4
+    background-color: $tcolor3
+    border-color: $tcolor3
+    &:hover
+        color: $tcolor7
+        background-color: $tcolor3
+        border-color: $ocolor3
+
+.btn-check:focus + &, .btn-primary:focus
+    color: $tcolor5
+    background-color: $tcolor3
+    border-color: $ocolor3
+    box-shadow: 0 0 0 0.25rem $tcolor4
+
+.btn-check:checked + &, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle
+    color: $tcolor5
+    background-color: $tcolor3
+    border-color: $ocolor3
+
+    .btn-check:checked + &:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus
+        box-shadow: 0 0 0 0.25rem $tcolor4
+
+    &:disabled, .btn-primary.disabled
+        color: $tcolor5
+        background-color: $tcolor3
+        border-color: $tcolor3
+
+.btn-outline-primary
+    color: $tcolor3 !important
+    border-color: $tcolor4 !important
+
+.btn-outline-primary:hover
+    color: $tcolor5
+    background-color: $tcolor3
+    border-color: $tcolor3
+
+.btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus
+    box-shadow: 0 0 0 0.25rem $tcolor4
+
+.btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show
+    color: $tcolor5
+    background-color: $tcolor3
+    border-color: $tcolor3
+
+.btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus
+    box-shadow: 0 0 0 0.25rem $tcolor4
+
+.btn-outline-primary:disabled, .btn-outline-primary.disabled
+    color: $tcolor3
+    background-color: transparent
