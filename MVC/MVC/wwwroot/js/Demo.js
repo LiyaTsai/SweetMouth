@@ -7,7 +7,7 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
-        ProductInfo:[],
+        ProductInfo: [],
     },
     mounted() {
         _this = this;
@@ -19,10 +19,9 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUri}api/Product`).then(a => {
                 _this.ProductInfo = a.data;
             })
-            console.log("ProductInfo in appVue: "+JSON.stringify(_this.ProductInfo))
         },
     },
 })
 
-console.log("ProductInfo out of appVue: " + JSON.stringify(appVue.ProductInfo))
+
 
