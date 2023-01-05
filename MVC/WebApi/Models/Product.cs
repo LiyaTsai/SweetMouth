@@ -7,9 +7,19 @@ namespace WebApi.Models
 {
     public partial class Product
     {
-        public int 商品id { get; set; }
-        public string 商品名稱 { get; set; }
-        public string 商品份數口味 { get; set; }
-        public int? 商品定價 { get; set; }
+        public Product()
+        {
+            HashTag = new HashSet<HashTag>();
+            Order = new HashSet<Order>();
+        }
+
+        public string ProductName { get; set; }
+        public string Specifications { get; set; }
+        public int? Price { get; set; }
+        public string ImageName { get; set; }
+        public bool? Avalible { get; set; }
+
+        public virtual ICollection<HashTag> HashTag { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

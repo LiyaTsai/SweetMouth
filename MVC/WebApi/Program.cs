@@ -4,8 +4,8 @@ using WebApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-string ProconString = builder.Configuration.GetConnectionString("Product");
-builder.Services.AddDbContext<myDemoDBContext>(a => a.UseSqlServer(ProconString));
+string ProconString = builder.Configuration.GetConnectionString("SweetMouth");
+builder.Services.AddDbContext<SweetMouthContext>(a => a.UseSqlServer(ProconString));
 
 builder.Services.AddControllers();
 
@@ -14,7 +14,7 @@ builder.Services.AddCors(x =>
 {
     x.AddPolicy(                            //新增權限(參數有name和policy)
         name: MyAllowSpecificOrigins,
-        policy => policy.WithOrigins("*").WithHeaders("*").WithMethods("*")
+        policy => policy.WithOrigins("https://localhost:7146").WithHeaders("*").WithMethods("*")
         );              //來源是此API輸出的網址，如果要全公開就給*就好，要限定Headers或Methods的話也是
 });
 
