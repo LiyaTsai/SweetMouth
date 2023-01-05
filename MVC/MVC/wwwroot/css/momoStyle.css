@@ -159,3 +159,11 @@ a:hover {
   color: #631800;
   text-decoration: none;
 }
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus {
+  color: #fff;
+  background-color: #FF6C3E;
+  border-color: #FFBDA8;
+  box-shadow: 0 0 0 0.25rem #FFBDA8;
+}
