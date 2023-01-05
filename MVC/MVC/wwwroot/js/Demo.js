@@ -2,7 +2,7 @@ var de = document.getElementById("de");
 de.innerHTML += `<li>33333333333</li>`
 
 
-var webApiBaseUri = "https://localhost:7096/";  //¥ý§â«e­±ªº¸ô®|¼g°_¨Ó¥H«á´«¾÷§ï³o´N¦n
+var webApiBaseUri = "https://localhost:7096/";  //ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½|ï¿½gï¿½_ï¿½Ó¥Hï¿½á´«ï¿½ï¿½ï¿½ï¿½oï¿½Nï¿½n
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",

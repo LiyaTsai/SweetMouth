@@ -53,7 +53,8 @@
 
                         <div class="product-item">
                             <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="~/img/CheeseStick.jpg" alt="" />
+                                <!-- <img class="img-fluid w-100" src="~/img/CheeseStick.jpg" alt="" /> -->
+                                <img class="img-fluid w-100" :src="'/img/'+i.imageName+'.jpg'" alt="" />
                                 <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                     狗狗可食
                                 </div>
@@ -62,9 +63,9 @@
                                 </button>
                             </div>
                             <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">{{i.商品名稱}}</a>
-                                <span class="text-primary me-1">${{i.商品定價}}</span>
-                                <span class="text-primary me-1">{{i.商品份數口味}}</span>
+                                <a class="d-block h5 mb-2" href="">{{i.productName}}</a>
+                                <span class="text-primary me-1">${{i.price}}</span>
+                                <span class="text-primary me-1">{{i.specifications}}</span>
                                 <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
                             </div>
                             <div class="d-flex border-top">

@@ -10,9 +10,9 @@ namespace WebApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly myDemoDBContext _context;
+        private readonly SweetMouthContext _context;
 
-        public ProductController(myDemoDBContext context)
+        public ProductController(SweetMouthContext context)
         {
             _context = context;
         }
@@ -25,10 +25,11 @@ namespace WebApi.Controllers
             return _context.Product.Select(x =>
             new Product
             {
-                商品id=x.商品id,
-                商品名稱=x.商品名稱,
-                商品份數口味=x.商品份數口味,
-                商品定價=x.商品定價
+                ProductName=x.ProductName,
+                Specifications=x.Specifications,
+                Price=x.Price,
+                ImageName=x.ImageName,
+                Avalible=x.Avalible
             }
             );
         }
