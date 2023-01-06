@@ -112,6 +112,6 @@ Debug/net6.0/*.cache
 Debug/net6.0/*.dll
 Debug/net6.0/*.txt
 Debug/net6.0/*.json
-.vs/MVC/v17/
+.vs/
 
 
