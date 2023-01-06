@@ -10230,19 +10230,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jerrypai\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jerrypai\\Desktop\\Final\\MVC\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\Merge用\\SweetMouth\\MVC\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\jerrypai\\Desktop\\Final\\MVC\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\jerrypai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jerrypai\\Desktop\\Final\\MVC\\WebApi\\obj\\",
+      "projectPath": "C:\\Users\\user\\Desktop\\Merge用\\SweetMouth\\MVC\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\Merge用\\SweetMouth\\MVC\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\jerrypai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10250,6 +10255,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
