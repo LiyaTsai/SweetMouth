@@ -25,11 +25,11 @@ namespace WebApi.Controllers
             return _context.Product.Select(x =>
             new Product
             {
-                ProductName=x.ProductName,
-                Specifications=x.Specifications,
-                Price=x.Price,
-                ImageName=x.ImageName,
-                Avalible=x.Avalible
+                ProductName = x.ProductName,
+                Specifications = x.Specifications,
+                Price = x.Price,
+                ImageName = x.ImageName,
+                Avalible = x.Avalible
             }
             );
         }
