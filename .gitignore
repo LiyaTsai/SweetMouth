@@ -352,6 +352,12 @@ MigrationBackup/
 
 net6.0/
 Debug/
-.vs/
 *.cache
 obj/
+v17/.suo
+v17/*.suo
+.vs/
+v17/
+bin/
+*.dll
+*.exe
