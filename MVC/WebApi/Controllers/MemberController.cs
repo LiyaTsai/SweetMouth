@@ -11,7 +11,11 @@ namespace WebApi.Controllers
     {
         private readonly SweetMouthContext _context;
 
+<<<<<<<< HEAD:MVC/WebApi/Controllers/MemberController.cs
         public MemberController(SweetMouthContext context)
+========
+        public ProductController(SweetMouthContext context)
+>>>>>>>> 2f5a51b96e51a242e8c328b55e9bbf7c75c9567d:MVC/WebApi/Controllers/ProductController.cs
         {
             _context = context;
         }
@@ -25,6 +29,7 @@ namespace WebApi.Controllers
             return _context.Member.Select(a =>
             new Member
             {
+<<<<<<<< HEAD:MVC/WebApi/Controllers/MemberController.cs
                 MemberId= a.MemberId,
                 Name= a.Name,
                 NickName= a.NickName,
@@ -32,6 +37,13 @@ namespace WebApi.Controllers
                 PhoneNumber= a.PhoneNumber,
                 Password= a.Password,
                 BirthDay= a.BirthDay
+========
+                ProductName = x.ProductName,
+                Specifications = x.Specifications,
+                Price = x.Price,
+                ImageName = x.ImageName,
+                Avalible = x.Avalible
+>>>>>>>> 2f5a51b96e51a242e8c328b55e9bbf7c75c9567d:MVC/WebApi/Controllers/ProductController.cs
             }
             );
         }

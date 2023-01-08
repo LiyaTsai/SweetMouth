@@ -155,15 +155,17 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
-                       data-bs-target="#registerModal">還沒有帳號?</a>
+                    <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號?</a>
+@*                    <a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
+                       data-bs-target="#registerModal">還沒有帳號?</a>*@
                     <button type="submit" class="btn btn-primary">登入</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- 登入_Modal End -->
-    <!-- 註冊_Modal Start -->
+
+@*    <!-- 註冊_Modal Start -->
     <div class="modal fade" id="registerModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -221,7 +223,7 @@
             </div>
         </div>
     </div>
-    <!-- 註冊_Modal End -->
+    <!-- 註冊_Modal End -->*@
 
     @RenderBody()
 
