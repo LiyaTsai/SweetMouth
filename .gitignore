@@ -357,4 +357,5 @@ v17/*.suo
 .vs/
 obj/
 net6.0/
+Debug/net6.0/
 

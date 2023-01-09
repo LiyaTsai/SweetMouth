@@ -21,6 +21,14 @@ var appVue = new Vue({
                 console.log(_this.ProductInfo)
             })
         },
+        toPD() {
+            let _this = this;
+            axios.get(`${webApiBaseUri}api/Product`).then(a => {
+
+
+            })
+            
+        }
     },
 })
 
