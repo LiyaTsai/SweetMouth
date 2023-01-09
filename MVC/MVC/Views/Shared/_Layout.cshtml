@@ -1,15 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-Hant-TW">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @*<title>@ViewData["Title"] - MVC</title>*@
-    <title> @ViewBag.btitle |甜嘴Mo</title>
+    <title>@ViewData["Title"] |甜嘴Mo</title>
 
     @*css原檔*@
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MVC.styles.css" asp-append-version="true" />*@
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/MVC.styles.css" asp-append-version="true" />*@
 
 
     <!-- Favicon -->
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap"
-          rel="stylesheet" />
+        rel="stylesheet" />
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
@@ -36,21 +36,22 @@
     <link href="~/css/style.css" rel="stylesheet" />
 
     <!-- 改過的 -->
-    <link href="~/scss/momostyle.css" rel="stylesheet" />
+    <link href="~/css/momostyle.css" rel="stylesheet" />
 
 
     @await RenderSectionAsync("Styles", required: false)
 </head>
+
 <body>
     <!-- Spinner Start -->
     <div id="spinner"
-         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
     @*<li class="nav-item">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action=""></a>
-    </li>*@
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action=""></a>
+        </li>*@
 
     <!-- Navbar Start -->
     <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
@@ -75,16 +76,14 @@
                 </h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
+                data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">首頁</a>
-                    <a href="" class="nav-item nav-link">關於我們</a>
+                    @*<a asp-controller="Home" asp-action="Index" class="nav-item nav-link">關於我們</a>*@
                     <a asp-controller="Home" asp-action="product" class="nav-item nav-link active">Menu</a>
-                    <a asp-controller="Home" asp-action="productDetail" class="nav-item nav-link active">產品細節</a>
-                    <a asp-controller="Home" asp-action="DemoProduct" class="nav-item nav-link active">DemoPro</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">頁面</a>
                         <div class="dropdown-menu m-0">
@@ -94,23 +93,23 @@
                             <a asp-controller="Home" asp-action="News" class="dropdown-item">甜嘴MoBlog內頁</a>
                             <a asp-controller="Home" asp-action="Cart" class="dropdown-item">購物車頁面</a>
                             <a asp-controller="Home" asp-action="orderCustomizedCake" class="dropdown-item">客訂蛋糕頁面</a>
-                            <a asp-controller="Home" asp-action="Class" class="dropdown-item">甜點課程</a>               
+                            <a asp-controller="Home" asp-action="Class" class="dropdown-item">甜點課程</a>
                             <a asp-controller="Home" asp-action="productDetail" class="dropdown-item">產品細節</a>
                         </div>
                     </div>
                     <a asp-controller="Home" asp-action="contact" class="nav-item nav-link">聯絡我們</a>
-                   
+
                     @*<partial name="_LoginPartial" />*@ @*預設登入*@
 
                 </div>
                 <!-- icons -->
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
+                    @*<a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                         <i class="fa fa-search text-body"></i>
-                    </a>
+                    </a>*@
                     <!-- 登入鈕 -->
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="" data-bs-toggle="modal"
-                       data-bs-target="#loginModal">
+                        data-bs-target="#loginModal">
                         <i class="fa fa-user text-body"></i>
                     </a>
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
@@ -138,7 +137,7 @@
                                 <h5>E-Mail or 手機號碼</h5>
                             </label><br>
                             <input class="form-control" type="email" name="" id="loginmail" placeholder="mail or Tel"
-                                   required>
+                                required>
                             <div class="invalid-feedback">請輸入E-Mail</div>
                         </div>
                         <div class="form-group">
@@ -146,7 +145,7 @@
                                 <h5>請輸入密碼</h5>
                             </label><br>
                             <input class="form-control" type="password" name="" id="password" placeholder="password"
-                                   required>
+                                required>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="" id="save">
@@ -157,7 +156,7 @@
                 <div class="modal-footer">
                     <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號?</a>
                     @*<a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
-                       data-bs-target="#registerModal">還沒有帳號?</a>*@
+                        data-bs-target="#registerModal">還沒有帳號?</a>*@
                     <button type="submit" class="btn btn-primary" id="logginBtn">登入</button>
                 </div>
             </div>
@@ -166,64 +165,64 @@
     <!-- 登入_Modal End -->
 
     @*<!-- 註冊_Modal Start -->
-    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal fade" id="registerModal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header  bg-warning">
-                    <h5 class="modal-title" id="exampleModalLabel">註冊服務</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>使用者規範</h5>
-                            <p class="text-black-50">
-                                提前精品對方提示訊息就是創新請點擊，春天似乎也會天天治理就鐵路警方系統，執行英雄大學輔助感到過了有
-                                一些，共享版通信光臨將會從事，眼光走向自動查詢本站主演小姐會員，笑着實際地方落經濟發展所在地不是，他就購物計算而言後面意識討論
-                                感到討論區，總體一。
-                            </p>
-                        </div>
-                        <div class="col-md-6">+
-                            <form action="">
-                                <div class="form-group">
-                                    <label for="registermail">
-                                        <h5>E-Mail or 手機號碼</h5>
-                                    </label><br>
-                                    <input class="form-control" type="email" name="" id="registermail"
-                                           placeholder="mail or Tel" required>
-                                    <div class="invalid-feedback">請輸入E-Mail</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="registerpassword">
-                                        <h5>請輸入密碼</h5>
-                                    </label><br>
-                                    <input class="form-control" type="password" name="" id="registerpassword"
-                                           placeholder="password" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="conformpassword">
-                                        <h5>確認密碼</h5>
-                                    </label><br>
-                                    <input class="form-control" type="password" name="" id="conformpassword"
-                                           placeholder="password" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="" id="accept">
-                                    <label for="accept"><small>同意條款</small></label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="" class="mr-auto" data-bs-dismiss="modal" data-bs-toggle="modal">切換登入服務</a>
-                    <button type="button" class="btn btn-primary">註冊</button>
-                </div>
-            </div>
+        <div class="modal-content">
+        <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">註冊服務</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal">
+        </button>
         </div>
-    </div>
-    <!-- 註冊_Modal End -->*@
+        <div class="modal-body">
+        <div class="row">
+        <div class="col-md-6">
+        <h5>使用者規範</h5>
+        <p class="text-black-50">
+        提前精品對方提示訊息就是創新請點擊，春天似乎也會天天治理就鐵路警方系統，執行英雄大學輔助感到過了有
+        一些，共享版通信光臨將會從事，眼光走向自動查詢本站主演小姐會員，笑着實際地方落經濟發展所在地不是，他就購物計算而言後面意識討論
+        感到討論區，總體一。
+        </p>
+        </div>
+        <div class="col-md-6">+
+        <form action="">
+        <div class="form-group">
+        <label for="registermail">
+        <h5>E-Mail or 手機號碼</h5>
+        </label><br>
+        <input class="form-control" type="email" name="" id="registermail"
+        placeholder="mail or Tel" required>
+        <div class="invalid-feedback">請輸入E-Mail</div>
+        </div>
+        <div class="form-group">
+        <label for="registerpassword">
+        <h5>請輸入密碼</h5>
+        </label><br>
+        <input class="form-control" type="password" name="" id="registerpassword"
+        placeholder="password" required>
+        </div>
+        <div class="form-group">
+        <label for="conformpassword">
+        <h5>確認密碼</h5>
+        </label><br>
+        <input class="form-control" type="password" name="" id="conformpassword"
+        placeholder="password" required>
+        </div>
+        <div class="form-group">
+        <input type="checkbox" name="" id="accept">
+        <label for="accept"><small>同意條款</small></label>
+        </div>
+        </form>
+        </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <a href="" class="mr-auto" data-bs-dismiss="modal" data-bs-toggle="modal">切換登入服務</a>
+        <button type="button" class="btn btn-primary">註冊</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- 註冊_Modal End -->*@
 
     @RenderBody()
 
@@ -270,7 +269,7 @@
                     <p>想收到最新資訊嗎?，請在下方輸入您的信箱!!</p>
                     <div class="position-relative mx-auto" style="max-width: 400px">
                         <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                               placeholder="您的電子信箱" />
+                            placeholder="您的電子信箱" />
                         <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
                             登入
                         </button>
@@ -302,8 +301,8 @@
 
     @*js原檔*@
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>*@
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
     @*@await RenderSectionAsync("Scripts", required: false)*@
 
     <!-- JavaScript Libraries -->
@@ -321,4 +320,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
+
 </html>

@@ -16,7 +16,6 @@ namespace MVC.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.btitle = "首頁";
             return View();
         }
 
