@@ -13,13 +13,13 @@ namespace MVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult product()
+        public IActionResult Index()
         {
             ViewBag.btitle = "首頁";
             return View();
         }
 
-        public IActionResult Index()
+        public IActionResult product()
         {
             ViewBag.btitle = "甜點品項";
             return View();
