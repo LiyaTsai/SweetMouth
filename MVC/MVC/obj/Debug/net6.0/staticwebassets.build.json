@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QJMhB6ePYJuU6cznj2DCeEvRq0pnA11Q/g/uOEF8+0Y=",
+  "Hash": "g8MT5L6Kv+xR6IUgRmVYsJg38CecM9qcBqpF2YvyQ/Y=",
   "Source": "MVC",
   "BasePath": "_content/MVC",
   "Mode": "Default",
@@ -2310,6 +2310,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Demo.js"
+    },
+    {
+      "Identity": "C:\\Users\\user\\Desktop\\Merge用\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\Loggin.js",
+      "SourceId": "MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\Merge用\\SweetMouth\\MVC\\MVC\\wwwroot\\",
+      "BasePath": "_content/MVC",
+      "RelativePath": "js/Loggin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Loggin.js"
     },
     {
       "Identity": "C:\\Users\\user\\Desktop\\Merge用\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\main.js",

@@ -1,4 +1,6 @@
-﻿namespace WebApi.DTO
+﻿using WebApi.Models;
+
+namespace WebApi.DTO
 {
     public class BlogDTO
     {
@@ -8,6 +10,9 @@
         public string? SubTitle { get; set; }
         public DateTime? Time { get; set; }
         public string? Article { get; set; }
+        //public virtual Member? Member { get; set; }
+        public string? MemberName { get; set; }
+        public string? NickName { get; set;}
         //public string? Image { get; set; }
     }
 }

@@ -19,6 +19,7 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUri}api/Product`).then(a => {
                 _this.ProductInfo = a.data;
             })
+
         },
     },
 })

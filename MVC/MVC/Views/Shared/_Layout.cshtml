@@ -159,7 +159,7 @@
                     <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號?</a>
 @*                    <a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
                        data-bs-target="#registerModal">還沒有帳號?</a>*@
-                    <button type="submit" class="btn btn-primary">登入</button>
+                    <button type="submit" class="btn btn-primary" id="logginBtn">登入</button>
                 </div>
             </div>
         </div>
@@ -314,10 +314,11 @@
     <script src="~/lib/easing/easing.min.js"></script>
     <script src="~/lib/waypoints/waypoints.min.js"></script>
     <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
-
+    <script src="~/js/Loggin.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

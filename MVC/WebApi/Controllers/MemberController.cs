@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi.DTO;
 using WebApi.Models;
 
@@ -23,7 +24,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<Member> Get()
         {
-            return _context.Member.Select(a =>
+            return _context.Member.Include(b=>b.Order).Select(a =>
             new Member
             {
                 MemberId= a.MemberId,
@@ -32,7 +33,8 @@ namespace WebApi.Controllers
                 Email= a.Email,
                 PhoneNumber= a.PhoneNumber,
                 Password= a.Password,
-                BirthDay= a.BirthDay
+                BirthDay= a.BirthDay,
+                Order= a.Order
             }
             );
         }
