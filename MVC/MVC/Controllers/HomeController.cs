@@ -95,7 +95,11 @@ namespace MVC.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult DemoProduct()
+        {
+            return View();
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
