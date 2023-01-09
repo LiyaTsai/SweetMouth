@@ -1,4 +1,4 @@
-var webApiBaseUri = "https://localhost:7096/";
+﻿var webApiBaseUri = "https://localhost:7096/";
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",

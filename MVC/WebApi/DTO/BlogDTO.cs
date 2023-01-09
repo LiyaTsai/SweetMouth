@@ -8,6 +8,8 @@
         public string? SubTitle { get; set; }
         public DateTime? Time { get; set; }
         public string? Article { get; set; }
+        public string? MemberName { get; set; }
+        public string? NickName { get; set; }
         //public string? Image { get; set; }
     }
 }
