@@ -90,11 +90,7 @@ namespace MVC.Controllers
             ViewBag.btitle = "甜點清單DEMO";
             return View();
         }
-        public IActionResult productDetail()
-        {
-            ViewBag.btitle = "會員表單";
-            return View();
-        }
+
         public IActionResult MemberInfo()
         {
             return View();

@@ -25,13 +25,8 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<BlogDTO>> Get()
         {
-<<<<<<< HEAD
             return _context.Blog.Include(b => b.Member).Select(item => new BlogDTO
             {      
-=======
-            return _context.Blog.Include(b=>b.Member).Select(item => new BlogDTO
-            {
->>>>>>> No3Eyes-branch
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
                 Floor = item.Floor,
@@ -39,15 +34,9 @@ namespace WebApi.Controllers
                 SubTitle = item.SubTitle,
                 Time = item.Time,
                 Article = item.Article,
-<<<<<<< HEAD
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
                 //Image = item.Image,
-=======
-                //Member= item.Member,
-                MemberName=item.Member.Name,
-                NickName=item.Member.NickName,
->>>>>>> No3Eyes-branch
             });
         }
 
