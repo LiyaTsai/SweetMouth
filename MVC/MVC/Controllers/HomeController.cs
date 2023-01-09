@@ -13,21 +13,27 @@ namespace MVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult product()
         {
-            ViewBag.Title = "首頁";
+            ViewBag.btitle = "首頁";
             return View();
         }
 
-        public IActionResult product()
+        public IActionResult Index()
         {
-            ViewBag.Title = "甜點品項";
+            ViewBag.btitle = "甜點品項";
+            return View();
+        }
+
+        public IActionResult productDetail()
+        {
+            ViewBag.btitle = "產品細節";
             return View();
         }
 
         public IActionResult contact()
         {
-            ViewBag.Title = "聯絡我們";
+            ViewBag.btitle = "聯絡我們";
             return View();
         }
 
@@ -38,55 +44,55 @@ namespace MVC.Controllers
 
         public IActionResult Blog()
         {
-            ViewBag.Title = "部落格";
+            ViewBag.btitle = "部落格";
             return View();
         }
 
         public IActionResult News()
         {
-            ViewBag.Title = "最新消息";
+            ViewBag.btitle = "最新消息";
             return View();
         }
 
         public IActionResult Cart()
         {
-            ViewBag.Title = "購物車";
+            ViewBag.btitle = "購物車";
             return View();
         }
 
         public IActionResult orderCustomizedCake()
         {
-            ViewBag.Title = "客訂蛋糕";
+            ViewBag.btitle = "客訂蛋糕";
             return View();
         }
 
         public IActionResult Class()
         {
-            ViewBag.Title = "甜點課程";
+            ViewBag.btitle = "甜點課程";
             return View();
         }
 
         public IActionResult Class2()
         {
-            ViewBag.Title = "甜點課程";
+            ViewBag.btitle = "甜點課程";
             return View();
         }
 
         public IActionResult Calendar()
         {
-            ViewBag.Title = "甜點課程";
+            ViewBag.btitle = "甜點課程";
             return View();
         }
 
         public IActionResult DemoProduct() 
         {
 
-            ViewBag.Title = "甜點清單DEMO";
+            ViewBag.btitle = "甜點清單DEMO";
             return View();
         }
         public IActionResult memberfrom()
         {
-            ViewBag.Title = "會員表單";
+            ViewBag.btitle = "會員表單";
             return View();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
