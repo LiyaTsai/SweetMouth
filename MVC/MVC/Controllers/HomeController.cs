@@ -13,6 +13,7 @@ namespace MVC.Controllers
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
             ViewBag.btitle = "首頁";
@@ -94,6 +95,13 @@ namespace MVC.Controllers
             ViewBag.btitle = "會員表單";
             return View();
         }
+        public IActionResult MemberInfo()
+        {
+            return View();
+        }
+        
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -9,7 +9,7 @@
     <h1 class="display-5 mb-3">會員註冊</h1>
 </div>
 
-<div class="container mb-5">
+<div class="container mb-5" id="appVue">
     <div class="card">
         <div class="card-header">
             請輸入以下資料
@@ -20,40 +20,45 @@
             </div>
             <form action="">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="請輸入帳號(Email)">
+                    <input type="email" class="form-control" v-model="email" placeholder="請輸入帳號(Email)">
                     <label for="floatingInput">請輸入帳號(Email)</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" placeholder="請輸入密碼">
+                    <input type="password" class="form-control" v-model="password" placeholder="請輸入密碼">
                     <label for="floatingInput">請輸入密碼</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="請輸入姓名">
+                    <input type="password" class="form-control" v-model="CheckPass" placeholder="請輸入密碼">
+                    <label for="floatingInput">確認密碼</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" v-model="name" placeholder="請輸入姓名">
                     <label for="floatingInput">請輸入姓名</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="請輸入暱稱">
+                    <input type="text" class="form-control" v-model="nickName" placeholder="請輸入暱稱">
                     <label for="floatingInput">請輸入暱稱</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="請輸入手機號碼">
+                    <input type="text" class="form-control" v-model="phoneNumber" placeholder="請輸入手機號碼">
                     <label for="floatingInput">請輸入手機號碼</label>
                 </div>
 
                 <div class="form-group">
                     <label>
                         <p>生日</p>
-                        <input type="date" name="" id="">
+                        <input type="date" v-model="birthDay">
                     </label>
                 </div>
 
                 <div class="d-grid my-5">
                     <div class="btn-group d-flex">
-                        <button type="submit" class="btn btn-primary btn-block">送出資料</button>
+                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewMember">送出資料</button>
                         <button type="reset" class="btn btn-warning btn-block">清除表單</button>
                     </div>
                 </div>
@@ -61,3 +66,10 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <script src="~/js/memberform.js"></script>
+}

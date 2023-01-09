@@ -96,6 +96,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">頁面</a>
                         <div class="dropdown-menu m-0">
                             <a asp-controller="Home" asp-action="Layout" class="dropdown-item">Layout</a>
+                            <a asp-controller="Home" asp-action="MemberInfo" class="dropdown-item">會員資訊</a>
                             <a asp-controller="Home" asp-action="Blog" class="dropdown-item">甜嘴MoBlog</a>
                             <a asp-controller="Home" asp-action="News" class="dropdown-item">甜嘴MoBlog內頁</a>
                             <a asp-controller="Home" asp-action="Cart" class="dropdown-item">購物車頁面</a>
@@ -164,7 +165,7 @@
                     <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號?</a>
                     @*<a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
                        data-bs-target="#registerModal">還沒有帳號?</a>*@
-                    <button type="submit" class="btn btn-primary">登入</button>
+                    <button type="submit" class="btn btn-primary" id="logginBtn">登入</button>
                 </div>
             </div>
         </div>
@@ -319,10 +320,11 @@
     <script src="~/lib/easing/easing.min.js"></script>
     <script src="~/lib/waypoints/waypoints.min.js"></script>
     <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
-
+    <script src="~/js/Loggin.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

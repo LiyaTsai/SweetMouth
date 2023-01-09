@@ -20,6 +20,7 @@ var appVue = new Vue({
                 _this.ProductInfo = a.data;
                 console.log(_this.ProductInfo)
             })
+
         },
         toPD() {
             let _this = this;
