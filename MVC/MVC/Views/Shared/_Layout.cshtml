@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @*<title>@ViewData["Title"] - MVC</title>*@
-    <title>首頁</title>
+    <title>@ViewData["Title"] |甜嘴Mo</title>
 
     @*css原檔*@
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -39,7 +38,7 @@
     <link href="~/css/momoStyle.css" rel="stylesheet" />
 
 
-    @*@await RenderSectionAsync("theme_CSS", required: false)*@
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <!-- Spinner Start -->
@@ -83,7 +82,6 @@
                     <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">首頁</a>
                     <a href="" class="nav-item nav-link">關於我們</a>
                     <a asp-controller="Home" asp-action="product" class="nav-item nav-link active">Menu</a>
-                    <a asp-controller="Home" asp-action="DemoProduct" class="nav-item nav-link active">DemoPro</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">頁面</a>
                         <div class="dropdown-menu m-0">
@@ -92,7 +90,8 @@
                             <a asp-controller="Home" asp-action="News" class="dropdown-item">甜嘴MoBlog內頁</a>
                             <a asp-controller="Home" asp-action="Cart" class="dropdown-item">購物車頁面</a>
                             <a asp-controller="Home" asp-action="orderCustomizedCake" class="dropdown-item">客訂蛋糕頁面</a>
-                            <a asp-controller="Home" asp-action="Class" class="dropdown-item">甜點課程</a>                       
+                            <a asp-controller="Home" asp-action="Class" class="dropdown-item">甜點課程</a>               
+                            <a asp-controller="Home" asp-action="productDetail" class="dropdown-item">產品細節</a>
                         </div>
                     </div>
                     <a asp-controller="Home" asp-action="contact" class="nav-item nav-link">聯絡我們</a>
@@ -153,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                     <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號?</a>
-@*                    <a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
+                    @*<a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
                        data-bs-target="#registerModal">還沒有帳號?</a>*@
                     <button type="submit" class="btn btn-primary">登入</button>
                 </div>
@@ -162,7 +161,7 @@
     </div>
     <!-- 登入_Modal End -->
 
-@*    <!-- 註冊_Modal Start -->
+    @*<!-- 註冊_Modal Start -->
     <div class="modal fade" id="registerModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -181,7 +180,7 @@
                                 感到討論區，總體一。
                             </p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6">+
                             <form action="">
                                 <div class="form-group">
                                     <label for="registermail">

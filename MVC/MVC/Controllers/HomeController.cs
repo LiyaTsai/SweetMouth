@@ -67,12 +67,11 @@ namespace MVC.Controllers
         {
             return View();
         }
-
-        public IActionResult DemoProduct() 
+        public IActionResult memberfrom()
         {
             return View();
         }
-        public IActionResult memberfrom()
+        public IActionResult productDetail()
         {
             return View();
         }

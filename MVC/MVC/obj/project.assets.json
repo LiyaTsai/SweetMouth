@@ -2454,19 +2454,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jerrypai\\.nuget\\packages\\": {}
+    "C:\\Users\\pigpa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jerrypai\\Desktop\\Final\\MVC\\MVC\\MVC.csproj",
+      "projectUniqueName": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "C:\\Users\\jerrypai\\Desktop\\Final\\MVC\\MVC\\MVC.csproj",
-      "packagesPath": "C:\\Users\\jerrypai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jerrypai\\Desktop\\Final\\MVC\\MVC\\obj\\",
+      "projectPath": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\MVC.csproj",
+      "packagesPath": "C:\\Users\\pigpa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jerrypai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pigpa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

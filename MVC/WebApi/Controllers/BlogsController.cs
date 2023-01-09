@@ -26,9 +26,10 @@ namespace WebApi.Controllers
         public async Task<IEnumerable<BlogDTO>> Get()
         {
             return _context.Blog.Include(b => b.Member).Select(item => new BlogDTO
-            {
+            {      
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
+                Floor = item.Floor,
                 Title = item.Title,
                 SubTitle = item.SubTitle,
                 Time = item.Time,
@@ -40,17 +41,26 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Blogs/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Blog>> GetBlog(int id)
+        [HttpGet("{ArticleID}/{Floor}")]
+        public async Task<ActionResult<BlogDTO>> Get(int ArticleID, int Floor)
         {
-            var blog = await _context.Blog.FindAsync(id);
+            var blog = await _context.Blog.FindAsync(ArticleID, Floor);
 
             if (blog == null)
             {
                 return NotFound();
             }
-
-            return blog;
+            BlogDTO blogDTO = new BlogDTO
+            {
+                ArticleID = blog.ArticleId,
+                MemberID = blog.MemberId,
+                Floor = blog.Floor,
+                Title = blog.Title,
+                SubTitle = blog.SubTitle,
+                Time = blog.Time,
+                Article = blog.Article,
+            };
+            return blogDTO;
         }
 
         // PUT: api/Blogs/5
