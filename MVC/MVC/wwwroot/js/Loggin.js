@@ -2,18 +2,26 @@
 /*var loginmail = document.getElementById("loginmail");*/
 loginmail = $("#loginmail")
 var password = document.getElementById("password");
-var webApiBaseUri = "https://localhost:7096/"
+var webApiBaseUrl = "https://localhost:7096/"
 logginBtn.addEventListener("click", function () {
- //   console.log(loginmail.val())
-	//console.log(password.value)
-    axios.get(`${webApiBaseUri}api/Member`).then(a => {
+    axios.get(`${webApiBaseUrl}api/Member`).then(a => {
         let b = a.data;
         for (let i = 0; i < b.length; i++) {
             if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value)
-            { alert(`${b[i].name}歡迎登入`) };
+            {
+                alert(`${b[i].name}歡迎登入`);
+                sessionStorage.setItem("MemberID", b[i].memberId)
+            };
             $("#loginModal").modal('hide');
         }
     })
+
+
+
+
+
+
+
 })
 
 

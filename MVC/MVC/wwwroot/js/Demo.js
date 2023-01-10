@@ -18,9 +18,17 @@ var appVue = new Vue({
             let _this = this;
             axios.get(`${webApiBaseUri}api/Product`).then(a => {
                 _this.ProductInfo = a.data;
-                console.log(_this.ProductInfo)
+                
             })
-
+            for (let i = 0; i < _this.ProductInfo.length; i++) {
+                console.log(_this.ProductInfo[i].avalible)
+                if (_this.ProductInfo[i].avalible == false) {
+                    alert(_this.ProductInfo[i])
+                    _this.ProductInfo[i].pop;
+                    
+                }
+            }
+            
         },
         toPD() {
             let _this = this;

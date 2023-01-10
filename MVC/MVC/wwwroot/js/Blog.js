@@ -23,11 +23,18 @@ var appVue = new Vue({
                     }
                 }
                 _this.BlogInfo = blogList;
+                console.log(_this.BlogInfo)
             })
         },
+        //ClickInto: function (e) {
+        //    let _this = this;
+        //    console.log("點到了s")
+        //    console.log(e.target.value)
+
+
+        //},
     },
 })
-
 
 
 

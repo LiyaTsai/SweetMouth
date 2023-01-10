@@ -13,9 +13,14 @@ namespace MVC.Controllers
             _logger = logger;
         }
 
+        //private readonly IHttpContextAccessor _context;
+        //public HomeController(IHttpContextAccessor con)
+        //{ _context = con; }
+
 
         public IActionResult Index()
         {
+            //_context.HttpContext.Session.SetString("Session內容", "Session");
             return View();
         }
 
@@ -99,6 +104,8 @@ namespace MVC.Controllers
         {
             return View();
         }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

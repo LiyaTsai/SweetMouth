@@ -69,12 +69,15 @@ namespace WebApi.Controllers
                 NickName = mdto.NickName,
                 Email = mdto.Email,
                 PhoneNumber = mdto.PhoneNumber,
-                BirthDay= mdto.BirthDay
+                BirthDay= mdto.BirthDay,
+                Password= mdto.Password,
             };
             _context.Member.Add(mem);
             await _context.SaveChangesAsync();
             return mem;
         }
+
+
 
         // PUT api/<MemberController>/5
         [HttpPut("{id}")]
