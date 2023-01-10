@@ -26,7 +26,7 @@ namespace WebApi.Controllers
         public async Task<IEnumerable<BlogDTO>> Get()
         {
             return _context.Blog.Include(b => b.Member).Select(item => new BlogDTO
-            {      
+            {
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
                 Floor = item.Floor,
@@ -34,6 +34,7 @@ namespace WebApi.Controllers
                 SubTitle = item.SubTitle,
                 Time = item.Time,
                 Article = item.Article,
+                // Member 資料表
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
                 //Image = item.Image,
