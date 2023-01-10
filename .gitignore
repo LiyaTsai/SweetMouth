@@ -349,22 +349,15 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-<<<<<<< HEAD
 
 Debug/
 v17/
-v17/.suo
 v17/*.suo
 .vs/
 obj/
 net6.0/
 Debug/net6.0/
-
-=======
-.vs/
-
 bin/Debug/net6.0/
 obj/Debug/net6.0/
 MVC/MVC/bin/Debug/net6.0/
 MVC/.vs/MVC/v17/.suo
->>>>>>> No3Eyes-branch
