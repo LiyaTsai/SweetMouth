@@ -4,6 +4,7 @@ var appVue = new Vue({
     name: "appVue",
     data: {
         BlogInfo: [],
+        Blogpage: {},
     },
     mounted() {
         _this = this;
@@ -26,15 +27,14 @@ var appVue = new Vue({
                 console.log(_this.BlogInfo)
             })
         },
-        //ClickInto: function (e) {
-        //    let _this = this;
-        //    console.log("點到了s")
-        //    console.log(e.target.value)
-
-
-        //},
+        locationPage: function (item) {
+            let _this = this;
+            axios.get(`${webApiBaseUri}api/Blogs/${item.articleID}/0`).then(response => {
+                let item = response.data;
+            })
+            _this.Blogpage = item;
+            //window.location = "/Home/blogPage"
+            console.log(_this.Blogpage)
+        },
     },
 })
-
-
-

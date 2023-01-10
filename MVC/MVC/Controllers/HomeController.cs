@@ -49,13 +49,11 @@ namespace MVC.Controllers
 
         public IActionResult Blog()
         {
-            ViewBag.btitle = "部落格";
             return View();
         }
 
-        public IActionResult News()
+        public IActionResult blogPage()
         {
-            ViewBag.btitle = "最新消息";
             return View();
         }
 
