@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi.DTO;
 using WebApi.Models;
+using Member = WebApi.Models.Member;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
