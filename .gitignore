@@ -350,10 +350,9 @@ MigrationBackup/
 .ionide/
 
 
-
 Debug/
 v17/
-v17/.suo
+v17/*.suo
 .vs/
 obj/
 net6.0/
