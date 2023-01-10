@@ -1,0 +1,38 @@
+.container{
+    /* width: 700px;
+    height: 600px; */
+    /* 置中 */
+    position: static;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    /* 浮影 */
+    /* border: 1px solid gray;
+    box-shadow: 10px 10px 7px gray;
+    padding: 20px;
+ */
+}
+    /* 標題年月份字體顏色大小 */
+.fc .fc-toolbar-title {
+    color: brown;
+    font-size: 30px;  
+}
+/* 每週字體顏色大小 */
+.fc th {
+    color: blue;
+    font-size: 25;
+}
+/* RWD */
+@media (max-width:600px) {
+    .container{
+        width: 370px;     
+    }
+    .fc th {
+        color: blue;
+        font-size: 15px;
+    }
+    .fc .fc-toolbar-title {
+        color: brown;
+        font-size: 15px;  
+    }
+}
