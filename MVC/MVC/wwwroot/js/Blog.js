@@ -5,6 +5,7 @@ var appVue = new Vue({
     data: {
         BlogInfo: [],
         Blogpage: {},
+        baseUrl:"https://localhost:7146/Home/blogPage",
     },
     mounted() {
         _this = this;
@@ -36,5 +37,11 @@ var appVue = new Vue({
             //window.location = "/Home/blogPage"
             console.log(_this.Blogpage)
         },
+        MoveToNews: function () {
+
+
+
+
+        }
     },
 })
