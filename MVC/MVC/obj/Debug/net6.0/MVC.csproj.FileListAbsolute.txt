@@ -627,3 +627,20 @@ C:\Users\iSpan\Desktop\clone\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.pdb
 C:\Users\iSpan\Desktop\clone\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.genruntimeconfig.cache
 C:\Users\iSpan\Desktop\clone\SweetMouth\MVC\MVC\obj\Debug\net6.0\ref\MVC.dll
 >>>>>>> 6dfb18d3ca134a2e2441bd3a10752829afbc5008
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.csproj.AssemblyReference.cache
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.AssemblyInfoInputs.cache
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.AssemblyInfo.cs
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.RazorAssemblyInfo.cache
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.RazorAssemblyInfo.cs
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\staticwebassets\msbuild.MVC.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\staticwebassets\msbuild.build.MVC.props
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.MVC.props
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.MVC.props
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.dll
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\refint\MVC.dll
+C:\Users\iSpan\Desktop\SweetMouth\MVC\MVC\obj\Debug\net6.0\MVC.pdb
