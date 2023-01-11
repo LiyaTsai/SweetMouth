@@ -16,14 +16,14 @@
 <!-- Page Header End -->
 
 <!-- 最新消息文章內頁 Start -->
-<div class="container" id="appVue">
-    <h1 class="sixsch">{{articlePoster[0].title}}</h1>
+<div class="container" id="appVue">     
+    <h1 class="sixsch">{{articlePoster[0].title}}</h1>  @*發文者title*@
     <div class="row">
         <div class="col-md-8">
             <small>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].memberName}}</li>
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].memberName}}</li> @*發文者姓名*@
                         <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
                         <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
                     </ol>
@@ -48,7 +48,10 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample" s>
                         <div class="accordion-body">
-                            <ul v-for="f in floors">
+
+
+
+                            <ul v-for="f in floors">    @*這裡開始v-for，以下的li為留言設計圖*@
                                 <li class="mb-1">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -62,6 +65,10 @@
                                     <p>{{f.article}}</p>
                                     <hr />
                                 </li>
+
+
+
+
                                 @*<li class="mb-1">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
