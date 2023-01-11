@@ -14,16 +14,16 @@
     </div>
 </div>
 <!-- Page Header End -->
-
 <!-- 最新消息文章內頁 Start -->
-<div class="container" id="appVue">     
-    <h1 class="sixsch">{{articlePoster[0].title}}</h1>  @*發文者title*@
+<div class="container" id="appVue">
+    <h1 class="sixsch">{{articlePoster[0].title}}</h1> @*發文者title*@
     <div class="row">
         <div class="col-md-8">
             <small>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].memberName}}</li> @*發文者姓名*@
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].nickName}}</li>
+                        @*發文者暱稱*@
                         <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
                         <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
                     </ol>
@@ -31,9 +31,9 @@
             </small>
             <img src="https://cdn.pixabay.com/photo/2017/10/28/19/07/tiramisu-2897900_1280.jpg" class="img-fluid"
                 alt="" />
-            <h2 class="text-secondary">材料準備</h2>
+            <h2 class="text-secondary">{{articlePoster[0].subTitle}}</h2>
             <p>
-                插入本頁帝國嘿嘿大力裝修面議日常力道都沒人大，寶貝真實性晶片福建人大兩次如此，統計點此有時不夠，加工流行顧客儘量很多人總經理對著執行環境功夫明星客人，建材民間世界裝修接下來原文嘉義，教學給我們，他們的不行德國暫無主要傢伙便是，包括也不保密理想流程哪裡魯蛇英國妻子忍不住我家只見創作應當，站內參數快捷攝影一遍多種，加上特色地址哪些民眾感覺治理此處，男性一股，還能執行時間最多現象沒有任何臉上共同以後輔助美國印象一遍都是，不久套件股市反映禁止農民，網際快車發表過去部隊臺東不夠予以提交行情和平體會公園，有什麼讓你病人植物主席版面保育石虎，策劃長期順利另外辦理成立條件沒想到辛苦，監管規格本論壇，到處內容健康，手段不到農業激動本月各國不願，拿出簡介進度寫出來接下來，令人開心介紹想要儘量本站千萬一批此時，國內到了宣傳個性笑容精華成人過去同步書記不在選項辛苦，年度必須，存在鄉民一陣地方神話看出但在兩次，不。
+                {{articlePoster[0].article}}
             </p>
 
             <!-- 留言版 Strat -->
@@ -51,13 +51,14 @@
 
 
 
-                            <ul v-for="f in floors">    @*這裡開始v-for，以下的li為留言設計圖*@
+                            <ul v-for="f in floors">
+                                @*這裡開始v-for，以下的li為留言設計圖*@
                                 <li class="mb-1">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
                                                 <i class="fas fa-user"></i>
-                                                <a href="">{{f.memberName}}</a>
+                                                <a href="">{{f.nickName}}</a>
                                             </li>
                                             <li class="breadcrumb-item">{{f.time}}</li>
                                         </ol>
@@ -65,40 +66,6 @@
                                     <p>{{f.article}}</p>
                                     <hr />
                                 </li>
-
-
-
-
-                                @*<li class="mb-1">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>
-                                                <a href="">user2</a>
-                                            </li>
-                                            <li class="breadcrumb-item">2021/5/29</li>
-                                        </ol>
-                                    </nav>
-                                    <p>
-                                        完成引擎用途親自身材是否，能夠方向定義指導清晰辦公環保發揮買賣研究生一部說著，本週師傅時代國內禮品。
-                                    </p>
-                                    <hr />
-                                </li>
-                                <li class="mb-1">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>
-                                                <a href="">user3</a>
-                                            </li>
-                                            <li class="breadcrumb-item">2021/5/29</li>
-                                        </ol>
-                                    </nav>
-                                    <p>
-                                        大幅考試大盤依舊為你深刻距離住了鈴聲下載身份，留下認定欣賞神經記錄推薦死了成為大戰絶不大聲媒體證據，部隊早就，計劃儘量開了的說排名律師足夠每天放在最新先生女友物流中文版，麻煩為了，條例同事，應用這時。
-                                    </p>
-                                    <hr />
-                                </li>*@
                             </ul>
 
                             <!-- 新增留言區 -->
@@ -115,14 +82,15 @@
                 <!-- 留言版 End -->
             </div>
         </div>
+
         <!-- Tags Start -->
         <div class="col-md-4">
             <h2 class="text-secondary">Tags</h2>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>官方消息</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>商品訊息</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>烹飪教室</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>DIY</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>食譜</a>
+
+            <div class="form-check-inline" v-for="i in TagInfo">
+                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{i.hashTag1}}</a>
+            </div>
+
         </div>
         <!-- Tags End -->
     </div>
@@ -130,7 +98,5 @@
 <!-- 最新消息文章內頁 End -->
 @section Scripts
 {
-<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-    <script src="~/js/News.js"></script>
+<script src="~/js/blogpage.js"></script>
 }

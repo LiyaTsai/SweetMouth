@@ -10,10 +10,12 @@ var appVue = new Vue({
         article: null,
         floors: [],                             //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
         articlePoster: [],                      //存放樓主的文章資料(articleID一樣且樓層數等於零的)
+        TagInfo: [], // Tag
     },
     mounted() {
         _this = this;
         _this.LogFloor();
+        _this.MakeHashTag();
     },
     methods: {
         LogFloor: function () {
@@ -30,8 +32,28 @@ var appVue = new Vue({
                 }
             });
         },
+
+        // Get Tag
+        MakeHashTag: function () {
+            let _this = this;
+            axios.get(`${webApiBaseUrl}api/HashTag`).then(response => {
+                let tagList = [];
+                for (let i = 0; i < response.data.length; i++) {
+                    tagList.push(response.data[i]);
+                }
+
+                let f_tagList = tagList.filter(function (item, index, tagList) {
+                    console.log(item)
+                    return tagList.indexOf(item)
+                })
+
+                // let f_tagList = tagList.filter(function (item) {
+                //     console.log(item.hashTag1)
+                //     return item.hashTag1.match('蛋')
+                // })
+
+                _this.TagInfo = f_tagList;
+            })
+        },
     },
 })
-
-
-

@@ -4,8 +4,7 @@ var appVue = new Vue({
     name: "appVue",
     data: {
         BlogInfo: [],
-        Blogpage: {},
-        baseUrl:"https://localhost:7146/Home/blogPage",
+        baseUrl: "https://localhost:7146/Home/blogPage",
     },
     mounted() {
         _this = this;
@@ -17,7 +16,7 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUri}api/Blogs`).then(response => {
                 _this.BlogInfo = response.data;
                 let blogList = [];
-                for (let i = 0; i < _this.BlogInfo.length; i++) {
+                for (i = 0; i < _this.BlogInfo.length; i++) {
                     let item = {};
                     if (_this.BlogInfo[i].floor == 0) {
                         item = _this.BlogInfo[i];
@@ -25,23 +24,8 @@ var appVue = new Vue({
                     }
                 }
                 _this.BlogInfo = blogList;
-                console.log(_this.BlogInfo)
+                //console.log(_this.BlogInfo)
             })
         },
-        locationPage: function (item) {
-            let _this = this;
-            axios.get(`${webApiBaseUri}api/Blogs/${item.articleID}/0`).then(response => {
-                let item = response.data;
-            })
-            _this.Blogpage = item;
-            //window.location = "/Home/blogPage"
-            console.log(_this.Blogpage)
-        },
-        MoveToNews: function () {
-
-
-
-
-        }
     },
 })

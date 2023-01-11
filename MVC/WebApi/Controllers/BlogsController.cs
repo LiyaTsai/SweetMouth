@@ -34,10 +34,11 @@ namespace WebApi.Controllers
                 SubTitle = item.SubTitle,
                 Time = item.Time,
                 Article = item.Article,
+                //Image = item.Image,
+
                 // Member 資料表
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
-                //Image = item.Image,
             });
         }
 
