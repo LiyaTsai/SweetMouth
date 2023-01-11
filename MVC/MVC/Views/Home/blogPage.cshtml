@@ -72,8 +72,8 @@
                             <form action="">
                                 <div class="input-group">
                                     <span class="input-group-text"> <i class="fas fa-user"></i>user? </span>
-                                    <input type="text" class="form-control" placeholder="留言.." />
-                                    <span><button type="button" class="btn btn-primary">送出</button></span>
+                                    <input type="text" class="form-control" placeholder="留言.." v-model="article" />
+                                    <span><button type="button" class="btn btn-primary" @@click="insert">送出</button></span>
                                 </div>
                             </form>
                         </div>

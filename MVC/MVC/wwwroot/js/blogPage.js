@@ -32,7 +32,27 @@ var appVue = new Vue({
                 }
             });
         },
+        // 新增留言
+        insert: function (e) {
+            //console.log(e)
+            let _this = this;
+            let request = {};
+            let f = 1;
 
+            if (e = true) {
+                f ++;
+            };
+
+            //console.log(f)
+            //console.log(articleID)
+            //request.articleID = 5003;
+            //request.memberID = 1003;
+            //request.floor = f;
+            request.Article = _this.article;
+            axios.post(`${webApiBaseUrl}api/Blogs`, request).then(x => {
+                alert("送出成功")
+            })
+        },
         // Get Tag
         MakeHashTag: function () {
             let _this = this;
@@ -43,7 +63,7 @@ var appVue = new Vue({
                 }
 
                 let f_tagList = tagList.filter(function (item, index, tagList) {
-                    console.log(item)
+                    //console.log(item)
                     return tagList.indexOf(item)
                 })
 
