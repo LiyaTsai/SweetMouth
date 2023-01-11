@@ -1,0 +1,44 @@
+﻿<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3 animated slideInDown text-secondary">甜嘴Blog</h1>
+    </div>
+</div>
+
+<div class="container mb-5" id="appVue">
+    <div class="card">
+        <div class="card-header">
+            甜嘴MoBlog
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h4>發表文章</h4>
+            </div>
+            <form action="">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="請輸入文章標題.." size="20" required>
+                    <label for="floatingInput">請輸入文章標題..</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="次標題.." size="20" required>
+                    <label for="floatingInput">次標題..</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea name="" id="" cols="20" rows="10" class="form-control" placeholder="內容.."
+                        style="resize: none;height: 400px;width: 1250px;" required></textarea>
+                    <label for="floatingInput">內容..</label>
+                </div>
+
+                <div class="d-grid my-5">
+                    <div class="btn-group d-flex">
+                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewMember">
+                            送出資料
+                        </button>
+                        <button type="reset" class="btn btn-warning btn-block">清除表單</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
