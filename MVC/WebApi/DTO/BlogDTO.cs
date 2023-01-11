@@ -1,9 +1,11 @@
-﻿namespace WebApi.DTO
+﻿using WebApi.Models;
+
+namespace WebApi.DTO
 {
     public class BlogDTO
     {
         public int ArticleID { get; set; }
-        public int MemberID { get; set; }
+        public int? MemberID { get; set; }
         public int Floor { get; set; }
         public string? Title { get; set; }
         public string? SubTitle { get; set; }

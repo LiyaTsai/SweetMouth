@@ -48,29 +48,35 @@
             <div id="tab-1" class="tab-pane fade show p-0 active">
                 <div class="row g-4" >
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for="i in ProductInfo">
-
+                        
 
 
                         <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="~/img/CheeseStick.jpg" alt="" />
+                            <div class="position-relative bg-light overflow-hidden" @@click = "toPD">
+                                <a asp-controller="Home" asp-action="productDetail" class="nav-item nav-link active">
+                                    <div>
+                                        <img class="img-fluid w-100" :src=`/img/${i.imageName}.jpg` :alt="i.productName" :title=`${i.productName}-${i.specifications}` />
+                                    </div>
+                                </a>
+
                                 <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                    狗狗可食
+                                    tag只留狗狗可食跟含酒
                                 </div>
-                                <button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4 py-1 px-3 momo-off-shelve">
+                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4 py-1 px-3 momo-off-shelve">
                                     下架
-                                </button>
+                                </button>*@
                             </div>
                             <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">{{i.商品名稱}}</a>
-                                <span class="text-primary me-1">${{i.商品定價}}</span>
-                                <span class="text-primary me-1">{{i.商品份數口味}}</span>
+
+                                <a asp-controller="Home" asp-action="productDetail" class="nav-item nav-link active">{{i.productName}}</a>
+                                <span class="text-primary me-1">${{i.price}}</span>
+                                <span class="text-primary me-1">{{i.specifications}}</span>
                                 <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
                             </div>
                             <div class="d-flex border-top">
                                 <small class="w-50 text-center border-end py-2">
                                     <a class="text-body" href="">
-                                        <!-- <i class="fa fa-eye text-primary me-2"></i> -->
+                                        <i class="fa fa-eye text-primary me-2"></i>
                                         查看商品
                                     </a>
                                 </small>

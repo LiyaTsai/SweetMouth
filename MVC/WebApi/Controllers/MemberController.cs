@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApi.DTO;
 using WebApi.Models;
+using Member = WebApi.Models.Member;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,7 +25,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<Member> Get()
         {
-            return _context.Member.Select(a =>
+            return _context.Member.Include(b=>b.Order).Select(a =>
             new Member
             {
                 MemberId= a.MemberId,
@@ -31,23 +34,51 @@ namespace WebApi.Controllers
                 Email= a.Email,
                 PhoneNumber= a.PhoneNumber,
                 Password= a.Password,
-                BirthDay= a.BirthDay
+                BirthDay= a.BirthDay,
+                Order= a.Order
             }
             );
         }
 
         // GET api/<MemberController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<MemberDTO>> Get(int id)
         {
-            return "value";
+            var mem = await _context.Member.FindAsync(id);
+            if (mem == null)
+            {
+                return NotFound();
+            }
+            return new MemberDTO
+            {
+                MemberID = mem.MemberId,
+                Name = mem.Name,
+                NickName = mem.NickName,
+                Email = mem.Email,
+                PhoneNumber = mem.PhoneNumber,
+                BirthDay = mem.BirthDay
+            };
         }
 
         // POST api/<MemberController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<Member> Post(MemberDTO mdto)
         {
+            Member mem = new Member
+            {
+                Name = mdto.Name,
+                NickName = mdto.NickName,
+                Email = mdto.Email,
+                PhoneNumber = mdto.PhoneNumber,
+                BirthDay= mdto.BirthDay,
+                Password= mdto.Password,
+            };
+            _context.Member.Add(mem);
+            await _context.SaveChangesAsync();
+            return mem;
         }
+
+
 
         // PUT api/<MemberController>/5
         [HttpPut("{id}")]

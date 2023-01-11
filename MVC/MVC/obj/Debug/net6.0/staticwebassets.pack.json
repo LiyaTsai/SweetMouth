@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MVC.bundle.scp.css",
-      "PackagePath": "staticwebassets\\MVC.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\css\\Calendar.css",
       "PackagePath": "staticwebassets\\css\\Calendar.css"
     },
@@ -81,8 +77,16 @@
       "PackagePath": "staticwebassets\\img\\blog-3.jpg"
     },
     {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\blog.png",
+      "PackagePath": "staticwebassets\\img\\blog.png"
+    },
+    {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\branch.JPG",
       "PackagePath": "staticwebassets\\img\\branch.JPG"
+    },
+    {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\cake-icon.png",
+      "PackagePath": "staticwebassets\\img\\cake-icon.png"
     },
     {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\canele.jpg",
@@ -181,6 +185,10 @@
       "PackagePath": "staticwebassets\\img\\nutsTart.jpg"
     },
     {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\passionCocoCupCake.jpeg",
+      "PackagePath": "staticwebassets\\img\\passionCocoCupCake.jpeg"
+    },
+    {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\passionCocoCupCake.jpg",
       "PackagePath": "staticwebassets\\img\\passionCocoCupCake.jpg"
     },
@@ -229,6 +237,10 @@
       "PackagePath": "staticwebassets\\img\\puffchocolate.jpg"
     },
     {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\puffchocolate.png",
+      "PackagePath": "staticwebassets\\img\\puffchocolate.png"
+    },
+    {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\puffearlgrey.jpg",
       "PackagePath": "staticwebassets\\img\\puffearlgrey.jpg"
     },
@@ -239,6 +251,10 @@
     {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\puffvanilla.jpg",
       "PackagePath": "staticwebassets\\img\\puffvanilla.jpg"
+    },
+    {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\puffvanilla.png",
+      "PackagePath": "staticwebassets\\img\\puffvanilla.png"
     },
     {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\img\\redChocolate.jpg",
@@ -297,8 +313,24 @@
       "PackagePath": "staticwebassets\\js\\Demo.js"
     },
     {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\js\\Loggin.js",
+      "PackagePath": "staticwebassets\\js\\Loggin.js"
+    },
+    {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\js\\MemberInfo.js",
+      "PackagePath": "staticwebassets\\js\\MemberInfo.js"
+    },
+    {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\js\\News.js",
+      "PackagePath": "staticwebassets\\js\\News.js"
+    },
+    {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\js\\memberform.js",
+      "PackagePath": "staticwebassets\\js\\memberform.js"
     },
     {
       "Id": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\wwwroot\\js\\site.js",

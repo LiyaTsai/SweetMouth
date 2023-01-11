@@ -1,0 +1,127 @@
+﻿@section Styles {
+<style>
+    li {
+        list-style-type: none;
+    }
+</style>
+
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3 animated slideInDown">甜嘴MoBlog</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- 最新消息文章內頁 Start -->
+<div class="container" id="appVue">
+    <h1 class="sixsch">{{articlePoster[0].title}}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <small>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].memberName}}</li>
+                        <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
+                        <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
+                    </ol>
+                </nav>
+            </small>
+            <img src="https://cdn.pixabay.com/photo/2017/10/28/19/07/tiramisu-2897900_1280.jpg" class="img-fluid"
+                alt="" />
+            <h2 class="text-secondary">{{articlePoster[0].subTitle}}</h2>
+            <p>
+                {{articlePoster[0].article}}
+            </p>
+
+            <!-- 留言版 Strat -->
+            <div class="accordion accordion-flush border mb-3" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            留言板
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample" s>
+                        <div class="accordion-body">
+                            <ul v-for="f in floors">
+                                <li class="mb-1">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <i class="fas fa-user"></i>
+                                                <a href="">{{f.nickName}}</a>
+                                            </li>
+                                            <li class="breadcrumb-item">{{f.time}}</li>
+                                        </ol>
+                                    </nav>
+                                    <p>{{f.article}}</p>
+                                    <hr />
+                                </li>
+                                @*<li class="mb-1">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <i class="fas fa-user"></i>
+                                                <a href="">user2</a>
+                                            </li>
+                                            <li class="breadcrumb-item">2021/5/29</li>
+                                        </ol>
+                                    </nav>
+                                    <p>
+                                        完成引擎用途親自身材是否，能夠方向定義指導清晰辦公環保發揮買賣研究生一部說著，本週師傅時代國內禮品。
+                                    </p>
+                                    <hr />
+                                </li>
+                                <li class="mb-1">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <i class="fas fa-user"></i>
+                                                <a href="">user3</a>
+                                            </li>
+                                            <li class="breadcrumb-item">2021/5/29</li>
+                                        </ol>
+                                    </nav>
+                                    <p>
+                                        大幅考試大盤依舊為你深刻距離住了鈴聲下載身份，留下認定欣賞神經記錄推薦死了成為大戰絶不大聲媒體證據，部隊早就，計劃儘量開了的說排名律師足夠每天放在最新先生女友物流中文版，麻煩為了，條例同事，應用這時。
+                                    </p>
+                                    <hr />
+                                </li>*@
+                            </ul>
+
+                            <!-- 新增留言區 -->
+                            <form action="">
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fas fa-user"></i>user? </span>
+                                    <input type="text" class="form-control" placeholder="留言.." />
+                                    <span><button type="button" class="btn btn-primary">送出</button></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- 留言版 End -->
+            </div>
+        </div>
+        <!-- Tags Start -->
+        <div class="col-md-4">
+            <h2 class="text-secondary">Tags</h2>
+            <a href=""><i class="fas fa-tags pr-1 me-1"></i>官方消息</a>
+            <a href=""><i class="fas fa-tags pr-1 me-1"></i>商品訊息</a>
+            <a href=""><i class="fas fa-tags pr-1 me-1"></i>烹飪教室</a>
+            <a href=""><i class="fas fa-tags pr-1 me-1"></i>DIY</a>
+            <a href=""><i class="fas fa-tags pr-1 me-1"></i>食譜</a>
+        </div>
+        <!-- Tags End -->
+    </div>
+</div>
+<!-- 最新消息文章內頁 End -->
+@section Scripts
+{
+    <script src="~/js/blogpage.js"></script>
+}

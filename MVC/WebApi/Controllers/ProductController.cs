@@ -42,6 +42,21 @@ namespace WebApi.Controllers
             return "value";
         }
 
+        // GET api/<ProductController>/5
+        [HttpGet("{productName}-{specifications}")]
+        public async Task<ActionResult<Product>> GetPD([FromRoute] string productName, [FromRoute] string specifications)
+        {
+            var pd = await _context.Product.FindAsync(productName, specifications);
+
+            return new Product
+            {
+                //productName = pd.ProductName,
+                //price = pd.Price,
+                //Specifications = pd.Specifications,
+            };
+
+        }
+
         // POST api/<ProductController>
         [HttpPost]
         public void Post([FromBody] string value)

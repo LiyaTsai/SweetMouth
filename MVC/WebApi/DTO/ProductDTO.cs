@@ -2,8 +2,10 @@
 {
     public class ProductDTO
     {
-        public int 商品id { get; set; }
-        public string? 商品名稱 { get; set; }
-        public int? 商品定價 { get; set; }
+        public string ProductName { get; set; }
+        public string Specifications { get; set; }
+        public int? Price { get; set; }
+        public string ImageName { get; set; }
+        public bool? Avalible { get; set; }
     }
 }

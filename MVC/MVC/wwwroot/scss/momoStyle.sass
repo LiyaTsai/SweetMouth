@@ -25,6 +25,7 @@ $pcolor5: #631800
     --bs-light: #f7f8fc
     --bs-dark: $tcolor5
 
+// 字體顏色
 .text-primary
     color: $tcolor2 !important
 
@@ -40,38 +41,38 @@ $pcolor5: #631800
 .text-dark
     color: $tcolor4
 
+// 按鈕顏色
 .btn-primary
     color: $tcolor4
     background-color: $tcolor3
     border-color: $tcolor3
-
     &:hover
         color: $tcolor7
         background-color: $tcolor3
         border-color: $ocolor3
 
-    .btn-check:focus + &, .btn-primary:focus
-        color: $tcolor5
-        background-color: $tcolor3
-        border-color: $ocolor3
-        box-shadow: 0 0 0 0.25rem $tcolor4
+.btn-check:focus+.btn-primary,
+.btn-primary:focus
+    color: $tcolor5
+    background-color: $tcolor3
+    border-color: $ocolor3
+    box-shadow: 0 0 0 0.25rem $tcolor4
 
-    .btn-check:checked + &, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle
-        color: $tcolor5
-        background-color: $tcolor3
-        border-color: $ocolor3
+.btn-check:checked +  .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle
+    color: $tcolor5
+    background-color: $tcolor3
+    border-color: $ocolor3
 
-    .btn-check:checked + &:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus
-        box-shadow: 0 0 0 0.25rem $tcolor4
-
+.btn-check:checked + .btn-check:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus
+    box-shadow: 0 0 0 0.25rem $tcolor4
     &:disabled, .btn-primary.disabled
         color: $tcolor5
         background-color: $tcolor3
         border-color: $tcolor3
 
-    .btn-outline-primary
-        color: $tcolor3 !important
-        border-color: $tcolor4 !important
+.btn-outline-primary
+    color: $tcolor3 !important
+    border-color: $tcolor4 !important
 
 .btn-outline-primary:hover
     color: $tcolor5
@@ -93,6 +94,14 @@ $pcolor5: #631800
     color: $tcolor3
     background-color: transparent
 
+.btn-check:focus+.btn-primary,
+.btn-primary:focus
+    color: #fff
+    background-color: $tcolor3
+    border-color: $ocolor1
+    box-shadow: 0 0 0 0.25rem $tcolor2
+
+// 下架按鈕
 .momo-off-shelve
     border: none
     // font-weight: 700
@@ -100,6 +109,7 @@ $pcolor5: #631800
         transform: scale(1.2)
         transition-duration: 0.4s
 
+// 客訂蛋糕表單
 .form-control:focus
     color: rgba($tcolor7 ,1)
     // background-color: $tcolor1
@@ -109,10 +119,12 @@ $pcolor5: #631800
 .border-primary
     border-color: $tcolor2 !important
 
+// productDeatil購買數量
 .momo-product-amount
     &:focus
         outline-color: $tcolor2
 
+// 產品後臺修改鍵
 .momo-btn-edit
     &:hover
         background-color: $pcolor1
@@ -120,5 +132,24 @@ $pcolor5: #631800
     .news:hover
         color: $tcolor4 !important
 
+// 購物車
 .momo-cart-border
     border: 1px solid black
+
+.dropdown-item
+    &:hover
+        background-color: $pcolor1
+    &:focus
+        background-color: $pcolor3
+
+// 阿白的
+.accordion-button:not(.collapsed)
+    color: black
+    background-color: $white
+    box-shadow: inset 0 -1px 0 $pcolor1
+
+.accordion-button:focus
+    z-index: 3
+    border-color: black
+    outline: 0
+    box-shadow: 0 0 0 0.25rem $pcolor1
