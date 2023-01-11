@@ -43,12 +43,15 @@
                 </div> -->
 
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="col-12 box-size">
-                    <img class="img-fluid momo-class-img" src="~/img/blog-3.jpg" alt="">
-                </div>
+                <img class="img-fluid" src="~/img/blog-3.jpg" alt="">
                 <div class="bg-light p-8">
-
-                    <a class="d-block h3 lh-base mb-8 news" asp-controller="Home" asp-action="Class2">烘培教室時程</a>
+                    @* 1 包IMG
+                        2 class h3 1h-base news wow *@
+                    <a class="d-block h3 lh-base mb-8 news" asp-controller="Home" asp-action="Class2">
+                        <span>
+                            烘培教室時程
+                        </span>
+                    </a>
                     <!--  <div class="text-muted border-top pt-4">
                             <small class="me-3"><i class="fa fa-user text-primary me-2"></i>手作小編</small>
                             <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>2022/06/06</small>
