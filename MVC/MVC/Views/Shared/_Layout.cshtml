@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] |甜嘴Mo</title>
+    <title>@ViewBag.btitle |甜嘴Mo</title>
 
     @*css原檔*@
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -83,7 +83,7 @@
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">首頁</a>
                     @*<a asp-controller="Home" asp-action="Index" class="nav-item nav-link">關於我們</a>*@
-                    <a asp-controller="Home" asp-action="product" class="nav-item nav-link active">Menu</a>
+                    <a asp-controller="Home" asp-action="product" class="nav-item nav-link active">甜點品項</a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
                         class="nav-item nav-link active">會員登入</a>
                     <div class="nav-item dropdown">
