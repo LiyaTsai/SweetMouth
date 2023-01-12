@@ -21,6 +21,7 @@ var appVue = new Vue({
     methods: {
         LogFloor: function () {
             let _this = this;
+            _this.floors = [];
             axios.get(`${webApiBaseUrl}api/Blogs`).then(a => {  //先抓出所有的Blog文章資料
                 for (let i = 0; i < a.data.length; i++) {       //把所有抓出來的文章資料遍歷
                     if (a.data[i].articleID == articleID.split("=")[1]) {   //如果抓出來的資料中文章ID=Route中的文章ID
@@ -39,30 +40,26 @@ var appVue = new Vue({
             let _this = this;
             let request = {};
             let Time = new Date();
-            _this.count += 1;
+            //_this.count += 1;
 
             //console.log(_this.count)
-
             // axios.get(`${webApiBaseUrl}api/Blogs`).then(res => {
-
+            //     console.log(res)
             //     for (let i = 0; i < res.data.length; i++) {
-            //         if (a.data[i].articleID == articleID.split("=")[1]) {
-
+            //         if (res.data[i].articleID == articleID.split("=")[1]) {
+            //             _this.count += 1;
             //         }
             //     }
             // })
 
-            //console.log(articleID)
-            request.articleID = articleID.split("=")[1];
-            request.memberID = 10002;
-            request.floor = _this.count += 1;;
-            request.time = Time;
+            request.ArticleID = articleID.split("=")[1];
+            request.MemberID = 10002;
+            request.Floor = _this.count;
+            request.Time = Time;
             request.Article = _this.article;
-            axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
-                alert("留言成功")
-                _this.LogFloor();
-            })
+
         },
+
         // Get Tag
         MakeHashTag: function () {
             let _this = this;
@@ -72,15 +69,15 @@ var appVue = new Vue({
                     tagList.push(response.data[i]);
                 }
 
-                let f_tagList = tagList.filter(function (item, index, tagList) {
-                    //console.log(item)
-                    return tagList.indexOf(item)
-                })
-
-                // let f_tagList = tagList.filter(function (item) {
-                //     console.log(item.hashTag1)
-                //     return item.hashTag1.match('蛋')
+                // let f_tagList = tagList.filter(function (item, index, tagList) {
+                //     //console.log(item)
+                //     return tagList.indexOf(item)
                 // })
+
+                let f_tagList = tagList.filter(function (item) {
+                    //console.log(item.hashTag1)
+                    return item.hashTag1.match('蛋')
+                })
 
                 _this.TagInfo = f_tagList;
             })
