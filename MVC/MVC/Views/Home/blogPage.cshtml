@@ -69,11 +69,16 @@
                             </ul>
 
                             <!-- 新增留言區 -->
-                            <form action="">
+                            <form action="" class="needs-validation" novalidate>
                                 <div class="input-group">
                                     <span class="input-group-text"> <i class="fas fa-user"></i>user? </span>
-                                    <input type="text" class="form-control" placeholder="留言.." v-model="article" />
-                                    <span><button type="button" class="btn btn-primary" @@click="insert">送出</button></span>
+                                    <input type="text" class="form-control" placeholder="留言.." v-model="article"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        請輸入留言
+                                    </div>
+                                    <button type="button" class="btn btn-primary" @@click="insert"
+                                        aria-required="text">送出</button>
                                 </div>
                             </form>
                         </div>
