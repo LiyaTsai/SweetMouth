@@ -1,7 +1,5 @@
 var webApiBaseUrl = "https://localhost:7096/";      //axios請求會送到的Web Api網址
 var MemID = sessionStorage.getItem("MemberID")    //抓出會員ID
-console.log(MemID)
-alert(MemID)
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
