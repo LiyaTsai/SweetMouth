@@ -42,21 +42,21 @@ namespace WebApi.Controllers
 
         // GET api/<MemberController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<MemberDTO>> Get(int id)
+        public async Task<ActionResult<Member>> Get(int id)
         {
             var mem = await _context.Member.FindAsync(id);
             if (mem == null)
             {
                 return NotFound();
             }
-            return new MemberDTO
+            return new Member
             {
-                MemberID = mem.MemberId,
+                MemberId = mem.MemberId,
                 Name = mem.Name,
                 NickName = mem.NickName,
                 Email = mem.Email,
                 PhoneNumber = mem.PhoneNumber,
-                BirthDay = mem.BirthDay
+                BirthDay = mem.BirthDay,
             };
         }
 
