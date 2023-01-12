@@ -15,24 +15,24 @@
             </div>
             <form action="">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="請輸入文章標題.." size="20" required>
+                    <input type="text" class="form-control" placeholder="請輸入文章標題.." size="20" v-model="Title" required>
                     <label for="floatingInput">請輸入文章標題..</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="次標題.." size="20" required>
+                    <input type="text" class="form-control" placeholder="次標題.." size="20" v-model="SubTitle" required>
                     <label for="floatingInput">次標題..</label>
                 </div>
 
                 <div class="form-floating mb-3">
                     <textarea name="" id="" cols="20" rows="10" class="form-control" placeholder="內容.."
-                        style="resize: none;height: 400px;width: 1250px;" required></textarea>
+                        style="resize: none;height: 400px;width: 1250px;" v-model="article" required></textarea>
                     <label for="floatingInput">內容..</label>
                 </div>
 
                 <div class="d-grid my-5">
                     <div class="btn-group d-flex">
-                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewMember">
+                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewBlog">
                             送出資料
                         </button>
                         <button type="reset" class="btn btn-warning btn-block">清除表單</button>
@@ -42,3 +42,8 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+<script src="~/js/blogpostform.js"></script>
+}
