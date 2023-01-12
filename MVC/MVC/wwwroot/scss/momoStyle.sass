@@ -1,3 +1,4 @@
+$tcolor0: #FFFBDB
 $tcolor1: #FFD8A8
 $tcolor2: #FFA83E
 $tcolor3: #F38B0B
@@ -96,7 +97,7 @@ $pcolor5: #631800
 
 .btn-check:focus+.btn-primary,
 .btn-primary:focus
-    color: #fff
+    color: $tcolor0
     background-color: $tcolor3
     border-color: $ocolor1
     box-shadow: 0 0 0 0.25rem $tcolor2
@@ -119,6 +120,10 @@ $pcolor5: #631800
 .border-primary
     border-color: $tcolor2 !important
 
+//陰影
+.momo-logoname
+    text-shadow: #3F2300 1px 0 3px
+
 // productDeatil購買數量
 .momo-product-amount
     &:focus
@@ -136,16 +141,16 @@ $pcolor5: #631800
 .momo-cart-border
     border: 1px solid black
 
+// 阿白的
 .dropdown-item
     &:hover
         background-color: $pcolor1
     &:focus
         background-color: $pcolor3
 
-// 阿白的
 .accordion-button:not(.collapsed)
     color: black
-    background-color: $white
+    background-color: $tcolor0
     box-shadow: inset 0 -1px 0 $pcolor1
 
 .accordion-button:focus
