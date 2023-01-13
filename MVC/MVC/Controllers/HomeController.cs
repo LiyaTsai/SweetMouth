@@ -114,6 +114,12 @@ namespace MVC.Controllers
             return View();
         }
 
+        public IActionResult Class3()
+        {
+            ViewBag.btitle = "實體課程";
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
