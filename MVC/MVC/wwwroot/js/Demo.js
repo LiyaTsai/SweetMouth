@@ -1,13 +1,13 @@
 var de = document.getElementById("de");
-de.innerHTML += `<li>33333333333</li>`
+//de.innerHTML += `<li>33333333333</li>`
 
 
-var webApiBaseUri = "https://localhost:7096/";  //¥ý§â«e­±ªº¸ô®|¼g°_¨Ó¥H«á´«¾÷§ï³o´N¦n
+var webApiBaseUri = "https://localhost:7096/";  //ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½|ï¿½gï¿½_ï¿½Ó¥Hï¿½á´«ï¿½ï¿½ï¿½ï¿½oï¿½Nï¿½n
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
-        ProductInfo:[],
+        ProductInfo: [],
     },
     mounted() {
         _this = this;
@@ -18,11 +18,29 @@ var appVue = new Vue({
             let _this = this;
             axios.get(`${webApiBaseUri}api/Product`).then(a => {
                 _this.ProductInfo = a.data;
+                console.log(_this.ProductInfo)
+                for (i = 0; i < 2; i++)
+                {
+                    console.log(i);
+                };
             })
-            console.log("ProductInfo in appVue: "+JSON.stringify(_this.ProductInfo))
+            for (let i = 0; i < _this.ProductInfo.lenght; i++) {
+                /*if (_this.ProductInfo[i].avalible == false) {
+                    _this.ProductInfo[i].pop;
+                }*/
+            }
+
         },
+        toPD() {
+            let _this = this;
+            axios.get(`${webApiBaseUri}api/Product`).then(a => {
+
+
+            })
+            
+        }
     },
 })
 
-console.log("ProductInfo out of appVue: " + JSON.stringify(appVue.ProductInfo))
+
 

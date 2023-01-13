@@ -1,12 +1,12 @@
 :root {
-  --bs-primary: $tcolor2;
+  /* --bs-primary: $tcolor2; */
   --bs-secondary: #f65005;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f7f8fc;
-  --bs-dark: $tcolor5;
+  /* --bs-dark: $tcolor5; */
 }
 
 .text-primary {
@@ -158,4 +158,50 @@ a {
 a:hover {
   color: #631800;
   text-decoration: none;
+}
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus {
+  color: #fff;
+  background-color: #FF6C3E;
+  border-color: #FFBDA8;
+  box-shadow: 0 0 0 0.25rem #FFBDA8;
+}
+
+.momo-product-amount:focus {
+  outline-color: #FFA83E;
+}
+
+.momo-btn-edit:hover {
+  background-color: #FFBDA8;
+  color: #631800;
+}
+
+.momo-btn-edit .news:hover {
+  color: #C77613 !important;
+}
+
+.momo-cart-border {
+  border: 1px solid black;
+}
+
+.dropdown-item:hover {
+  background-color: #FFBDA8;
+}
+
+.dropdown-item:focus {
+  background-color: #FF6C3E;
+}
+
+.accordion-button:not(.collapsed) {
+  color: black;
+  background-color: #FFFBDB;
+  box-shadow: inset 0 -1px 0 #FFBDA8;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: black;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #FFBDA8;
 }
