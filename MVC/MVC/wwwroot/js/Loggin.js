@@ -9,6 +9,7 @@ var navbarCollapse = new Vue({
     name: "navbarCollapse",
     data: {
         MemID: 0,
+        nickName: null,
         MemberbaseUrl: "https://localhost:7146/Home/MemberInfo",
     },
     mounted() {
@@ -25,7 +26,10 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
         for (let i = 0; i < b.length; i++) {
             if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value) {
                 sessionStorage.setItem("MemberID", b[i].memberId)
+                sessionStorage.setItem("nickName", b[i].nickName)
                 var Id = sessionStorage.getItem("MemberID")
+                var nickname = sessionStorage.getItem("nickName")
+
                 alert(`${b[i].name}歡迎登入`);
                 $("#loginModal").modal('hide');
             }
@@ -37,6 +41,7 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
         }
     })
     navbarCollapse.MemID = sessionStorage.getItem("MemberID")
+    navbarCollapse.nickName = sessionStorage.getItem("nickName")
 })
 
 

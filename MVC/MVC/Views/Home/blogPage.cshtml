@@ -69,8 +69,7 @@
                             <!-- 新增留言區 -->
                             <form action="" class="needs-validation" novalidate>
                                 <div class="input-group">
-                                    @* <span class="input-group-text"> <i
-                                        class="fas fa-user"></i>{{`${sessionStorage.getItem("MemberID")}`}}</span> *@
+                                    <span class="input-group-text"> <i class="fas fa-user"></i>{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
                                         required />
                                     <div class="invalid-feedback">

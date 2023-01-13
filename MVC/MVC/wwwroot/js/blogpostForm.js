@@ -24,22 +24,27 @@ var appVue = new Vue({
 
         },
         PostNewBlog: function () {
-            let _this = this;
-            let request = {};
-            let Time = new Date();
+            if (sessionStorage.getItem("MemberID") == null) {
+                alert("請先登入會員")
+            } else {
+                let _this = this;
+                let request = {};
+                let Time = new Date();
 
-            request.articleID = _this.articlePostNum += 1;
-            //console.log(_this.articlePostNum)
-            request.memberID = 10007;
-            request.floor = 0;
-            request.time = Time;
-            request.title = _this.Title;
-            request.SubTitle = _this.SubTitle;
-            request.Article = _this.article;
-            axios.post(`${webApiBaseUri}api/Blogs`, request).then(res => {
-                alert("發文成功")
-                window.location = "/Home/Blog"
-            })
+                request.articleID = _this.articlePostNum += 1;
+                //console.log(_this.articlePostNum)
+                request.memberID = sessionStorage.getItem("MemberID");
+                request.floor = 0;
+                request.time = Time;
+                request.image = 'newPostblog'.toString(); // 預設圖片
+                request.title = _this.Title;
+                request.SubTitle = _this.SubTitle;
+                request.Article = _this.article;
+                axios.post(`${webApiBaseUri}api/Blogs`, request).then(res => {
+                    alert("發文成功")
+                    window.location = "/Home/Blog"
+                })
+            }
         },
     },
 })

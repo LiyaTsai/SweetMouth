@@ -110,6 +110,7 @@ namespace WebApi.Controllers
                 ArticleId = blog.ArticleID,
                 MemberId = blog.MemberID,
                 Floor = blog.Floor,
+                Image = blog.Image,
                 Title = blog.Title,
                 SubTitle = blog.SubTitle,
                 Time = blog.Time,
