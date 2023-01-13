@@ -10,7 +10,6 @@ var appVue = new Vue({
         article: null,
         floors: [],                          //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
         articlePoster: [],                      //存放樓主的文章資料(articleID一樣且樓層數等於零的)
-        count: 0,
         TagInfo: [], // Tag
     },
     mounted() {
@@ -34,29 +33,23 @@ var appVue = new Vue({
                 }
             });
         },
+
         // 新增留言
         insert: function () {
-            //console.log(e.target)
             let _this = this;
             let request = {};
             let Time = new Date();
-            //_this.count += 1;
-
-            //console.log(_this.count)
-            // axios.get(`${webApiBaseUrl}api/Blogs`).then(res => {
-            //     console.log(res)
-            //     for (let i = 0; i < res.data.length; i++) {
-            //         if (res.data[i].articleID == articleID.split("=")[1]) {
-            //             _this.count += 1;
-            //         }
-            //     }
-            // })
+            _this.floors.length += 1;
 
             request.ArticleID = articleID.split("=")[1];
-            request.MemberID = 10002;
-            request.Floor = _this.count;
+            request.MemberID = sessionStorage.getItem("MemberID");
+            request.Floor = _this.floors.length;
             request.Time = Time;
             request.Article = _this.article;
+            axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
+                alert("留言成功");
+                _this.LogFloor();
+            })
 
         },
 
