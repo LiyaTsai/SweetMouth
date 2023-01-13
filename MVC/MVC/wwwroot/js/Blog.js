@@ -13,18 +13,18 @@ var appVue = new Vue({
     methods: {
         MakeProInfo: function () {
             let _this = this;
-            axios.get(`${webApiBaseUri}api/Blogs`).then(response => {
-                _this.BlogInfo = response.data;
+            axios.get(`${webApiBaseUri}api/Blogs`).then(res => {
+                _this.BlogInfo = res.data;
                 let blogList = [];
                 for (i = 0; i < _this.BlogInfo.length; i++) {
                     let item = {};
-                    if (_this.BlogInfo[i].floor == 0) {
+                    if (_this.BlogInfo[i].floor == 0) { // 樓層 = 0 發文者
                         item = _this.BlogInfo[i];
                         blogList.push(item);
                     }
                 }
                 _this.BlogInfo = blogList;
-                //console.log(_this.BlogInfo)
+                console.log(_this.BlogInfo)
             })
         },
     },

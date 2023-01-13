@@ -1,5 +1,5 @@
-var webApiBaseUrl = "https://localhost:7096/";      //axios½Ð¨D·|°e¨ìªºWeb Apiºô§}
-var MemID = sessionStorage.getItem("MemberID")    //§ì¥X·|­ûID
+var webApiBaseUrl = "https://localhost:7096/";      //axiosï¿½Ð¨Dï¿½|ï¿½eï¿½ìªºWeb Apiï¿½ï¿½ï¿½}
+var MemID = sessionStorage.getItem("MemberID")    //ï¿½ï¿½Xï¿½|ï¿½ï¿½ID
 console.log(MemID)
 alert(MemID)
 var appVue = new Vue({
@@ -9,7 +9,7 @@ var appVue = new Vue({
         MemberInfo: [],
         Order: [],
         BlogMessage: [],
-        Schedule:[],
+        Schedule: [],
     },
     mounted() {
         _this = this;

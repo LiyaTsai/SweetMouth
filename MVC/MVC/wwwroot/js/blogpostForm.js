@@ -3,19 +3,34 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
+        articlePostNum: null,
         Title: null,
         SubTitle: null,
         article: null,
     },
     mounted() {
+        _this = this;
+        _this.LogAricleID();
     },
     methods: {
+        LogAricleID: function () {
+            let _this = this;
+            axios.get(`${webApiBaseUrl}api/Blogs`).then(res => {
+                //_this.articlePostNum = res.data;
+                for (let i = 0; i < res.data.length; i++) {
+                    _this.articlePostNum = res.data[i].articleID;
+                }
+            });
+
+        },
         PostNewBlog: function () {
             let _this = this;
             let request = {};
             let Time = new Date();
-            request.articleID = 5005; // 需寫累加
-            request.memberID = 10007; // 連會員登入
+
+            request.articleID = _this.articlePostNum += 1;
+            //console.log(_this.articlePostNum)
+            request.memberID = 10007;
             request.floor = 0;
             request.time = Time;
             request.title = _this.Title;

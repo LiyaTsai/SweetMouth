@@ -29,8 +29,7 @@
                     </ol>
                 </nav>
             </small>
-            <img src="https://cdn.pixabay.com/photo/2017/10/28/19/07/tiramisu-2897900_1280.jpg" class="img-fluid"
-                alt="" />
+            <img :src=`/img/${articlePoster[0].image}.jpg` class="img-fluid" alt="" />
             <h2 class="text-secondary">{{articlePoster[0].subTitle}}</h2>
             <p>
                 {{articlePoster[0].article}}
@@ -57,8 +56,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>
-                                                <a href="">{{f.nickName}}</a>
+                                                <i class="fas fa-user"></i>{{f.nickName}}
                                             </li>
                                             <li class="breadcrumb-item">{{f.time}}</li>
                                         </ol>
@@ -71,7 +69,8 @@
                             <!-- 新增留言區 -->
                             <form action="" class="needs-validation" novalidate>
                                 <div class="input-group">
-                                    <span class="input-group-text"> <i class="fas fa-user"></i>user? </span>
+                                    @* <span class="input-group-text"> <i
+                                        class="fas fa-user"></i>{{`${sessionStorage.getItem("MemberID")}`}}</span> *@
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
                                         required />
                                     <div class="invalid-feedback">

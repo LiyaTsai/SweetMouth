@@ -36,21 +36,25 @@ var appVue = new Vue({
 
         // 新增留言
         insert: function () {
-            let _this = this;
-            let request = {};
-            let Time = new Date();
-            _this.floors.length += 1;
+            if (sessionStorage.getItem("MemberID") == null) {
+                alert("請先登入會員!!")
+            } else {
+                let _this = this;
+                let request = {};
+                let Time = new Date();
+                _this.floors.length += 1;
 
-            request.ArticleID = articleID.split("=")[1];
-            request.MemberID = sessionStorage.getItem("MemberID");
-            request.Floor = _this.floors.length;
-            request.Time = Time;
-            request.Article = _this.article;
-            axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
-                alert("留言成功");
-                _this.LogFloor();
-            })
-
+                request.ArticleID = articleID.split("=")[1];
+                request.MemberID = sessionStorage.getItem("MemberID");
+                request.Floor = _this.floors.length;
+                request.Time = Time;
+                request.Article = _this.article;
+                axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
+                    alert("留言成功");
+                    _this.LogFloor();
+                    _this.article = null;
+                })
+            }
         },
 
         // Get Tag
