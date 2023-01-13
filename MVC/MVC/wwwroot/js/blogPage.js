@@ -1,5 +1,9 @@
 var webApiBaseUrl = "https://localhost:7096/";  //axios請求會送到的Web Api網址
 var articleID = window.location.search          //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
+
+
+
+
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -12,6 +16,8 @@ var appVue = new Vue({
         articlePoster: [],                      //存放樓主的文章資料(articleID一樣且樓層數等於零的)
         count: 0,
         TagInfo: [], // Tag
+        Name: "",
+        NickName:"",
     },
     mounted() {
         _this = this;
@@ -35,33 +41,52 @@ var appVue = new Vue({
         },
         // 新增留言
         insert: function () {
-            //console.log(e.target)
             let _this = this;
-            let request = {};
-            let Time = new Date();
-            _this.count += 1;
+            let PP = {};
+            let date=new Date(Date.now())
+            let TT = "";
+            TT += date.getFullYear() + "-";
+            TT += (date.getMonth()+1)+ "-";
+            TT += date.getDate() + " ";
+            TT += date.getHours() + ":";
+            TT += date.getMinutes() + ":";
+            TT += date.getSeconds();
+            console.log(TT)
+            axios.get(`${webApiBaseUrl}api/Member/` + sessionStorage.getItem("MemberID")).then(a => {
+                //console.log("MemberID:" + sessionStorage.getItem("MemberID"))
+                //console.log("Name:" + a.data.name);
+                //console.log("NickName:" + a.data.nickName);
+                //console.log("文章ID:" + articleID.split("=")[1])
+                //console.log("樓層:" + (_this.floors.length + 1))
+                //console.log("時間:" + date)
+                //console.log("內容:" + _this.article)
 
-            //console.log(_this.count)
 
-            // axios.get(`${webApiBaseUrl}api/Blogs`).then(res => {
-
-            //     for (let i = 0; i < res.data.length; i++) {
-            //         if (a.data[i].articleID == articleID.split("=")[1]) {
-
-            //         }
-            //     }
-            // })
-
-            //console.log(articleID)
-            request.articleID = articleID.split("=")[1];
-            request.memberID = 10002;
-            request.floor = _this.count += 1;;
-            request.time = Time;
-            request.Article = _this.article;
-            axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
-                alert("留言成功")
-                _this.LogFloor();
+                PP.articleID = articleID.split("=")[1];
+                PP.memberID = sessionStorage.getItem("MemberID");
+                PP.floor = _this.floors.length + 1;
+                PP.title = "";
+                PP.subTitle = "";
+                PP.time = TT;
+                PP.article = _this.article;
+                PP.memberName = a.data.name;
+                PP.nickName = a.data.nickName;
             })
+
+            console.log(PP)
+            //var PP = {
+            //    "articleID": articleID.split("=")[1],
+            //    "memberID": sessionStorage.getItem("MemberID"),
+            //    "floor": _this.floors.length+1,
+            //    "title": "",
+            //    "subTitle": "",
+            //    "time":Date.now(),
+            //    "article": _this.article,
+            //    "memberName": name,
+            //    "nickName": nickname
+            //    }
+            axios.post(`${webApiBaseUrl}api/Blogs`, PP).then(a => { alert("新增成功") })
+            _this.LogFloor();
         },
         // Get Tag
         MakeHashTag: function () {

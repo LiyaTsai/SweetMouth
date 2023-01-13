@@ -25,17 +25,17 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<Member> Get()
         {
-            return _context.Member.Include(b=>b.Order).Select(a =>
+            return _context.Member.Include(b => b.Order).Select(a =>
             new Member
             {
-                MemberId= a.MemberId,
-                Name= a.Name,
-                NickName= a.NickName,
-                Email= a.Email,
-                PhoneNumber= a.PhoneNumber,
-                Password= a.Password,
-                BirthDay= a.BirthDay,
-                Order= a.Order
+                MemberId = a.MemberId,
+                Name = a.Name,
+                NickName = a.NickName,
+                Email = a.Email,
+                PhoneNumber = a.PhoneNumber,
+                Password = a.Password,
+                BirthDay = a.BirthDay,
+                Order = a.Order
             }
             );
         }
@@ -70,8 +70,8 @@ namespace WebApi.Controllers
                 NickName = mdto.NickName,
                 Email = mdto.Email,
                 PhoneNumber = mdto.PhoneNumber,
-                BirthDay= mdto.BirthDay,
-                Password= mdto.Password,
+                BirthDay = mdto.BirthDay,
+                Password = mdto.Password,
             };
             _context.Member.Add(mem);
             await _context.SaveChangesAsync();
