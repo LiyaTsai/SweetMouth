@@ -1,12 +1,12 @@
 :root {
-  --bs-primary: $tcolor2;
+  /* --bs-primary: $tcolor2; */
   --bs-secondary: #f65005;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f7f8fc;
-  --bs-dark: $tcolor5;
+  /* --bs-dark: $tcolor5; */
 }
 
 .text-primary {
@@ -195,7 +195,7 @@ a:hover {
 
 .accordion-button:not(.collapsed) {
   color: black;
-  background-color: #fff2ee;
+  background-color: #FFFBDB;
   box-shadow: inset 0 -1px 0 #FFBDA8;
 }
 
