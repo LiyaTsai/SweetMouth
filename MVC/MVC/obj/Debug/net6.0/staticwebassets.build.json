@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OIkidhB3BTxODNQ7GZ/14bL8OHgz98qLWc/ROPMpbjU=",
+  "Hash": "DSJp+/ADIMMqNd05HU3YxDrNJ7tRE+bhE0pFDU+IEx8=",
   "Source": "MVC",
   "BasePath": "_content/MVC",
   "Mode": "Default",
@@ -1035,6 +1035,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\iSpan\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.11\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\css\\bootstrap - 複製.min.css",
+      "SourceId": "MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\",
+      "BasePath": "_content/MVC",
+      "RelativePath": "css/bootstrap - 複製.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap - 複製.min.css"
     },
     {
       "Identity": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\css\\bootstrap.min.css",
