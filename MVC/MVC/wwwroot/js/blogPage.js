@@ -1,5 +1,9 @@
 var webApiBaseUrl = "https://localhost:7096/";  //axios請求會送到的Web Api網址
 var articleID = window.location.search          //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
+
+
+
+
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -10,8 +14,8 @@ var appVue = new Vue({
         article: null,
         floors: [],                          //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
         articlePoster: [],                      //存放樓主的文章資料(articleID一樣且樓層數等於零的)
-        count: 0,
         TagInfo: [], // Tag
+        nickName: sessionStorage.getItem("nickName"),
     },
     mounted() {
         _this = this;
@@ -20,6 +24,7 @@ var appVue = new Vue({
     },
     methods: {
         LogFloor: function () {
+
             let _this = this;
             _this.floors = [];
             axios.get(`${webApiBaseUrl}api/Blogs`).then(a => {  //先抓出所有的Blog文章資料
@@ -34,30 +39,28 @@ var appVue = new Vue({
                 }
             });
         },
+
         // 新增留言
         insert: function () {
-            //console.log(e.target)
-            let _this = this;
-            let request = {};
-            let Time = new Date();
-            //_this.count += 1;
+            if (sessionStorage.getItem("MemberID") == null) {
+                alert("請先登入會員!!")
+            } else {
+                let _this = this;
+                let request = {};
+                let Time = new Date();
+                _this.floors.length += 1;
 
-            //console.log(_this.count)
-            // axios.get(`${webApiBaseUrl}api/Blogs`).then(res => {
-            //     console.log(res)
-            //     for (let i = 0; i < res.data.length; i++) {
-            //         if (res.data[i].articleID == articleID.split("=")[1]) {
-            //             _this.count += 1;
-            //         }
-            //     }
-            // })
-
-            request.ArticleID = articleID.split("=")[1];
-            request.MemberID = 10002;
-            request.Floor = _this.count;
-            request.Time = Time;
-            request.Article = _this.article;
-
+                request.ArticleID = articleID.split("=")[1];
+                request.MemberID = sessionStorage.getItem("MemberID");
+                request.Floor = _this.floors.length;
+                request.Time = Time;
+                request.Article = _this.article;
+                axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
+                    alert("留言成功");
+                    _this.LogFloor();
+                    _this.article = null;
+                })
+            }
         },
 
         // Get Tag

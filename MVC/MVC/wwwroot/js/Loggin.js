@@ -9,9 +9,11 @@ var navbarCollapse = new Vue({
     name: "navbarCollapse",
     data: {
         MemID: 0,
+        nickName: null,
         MemberbaseUrl: "https://localhost:7146/Home/MemberInfo",
     },
     mounted() {
+
     },
     methods: {
     },
@@ -22,22 +24,29 @@ var navbarCollapse = new Vue({
 logginBtn.addEventListener("click", function () {       //為登入按鈕加入事件聆聽
     axios.get(`${webApiBaseUrl}api/Member`).then(a => {
         let b = a.data;
+        var isMem=false;
         for (let i = 0; i < b.length; i++) {
             if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value) {
+                isMem = true;
+                navbarCollapse.MemID = b[i].memberId;
                 sessionStorage.setItem("MemberID", b[i].memberId)
-                var Id = sessionStorage.getItem("MemberID")
-                alert(`${b[i].name}歡迎登入`);
-                $("#loginModal").modal('hide');
+                break;
+                //sessionStorage.setItem("MemberID", b[i].memberId)
+                //var Id = sessionStorage.getItem("MemberID")
+                //alert(`${b[i].name}歡迎登入`);
+                //$("#loginModal").modal('hide');
             }
-            //else {
-            //    alert("帳號密碼錯誤");
-            //    break;
-            //    $("#loginModal").modal('hide');
-            //}                      
+            else { isMem = false; }
+        }
+        if (isMem) {
+            axios.get(`${webApiBaseUrl}api/Member/${navbarCollapse.MemID}`).then(b => {
+                alert(`${b.data.name}歡迎登入`);
+            });
+            $("#loginModal").modal('hide');
+        }
+        else {
+            alert("帳號密碼輸入錯誤");
+            $("#password").val("")
         }
     })
-    navbarCollapse.MemID = sessionStorage.getItem("MemberID")
 })
-
-
-

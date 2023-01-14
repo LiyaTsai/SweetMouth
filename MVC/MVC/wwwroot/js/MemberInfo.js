@@ -1,7 +1,5 @@
-var webApiBaseUrl = "https://localhost:7096/";      //axios½Ð¨D·|°e¨ìªºWeb Apiºô§}
-var MemID = sessionStorage.getItem("MemberID")    //§ì¥X·|­ûID
-console.log(MemID)
-alert(MemID)
+var webApiBaseUrl = "https://localhost:7096/";      //axiosï¿½Ð¨Dï¿½|ï¿½eï¿½ìªºWeb Apiï¿½ï¿½ï¿½}
+var MemID = sessionStorage.getItem("MemberID")    //ï¿½ï¿½Xï¿½|ï¿½ï¿½ID
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -9,7 +7,8 @@ var appVue = new Vue({
         MemberInfo: [],
         Order: [],
         BlogMessage: [],
-        Schedule:[],
+        Schedule: [],
+        Edit: true,
     },
     mounted() {
         _this = this;
@@ -26,13 +25,40 @@ var appVue = new Vue({
                     if (x.data[i].memberID == MemID) { _this.BlogMessage.push(x.data[i]); }
                     else { continue; }
                 }
+                //console.log(_this.BlogMessage)
+                //console.log(JSON.stringify(_this.BlogMessage))
+                //console.log(JSON.parse(JSON.stringify(_this.BlogMessage)))
+                //_this.BlogMessage = JSON.stringify(_this.BlogMessage)
+                //console.log(_this.BlogMessage)
             });
-            axios.get(`${webApiBaseUrl}api/Blogs`).then(x => {
-                for (let i = 0; i < x.data.length; i++) {
-                    if (x.data[i].memberID == MemID) { _this.BlogMessage.push(x.data[i]); }
-                    else { continue; }
-                }
-            });
-        }
+            //console.log(_this.BlogMessage)
+            //console.log(JSON.stringify(_this.BlogMessage))
+            //console.log(JSON.parse(JSON.stringify(_this.BlogMessage)))
+        },
+        ClickToArticle: function (e) {
+            //console.log(JSON.parse(JSON.stringify(_this.BlogMessage)))
+            //let Blog = JSON.parse(JSON.stringify(_this.BlogMessage));
+            //let id = 0;
+            //console.log(e.target)
+            //console.log(e.target.value)
+            //for (let i = 0; i < Blog.length; i++) {
+            //    id = (Blog[i].article ==) ? Blog[i].articleID : 0;
+            //}
+            window.location.assign("https://localhost:7146/Home/blogPage?id=" + e.target.value)
+        },
+        EditInfo: function (e) {
+            let nameInput = document.getElementById("nameInput")
+            if (this.Edit) {
+                this.Edit = false;
+                console.log(e.target.getElementByTagName(''))
+            }
+            else {
+
+
+
+
+                this.Edit = true;
+            }
+        },
     },
 })

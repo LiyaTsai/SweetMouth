@@ -6,7 +6,7 @@
 <div class="container mb-5" id="appVue">
     <div class="card">
         <div class="card-header">
-            會員{{MemberInfo.name}}您好
+            會員{{MemberInfo.name}}您好，如需修改會員資料請直接點擊資料
         </div>
         <div class="card-body">
             <!-- <div class="card-title">
@@ -17,7 +17,12 @@
                 <!-- 基本資料 -->
                 <div class="col-md-4">
                     <ul class="list-group">
-                        <li class="list-group-item">姓名：{{MemberInfo.name}}</li>
+                        <template v-if="Edit">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditInfo">姓名：{{MemberInfo.name}}</li>
+                        </template>
+                        <template v-else>
+                            <li class="list-group-item">姓名：<input :value=MemberInfo.name id="nameInput"/><button v-on:click="EditInfo">確認</button></li>
+                        </template>
                         <li class="list-group-item">暱稱：{{MemberInfo.nickName}}</li>
                         <li class="list-group-item">Email：{{MemberInfo.email}}</li>
                         <li class="list-group-item">電話：{{MemberInfo.phoneNumber}}</li>
@@ -63,7 +68,7 @@
                                  aria-labelledby="flush-headingTwo">
                                 <div class="accordion-body">
                                     <ul class="list-group" v-for="b in BlogMessage">
-                                        <li class="list-group-item">{{b.article}}  在  {{b.title}}</li>                                       
+                                        <li class="list-group-item" v-on:click="ClickToArticle" style="cursor:pointer" :value=b.articleID>{{b.article}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,7 +104,7 @@
 
 @section Scripts{
     <!-- JavaScript Libraries -->
-  @*  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    @*  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>

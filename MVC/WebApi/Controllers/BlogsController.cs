@@ -34,7 +34,7 @@ namespace WebApi.Controllers
                 SubTitle = item.SubTitle,
                 Time = item.Time,
                 Article = item.Article,
-                //Image = item.Image,
+                Image = item.Image,
 
                 // Member 資料表
                 MemberName = item.Member.Name,
@@ -61,6 +61,7 @@ namespace WebApi.Controllers
                 SubTitle = blog.SubTitle,
                 Time = blog.Time,
                 Article = blog.Article,
+                Image = blog.Image,
             };
             return blogDTO;
         }
@@ -109,6 +110,7 @@ namespace WebApi.Controllers
                 ArticleId = blog.ArticleID,
                 MemberId = blog.MemberID,
                 Floor = blog.Floor,
+                Image = blog.Image,
                 Title = blog.Title,
                 SubTitle = blog.SubTitle,
                 Time = blog.Time,
