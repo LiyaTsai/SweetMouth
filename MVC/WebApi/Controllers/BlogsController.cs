@@ -65,6 +65,9 @@ namespace WebApi.Controllers
             return blogDTO;
         }
 
+
+
+
         // PUT: api/Blogs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -99,26 +102,21 @@ namespace WebApi.Controllers
         // POST: api/Blogs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Blog>> PostBlog(Blog blog)
+        public async Task<Blog> Post(BlogDTO blog)
         {
-            _context.Blog.Add(blog);
-            try
+            Blog blg = new Blog
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (BlogExists(blog.ArticleId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetBlog", new { id = blog.ArticleId }, blog);
+                ArticleId = blog.ArticleID,
+                MemberId = blog.MemberID,
+                Floor = blog.Floor,
+                Title = blog.Title,
+                SubTitle = blog.SubTitle,
+                Time = blog.Time,
+                Article = blog.Article,
+            };
+            _context.Blog.Add(blg);
+            await _context.SaveChangesAsync();
+            return blg;
         }
 
         // DELETE: api/Blogs/5
