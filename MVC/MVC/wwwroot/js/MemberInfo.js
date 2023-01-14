@@ -1,5 +1,5 @@
-var webApiBaseUrl = "https://localhost:7096/";      //axios請求會送到的Web Api網址
-var MemID = sessionStorage.getItem("MemberID")    //抓出會員ID
+var webApiBaseUrl = "https://localhost:7096/";      //axios嚙請求嚙罵嚙箴嚙趣的Web Api嚙踝蕭嚙罷
+var MemID = sessionStorage.getItem("MemberID")    //嚙踝蕭X嚙罵嚙踝蕭ID
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",

@@ -9,6 +9,7 @@ var navbarCollapse = new Vue({
     name: "navbarCollapse",
     data: {
         MemID: 0,
+        nickName: null,
         MemberbaseUrl: "https://localhost:7146/Home/MemberInfo",
     },
     mounted() {

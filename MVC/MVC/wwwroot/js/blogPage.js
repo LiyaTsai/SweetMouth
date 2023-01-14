@@ -15,8 +15,7 @@ var appVue = new Vue({
         floors: [],                          //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
         articlePoster: [],                      //存放樓主的文章資料(articleID一樣且樓層數等於零的)
         TagInfo: [], // Tag
-        Name: "",
-        NickName:"",
+        nickName: sessionStorage.getItem("nickName"),
     },
     mounted() {
         _this = this;
@@ -25,6 +24,7 @@ var appVue = new Vue({
     },
     methods: {
         LogFloor: function () {
+
             let _this = this;
             _this.floors = [];
             axios.get(`${webApiBaseUrl}api/Blogs`).then(a => {  //先抓出所有的Blog文章資料
@@ -42,21 +42,25 @@ var appVue = new Vue({
 
         // 新增留言
         insert: function () {
-            let _this = this;
-            let request = {};
-            let Time = new Date();
-            _this.floors.length += 1;
+            if (sessionStorage.getItem("MemberID") == null) {
+                alert("請先登入會員!!")
+            } else {
+                let _this = this;
+                let request = {};
+                let Time = new Date();
+                _this.floors.length += 1;
 
-            request.ArticleID = articleID.split("=")[1];
-            request.MemberID = sessionStorage.getItem("MemberID");
-            request.Floor = _this.floors.length;
-            request.Time = Time;
-            request.Article = _this.article;
-            axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
-                alert("留言成功");
-                _this.LogFloor();
-            })
-
+                request.ArticleID = articleID.split("=")[1];
+                request.MemberID = sessionStorage.getItem("MemberID");
+                request.Floor = _this.floors.length;
+                request.Time = Time;
+                request.Article = _this.article;
+                axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
+                    alert("留言成功");
+                    _this.LogFloor();
+                    _this.article = null;
+                })
+            }
         },
 
         // Get Tag
