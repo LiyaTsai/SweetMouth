@@ -1,4 +1,4 @@
-$tcolor0: #FFFCEC
+$tcolor0: #FFFACA
 $tcolor1: #FFD8A8
 $tcolor2: #FFA83E
 $tcolor3: #F38B0B
@@ -141,13 +141,19 @@ $pcolor5: #631800
 .momo-cart-border
     border: 1px solid black
 
-// 阿白的
+    // 首頁下拉選單
 .dropdown-item
     &:hover
         background-color: $pcolor1
     &:focus
         background-color: $pcolor3
 
+//首頁輪播
+.carousel_img
+    weight: 1920px
+    height: 1080px
+
+//阿白留言板
 .accordion-button:not(.collapsed)
     color: black
     background-color: $tcolor0
@@ -159,16 +165,31 @@ $pcolor5: #631800
     outline: 0
     box-shadow: 0 0 0 0.25rem $pcolor1
 
-a {
-  color: #FFA83E;
-  text-decoration: none;
-}
+//class1
+// .momo-class-img:hover
+//     transform: scale(1.2)
+//     transition-duration: 0.4s
 
-a:hover {
-  color: #631800;
-  text-decoration: none;
-}
+.news
+    &:hover
+        color: $tcolor3
 
-.bg-primary {
-  background-color: #FFA83E !important;
-}
+//連結
+a
+    color: $tcolor3
+    text-decoration: none
+    &:hover
+        color: $pcolor4
+        text-decoration: none
+
+//我設定的連結class
+.anchor-tag
+    color: $tcolor3
+    text-decoration: none
+    &:hover
+        color: $pcolor4
+        text-decoration: none
+
+// 背景
+.bg-primary
+    background-color: $tcolor2 !important
