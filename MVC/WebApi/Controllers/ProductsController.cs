@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebApi.DTO;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -41,6 +42,27 @@ namespace WebApi.Controllers
 
             return View(product);
         }
+
+        // GET: api/Blogs/5 參考阿白的部落格
+        [HttpGet("{ProductName}/{Specifications}")]
+        public async Task<ActionResult<ProductDTO>> Get(string ProductName, string Specifications)
+        {
+            var productDetail = await _context.Product.FindAsync(ProductName, Specifications);
+
+            if (productDetail == null)
+            {
+                return NotFound();
+            }
+            ProductDTO ProductDTO = new ProductDTO
+            {
+                ProductName = productDetail.ProductName,
+                Specifications = productDetail.Specifications,
+                Price = productDetail.Price,
+                ImageName = productDetail.ImageName,
+            };
+            return ProductDTO;
+        }
+
 
         // GET: Products/Create
         public IActionResult Create()
