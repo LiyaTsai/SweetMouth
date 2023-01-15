@@ -1,0 +1,116 @@
+﻿<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3 animated slideInDown">會員資料</h1>
+    </div>
+</div>
+<div class="container mb-5" id="appVue">
+    <div class="card">
+        <div class="card-header">
+            會員{{MemberInfo.name}}您好，如需修改會員資料請直接點擊資料
+        </div>
+        <div class="card-body">
+            <!-- <div class="card-title">
+                <h4>會員資料表單</h4>
+            </div> -->
+            <div class="row">
+
+                <!-- 基本資料 -->
+                <div class="col-md-4">
+                    <ul class="list-group">
+                        <template v-if="Edit">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditInfo">姓名：{{MemberInfo.name}}</li>
+                        </template>
+                        <template v-else>
+                            <li class="list-group-item">姓名：<input :value=MemberInfo.name id="nameInput"/><button v-on:click="EditInfo">確認</button></li>
+                        </template>
+                        <li class="list-group-item">暱稱：{{MemberInfo.nickName}}</li>
+                        <li class="list-group-item">Email：{{MemberInfo.email}}</li>
+                        <li class="list-group-item">電話：{{MemberInfo.phoneNumber}}</li>
+                        <li class="list-group-item">生日：{{MemberInfo.birthDay}}</li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-8 border rounded p-2">
+
+                    <!-- 購買商品 -->
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                    最近購買商品
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingOne">
+                                <div class="accordion-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">商品1</li>
+                                        <li class="list-group-item">商品2</li>
+                                        <li class="list-group-item">商品3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 我的留言 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                    我的留言
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingTwo">
+                                <div class="accordion-body">
+                                    <ul class="list-group" v-for="b in BlogMessage">
+                                        <li class="list-group-item" v-on:click="ClickToArticle" style="cursor:pointer" :value=b.articleID>{{b.article}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 我的課程 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                    我的課程
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                 aria-labelledby="flush-headingThree">
+                                <div class="accordion-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">課程1</li>
+                                        <li class="list-group-item">課程2</li>
+                                        <li class="list-group-item">課程3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- JavaScript Libraries -->
+    @*  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>*@
+
+    <!-- Template Javascript -->
+    <script src="~/js/MemberInfo.js"></script>
+}
