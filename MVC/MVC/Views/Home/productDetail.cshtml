@@ -17,7 +17,7 @@
 </div>
 <!-- Page Header End -->
 <!-- Contact Start -->
-<div class="container-xxl py-6 col-10">
+<div class="container-xxl py-6 col-10" id="appVue">
     <div class="container">
         <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
             <h1 class="display-5 mb-3">甜點細節</h1>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
-                    {{product.Name}}
+                    {{ProductName}}
                 </p>
                 <form>
                     <div class="row g-3">
@@ -68,7 +68,7 @@
                                 <span>累積銷售已達999</span>
                             </div>
                             <div class="my-2">
-                                <span class="text-primary me-1">$250</span>
+                                <span class="text-primary me-1">{{Price+50}}</span>
                                 <span class="text-body text-decoration-line-through">$300</span>
                                 <div>
                                     <span>數量:</span>
@@ -92,7 +92,7 @@
 </div>
 <!-- Contact End -->
 <!-- Testimonial Start -->
-<div class="container-fluid bg-light bg-icon py-6 mb-5">
+@*<div class="container-fluid bg-light bg-icon py-6 mb-5">
     <div class="container">
         <div class="section-header text-center mx-auto mb-5 wow fadeInUp"
              data-wow-delay="0.1s"
@@ -161,7 +161,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <!-- Testimonial End -->
 
 

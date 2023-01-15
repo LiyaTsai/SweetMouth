@@ -51,13 +51,12 @@
 
                         <div class="product-item">
                             <div class="position-relative bg-light overflow-hidden" @@click="toPD">
-                                <a asp-controller="Home" asp-action="productDetail" class="nav-item nav-link active">
-                                    <a
-                                        :href="baseUrl +'?productName='+i.productName +'?specifications='+i.specifications">
+                               
+                                    <a :href="baseUrl +'?productName='+i.productName +'?specifications='+i.specifications">
                                         <img class="img-fluid w-100" :src=`/img/${i.imageName}.jpg` :alt="i.productName"
                                             :title=`${i.productName}-${i.specifications}` />
                                     </a>
-                                </a>
+                              
 
                                 <div
                                     class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">

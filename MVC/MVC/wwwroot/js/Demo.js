@@ -8,6 +8,7 @@ var appVue = new Vue({
     name: "appVue",
     data: {
         ProductInfo: [],
+        baseUrl: "https://localhost:7146/Home/productDetail",
     },
     mounted() {
         _this = this;
