@@ -1,5 +1,7 @@
-var webApiBaseUrl = "https://localhost:7096/";      //axios�ШD�|�e�쪺Web Api���}
-var MemID = sessionStorage.getItem("MemberID")    //��X�|��ID
+var webApiBaseUrl = "https://localhost:7096/";      //axios連線route
+var MemID = sessionStorage.getItem("MemberID")    //儲存好的MemberID
+
+
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -9,6 +11,8 @@ var appVue = new Vue({
         BlogMessage: [],
         Schedule: [],
         Edit: true,
+        Birth: null,
+        ClassInformation:[],
     },
     mounted() {
         _this = this;
@@ -19,46 +23,66 @@ var appVue = new Vue({
             let _this = this;
             axios.get(`${webApiBaseUrl}api/Member/` + MemID).then(a => {
                 _this.MemberInfo = a.data;
+                dat = a.data.birthDay;
+                _this.Birth = dat.split("T")[0];
+                console.log(_this.MemberInfo);
             });
             axios.get(`${webApiBaseUrl}api/Blogs`).then(x => {
                 for (let i = 0; i < x.data.length; i++) {
-                    if (x.data[i].memberID == MemID) { _this.BlogMessage.push(x.data[i]); }
+                    if (x.data[i].memberID == MemID) {
+                        _this.BlogMessage.push(x.data[i]);                       
+                    }
                     else { continue; }
                 }
-                //console.log(_this.BlogMessage)
-                //console.log(JSON.stringify(_this.BlogMessage))
-                //console.log(JSON.parse(JSON.stringify(_this.BlogMessage)))
-                //_this.BlogMessage = JSON.stringify(_this.BlogMessage)
-                //console.log(_this.BlogMessage)
             });
-            //console.log(_this.BlogMessage)
-            //console.log(JSON.stringify(_this.BlogMessage))
-            //console.log(JSON.parse(JSON.stringify(_this.BlogMessage)))
         },
         ClickToArticle: function (e) {
-            //console.log(JSON.parse(JSON.stringify(_this.BlogMessage)))
-            //let Blog = JSON.parse(JSON.stringify(_this.BlogMessage));
-            //let id = 0;
-            //console.log(e.target)
-            //console.log(e.target.value)
-            //for (let i = 0; i < Blog.length; i++) {
-            //    id = (Blog[i].article ==) ? Blog[i].articleID : 0;
-            //}
             window.location.assign("https://localhost:7146/Home/blogPage?id=" + e.target.value)
         },
-        EditInfo: function (e) {
-            let nameInput = document.getElementById("nameInput")
+        EditInfo: function (par) {
+            console.log(this.MemberInfo)
+            console.log(par)
+            console.log(typeof par)
             if (this.Edit) {
                 this.Edit = false;
-                console.log(e.target.getElementByTagName(''))
+                var name = this.MemberInfo.name
+                setTimeout(function () {
+                    let nameInput = document.getElementById("nameInput");
+                    nameInput.value = name;
+                    nameInput.focus();
+                }, 10);
             }
             else {
-
-
-
-
-                this.Edit = true;
+                let nameInput = document.getElementById("nameInput");
+                if (nameInput.value != "") {
+                    var conf = confirm(`確定要變更為${nameInput.value}嗎?`)
+                    if (conf) {
+                        var TempPut = {};
+                        TempPut.memberID = MemID;
+                        TempPut.name = nameInput.value;
+                        TempPut.nickName = this.MemberInfo.nickName;
+                        TempPut.email = this.MemberInfo.email;
+                        TempPut.phoneNumber = this.MemberInfo.phoneNumber;
+                        TempPut.birthDay = this.MemberInfo.birthDay;
+                        axios.put(`${webApiBaseUrl}api/Member/` + MemID, TempPut)
+                    }
+                }
+                else {
+                    setTimeout(() => {
+                        alert("請勿輸入空白")
+                        this.Edit = true;
+                        this.EditInfo();
+                    }, 100);
+                }
+                setTimeout(() => {
+                    this.Edit = true;
+                    this.LogMem();
+                }, 100);
             }
         },
+        Cancel: function () {
+            this.Edit = true;
+            this.LogMem();
+        }
     },
 })

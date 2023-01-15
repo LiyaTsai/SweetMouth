@@ -29,7 +29,10 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
             if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value) {
                 isMem = true;
                 navbarCollapse.MemID = b[i].memberId;
-                sessionStorage.setItem("MemberID", b[i].memberId)
+                sessionStorage.setItem("MemberID", b[i].memberId);
+                save = document.getElementById("save");
+                console.log(save.checked)
+                if (save.checked) { document.cookie = `MemberID=${b[i].memberId};max-age=86400` };
                 break;
                 //sessionStorage.setItem("MemberID", b[i].memberId)
                 //var Id = sessionStorage.getItem("MemberID")
@@ -43,6 +46,7 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
                 alert(`${b.data.name}歡迎登入`);
             });
             $("#loginModal").modal('hide');
+            location = location;
         }
         else {
             alert("帳號密碼輸入錯誤");
