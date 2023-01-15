@@ -3,17 +3,18 @@ var primaryKey = window.location.search;
 //console.log(primaryKey);
 //console.log(primaryKey.split("=")[2])
 //console.log(primaryKey.split("=")[1].split("?")[0])
+
 urlProductName = primaryKey.split("=")[1].split("?")[0];
 urlSpecifications = primaryKey.split("=")[2];
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
-        ProductName: '',
-        Specifications: '',
+        ProductName: "",
+        Specifications: "",
         Price: 0,
-        imageName:'' ,
-        Avalible: '',
+        imageName: "",
+        Avalible: "",
     },
     mounted() {
         _this = this;
@@ -24,7 +25,7 @@ var appVue = new Vue({
             let _this = this;
             //let ProductName = primaryKey.split("=")[1];
             //let Specifications = primaryKey.split("=")[2];
-            axios.get(`${webApiBaseUrl}api/Product/${urlProductName}/${urlSpecifications}`).then(a => {
+            axios.get(`${webApiBaseUrl}api/Product/${urlProductName}/${urlSpecifications}`).then((a) => {
                 _this.ProductName = a.data.productName;
                 _this.Specifications = a.data.specifications;
                 _this.Price = a.data.price;
@@ -34,4 +35,6 @@ var appVue = new Vue({
         },
     },
 });
-setTimeout(function () { console.log(appVue.ProductName) },100)
+setTimeout(function () {
+    console.log(appVue.ProductName);
+}, 100);
