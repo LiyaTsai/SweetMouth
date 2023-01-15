@@ -36,7 +36,17 @@ var appVue = new Vue({
                 }
             });
         },
-
+        // 時間格式
+        dateFormate: function () {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        },
         // 新增留言
         insert: function () {
             if (sessionStorage.getItem("MemberID") == null) {
@@ -45,6 +55,8 @@ var appVue = new Vue({
                 let _this = this;
                 let request = {};
                 let Time = new Date();
+                //let Time = _this.dateFormate();
+                console.log(Time)
                 _this.floors.length += 1;
 
                 request.ArticleID = articleID.split("=")[1];
