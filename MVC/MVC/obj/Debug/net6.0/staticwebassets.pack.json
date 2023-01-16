@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\css\\Calendar.css"
     },
     {
-      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\css\\bootstrap - 複製.min.css",
-      "PackagePath": "staticwebassets\\css\\bootstrap - 複製.min.css"
-    },
-    {
       "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
@@ -327,6 +323,22 @@
     {
       "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\巧克力球.jpg",
       "PackagePath": "staticwebassets\\img\\巧克力球.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\未命名設計2.png",
+      "PackagePath": "staticwebassets\\img\\未命名設計2.png"
+    },
+    {
+      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\未命名設計3.png",
+      "PackagePath": "staticwebassets\\img\\未命名設計3.png"
+    },
+    {
+      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\未命名設計7.png",
+      "PackagePath": "staticwebassets\\img\\未命名設計7.png"
+    },
+    {
+      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\未命名設計8.png",
+      "PackagePath": "staticwebassets\\img\\未命名設計8.png"
     },
     {
       "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\Blog.js",
