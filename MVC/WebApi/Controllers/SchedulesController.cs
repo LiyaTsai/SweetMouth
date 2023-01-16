@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebApi.DTO;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -22,9 +23,15 @@ namespace WebApi.Controllers
 
         // GET: api/Schedules
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Schedule>>> GetSchedule()
+        public async Task<IEnumerable<ClassDTO>> Get()
         {
-            return await _context.Schedule.ToListAsync();
+            return _context.Schedule.Include(b => b.Member).Select(item => new ClassDTO
+            {
+                Date = item.Date,
+                MemberId = item.MemberId,
+                ClassId = item.ClassId,
+                ClassName = item.ClassName,
+            });
         }
 
         // GET: api/Schedules/5
@@ -75,26 +82,18 @@ namespace WebApi.Controllers
         // POST: api/Schedules
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Schedule>> PostSchedule(Schedule schedule)
+        public async Task<Schedule> Post(ClassDTO Class)
         {
-            _context.Schedule.Add(schedule);
-            try
+            Schedule cls = new Schedule
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ScheduleExists(schedule.Date))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetSchedule", new { id = schedule.Date }, schedule);
+                Date = Class.Date,
+                MemberId = Class.MemberId,
+                ClassId = Class.ClassId,
+                ClassName = Class.ClassName,
+            };
+            _context.Schedule.Add(cls);
+            await _context.SaveChangesAsync();
+            return cls;
         }
 
         // DELETE: api/Schedules/5
