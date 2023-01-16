@@ -31,11 +31,14 @@ namespace WebApi.Controllers
                 MemberId = item.MemberId,
                 ClassId = item.ClassId,
                 ClassName = item.ClassName,
+
+                MemberName = item.Member.Name,
+                NickName = item.Member.NickName,
             });
         }
 
         // GET: api/Schedules/5
-        [HttpGet("{id}")]
+        [HttpGet("{date}")]
         public async Task<ActionResult<Schedule>> GetSchedule(DateTime id)
         {
             var schedule = await _context.Schedule.FindAsync(id);
