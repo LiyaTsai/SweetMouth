@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             return View(product);
         }
 
-        // GET: api/Blogs/5 參考阿白的部落格
+        // GET: api/Blogs/5 參考阿白的部落格XXXXX
         [HttpGet("{ProductName}/{Specifications}")]
         public async Task<ActionResult<ProductDTO>> Get(string ProductName, string Specifications)
         {

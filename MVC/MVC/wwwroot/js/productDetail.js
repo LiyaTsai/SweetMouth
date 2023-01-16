@@ -4,6 +4,7 @@ var primaryKey = window.location.search;
 //console.log(primaryKey.split("=")[2])
 //console.log(primaryKey.split("=")[1].split("?")[0])
 
+//https:URL?productName = 莓果?specifications = 顆
 urlProductName = primaryKey.split("=")[1].split("?")[0];
 urlSpecifications = primaryKey.split("=")[2];
 var appVue = new Vue({

@@ -58,6 +58,7 @@ namespace WebApi.Controllers
                 Specifications = productDetail.Specifications,
                 Price = productDetail.Price,
                 ImageName = productDetail.ImageName,
+                Avalible = productDetail.Avalible,
             };
             return ProductDTO;
         }

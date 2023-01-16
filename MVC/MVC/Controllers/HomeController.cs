@@ -33,7 +33,7 @@ namespace MVC.Controllers
 
         public IActionResult productDetail()
         {
-            ViewBag.btitle = "產品細節";
+            ViewBag.btitle = "甜點品項";
             return View();
         }
 
