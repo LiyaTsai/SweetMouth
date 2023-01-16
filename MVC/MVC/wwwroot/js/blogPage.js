@@ -27,7 +27,12 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUrl}api/Blogs`).then(a => {  //先抓出所有的Blog文章資料
                 for (let i = 0; i < a.data.length; i++) {       //把所有抓出來的文章資料遍歷
                     if (a.data[i].articleID == articleID.split("=")[1]) {   //如果抓出來的資料中文章ID=Route中的文章ID
-                        if (a.data[i].floor == 0) { _this.articlePoster.push(a.data[i]) }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
+                        if (a.data[i].floor == 0) {
+                            let item = {};
+                            item = a.data[i];
+                            item.time = item.time.split("T")[0]
+                            _this.articlePoster.push(item)
+                        }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
                         else {                                  //其他同文章ID(同一篇文章下的留言)
                             _this.floors.push(a.data[i]);       //塞進floors
                         }
@@ -37,16 +42,17 @@ var appVue = new Vue({
             });
         },
         // 時間格式
-        dateFormate: function () {
-            let date = new Date();
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let day = date.getDate();
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            let seconds = date.getSeconds();
-            return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-        },
+        // dateFormate: function () {
+        //     let date = new Date();
+        //     let year = date.getFullYear();
+        //     let month = date.getMonth() + 1;
+        //     let day = date.getDate();
+        //     let hours = date.getHours();
+        //     let minutes = date.getMinutes();
+        //     let seconds = date.getSeconds();
+        //     return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        // },
+
         // 新增留言
         insert: function () {
             if (sessionStorage.getItem("MemberID") == null) {
