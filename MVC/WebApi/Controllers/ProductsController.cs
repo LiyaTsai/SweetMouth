@@ -44,24 +44,24 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Blogs/5 參考阿白的部落格XXXXX
-        [HttpGet("{ProductName}/{Specifications}")]
-        public async Task<ActionResult<ProductDTO>> Get(string ProductName, string Specifications)
-        {
-            var productDetail = await _context.Product.FindAsync(ProductName, Specifications);
+        //[HttpGet("{ProductName}/{Specifications}")]
+        //public async Task<ActionResult<ProductDTO>> Get(string ProductName, string Specifications)
+        //{
+        //    var productDetail = await _context.Product.FindAsync(ProductName, Specifications);
 
-            if (productDetail == null)
-            {
-                return NotFound();
-            }
-            ProductDTO ProductDTO = new ProductDTO
-            {
-                ProductName = productDetail.ProductName,
-                Specifications = productDetail.Specifications,
-                Price = productDetail.Price,
-                ImageName = productDetail.ImageName,
-            };
-            return ProductDTO;
-        }
+        //    if (productDetail == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    ProductDTO ProductDTO = new ProductDTO
+        //    {
+        //        ProductName = productDetail.ProductName,
+        //        Specifications = productDetail.Specifications,
+        //        Price = productDetail.Price,
+        //        ImageName = productDetail.ImageName,
+        //    };
+        //    return ProductDTO;
+        //}
 
 
         // GET: Products/Create

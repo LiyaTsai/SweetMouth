@@ -19,13 +19,16 @@ var appVue = new Vue({
             let _this = this;
             axios.get(`${webApiBaseUri}api/Product`).then((a) => {
                 _this.ProductInfo = a.data;
-                console.log(this.ProductInfo.length);
+                let arr = [];
+                for (i = 0; i < this.ProductInfo.length; i++) {
+                    let item = {};
+                    if (this.ProductInfo[i].avalible == true) {
+                        item = this.ProductInfo[i];
+                        arr.push(item);
+                    }
+                }
+                this.ProductInfo = arr;
             });
-            for (let i = 0; i < _this.ProductInfo.lenght; i++) {
-                /*if (_this.ProductInfo[i].avalible == false) {
-                    _this.ProductInfo[i].pop;
-                }*/
-            }
         },
 
         countpage() {

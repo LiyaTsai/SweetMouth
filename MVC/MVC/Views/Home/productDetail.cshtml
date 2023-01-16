@@ -28,7 +28,8 @@
         <div class="row g-5 justify-content-center">
             <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
 
-                <img class="w-100" :src=`/img/${imageName}.jpg` alt="Image" />
+                <img class="w-100" :src=`/img/${imageName}.jpg` :alt="productName"
+                     :title=`${productName}-${specifications}` />
 
 
                 <!-- Carousel Start -->
@@ -56,25 +57,34 @@
             </div>
             <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
-                    {{ProductName}}
+                    {{ProductName}} 
+                    {{Specifications}}
                 </p>
                 <form>
                     <div class="row g-3">
                         <div class="col-12">
+
+                            
+
+
+
+
+
+
                             <p>
-                                金光閃閃：比利時進口純黑巧及白巧混合 +  特製焦糖脆片與杏仁角 +  純金箔粉
+                                DES掛這裡 {{Description}}
                             </p>
                             <div class="">
                                 <span class="text-secondary">tag</span>
                             </div>
                             <div>
-                                <span>累積銷售已達999</span>
+                                @*<span>累積銷售已達999</span>*@
                             </div>
                             <div class="my-2">
                                 <span class="text-primary me-1">{{Price}}</span>
                                 <span class="text-body text-decoration-line-through">${{Price+50}}</span>
                                 <div>
-                                    <span>數量:</span>
+                                    <span>數量</span>
                                     <input type="number" name="" id="" class="border-primary text-center momo-product-amount" min="0" max="20">
                                 </div>
                             </div>
@@ -83,7 +93,7 @@
                                 <i class="fal fa-heart"></i>
                                 <i class="fas fa-heart"></i>
                             </span> -->
-                            <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
+                            <button class="btn btn-primary rounded-pill mt-2 py-1 px-3" type="submit">
                                 送出訂單
                             </button>
                         </div>
