@@ -18,7 +18,7 @@ namespace backStage.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult template()
         {
             return View();
         }
