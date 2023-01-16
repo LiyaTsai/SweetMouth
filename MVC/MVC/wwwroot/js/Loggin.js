@@ -30,6 +30,7 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
                 isMem = true;
                 navbarCollapse.MemID = b[i].memberId;
                 sessionStorage.setItem("MemberID", b[i].memberId);
+                sessionStorage.setItem("nickName", b[i].nickName);
                 save = document.getElementById("save");
                 console.log(save.checked)
                 if (save.checked) {
