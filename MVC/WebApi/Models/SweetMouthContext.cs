@@ -30,7 +30,7 @@ namespace WebApi.Models
             modelBuilder.Entity<Blog>(entity =>
             {
                 entity.HasKey(e => new { e.ArticleId, e.Floor })
-                    .HasName("PK__Blog__F29BE1216C87C0D8");
+                    .HasName("PK__Blog__F29BE121F44B0898");
 
                 entity.Property(e => e.ArticleId).HasColumnName("ArticleID");
 
@@ -52,13 +52,13 @@ namespace WebApi.Models
                     .WithMany(p => p.Blog)
                     .HasForeignKey(d => d.MemberId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Blog__MemberID__70DDC3D8");
+                    .HasConstraintName("FK__Blog__MemberID__5EBF139D");
             });
 
             modelBuilder.Entity<HashTag>(entity =>
             {
                 entity.HasKey(e => new { e.ProductName, e.Specifications, e.HashTag1 })
-                    .HasName("PK__HashTag__EBB7898847987EBF");
+                    .HasName("PK__HashTag__EBB78988D134A889");
 
                 entity.Property(e => e.ProductName).HasMaxLength(50);
 
@@ -72,7 +72,7 @@ namespace WebApi.Models
                     .WithMany(p => p.HashTag)
                     .HasForeignKey(d => new { d.ProductName, d.Specifications })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__HashTag__68487DD7");
+                    .HasConstraintName("FK__HashTag__6D0D32F4");
             });
 
             modelBuilder.Entity<Member>(entity =>
@@ -102,7 +102,7 @@ namespace WebApi.Models
             {
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
-                entity.Property(e => e.BuyerId).HasColumnName("BuyerID");
+                entity.Property(e => e.MemberId).HasColumnName("MemberID");
 
                 entity.Property(e => e.Number).HasDefaultValueSql("((1))");
 
@@ -114,23 +114,23 @@ namespace WebApi.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.HasOne(d => d.Buyer)
+                entity.HasOne(d => d.Member)
                     .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.BuyerId)
+                    .HasForeignKey(d => d.MemberId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__BuyerID__6383C8BA");
+                    .HasConstraintName("FK__Order__BuyerID__68487DD7");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => new { d.ProductName, d.Specifications })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__656C112C");
+                    .HasConstraintName("FK__Order__6A30C649");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => new { e.ProductName, e.Specifications })
-                    .HasName("PK__Product__8A2F0022838A55A4");
+                    .HasName("PK__Product__8A2F00226C9A8785");
 
                 entity.Property(e => e.ProductName).HasMaxLength(50);
 
@@ -144,7 +144,7 @@ namespace WebApi.Models
             modelBuilder.Entity<Schedule>(entity =>
             {
                 entity.HasKey(e => e.Date)
-                    .HasName("PK__Schedule__77387D06A0428FF2");
+                    .HasName("PK__Schedule__77387D0669276C57");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -152,12 +152,12 @@ namespace WebApi.Models
 
                 entity.Property(e => e.ClassName).HasMaxLength(50);
 
-                entity.Property(e => e.RentId).HasColumnName("RentID");
+                entity.Property(e => e.MemberId).HasColumnName("MemberID");
 
-                entity.HasOne(d => d.Rent)
+                entity.HasOne(d => d.Member)
                     .WithMany(p => p.Schedule)
-                    .HasForeignKey(d => d.RentId)
-                    .HasConstraintName("FK__Schedule__RentID__5CD6CB2B");
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK__Schedule__RentID__619B8048");
             });
 
             OnModelCreatingPartial(modelBuilder);

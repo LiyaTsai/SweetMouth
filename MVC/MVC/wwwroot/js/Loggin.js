@@ -40,7 +40,7 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
                 break;
                 //sessionStorage.setItem("MemberID", b[i].memberId)
                 //var Id = sessionStorage.getItem("MemberID")
-                //alert(`${b[i].name}歡迎登入`);
+                alert(`${b[i].name}歡迎登入`);
                 //$("#loginModal").modal('hide');
             }
             else { isMem = false; }
