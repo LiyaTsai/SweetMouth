@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VSMuI4FOg5kX19co+gbgxhm870RIsEeiLhWvzPDaw/I=",
+  "Hash": "sEwHyh5M+MOwU3JPbZTQ4t4uNXXI8LY2Hxc+QXAD138=",
   "Source": "MVC",
   "BasePath": "_content/MVC",
   "Mode": "Default",
@@ -1870,6 +1870,23 @@
       "OriginalItemSpec": "wwwroot\\img\\MOＭＯ.png"
     },
     {
+      "Identity": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\newPostblog.jpg",
+      "SourceId": "MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\",
+      "BasePath": "_content/MVC",
+      "RelativePath": "img/newPostblog.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\newPostblog.jpg"
+    },
+    {
       "Identity": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\nutsTart.jpg",
       "SourceId": "MVC",
       "SourceType": "Discovered",
@@ -2650,6 +2667,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\MemberInfo.js"
+    },
+    {
+      "Identity": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\productDetail.js",
+      "SourceId": "MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\",
+      "BasePath": "_content/MVC",
+      "RelativePath": "js/productDetail.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\productDetail.js"
     },
     {
       "Identity": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\site.js",

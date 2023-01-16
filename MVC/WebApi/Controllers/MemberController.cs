@@ -25,17 +25,17 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<Member> Get()
         {
-            return _context.Member.Include(b=>b.Order).Select(a =>
+            return _context.Member.Include(b => b.Order).Select(a =>
             new Member
             {
-                MemberId= a.MemberId,
-                Name= a.Name,
-                NickName= a.NickName,
-                Email= a.Email,
-                PhoneNumber= a.PhoneNumber,
-                Password= a.Password,
-                BirthDay= a.BirthDay,
-                Order= a.Order
+                MemberId = a.MemberId,
+                Name = a.Name,
+                NickName = a.NickName,
+                Email = a.Email,
+                PhoneNumber = a.PhoneNumber,
+                Password = a.Password,
+                BirthDay = a.BirthDay,
+                Order = a.Order
             }
             );
         }
@@ -70,8 +70,8 @@ namespace WebApi.Controllers
                 NickName = mdto.NickName,
                 Email = mdto.Email,
                 PhoneNumber = mdto.PhoneNumber,
-                BirthDay= mdto.BirthDay,
-                Password= mdto.Password,
+                BirthDay = mdto.BirthDay,
+                Password = mdto.Password,
             };
             _context.Member.Add(mem);
             await _context.SaveChangesAsync();
@@ -82,14 +82,49 @@ namespace WebApi.Controllers
 
         // PUT api/<MemberController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<string> Put(int id, MemberDTO mDTO)
         {
+            if (id != mDTO.MemberID)
+            {
+                return "ID錯誤";
+            }
+            Member mem = await _context.Member.FindAsync(mDTO.MemberID);
+            mem.Name = mDTO.Name;
+            mem.NickName = mDTO.NickName;
+            mem.Email = mDTO.Email;
+            mem.PhoneNumber = mDTO.PhoneNumber;
+            mem.BirthDay = mDTO.BirthDay;
+            _context.Entry(mem).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MemberExists(id))
+                {
+                    return "找不到欲修改的紀錄";
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return "修改成功!";
         }
 
         // DELETE api/<MemberController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+
+
+
+        private bool MemberExists(int id)
+        {
+            return _context.Member.Any(e => e.MemberId == id);
         }
     }
 }

@@ -205,6 +205,10 @@
       "PackagePath": "staticwebassets\\img\\mangograpepudding.jpg"
     },
     {
+      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\newPostblog.jpg",
+      "PackagePath": "staticwebassets\\img\\newPostblog.jpg"
+    },
+    {
       "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\img\\nutsTart.jpg",
       "PackagePath": "staticwebassets\\img\\nutsTart.jpg"
     },
@@ -379,6 +383,10 @@
     {
       "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\memberform.js",
       "PackagePath": "staticwebassets\\js\\memberform.js"
+    },
+    {
+      "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\productDetail.js",
+      "PackagePath": "staticwebassets\\js\\productDetail.js"
     },
     {
       "Id": "C:\\Users\\iSpan\\Desktop\\SweetMouth\\MVC\\MVC\\wwwroot\\js\\site.js",
