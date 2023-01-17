@@ -3,14 +3,10 @@
         <h1 class="display-3 mb-3 animated slideInDown">會員資料</h1>
     </div>
 </div>
-<div class="container mb-5">
+<div class="container mb-5" id="appVue">
     <div class="card">
         <div class="card-header">
-<<<<<<< HEAD
-            會員XXX您好
-=======
             會員{{MemberInfo.name}}您好，如需修改會員資料請直接點擊資料
->>>>>>> Development
         </div>
         <div class="card-body">
             <!-- <div class="card-title">
@@ -21,13 +17,6 @@
                 <!-- 基本資料 -->
                 <div class="col-md-4">
                     <ul class="list-group">
-<<<<<<< HEAD
-                        <li class="list-group-item">姓名</li>
-                        <li class="list-group-item">暱稱</li>
-                        <li class="list-group-item">Email</li>
-                        <li class="list-group-item">電話</li>
-                        <li class="list-group-item">生日</li>
-=======
                         <template v-if="Edit">
                             <li class="list-group-item" style="cursor:pointer" v-on:click="EditInfo('{{MemberInfo.name}}')">
                                 姓名：{{MemberInfo.name}}</li>
@@ -54,7 +43,6 @@
                         <li class="list-group-item">Email：{{MemberInfo.email}}</li>
                         <li class="list-group-item">電話：{{MemberInfo.phoneNumber}}</li>
                         <li class="list-group-item">生日：{{Birth}}</li>
->>>>>>> Development
                     </ul>
                 </div>
 
@@ -95,16 +83,9 @@
                             <div id="flush-collapseTwo" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingTwo">
                                 <div class="accordion-body">
-<<<<<<< HEAD
-                                    <ul class="list-group">
-                                        <li class="list-group-item">留言1</li>
-                                        <li class="list-group-item">留言2</li>
-                                        <li class="list-group-item">留言3</li>
-=======
                                     <ul class="list-group" v-for="b in BlogMessage">
                                         <li class="list-group-item" v-on:click="ClickToArticle" style="cursor:pointer"
                                             :value=b.articleID>{{b.article}}</li>
->>>>>>> Development
                                     </ul>
                                 </div>
                             </div>

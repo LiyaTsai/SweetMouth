@@ -2459,11 +2459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\MVC.csproj",
+      "projectUniqueName": "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\MVC\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\MVC.csproj",
+      "projectPath": "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\MVC\\MVC.csproj",
       "packagesPath": "C:\\Users\\pigpa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\MVC\\obj\\",
+      "outputPath": "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pigpa\\AppData\\Roaming\\NuGet\\NuGet.Config",

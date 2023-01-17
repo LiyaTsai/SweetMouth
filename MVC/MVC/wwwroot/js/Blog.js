@@ -3,13 +3,8 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
-<<<<<<< HEAD
-        BlogInfo: [],
-        baseUrl:"https://localhost:7146/Home/blogPage",
-=======
         baseUrl: "https://localhost:7146/Home/blogPage",
         BlogInfo: [],
->>>>>>> Development
     },
     mounted() {
         _this = this;
@@ -18,12 +13,12 @@ var appVue = new Vue({
     methods: {
         MakeProInfo: function () {
             let _this = this;
-            axios.get(`${webApiBaseUri}api/Blogs`).then(response => {
-                _this.BlogInfo = response.data;
+            axios.get(`${webApiBaseUri}api/Blogs`).then(res => {
+                _this.BlogInfo = res.data;
                 let blogList = [];
-                for (let i = 0; i < _this.BlogInfo.length; i++) {
+                for (i = 0; i < _this.BlogInfo.length; i++) {
                     let item = {};
-                    if (_this.BlogInfo[i].floor == 0) {
+                    if (_this.BlogInfo[i].floor == 0) { // 樓層 = 0 發文者
                         item = _this.BlogInfo[i];
                         item.time = item.time.split("T")[0]
                         blogList.push(item);

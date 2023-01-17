@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\pigpa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pigpa\\Desktop\\Final\\MVC\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\pigpa\\Desktop\\SweetMouth_玉\\MVC\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pigpa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,13 +42,13 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.12, )"
+              "version": "[6.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.12, )"
+              "version": "[6.0.13, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

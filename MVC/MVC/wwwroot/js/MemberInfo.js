@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 var webApiBaseUrl = "https://localhost:7096/";      //axios連線route
 var MemID = (document.cookie.indexOf("MemberID") == -1) ? sessionStorage.getItem("MemberID") : document.cookie.split("MemberID=")[1].split(";")[0];
 //儲存好的MemberID，如果cookie有，就從cookie抓，否則抓session
@@ -92,4 +90,3 @@ var appVue = new Vue({
         }
     },
 })
->>>>>>> Development

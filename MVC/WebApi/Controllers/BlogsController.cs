@@ -34,10 +34,11 @@ namespace WebApi.Controllers
                 SubTitle = item.SubTitle,
                 Time = item.Time,
                 Article = item.Article,
+                Image = item.Image,
+
                 // Member 資料表
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
-                //Image = item.Image,
             });
         }
 
@@ -60,9 +61,13 @@ namespace WebApi.Controllers
                 SubTitle = blog.SubTitle,
                 Time = blog.Time,
                 Article = blog.Article,
+                Image = blog.Image,
             };
             return blogDTO;
         }
+
+
+
 
         // PUT: api/Blogs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -98,28 +103,10 @@ namespace WebApi.Controllers
         // POST: api/Blogs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Blog>> PostBlog(Blog blog)
+        public async Task<Blog> Post(BlogDTO blog)
         {
-            _context.Blog.Add(blog);
-            try
+            Blog blg = new Blog
             {
-<<<<<<< HEAD
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (BlogExists(blog.ArticleId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetBlog", new { id = blog.ArticleId }, blog);
-=======
                 ArticleId = blog.ArticleID,
                 MemberId = blog.MemberID,
                 Floor = blog.Floor,
@@ -132,7 +119,6 @@ namespace WebApi.Controllers
             _context.Blog.Add(blg);
             await _context.SaveChangesAsync();
             return blg;
->>>>>>> Development
         }
 
         // DELETE: api/Blogs/5

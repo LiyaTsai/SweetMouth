@@ -14,23 +14,22 @@
     </div>
 </div>
 <!-- Page Header End -->
-
 <!-- 最新消息文章內頁 Start -->
 <div class="container" id="appVue">
-    <h1 class="sixsch">{{articlePoster[0].title}}</h1>
+    <h1 class="sixsch">{{articlePoster[0].title}}</h1> @*發文者title*@
     <div class="row">
         <div class="col-md-8">
             <small>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].memberName}}</li>
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].nickName}}</li>
+                        @*發文者暱稱*@
                         <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
                         <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
                     </ol>
                 </nav>
             </small>
-            <img src="https://cdn.pixabay.com/photo/2017/10/28/19/07/tiramisu-2897900_1280.jpg" class="img-fluid"
-                alt="" />
+            <img :src=`/img/${articlePoster[0].image}.jpg` class="img-fluid" alt="" />
             <h2 class="text-secondary">{{articlePoster[0].subTitle}}</h2>
             <p>
                 {{articlePoster[0].article}}
@@ -48,13 +47,16 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample" s>
                         <div class="accordion-body">
+
+
+
                             <ul v-for="f in floors">
+                                @*這裡開始v-for，以下的li為留言設計圖*@
                                 <li class="mb-1">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>
-                                                <a href="">{{f.nickName}}</a>
+                                                <i class="fas fa-user"></i>{{f.nickName}}
                                             </li>
                                             <li class="breadcrumb-item">{{f.time}}</li>
                                         </ol>
@@ -62,46 +64,11 @@
                                     <p>{{f.article}}</p>
                                     <hr />
                                 </li>
-                                @*<li class="mb-1">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>
-                                                <a href="">user2</a>
-                                            </li>
-                                            <li class="breadcrumb-item">2021/5/29</li>
-                                        </ol>
-                                    </nav>
-                                    <p>
-                                        完成引擎用途親自身材是否，能夠方向定義指導清晰辦公環保發揮買賣研究生一部說著，本週師傅時代國內禮品。
-                                    </p>
-                                    <hr />
-                                </li>
-                                <li class="mb-1">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>
-                                                <a href="">user3</a>
-                                            </li>
-                                            <li class="breadcrumb-item">2021/5/29</li>
-                                        </ol>
-                                    </nav>
-                                    <p>
-                                        大幅考試大盤依舊為你深刻距離住了鈴聲下載身份，留下認定欣賞神經記錄推薦死了成為大戰絶不大聲媒體證據，部隊早就，計劃儘量開了的說排名律師足夠每天放在最新先生女友物流中文版，麻煩為了，條例同事，應用這時。
-                                    </p>
-                                    <hr />
-                                </li>*@
                             </ul>
 
                             <!-- 新增留言區 -->
-                            <form action="">
+                            <form action="" class="needs-validation" novalidate>
                                 <div class="input-group">
-<<<<<<< HEAD
-                                    <span class="input-group-text"> <i class="fas fa-user"></i>user? </span>
-                                    <input type="text" class="form-control" placeholder="留言.." />
-                                    <span><button type="button" class="btn btn-primary">送出</button></span>
-=======
                                     <span class="input-group-text"> <i class="fas fa-user"></i>{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
                                         required />
@@ -109,7 +76,6 @@
                                         請輸入留言
                                     </div>
                                     <button type="button" class="btn btn-primary" @@click="insert">送出</button>
->>>>>>> Development
                                 </div>
                             </form>
                         </div>
@@ -118,14 +84,15 @@
                 <!-- 留言版 End -->
             </div>
         </div>
+
         <!-- Tags Start -->
         <div class="col-md-4">
             <h2 class="text-secondary">Tags</h2>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>官方消息</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>商品訊息</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>烹飪教室</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>DIY</a>
-            <a href=""><i class="fas fa-tags pr-1 me-1"></i>食譜</a>
+
+            <div class="form-check-inline" v-for="i in TagInfo">
+                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{i.hashTag1}}</a>
+            </div>
+
         </div>
         <!-- Tags End -->
     </div>
@@ -133,5 +100,5 @@
 <!-- 最新消息文章內頁 End -->
 @section Scripts
 {
-    <script src="~/js/blogpage.js"></script>
+<script src="~/js/blogpage.js"></script>
 }

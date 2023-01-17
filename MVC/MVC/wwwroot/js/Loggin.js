@@ -1,11 +1,8 @@
 ﻿
 /*var loginmail = document.getElementById("loginmail");*/
-loginmail = $("#loginmail")
-var password = document.getElementById("password");
+loginmail = $("#loginmail")                             //帳號輸入欄位
+var password = document.getElementById("password");     //密碼輸入欄位
 var webApiBaseUrl = "https://localhost:7096/"
-<<<<<<< HEAD
-logginBtn.addEventListener("click", function () {
-=======
 
 var navbarCollapse = new Vue({
     el: "#navbarCollapse",
@@ -25,28 +22,10 @@ var navbarCollapse = new Vue({
 
 
 logginBtn.addEventListener("click", function () {       //為登入按鈕加入事件聆聽
->>>>>>> Development
     axios.get(`${webApiBaseUrl}api/Member`).then(a => {
         let b = a.data;
         var isMem=false;
         for (let i = 0; i < b.length; i++) {
-<<<<<<< HEAD
-            if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value)
-            {
-                alert(`${b[i].name}歡迎登入`);
-                sessionStorage.setItem("MemberID", b[i].memberId)
-            };
-            $("#loginModal").modal('hide');
-        }
-    })
-
-
-
-
-
-
-
-=======
             if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value) {
                 isMem = true;
                 navbarCollapse.MemID = b[i].memberId;
@@ -78,5 +57,4 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
             $("#password").val("")
         }
     })
->>>>>>> Development
 })
