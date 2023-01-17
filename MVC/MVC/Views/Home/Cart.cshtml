@@ -14,18 +14,24 @@
 <!-- Page Header End -->
 <!-- 內容 Start -->
 <div class="container">
-    <h1 class="display-4 text-primary">購物車</h1>
-    <div class="my-2 momo-cart-border">
+    <h1 class="display-4 text-primary">選購商品</h1>
+    <!-- <div class="my-2 momo-cart-border"> -->
+    <div class="my-2">
         <!-- 商品start -->
         <div class="px-1 my-5">
             <div class="row align-items-center">
-                <input type="checkbox" name="check" id="id1" class="col-1" />
-                <label for="id1" class="col-3">金光閃閃巧克力球</label>
-                <img src="~/img/blackChocolate.jpg" alt="" class="col-3" />
+                <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
+                <label for="{{productID}}" class="col-3 ms-5">
+                    {{productName}} <br />
+                    {{specification}}
+                </label>
+                <img class="col-3" :src=`/img/${imageName}.jpg` :alt="productName"
+                     :title=`${productName}-${specifications}` />
+                <input type="number" name="" id="" min="1" max="20" class="col-1 mx-1" value="{{amount}}" />
+                <button class="col-1 rounded-pill btn-outline-primary">DEL</button>
             </div>
         </div>
         <!-- 商品end -->
     </div>
 </div>
-
 <!-- 內容 End -->
