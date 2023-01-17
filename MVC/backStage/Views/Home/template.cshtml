@@ -1,0 +1,111 @@
+﻿@section Styles{
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+}
+<h1 class="text-center my-5">後台版型 | 資料表</h1>
+
+<div class="container" id="appVue">
+    <button type="button" class="btn btn-outline-success" @@click="showModal">新增資料</button>
+    <div class="row">
+        <div class="col-12 mt-4">
+            @*顯示資料*@
+            <table class="table table-striped table-hover">
+                @*表頭*@
+                <thead>
+                    <tr>
+                        <td>表頭1</td>
+                        <td>表頭2</td>
+                        <td>表頭3</td>
+                        <td>表頭4</td>
+                        <td>按鈕</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="i in p_item">
+                        @* 切換編輯組件 *@
+                        <template v-if="i.Edit == true">
+                            <td>{{i.id}}</td>
+                            <td><input v-model="i.item1" /></td>
+                            <td><input v-model="i.item2" /></td>
+                            <td><input v-model="i.item3" /></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" @@click="">修改</button>
+                                <button type="button" class="btn btn-warning" @@click="cancel">取消</button>
+                            </td>
+                        </template>
+
+                        @*資料顯示組件*@
+                        <template v-else>
+                            <td>{{i.id}}</td>
+                            <td>{{i.item1}}</td>
+                            <td>{{i.item2}}</td>
+                            <td>{{i.item3}}</td>
+                            <td>
+                                <span class="form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">
+                                        @* string *@
+                                    </label>
+                                </span>
+                                <button type="button" class="btn btn-primary" @@click="edit(i.id)">編輯</button>
+                                <button type="button" class="btn btn-danger" @@click="delete(i.id)">刪除</button>
+                            </td>
+                        </template>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- modal 視窗 -->
+    <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">新增資料</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="form-label">item1</label>
+                            <input type="text" class="form-control" v-model="item1" id="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">item2</label>
+                            <input type="text" class="form-control" v-model="item2" id="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">item3</label>
+                            <input type="text" class="form-control" v-model="item3" id="" />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" @@click="">新增資料</button>
+                        </div>
+                    </div>
+                </div><!-- /.modal-body -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+@section Scripts {
+<script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
+<script src="~/js/template.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.table').dataTable({
+            fixedHeader: {
+                header: true,
+            },
+            language: {
+                // 搜尋 dataTables i18n
+                url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/zh-HANT.json'
+            }
+        });
+    });
+</script>
+}

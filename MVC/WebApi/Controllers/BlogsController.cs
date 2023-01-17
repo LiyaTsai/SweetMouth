@@ -103,6 +103,7 @@ namespace WebApi.Controllers
             _context.Blog.Add(blog);
             try
             {
+<<<<<<< HEAD
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
@@ -118,6 +119,20 @@ namespace WebApi.Controllers
             }
 
             return CreatedAtAction("GetBlog", new { id = blog.ArticleId }, blog);
+=======
+                ArticleId = blog.ArticleID,
+                MemberId = blog.MemberID,
+                Floor = blog.Floor,
+                Image = blog.Image,
+                Title = blog.Title,
+                SubTitle = blog.SubTitle,
+                Time = blog.Time,
+                Article = blog.Article,
+            };
+            _context.Blog.Add(blg);
+            await _context.SaveChangesAsync();
+            return blg;
+>>>>>>> Development
         }
 
         // DELETE: api/Blogs/5

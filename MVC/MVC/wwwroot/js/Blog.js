@@ -3,8 +3,13 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
+<<<<<<< HEAD
         BlogInfo: [],
         baseUrl:"https://localhost:7146/Home/blogPage",
+=======
+        baseUrl: "https://localhost:7146/Home/blogPage",
+        BlogInfo: [],
+>>>>>>> Development
     },
     mounted() {
         _this = this;
@@ -20,6 +25,7 @@ var appVue = new Vue({
                     let item = {};
                     if (_this.BlogInfo[i].floor == 0) {
                         item = _this.BlogInfo[i];
+                        item.time = item.time.split("T")[0]
                         blogList.push(item);
                     }
                 }

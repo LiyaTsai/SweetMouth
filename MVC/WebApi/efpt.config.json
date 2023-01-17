@@ -39,7 +39,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "(localdb)\\MSSQLLocalDB.SweetMouth",
+   "UiHint": "sweetmouth.SweetMouth",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDbContextSplitting": false,

@@ -11,15 +11,21 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-//Session³]©w
+//Sessionï¿½]ï¿½w
+//builder.Services.AddHttpContextAccessor();
 //builder.Services.AddSingleton<IHttpContextAccessor>();
-//builder.Services.AddDistributedMemoryCache();
+builder.Services.AddDistributedMemoryCache();
+
 //builder.Services.AddSession(options =>
 //{
 //    options.IdleTimeout = TimeSpan.FromSeconds(10);
 //    options.Cookie.HttpOnly = true;
 //    options.Cookie.IsEssential = true;
 //});
+
+builder.Services.AddSession(x => {
+    x.Cookie.Name = "MySession";
+});
 
 
 
@@ -46,7 +52,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-//app.UseSession();
+
+app.UseSession();
+app.Use(async (context, next) =>
+{
+    context.Session.SetString("SessionKey", "10005");
+    await next.Invoke();
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 
