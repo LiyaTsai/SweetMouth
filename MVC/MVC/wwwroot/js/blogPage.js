@@ -36,9 +36,7 @@ var appVue = new Vue({
                         else {                                  //其他同文章ID(同一篇文章下的留言)
                             _this.floors.push(a.data[i]);       //塞進floors
                         }
-                    } else {
-                        continue;
-                    } //GET出來的如果文章ID不符就跳過
+                    } else { continue; } //GET出來的如果文章ID不符就跳過
                 }
             });
         },

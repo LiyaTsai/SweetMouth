@@ -25,10 +25,11 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<BlogDTO>> Get()
         {
-            return _context.Blog.Include(b => b.Member).Select(item => new BlogDTO
+            return _context.Blog.Include(a => a.Product).Include(b => b.Member).Select(item => new BlogDTO
             {
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
+                ProductID = item.ProductId,
                 Floor = item.Floor,
                 Title = item.Title,
                 SubTitle = item.SubTitle,
@@ -56,6 +57,7 @@ namespace WebApi.Controllers
             {
                 ArticleID = blog.ArticleId,
                 MemberID = blog.MemberId,
+                ProductID = blog.ProductId,
                 Floor = blog.Floor,
                 Title = blog.Title,
                 SubTitle = blog.SubTitle,
@@ -109,6 +111,7 @@ namespace WebApi.Controllers
             {
                 ArticleId = blog.ArticleID,
                 MemberId = blog.MemberID,
+                ProductId = blog.ProductID,
                 Floor = blog.Floor,
                 ImageName = blog.ImageName,
                 Title = blog.Title,

@@ -26,7 +26,7 @@ namespace WebApi.Controllers
             new Product
             {
                 ProductName = x.ProductName,
-                Specifications = x.Specifications,
+                //Specifications = x.Specifications,
                 Price = x.Price,
                 ImageName = x.ImageName,
                 Avalible = x.Avalible
@@ -55,7 +55,7 @@ namespace WebApi.Controllers
             ProductDTO ProductDTO = new ProductDTO
             {
                 ProductName = productDetail.ProductName,
-                Specifications = productDetail.Specifications,
+                //Specifications = productDetail.Specifications,
                 Price = productDetail.Price,
                 ImageName = productDetail.ImageName,
                 Avalible = productDetail.Avalible,
