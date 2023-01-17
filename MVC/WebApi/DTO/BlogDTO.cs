@@ -11,7 +11,7 @@ namespace WebApi.DTO
         public string? SubTitle { get; set; }
         public DateTime? Time { get; set; }
         public string? Article { get; set; }
-        public string? Image { get; set; }
+        public string? ImageName { get; set; }
 
         // 會員資料表
         public string? MemberName { get; set; }

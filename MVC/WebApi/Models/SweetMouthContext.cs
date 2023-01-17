@@ -36,7 +36,7 @@ namespace WebApi.Models
 
                 entity.Property(e => e.Article).HasMaxLength(200);
 
-                entity.Property(e => e.Image)
+                entity.Property(e => e.ImageName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
