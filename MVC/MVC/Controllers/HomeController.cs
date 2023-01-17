@@ -98,6 +98,7 @@ namespace MVC.Controllers
         public IActionResult MemberInfo()
         {
             ViewBag.btitle = "會員資訊";
+            
             return View();
         }
 
