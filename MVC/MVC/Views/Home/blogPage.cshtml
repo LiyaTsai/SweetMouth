@@ -1,0 +1,104 @@
+﻿@section Styles {
+<style>
+    li {
+        list-style-type: none;
+    }
+</style>
+
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3 animated slideInDown">甜嘴MoBlog</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- 最新消息文章內頁 Start -->
+<div class="container" id="appVue">
+    <h1 class="sixsch">{{articlePoster[0].title}}</h1> @*發文者title*@
+    <div class="row">
+        <div class="col-md-8">
+            <small>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].nickName}}</li>
+                        @*發文者暱稱*@
+                        <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
+                        <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
+                    </ol>
+                </nav>
+            </small>
+            <img :src=`/img/${articlePoster[0].image}.jpg` class="img-fluid" alt="" />
+            <h2 class="text-secondary">{{articlePoster[0].subTitle}}</h2>
+            <p>
+                {{articlePoster[0].article}}
+            </p>
+
+            <!-- 留言版 Strat -->
+            <div class="accordion accordion-flush border mb-3" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            留言板
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample" s>
+                        <div class="accordion-body">
+
+
+
+                            <ul v-for="f in floors">
+                                @*這裡開始v-for，以下的li為留言設計圖*@
+                                <li class="mb-1">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <i class="fas fa-user"></i>{{f.nickName}}
+                                            </li>
+                                            <li class="breadcrumb-item">{{f.time}}</li>
+                                        </ol>
+                                    </nav>
+                                    <p>{{f.article}}</p>
+                                    <hr />
+                                </li>
+                            </ul>
+
+                            <!-- 新增留言區 -->
+                            <form action="" class="needs-validation" novalidate>
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fas fa-user"></i>{{nickName}}</span>
+                                    <input type="text" class="form-control" placeholder="留言.." v-model="article"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        請輸入留言
+                                    </div>
+                                    <button type="button" class="btn btn-primary" @@click="insert">送出</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- 留言版 End -->
+            </div>
+        </div>
+
+        <!-- Tags Start -->
+        <div class="col-md-4">
+            <h2 class="text-secondary">Tags</h2>
+
+            <div class="form-check-inline" v-for="i in TagInfo">
+                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{i.hashTag1}}</a>
+            </div>
+
+        </div>
+        <!-- Tags End -->
+    </div>
+</div>
+<!-- 最新消息文章內頁 End -->
+@section Scripts
+{
+<script src="~/js/blogpage.js"></script>
+}
