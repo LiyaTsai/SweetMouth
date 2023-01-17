@@ -29,7 +29,9 @@
             <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                 <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                     <li class="nav-item me-2">
+
                         <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#tab-1">常備品項</a>
+
                     </li>
                     <li class="nav-item me-2">
                         <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">
@@ -46,7 +48,7 @@
             <div id="tab-1" class="tab-pane fade show p-0 active">
                 <div class="row g-4">
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for="i in ProductInfo">
-
+                        
 
 
                         <div class="product-item">
@@ -73,6 +75,7 @@
                                        class="anchor-tag">{{i.productName}}</a>
                                 </span>
                                 <br />
+
                                 <span class="text-primary me-1">${{i.price}}</span>
                                 <span class="text-primary me-1">{{i.specifications}}</span>
                                 <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
@@ -90,6 +93,7 @@
                                     </a>
                                 </small>
                             </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>

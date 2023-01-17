@@ -103,7 +103,9 @@
             <h5>報名表</h5>
             <form>
                 <div class="row g-3">
-                    <div class="col-md-6">
+
+                  @* <div class="col-md-6">
+
                         <div class="form-floating">
                             <input type="text" class="form-control" id="name" placeholder="Your Name" />
                             <label for="name">姓名</label>
@@ -120,17 +122,28 @@
                             <input type="text" class="form-control" id="subject" placeholder="Subject" />
                             <label for="subject">人數</label>
                         </div>
-                    </div>
-                    <div class="col-12">
+
+                    </div>*@
+                 
+                    @*<div class="col-12">
                         <div class="form-floating">
                             <textarea class="form-control" placeholder="Leave a message here" id="message"
                                       style="height: 200px"></textarea>
-                            <label for="message">備註</label>
+                            <label for="message">備註(詳細說明當天人數)</label>
                         </div>
+                    </div>*@
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" placeholder="姓名" size="20" v-model="MemberId">
+                        <label for="floatingInput">姓名</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" placeholder="人數" size="20" v-model="ClassName">
+                        <label for="floatingInput">人數</label>
+                    </div>
+
                     <div class="col-12">
-                        <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
-                            確定
+                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewBlog">
+                            送出資料
                         </button>
                     </div>
                 </div>

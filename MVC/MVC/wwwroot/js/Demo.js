@@ -35,5 +35,13 @@ var appVue = new Vue({
             //this.itempage = Math.ceil(this.itempage / 8);
             //console.log(this.itempage);
         },
+        toPD() {
+            let _this = this;
+            axios.get(`${webApiBaseUri}api/Product`).then(a => {
+
+
+            })
+            
+        }
     },
 });
