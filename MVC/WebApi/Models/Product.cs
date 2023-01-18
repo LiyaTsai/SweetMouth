@@ -23,6 +23,7 @@ namespace WebApi.Models
         public bool? Avalible { get; set; }
         public string Tag { get; set; }
         public string Category { get; set; }
+        public string Description { get; set; } 
 
         public virtual ICollection<Blog> Blog { get; set; }
         public virtual ICollection<Order> Order { get; set; }

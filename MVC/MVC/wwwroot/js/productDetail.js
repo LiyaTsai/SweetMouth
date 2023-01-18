@@ -5,15 +5,19 @@ var primaryKey = window.location.search;
 //console.log(primaryKey.split("=")[1].split("?")[0])
 
 //https:URL?productName = 莓果?specifications = 顆
-urlProductName = primaryKey.split("=")[1].split("?")[0];
-urlSpecifications = primaryKey.split("=")[2];
+// urlProductName = primaryKey.split("=")[1].split("?")[0];
+// urlSpecifications = primaryKey.split("=")[2];
+urlProductID = primaryKey.split("=")[1];
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
         ProductName: "",
-        Specifications: "",
+        // Specifications: "",
+        ProductID: "",
         Price: 0,
+        Flavor: "",
+        Size: "",
         imageName: "",
         Avalible: "",
     },
@@ -24,15 +28,18 @@ var appVue = new Vue({
     methods: {
         GetProduct: function () {
             let _this = this;
-            //let ProductName = primaryKey.split("=")[1];
-            //let Specifications = primaryKey.split("=")[2];
-            axios.get(`${webApiBaseUrl}api/Product/${urlProductName}/${urlSpecifications}`).then((a) => {
-                _this.ProductName = a.data.productName;
-                _this.Specifications = a.data.specifications;
+            axios.get(`${webApiBaseUrl}api/Product/${urlProductID}`).then((a) => {
+                // _this.ProductName = a.data.productName;
+                // _this.Specifications = a.data.specifications;
+                _this.ProductID = a.data.productID;
+                _this.ProductName = a.data.ProductName;
+                _this.Flavor = a.data.Flavor;
+                _this.Size = a.data.Size;
                 _this.Price = a.data.price;
                 _this.imageName = a.data.imageName;
                 _this.Avalible = a.data.avalible;
             });
+            // console.log(_this.productName);
         },
     },
 });

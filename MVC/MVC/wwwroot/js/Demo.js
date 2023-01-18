@@ -7,6 +7,7 @@ var appVue = new Vue({
     name: "appVue",
     data: {
         ProductInfo: [],
+        // baseUrl: "https://localhost:7146/Home/productDetail",
         baseUrl: "https://localhost:7146/Home/productDetail",
         itempage: 0,
     },
@@ -25,9 +26,10 @@ var appVue = new Vue({
                     if (this.ProductInfo[i].avalible == true) {
                         item = this.ProductInfo[i];
                         arr.push(item);
+                        console.log(_this.ProductInfo.productId)
                     }
                 }
-                this.ProductInfo = arr;
+                _this.ProductInfo = arr;
             });
         },
 
@@ -37,11 +39,7 @@ var appVue = new Vue({
         },
         toPD() {
             let _this = this;
-            axios.get(`${webApiBaseUri}api/Product`).then(a => {
-
-
-            })
-            
-        }
+            axios.get(`${webApiBaseUri}api/Product`).then((a) => {});
+        },
     },
 });
