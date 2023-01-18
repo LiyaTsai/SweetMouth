@@ -14,7 +14,7 @@
 
     <!-- Blog Start -->
     <!-- 最新消息 Start -->
-    <div class="container-xxl py-6">
+    <div class="container-xxl py-6" id="appVue">
         <div class="container">
             <!-- <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
                 style="max-width: 500px;">
@@ -132,17 +132,17 @@
                             <label for="message">備註(詳細說明當天人數)</label>
                         </div>
                     </div>*@
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" placeholder="姓名" size="20" v-model="MemberId">
+@*                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" placeholder="姓名" size="20" v-model="mem">
                         <label for="floatingInput">姓名</label>
-                    </div>
+                    </div>*@
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" placeholder="人數" size="20" v-model="ClassName">
+                        <input type="number" class="form-control" placeholder="人數" size="20" v-model="peoNum">
                         <label for="floatingInput">人數</label>
                     </div>
 
                     <div class="col-12">
-                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewBlog">
+                        <button type="button" class="btn btn-primary btn-block" @@click="postClass">
                             送出資料
                         </button>
                     </div>
@@ -267,6 +267,11 @@
         </div>
 
     </div>
+
+@section Scripts
+    {
+    <script src="~/js/ClassSignup.js"></script>
+}
     <!-- 最新消息 End -->
 
     <!-- 留言版 Strat -->

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using WebApi.DTO;
 using WebApi.Models;
@@ -29,8 +30,10 @@ namespace WebApi.Controllers
             {
                 Date = item.Date,
                 MemberId = item.MemberId,
-                //ClassId = item.ClassId,
+                ProductID = item.ProductId,
                 ClassName = item.ClassName,
+                PeopleNumber = item.PeopleNumber,
+                Note = item.Note,
 
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
@@ -91,8 +94,10 @@ namespace WebApi.Controllers
             {
                 Date = Class.Date,
                 MemberId = Class.MemberId,
-                //ClassId = Class.ClassId,
+                ProductId = Class.ProductID,
                 ClassName = Class.ClassName,
+                PeopleNumber = Class.PeopleNumber,
+                Note = Class.Note,
             };
             _context.Schedule.Add(cls);
             await _context.SaveChangesAsync();
