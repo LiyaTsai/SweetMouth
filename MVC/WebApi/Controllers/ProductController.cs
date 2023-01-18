@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 using WebApi.DTO;
 using WebApi.Models;
 
@@ -18,7 +19,7 @@ namespace WebApi.Controllers
             _context = context;
         }
 
-        //// GET: Products
+        // GET: Products
         //public async Task<IActionResult> Index()
         //{
         //    return View(await _context.Product.ToListAsync());
@@ -70,6 +71,12 @@ namespace WebApi.Controllers
                 Price = productDetail.Price,
                 ImageName = productDetail.ImageName,
                 Avalible = productDetail.Avalible,
+                ProductName = productDetail.ProductName,
+                Size = productDetail.Size,
+                Flavor = productDetail.Flavor,
+                Tag = productDetail.Tag,
+                tagArray = productDetail.Tag.Split("|"),
+                Description = productDetail.Description
             };
             return ProductDTO;
         }
@@ -95,23 +102,23 @@ namespace WebApi.Controllers
         //    return ProductDTO;
         //}
 
-        // POST api/<ProductController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //// POST api/<ProductController>
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT api/<ProductController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<ProductController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
 
         //// GET: Products/Create
         //public IActionResult Create()
@@ -120,8 +127,8 @@ namespace WebApi.Controllers
         //}
 
         // POST: Products/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("ProductName,Specifications,Price,ImageName,Avalible")] Product product)

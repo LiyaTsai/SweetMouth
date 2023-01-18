@@ -12,16 +12,16 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
-        ProductID: "",
-        ProductName: "",
+        productID: "",
+        productName: "",
         // Specifications: "",
-        Price: 0,
-        Flavor: "",
-        Size: "",
+        price: 0,
+        flavor: "",
+        size: "",
         imageName: "",
-        Avalible: "",
-        Tag: "",
-        Description: "",
+        tag: "",
+        description: "",
+        tagArray: [],
     },
     mounted() {
         _this = this;
@@ -31,20 +31,21 @@ var appVue = new Vue({
         GetProduct: function () {
             let _this = this;
             axios.get(`${webApiBaseUrl}api/Product/${urlProductID}`).then((a) => {
-                // _this.ProductName = a.data.productName;
-                // _this.Specifications = a.data.specifications;
-                _this.ProductID = a.data.productID;
-                _this.ProductName = a.data.ProductName;
-                _this.Flavor = a.data.Flavor;
-                _this.Size = a.data.Size;
+                console.log(a.data);
+                _this.productID = a.data.productID;
+                _this.productName = a.data.productName;
+                _this.flavor = a.data.flavor;
+                _this.size = a.data.size;
+                _this.tag = a.data.tag;
                 _this.Price = a.data.price;
                 _this.imageName = a.data.imageName;
-                _this.Avalible = a.data.avalible;
+                _this.description = a.data.description;
+                _this.tagArray = a.data.tagArray;
             });
             // console.log(_this.productName);
         },
     },
 });
-setTimeout(function () {
-    console.log(appVue.ProductName);
-}, 100);
+// setTimeout(function () {
+//     console.log(appVue.ProductName);
+// }, 100);

@@ -27,8 +27,8 @@
         <div class="row g-5 justify-content-center">
             <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
 
-                <img class="w-100" :src=`/img/${imageName}` :alt="productName"
-                     :title=`${ProductName}` />
+                <img class="w-100" :src=`/img/${imageName}` :alt=`${productName}`
+                     :title=`${productName}` />
 
 
                 <!-- Carousel Start -->
@@ -56,18 +56,19 @@
             </div>
             <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
-                    {{ProductName}} 
-                    {{Flavor}}
+                    {{productName}}
+                    {{flavor}}
                 </p>
                 <form>
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="col-4">
                                 <div class="">
-                                    <span class="text-secondary">tag</span>
-                                </div>                            
+                                    <span class="text-secondary btn mx-3" v-for ="t in tagArray">{{t}}  </span>
+
+                                </div>
                                 <p>
-                                    DES掛這裡 {{Description}}
+                                    DES掛這裡 {{description}}
                                 </p>
                             </div>
 
@@ -76,8 +77,8 @@
                                     @*<span>累積銷售已達999</span>*@
                                 </div>
                                 <div class="my-2">
-                                    <span class="text-primary me-1">{{Price}}</span>
-                                    <span class="text-body text-decoration-line-through">${{Price+50}}</span>
+                                    <span class="text-primary me-1 display-6">${{price}}</span>
+                                    @*<span class="text-body text-decoration-line-through">${{price+50}}</span>*@
                                 </div>
                                 <div>
                                     <span>數量</span>
