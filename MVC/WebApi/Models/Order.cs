@@ -9,12 +9,13 @@ namespace WebApi.Models
     {
         public int OrderId { get; set; }
         public int MemberId { get; set; }
-        public string ProductName { get; set; }
-        public string Specifications { get; set; }
-        public double? Discount { get; set; }
+        public int? ProductId { get; set; }
+        public string DiscountCode { get; set; }
         public double? Income { get; set; }
-        public int Number { get; set; }
+        public string Delivary { get; set; }
+        public int Amount { get; set; }
 
+        public virtual Discount DiscountCodeNavigation { get; set; }
         public virtual Member Member { get; set; }
         public virtual Product Product { get; set; }
     }

@@ -36,12 +36,11 @@ var appVue = new Vue({
                         else {                                  //其他同文章ID(同一篇文章下的留言)
                             _this.floors.push(a.data[i]);       //塞進floors
                         }
-                    } else {
-                        continue;
-                    } //GET出來的如果文章ID不符就跳過
+                    } else { continue; } //GET出來的如果文章ID不符就跳過
                 }
             });
         },
+
         // 時間格式
         // dateFormate: function () {
         //     let date = new Date();
@@ -77,29 +76,6 @@ var appVue = new Vue({
                     _this.article = null;
                 });
             }
-        },
-
-        // Get Tag
-        MakeHashTag: function () {
-            let _this = this;
-            axios.get(`${webApiBaseUrl}api/HashTag`).then((response) => {
-                let tagList = [];
-                for (let i = 0; i < response.data.length; i++) {
-                    tagList.push(response.data[i]);
-                }
-
-                // let f_tagList = tagList.filter(function (item, index, tagList) {
-                //     //console.log(item)
-                //     return tagList.indexOf(item)
-                // })
-
-                let f_tagList = tagList.filter(function (item) {
-                    //console.log(item.hashTag1)
-                    return item.hashTag1.match("蛋");
-                });
-
-                _this.TagInfo = f_tagList;
-            });
         },
     },
 });

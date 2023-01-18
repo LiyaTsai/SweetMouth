@@ -29,7 +29,7 @@ namespace WebApi.Controllers
             {
                 Date = item.Date,
                 MemberId = item.MemberId,
-                ClassId = item.ClassId,
+                //ClassId = item.ClassId,
                 ClassName = item.ClassName,
 
                 MemberName = item.Member.Name,
@@ -91,7 +91,7 @@ namespace WebApi.Controllers
             {
                 Date = Class.Date,
                 MemberId = Class.MemberId,
-                ClassId = Class.ClassId,
+                //ClassId = Class.ClassId,
                 ClassName = Class.ClassName,
             };
             _context.Schedule.Add(cls);
