@@ -31,6 +31,7 @@ var appVue = new Vue({
                 _this.MemberInfo = a.data;
                 dat = a.data.birthday;
                 _this.Birth = dat.split("T")[0];
+                console.log(_this.MemberInfo)
             });
             axios.get(`${webApiBaseUrl}api/Blogs`).then(x => {
                 for (let i = 0; i < x.data.length; i++) {
@@ -40,6 +41,14 @@ var appVue = new Vue({
                     else { continue; }
                 }
             });
+            axios.get(`${webApiBaseUrl}api/Order`).then(x => {
+                for (let i = 0; i < x.data.length; i++) {
+                    if (x.data[i].memberId == MemID) {
+                        _this.OrderMessage.push(x.data[i]);
+                    }
+                    else { continue; }
+                }                
+            })
         },
         ClickToArticle: function (e) {
             window.location.assign("https://localhost:7146/Home/blogPage?id=" + e.target.value)

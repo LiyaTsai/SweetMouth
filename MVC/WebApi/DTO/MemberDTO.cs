@@ -9,5 +9,6 @@
         public string? PhoneNumber { get; set; }
         public string? Password { get; set; }
         public DateTime? BirthDay { get; set; }
+        public string? FavoriteProduct { get; set; }
     }
 }
