@@ -33,7 +33,9 @@ namespace MVC.Controllers
 
         public IActionResult productDetail()
         {
-            ViewBag.btitle = "產品細節";
+
+            ViewBag.btitle = "甜點品項";
+
             return View();
         }
 
@@ -98,6 +100,7 @@ namespace MVC.Controllers
         public IActionResult MemberInfo()
         {
             ViewBag.btitle = "會員資訊";
+
             return View();
         }
 

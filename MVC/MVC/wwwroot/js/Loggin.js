@@ -33,11 +33,14 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
                 sessionStorage.setItem("nickName", b[i].nickName);
                 save = document.getElementById("save");
                 console.log(save.checked)
-                if (save.checked) { document.cookie = `MemberID=${b[i].memberId};max-age=86400` };
+                if (save.checked) {
+                    document.cookie = `MemberID=${b[i].memberId};max-age=86400`;
+                    document.cookie="Test=tttt;max-age=86400"
+                };
                 break;
                 //sessionStorage.setItem("MemberID", b[i].memberId)
                 //var Id = sessionStorage.getItem("MemberID")
-                //alert(`${b[i].name}歡迎登入`);
+                alert(`${b[i].name}歡迎登入`);
                 //$("#loginModal").modal('hide');
             }
             else { isMem = false; }

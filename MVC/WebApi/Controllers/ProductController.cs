@@ -26,7 +26,7 @@ namespace WebApi.Controllers
             new Product
             {
                 ProductName = x.ProductName,
-                Specifications = x.Specifications,
+                //Specifications = x.Specifications,
                 Price = x.Price,
                 ImageName = x.ImageName,
                 Avalible = x.Avalible
@@ -43,18 +43,24 @@ namespace WebApi.Controllers
         }
 
         // GET api/<ProductController>/5
-        [HttpGet("{productName}-{specifications}")]
-        public async Task<ActionResult<Product>> GetPD([FromRoute] string productName, [FromRoute] string specifications)
+        [HttpGet("{ProductName}/{Specifications}")]
+        public async Task<ActionResult<ProductDTO>> Get(string ProductName, string Specifications)
         {
-            var pd = await _context.Product.FindAsync(productName, specifications);
+            var productDetail = await _context.Product.FindAsync(ProductName, Specifications);
 
-            return new Product
+            if (productDetail == null)
             {
-                //productName = pd.ProductName,
-                //price = pd.Price,
-                //Specifications = pd.Specifications,
+                return NotFound();
+            }
+            ProductDTO ProductDTO = new ProductDTO
+            {
+                ProductName = productDetail.ProductName,
+                //Specifications = productDetail.Specifications,
+                Price = productDetail.Price,
+                ImageName = productDetail.ImageName,
+                Avalible = productDetail.Avalible,
             };
-
+            return ProductDTO;
         }
 
         // POST api/<ProductController>

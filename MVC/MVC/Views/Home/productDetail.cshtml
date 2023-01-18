@@ -17,19 +17,22 @@
 </div>
 <!-- Page Header End -->
 <!-- Contact Start -->
-<div class="container-xxl py-6 col-10">
+<div class="container-xxl py-6 col-10" id="appVue">
     <div class="container">
         <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
             <h1 class="display-5 mb-3">甜點細節</h1>
-
         </div>
 
         <!-- aside-left -->
         <div class="row g-5 justify-content-center">
             <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
 
+                <img class="w-100" :src=`/img/${imageName}.jpg` :alt="productName"
+                     :title=`${productName}-${specifications}` />
+
+
                 <!-- Carousel Start -->
-                <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+                @*<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
                     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -47,42 +50,57 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                </div>
+                </div>*@
                 <!-- Carousel End -->
 
             </div>
             <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
-                    {{product.Name}}
+                    {{ProductName}} 
+                    {{Specifications}}
                 </p>
                 <form>
                     <div class="row g-3">
                         <div class="col-12">
-                            <p>
-                                金光閃閃：比利時進口純黑巧及白巧混合 +  特製焦糖脆片與杏仁角 +  純金箔粉
-                            </p>
-                            <div class="">
-                                <span class="text-secondary">tag</span>
+                            <div class="col-4">
+                                <div class="">
+                                    <span class="text-secondary">tag</span>
+                                </div>                            
+                                <p>
+                                    DES掛這裡 {{Description}}
+                                </p>
                             </div>
-                            <div>
-                                <span>累積銷售已達999</span>
-                            </div>
-                            <div class="my-2">
-                                <span class="text-primary me-1">$250</span>
-                                <span class="text-body text-decoration-line-through">$300</span>
+
+                            <div class="col-8">
                                 <div>
-                                    <span>數量:</span>
+                                    @*<span>累積銷售已達999</span>*@
+                                </div>
+                                <div class="my-2">
+                                    <span class="text-primary me-1">{{Price}}</span>
+                                    <span class="text-body text-decoration-line-through">${{Price+50}}</span>
+                                </div>
+                                <div>
+                                    <span>數量</span>
                                     <input type="number" name="" id="" class="border-primary text-center momo-product-amount" min="0" max="20">
                                 </div>
-                            </div>
                             <!-- <span class="me-2">
                                 加入收藏
                                 <i class="fal fa-heart"></i>
                                 <i class="fas fa-heart"></i>
                             </span> -->
-                            <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
+                            <button class="btn btn-primary rounded-pill mt-2 py-1 px-3" type="submit">
                                 送出訂單
                             </button>
+                            </div>
+
+
+
+
+
+
+
+
+                            
                         </div>
                     </div>
                 </form>
@@ -92,7 +110,7 @@
 </div>
 <!-- Contact End -->
 <!-- Testimonial Start -->
-<div class="container-fluid bg-light bg-icon py-6 mb-5">
+@*<div class="container-fluid bg-light bg-icon py-6 mb-5">
     <div class="container">
         <div class="section-header text-center mx-auto mb-5 wow fadeInUp"
              data-wow-delay="0.1s"
@@ -161,11 +179,12 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <!-- Testimonial End -->
 
 
 @section Scripts{
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+        <script src="~/js/productdetail.js"></script>
 }

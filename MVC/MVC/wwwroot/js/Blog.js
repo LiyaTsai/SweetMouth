@@ -3,8 +3,8 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
-        BlogInfo: [],
         baseUrl: "https://localhost:7146/Home/blogPage",
+        BlogInfo: [],
     },
     mounted() {
         _this = this;
@@ -20,11 +20,12 @@ var appVue = new Vue({
                     let item = {};
                     if (_this.BlogInfo[i].floor == 0) { // 樓層 = 0 發文者
                         item = _this.BlogInfo[i];
+                        item.time = item.time.split("T")[0]
                         blogList.push(item);
                     }
                 }
                 _this.BlogInfo = blogList;
-                console.log(_this.BlogInfo)
+                //console.log(_this.BlogInfo)
             })
         },
     },

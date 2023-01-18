@@ -19,7 +19,8 @@ namespace WebApi.Models
         }
 
         public virtual DbSet<Blog> Blog { get; set; }
-        public virtual DbSet<HashTag> HashTag { get; set; }
+        public virtual DbSet<CusCake> CusCake { get; set; }
+        public virtual DbSet<Discount> Discount { get; set; }
         public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
@@ -30,17 +31,19 @@ namespace WebApi.Models
             modelBuilder.Entity<Blog>(entity =>
             {
                 entity.HasKey(e => new { e.ArticleId, e.Floor })
-                    .HasName("PK__Blog__F29BE1216C87C0D8");
+                    .HasName("PK__Blog__F29BE1217B53236E");
 
                 entity.Property(e => e.ArticleId).HasColumnName("ArticleID");
 
-                entity.Property(e => e.Article).HasMaxLength(200);
+                entity.Property(e => e.Article).HasMaxLength(1000);
 
-                entity.Property(e => e.Image)
-                    .HasMaxLength(50)
+                entity.Property(e => e.ImageName)
+                    .HasMaxLength(300)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MemberId).HasColumnName("MemberID");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.Property(e => e.SubTitle).HasMaxLength(100);
 
@@ -52,37 +55,67 @@ namespace WebApi.Models
                     .WithMany(p => p.Blog)
                     .HasForeignKey(d => d.MemberId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Blog__MemberID__70DDC3D8");
-            });
-
-            modelBuilder.Entity<HashTag>(entity =>
-            {
-                entity.HasKey(e => new { e.ProductName, e.Specifications, e.HashTag1 })
-                    .HasName("PK__HashTag__EBB7898847987EBF");
-
-                entity.Property(e => e.ProductName).HasMaxLength(50);
-
-                entity.Property(e => e.Specifications).HasMaxLength(50);
-
-                entity.Property(e => e.HashTag1)
-                    .HasMaxLength(50)
-                    .HasColumnName("HashTag");
+                    .HasConstraintName("FK__Blog__MemberID__6383C8BA");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.HashTag)
-                    .HasForeignKey(d => new { d.ProductName, d.Specifications })
+                    .WithMany(p => p.Blog)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK__Blog__ProductID__6477ECF3");
+            });
+
+            modelBuilder.Entity<CusCake>(entity =>
+            {
+                entity.Property(e => e.CusCakeId).HasColumnName("CusCakeID");
+
+                entity.Property(e => e.DueDate).HasColumnType("date");
+
+                entity.Property(e => e.ForWho).HasMaxLength(50);
+
+                entity.Property(e => e.Hate).HasMaxLength(50);
+
+                entity.Property(e => e.Like).HasMaxLength(50);
+
+                entity.Property(e => e.MemberId).HasColumnName("MemberID");
+
+                entity.Property(e => e.Note).HasMaxLength(1000);
+
+                entity.Property(e => e.Purpose).HasMaxLength(1000);
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.CusCake)
+                    .HasForeignKey(d => d.MemberId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__HashTag__68487DD7");
+                    .HasConstraintName("FK__CusCake__MemberI__71D1E811");
+            });
+
+            modelBuilder.Entity<Discount>(entity =>
+            {
+                entity.HasKey(e => e.DiscountCode)
+                    .HasName("PK__Discount__A1120AF41716907D");
+
+                entity.Property(e => e.DiscountCode)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Discount1).HasColumnName("Discount");
+
+                entity.Property(e => e.DueDate).HasColumnType("date");
             });
 
             modelBuilder.Entity<Member>(entity =>
             {
                 entity.Property(e => e.MemberId).HasColumnName("MemberID");
 
-                entity.Property(e => e.BirthDay).HasColumnType("date");
+                entity.Property(e => e.Address).HasMaxLength(200);
+
+                entity.Property(e => e.Birthday).HasColumnType("date");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FavoriteProduct)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
@@ -93,6 +126,8 @@ namespace WebApi.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Permission).HasDefaultValueSql("((0))");
+
                 entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -102,62 +137,86 @@ namespace WebApi.Models
             {
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
-                entity.Property(e => e.BuyerId).HasColumnName("BuyerID");
+                entity.Property(e => e.Amount).HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.Number).HasDefaultValueSql("((1))");
+                entity.Property(e => e.Delivary).HasMaxLength(50);
+
+                entity.Property(e => e.DiscountCode)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MemberId).HasColumnName("MemberID");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.HasOne(d => d.DiscountCodeNavigation)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.DiscountCode)
+                    .HasConstraintName("FK__Order__DiscountC__02FC7413");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.MemberId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Order__MemberID__01142BA1");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK__Order__ProductID__02084FDA");
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.Avalible).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.Category)
+                    .HasMaxLength(200)
+                    .HasDefaultValueSql("('????')");
+
+                entity.Property(e => e.Flavor).HasMaxLength(200);
+
+                entity.Property(e => e.ImageName).HasMaxLength(300);
 
                 entity.Property(e => e.ProductName)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Specifications)
+                entity.Property(e => e.Size)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasMaxLength(200);
 
-                entity.HasOne(d => d.Buyer)
-                    .WithMany(p => p.Order)
-                    .HasForeignKey(d => d.BuyerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__BuyerID__6383C8BA");
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.Order)
-                    .HasForeignKey(d => new { d.ProductName, d.Specifications })
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__656C112C");
-            });
-
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.HasKey(e => new { e.ProductName, e.Specifications })
-                    .HasName("PK__Product__8A2F0022838A55A4");
-
-                entity.Property(e => e.ProductName).HasMaxLength(50);
-
-                entity.Property(e => e.Specifications).HasMaxLength(50);
-
-                entity.Property(e => e.Avalible).HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.ImageName).HasMaxLength(150);
+                entity.Property(e => e.Tag).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Schedule>(entity =>
             {
                 entity.HasKey(e => e.Date)
-                    .HasName("PK__Schedule__77387D06A0428FF2");
+                    .HasName("PK__Schedule__77387D0605D7B36D");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
-                entity.Property(e => e.ClassId).HasColumnName("ClassID");
-
                 entity.Property(e => e.ClassName).HasMaxLength(50);
 
-                entity.Property(e => e.RentId).HasColumnName("RentID");
+                entity.Property(e => e.MemberId).HasColumnName("MemberID");
 
-                entity.HasOne(d => d.Rent)
+                entity.Property(e => e.Note).HasMaxLength(800);
+
+                entity.Property(e => e.PeopleNumber).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.HasOne(d => d.Member)
                     .WithMany(p => p.Schedule)
-                    .HasForeignKey(d => d.RentId)
-                    .HasConstraintName("FK__Schedule__RentID__5CD6CB2B");
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK__Schedule__Member__6754599E");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Schedule)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK__Schedule__Produc__68487DD7");
             });
 
             OnModelCreatingPartial(modelBuilder);

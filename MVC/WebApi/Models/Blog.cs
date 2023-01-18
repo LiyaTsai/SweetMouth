@@ -12,10 +12,12 @@ namespace WebApi.Models
         public int ArticleId { get; set; }
         public int Floor { get; set; }
         public int MemberId { get; set; }
+        public int? ProductId { get; set; }
         public string Article { get; set; }
         public DateTime? Time { get; set; }
-        public string Image { get; set; }
+        public string ImageName { get; set; }
 
         public virtual Member Member { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

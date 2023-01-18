@@ -23,11 +23,16 @@
             <h1 class="display-5 mb-3">最新訊息</h1>
         </div>
 
+        @* btn 發文鈕 *@
+        <a asp-controller="Home" asp-action="blogpostForm"
+            class="btn btn-primary rounded-pill py-sm-3 px-sm-5 mb-3">發表文章</a>
+
+
         <div class="row g-4">
 
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for="item in BlogInfo">
                 <a :href="baseUrl +'?id='+item.articleID">
-                    <img class="img-fluid" :src=`/img/${item.image}.jpg` alt="" />
+                    <img class="img-fluid" :src=`/img/${item.imageName}.jpg` alt="" />
                 </a>
                 <div class="bg-light p-4">
                     @*<a class="d-block h5 lh-base mb-4" asp-controller="Home"

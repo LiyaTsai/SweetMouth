@@ -42,7 +42,6 @@
 
     @await RenderSectionAsync("Styles", required: false)
 </head>
-
 <body>
     <!-- Spinner Start -->
     <div id="spinner"
@@ -91,9 +90,8 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">頁面</a>
                         <div class="dropdown-menu m-0">
                             <a asp-controller="Home" asp-action="Layout" class="dropdown-item">Layout</a>
-                            <a :href="MemberbaseUrl+'?Memid='+MemID" class="dropdown-item">會員資訊</a>
+                            <a asp-controller="Home" asp-action="MemberInfo" class="dropdown-item">會員資訊</a>
                             <a asp-controller="Home" asp-action="Blog" class="dropdown-item">甜嘴MoBlog</a>
-                            <a asp-controller="Home" asp-action="blogpostForm" class="dropdown-item">甜嘴MoBlog_文章發表</a>
                             <a asp-controller="Home" asp-action="Cart" class="dropdown-item">購物車頁面</a>
                             <a asp-controller="Home" asp-action="orderCustomizedCake" class="dropdown-item">客訂蛋糕頁面</a>
                             <a asp-controller="Home" asp-action="Class" class="dropdown-item">甜點課程</a>
@@ -127,9 +125,9 @@
     <!-- 登入_Modal Start -->
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header  bg-primary">
-                    <h5 class="modal-title text-white" id="exampleModalLabel">登入服務</h5>
+            <div class="modal-content momo-border-radius">
+                <div class="modal-header bg-t2 momo-login-div-top">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">會員登入</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                         <span aria-hidden="true"></span>
                     </button>
@@ -138,30 +136,30 @@
                     <form action="">
                         <div class="form-group">
                             <label for="loginmail">
-                                <h5>E-Mail or 手機號碼</h5>
+                                <h5 class=" text-t6">帳號</h5>
                             </label><br>
-                            <input class="form-control" type="email" name="" id="loginmail" placeholder="mail or Tel"
+                            <input class="form-control text-t6" type="email" name="" id="loginmail" placeholder="請輸入 E-mail 或 手機號碼"
                                 required>
                             <div class="invalid-feedback">請輸入E-Mail</div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="password">
-                                <h5>請輸入密碼</h5>
+                                <h5 class=" text-t6">密碼</h5>
                             </label><br>
-                            <input class="form-control" type="password" name="" id="password" placeholder="password"
+                            <input class="form-control" type="password" name="" id="password" placeholder="請輸入密碼"
                                 required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-1">
                             <input type="checkbox" name="" id="save">
                             <label for="save"><small>記住帳號</small></label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號?</a>
+                    <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號？</a>
                     @*<a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
                         data-bs-target="#registerModal">還沒有帳號?</a>*@
-                    <button type="submit" class="btn btn-primary" id="logginBtn">登入</button>
+                    <button type="submit" class="btn btn-primary rounded-pill" id="logginBtn">登入</button>
                 </div>
             </div>
         </div>

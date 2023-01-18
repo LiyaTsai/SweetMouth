@@ -23,7 +23,11 @@
 }
 
 .text-dark {
-  color: #C77613;
+  color: #1E1100;
+}
+
+.text-t6 {
+  color: #3F2300;
 }
 
 .btn-primary {
@@ -180,10 +184,22 @@ a:hover {
   text-decoration: none;
 }
 .anchor-tag:hover {
-  color: #C73F13;
+  color: #FF6C3E;
   text-decoration: none;
 }
 
-.bg-primary {
+.momo-login-div-top {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.momo-border-radius {
+  border-radius: 1rem 1rem;
+}
+
+.bg-t2 {
   background-color: #FFA83E !important;
+}
+
+.bg-t3 {
+  background-color: #F38B0B !important;
 }/*# sourceMappingURL=momoStyle.css.map */
