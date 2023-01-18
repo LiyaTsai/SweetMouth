@@ -12,14 +12,16 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
+        ProductID: "",
         ProductName: "",
         // Specifications: "",
-        ProductID: "",
         Price: 0,
         Flavor: "",
         Size: "",
         imageName: "",
         Avalible: "",
+        Tag: "",
+        Description: "",
     },
     mounted() {
         _this = this;

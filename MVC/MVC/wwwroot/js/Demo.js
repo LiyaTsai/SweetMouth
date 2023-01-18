@@ -7,13 +7,23 @@ var appVue = new Vue({
     name: "appVue",
     data: {
         ProductInfo: [],
-        // baseUrl: "https://localhost:7146/Home/productDetail",
+        // ProductID: "",
+        ProductName: "",
+        // Specifications: "",
+        lowerPrice: 0,
+        Flavor: "",
+        Size: "",
+        imageName: "",
+        Avalible: "",
+        Tag: "",
+        Description: "",
         baseUrl: "https://localhost:7146/Home/productDetail",
         itempage: 0,
     },
     mounted() {
         _this = this;
         _this.MakeProInfo();
+        _this.GetPrice();
     },
     methods: {
         MakeProInfo: function () {
@@ -26,20 +36,26 @@ var appVue = new Vue({
                     if (this.ProductInfo[i].avalible == true) {
                         item = this.ProductInfo[i];
                         arr.push(item);
-                        console.log(_this.ProductInfo.productId)
                     }
                 }
                 _this.ProductInfo = arr;
             });
         },
 
+        GetPrice: function () {
+            let _this = this;
+            setTimeout(() => {
+                console.log(_this.ProductInfo);
+                console.log(typeof _this.ProductInfo[1].Price);
+                for (i = 0; i < _this.ProductInfo.length; i++) {
+                    console.log(_this.ProductInfo[i].Price);
+                }
+            }, 150);
+        },
+
         countpage() {
             //this.itempage = Math.ceil(this.itempage / 8);
             //console.log(this.itempage);
-        },
-        toPD() {
-            let _this = this;
-            axios.get(`${webApiBaseUri}api/Product`).then((a) => {});
         },
     },
 });
