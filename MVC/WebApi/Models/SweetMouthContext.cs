@@ -25,6 +25,7 @@ namespace WebApi.Models
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
+        public virtual DbSet<SignUp> SignUp { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -176,6 +177,8 @@ namespace WebApi.Models
                     .HasMaxLength(200)
                     .HasDefaultValueSql("('????')");
 
+                entity.Property(e => e.Description).HasMaxLength(400);
+
                 entity.Property(e => e.Flavor).HasMaxLength(200);
 
                 entity.Property(e => e.ImageName).HasMaxLength(300);
@@ -217,6 +220,30 @@ namespace WebApi.Models
                     .WithMany(p => p.Schedule)
                     .HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK__Schedule__Produc__68487DD7");
+            });
+
+            modelBuilder.Entity<SignUp>(entity =>
+            {
+                entity.HasKey(e => new { e.Date, e.MemberId })
+                    .HasName("PK__SignUp__E7F779B51F52E879");
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.MemberId).HasColumnName("MemberID");
+
+                entity.Property(e => e.IsJoin).HasDefaultValueSql("((0))");
+
+                entity.HasOne(d => d.DateNavigation)
+                    .WithMany(p => p.SignUp)
+                    .HasForeignKey(d => d.Date)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__SignUp__Date__09A971A2");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.SignUp)
+                    .HasForeignKey(d => d.MemberId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__SignUp__MemberID__0A9D95DB");
             });
 
             OnModelCreatingPartial(modelBuilder);

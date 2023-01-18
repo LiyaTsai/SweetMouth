@@ -13,6 +13,7 @@ namespace WebApi.Models
             CusCake = new HashSet<CusCake>();
             Order = new HashSet<Order>();
             Schedule = new HashSet<Schedule>();
+            SignUp = new HashSet<SignUp>();
         }
 
         public int MemberId { get; set; }
@@ -30,5 +31,6 @@ namespace WebApi.Models
         public virtual ICollection<CusCake> CusCake { get; set; }
         public virtual ICollection<Order> Order { get; set; }
         public virtual ICollection<Schedule> Schedule { get; set; }
+        public virtual ICollection<SignUp> SignUp { get; set; }
     }
 }

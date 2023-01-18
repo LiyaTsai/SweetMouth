@@ -56,17 +56,19 @@ var appVue = new Vue({
         _this = this;
     },
     methods: {
-        postClass: function () {
+        postNewSignUp: function () {
             let request = {};
             let Time = new Date();
 
             request.date = Time;
-            request.memberId = 99008;
-            request.productID = 10001;
-            request.className = "777";
-            request.peopleNumber = _this.peoNum;
-            request.note = "77777";
-            axios.post(`${webApiBaseUri}api/Schedules`,request).then(res => {
+            request.memberId = 99006;
+            request.isJoin = true;
+            //request.productID = 10001;
+            //request.className = "777";
+            //request.peopleNumber = _this.peoNum;
+            //request.note = "77777";
+            request.isJoin = true;
+            axios.post(`${webApiBaseUri}api/SignUp`,request).then(res => {
                 alert("報名成功")
 
             })

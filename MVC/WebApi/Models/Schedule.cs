@@ -7,6 +7,11 @@ namespace WebApi.Models
 {
     public partial class Schedule
     {
+        public Schedule()
+        {
+            SignUp = new HashSet<SignUp>();
+        }
+
         public DateTime Date { get; set; }
         public int? MemberId { get; set; }
         public int? ProductId { get; set; }
@@ -16,5 +21,6 @@ namespace WebApi.Models
 
         public virtual Member Member { get; set; }
         public virtual Product Product { get; set; }
+        public virtual ICollection<SignUp> SignUp { get; set; }
     }
 }
