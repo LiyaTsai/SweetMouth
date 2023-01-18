@@ -27,30 +27,36 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUrl}api/Blogs`).then(a => {  //先抓出所有的Blog文章資料
                 for (let i = 0; i < a.data.length; i++) {       //把所有抓出來的文章資料遍歷
                     if (a.data[i].articleID == articleID.split("=")[1]) {   //如果抓出來的資料中文章ID=Route中的文章ID
-                        if (a.data[i].floor == 0) { _this.articlePoster.push(a.data[i]) }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
+                        if (a.data[i].floor == 0) {
+                            let item = {};
+                            item = a.data[i];
+                            item.time = item.time.split("T")[0]
+                            _this.articlePoster.push(item)
+                        }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
                         else {                                  //其他同文章ID(同一篇文章下的留言)
                             _this.floors.push(a.data[i]);       //塞進floors
                         }
-                    }
-                    else { continue; }                          //GET出來的如果文章ID不符就跳過
+                    } else { continue; } //GET出來的如果文章ID不符就跳過
                 }
             });
         },
+
         // 時間格式
-        dateFormate: function () {
-            let date = new Date();
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let day = date.getDate();
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            let seconds = date.getSeconds();
-            return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-        },
+        // dateFormate: function () {
+        //     let date = new Date();
+        //     let year = date.getFullYear();
+        //     let month = date.getMonth() + 1;
+        //     let day = date.getDate();
+        //     let hours = date.getHours();
+        //     let minutes = date.getMinutes();
+        //     let seconds = date.getSeconds();
+        //     return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        // },
+
         // 新增留言
         insert: function () {
             if (sessionStorage.getItem("MemberID") == null) {
-                alert("請先登入會員!!")
+                alert("請先登入會員!!");
             } else {
                 let _this = this;
                 let request = {};
@@ -64,35 +70,12 @@ var appVue = new Vue({
                 request.Floor = _this.floors.length;
                 request.Time = Time;
                 request.Article = _this.article;
-                axios.post(`${webApiBaseUrl}api/Blogs`, request).then(res => {
+                axios.post(`${webApiBaseUrl}api/Blogs`, request).then((res) => {
                     alert("留言成功");
                     _this.LogFloor();
                     _this.article = null;
-                })
+                });
             }
         },
-
-        // Get Tag
-        MakeHashTag: function () {
-            let _this = this;
-            axios.get(`${webApiBaseUrl}api/HashTag`).then(response => {
-                let tagList = [];
-                for (let i = 0; i < response.data.length; i++) {
-                    tagList.push(response.data[i]);
-                }
-
-                // let f_tagList = tagList.filter(function (item, index, tagList) {
-                //     //console.log(item)
-                //     return tagList.indexOf(item)
-                // })
-
-                let f_tagList = tagList.filter(function (item) {
-                    //console.log(item.hashTag1)
-                    return item.hashTag1.match('蛋')
-                })
-
-                _this.TagInfo = f_tagList;
-            })
-        },
     },
-})
+});

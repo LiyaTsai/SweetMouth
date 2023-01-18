@@ -9,9 +9,12 @@ namespace WebApi.Models
     {
         public DateTime Date { get; set; }
         public int? MemberId { get; set; }
-        public int? ClassId { get; set; }
+        public int? ProductId { get; set; }
         public string ClassName { get; set; }
+        public int? PeopleNumber { get; set; }
+        public string Note { get; set; }
 
         public virtual Member Member { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

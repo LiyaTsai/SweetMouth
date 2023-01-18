@@ -6,7 +6,7 @@
 </div>
 <!-- Page Header End -->
 <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-    <h1 class="display-5 mb-3">會員註冊</h1>
+    <h1 class="display-5 mb-3 text-primary">會員資料</h1>
 </div>
 
 <div class="container mb-5" id="appVue">
@@ -31,7 +31,7 @@
 
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" v-model="CheckPass" placeholder="請輸入密碼">
-                    <label for="floatingInput">確認密碼</label>
+                    <label for="floatingInput">請再次輸入密碼</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" v-model="phoneNumber" placeholder="請輸入手機號碼">
+                    <input type="text" class="form-control" v-model="phoneNumber" placeholder="請輸入手機號碼" maxlength="10">
                     <label for="floatingInput">請輸入手機號碼</label>
                 </div>
 

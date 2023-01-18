@@ -34,7 +34,7 @@ namespace WebApi.Controllers
                 Email = a.Email,
                 PhoneNumber = a.PhoneNumber,
                 Password = a.Password,
-                BirthDay = a.BirthDay,
+                Birthday = a.Birthday,
                 Order = a.Order
             }
             );
@@ -56,7 +56,7 @@ namespace WebApi.Controllers
                 NickName = mem.NickName,
                 Email = mem.Email,
                 PhoneNumber = mem.PhoneNumber,
-                BirthDay = mem.BirthDay,
+                Birthday = mem.Birthday,
             };
         }
 
@@ -70,7 +70,7 @@ namespace WebApi.Controllers
                 NickName = mdto.NickName,
                 Email = mdto.Email,
                 PhoneNumber = mdto.PhoneNumber,
-                BirthDay = mdto.BirthDay,
+                //BirthDay = mdto.BirthDay,
                 Password = mdto.Password,
             };
             _context.Member.Add(mem);
@@ -93,7 +93,7 @@ namespace WebApi.Controllers
             mem.NickName = mDTO.NickName;
             mem.Email = mDTO.Email;
             mem.PhoneNumber = mDTO.PhoneNumber;
-            mem.BirthDay = mDTO.BirthDay;
+            //mem.BirthDay = mDTO.BirthDay;
             _context.Entry(mem).State = EntityState.Modified;
             try
             {

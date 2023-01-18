@@ -10,6 +10,7 @@ namespace WebApi.Models
         public Member()
         {
             Blog = new HashSet<Blog>();
+            CusCake = new HashSet<CusCake>();
             Order = new HashSet<Order>();
             Schedule = new HashSet<Schedule>();
         }
@@ -20,9 +21,13 @@ namespace WebApi.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
-        public DateTime? BirthDay { get; set; }
+        public DateTime? Birthday { get; set; }
+        public string Address { get; set; }
+        public bool? Permission { get; set; }
+        public string FavoriteProduct { get; set; }
 
         public virtual ICollection<Blog> Blog { get; set; }
+        public virtual ICollection<CusCake> CusCake { get; set; }
         public virtual ICollection<Order> Order { get; set; }
         public virtual ICollection<Schedule> Schedule { get; set; }
     }
