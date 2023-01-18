@@ -31,14 +31,30 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUri}api/Product`).then((a) => {
                 _this.ProductInfo = a.data;
                 let arr = [];
-                for (i = 0; i < this.ProductInfo.length; i++) {
+                let x = this.ProductInfo.length
+                for (i = 0; i < x; i++) {
                     let item = {};
                     if (this.ProductInfo[i].avalible == true) {
                         item = this.ProductInfo[i];
-                        arr.push(item);
+                    }
+                    this.ProductInfo[i].tag = this.ProductInfo[i].tag.split("|")
+                    let taglength = this.ProductInfo[i].tag.length
+                    for (j = 0; j < taglength; j++) {
+                        if (this.ProductInfo[i].tag[j] == '狗狗可食' || this.ProductInfo[i].tag[j] == '含酒') {
+                            let x = this.ProductInfo[i].tag[j];
+                            this.ProductInfo[i].tag = [];
+                            this.ProductInfo[i].tag[0] = x;
+                        }
+                    }
+                    if (this.ProductInfo[i].tag.length > 1) {
+                        this.ProductInfo[i].tag = [];
                     }
                 }
+                console.log(this.ProductInfo)
+
+                arr.push(item);
                 _this.ProductInfo = arr;
+                console.log(this.ProductInfo);
             });
         },
 
