@@ -8,15 +8,15 @@ var appVue = new Vue({
     data: {
         ProductInfo: [],
         // ProductID: "",
-        ProductName: "",
+        // ProductName: "",
         // Specifications: "",
-        lowerPrice: 0,
-        Flavor: "",
-        Size: "",
-        imageName: "",
-        Avalible: "",
-        Tag: "",
-        Description: "",
+        lowerPrice: [],
+        // Flavor: "",
+        // Size: "",
+        // imageName: "",
+        // Avalible: "",
+        // Tag: "",
+        // Description: "",
         baseUrl: "https://localhost:7146/Home/productDetail",
         itempage: 0,
     },
@@ -44,13 +44,18 @@ var appVue = new Vue({
 
         GetPrice: function () {
             let _this = this;
+            let p = 0;
+            let arr = [];
             setTimeout(() => {
-                console.log(_this.ProductInfo);
-                console.log(typeof _this.ProductInfo[1].Price);
+                // console.log(_this.ProductInfo);
+                // console.log(typeof _this.ProductInfo[1].price);
                 for (i = 0; i < _this.ProductInfo.length; i++) {
-                    console.log(_this.ProductInfo[i].Price);
+                    p = _this.ProductInfo[i].price.split("|")[0];
+                    _this.ProductInfo[i].price = p;
+                    arr.push(p);
                 }
-            }, 150);
+                _this.lowerPrice = arr;
+            }, 200);
         },
 
         countpage() {
