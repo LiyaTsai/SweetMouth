@@ -1,23 +1,21 @@
-﻿
-/*var loginmail = document.getElementById("loginmail");*/
+﻿/*var loginmail = document.getElementById("loginmail");*/
 loginmail = $("#loginmail")                             //帳號輸入欄位
 var password = document.getElementById("password");     //密碼輸入欄位
 var webApiBaseUrl = "https://localhost:7096/"
 
-var navbarCollapse = new Vue({
-    el: "#navbarCollapse",
-    name: "navbarCollapse",
-    data: {
-        MemID: 0,
-        nickName: null,
-        MemberbaseUrl: "https://localhost:7146/Home/MemberInfo",
-    },
-    mounted() {
-
-    },
-    methods: {
-    },
-})
+//var navbarCollapse = new Vue({
+//    el: "#navbarCollapse",
+//    name: "navbarCollapse",
+//    data: {
+//        MemID: 0,
+//        nickName: null,
+//        MemberbaseUrl: "https://localhost:7146/Home/MemberInfo",
+//    },
+//    mounted() {
+//    },
+//    methods: {
+//    },
+//})
 
 
 
@@ -28,20 +26,22 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
         for (let i = 0; i < b.length; i++) {
             if ((b[i].phoneNumber == loginmail.val() || b[i].email == loginmail.val()) && b[i].password == password.value) {
                 isMem = true;
-                navbarCollapse.MemID = b[i].memberId;
+                /*navbarCollapse.MemID = b[i].memberId;*/
                 sessionStorage.setItem("MemberID", b[i].memberId);
                 sessionStorage.setItem("nickName", b[i].nickName);
                 save = document.getElementById("save");
                 console.log(save.checked)
                 if (save.checked) {
                     document.cookie = `MemberID=${b[i].memberId};max-age=86400`;
-                    document.cookie="Test=tttt;max-age=86400"
-                };
-                break;
+                }
+                else {
+                    document.cookie = `MemberID=${b[i].memberId};max-age=0`;
+                };               
                 //sessionStorage.setItem("MemberID", b[i].memberId)
                 //var Id = sessionStorage.getItem("MemberID")
                 alert(`${b[i].name}歡迎登入`);
                 //$("#loginModal").modal('hide');
+                break;
             }
             else { isMem = false; }
         }
