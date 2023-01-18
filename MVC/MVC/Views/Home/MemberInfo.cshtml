@@ -18,31 +18,67 @@
                 <div class="col-md-4">
                     <ul class="list-group">
                         <template v-if="Edit">
-                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditInfo('{{MemberInfo.name}}')">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditName">
                                 姓名：{{MemberInfo.name}}</li>
                         </template>
                         <template v-else>
                             <li class="list-group-item">姓名：<input id="nameInput" onfocus="this.select()" /><button
-                                    v-on:click="EditInfo('name')">確認</button><button
+                                    v-on:click="EditName">確認</button><button
                                     v-on:click="Cancel">取消</button></li>
                         </template>
 
-                        <template v-if="Edit">
-                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditInfo('nickName')">
+                        <template v-if="isEditNick">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditNick">
                                 暱稱：{{MemberInfo.nickName}}
                             </li>
                         </template>
                         <template v-else>
                             <li class="list-group-item">
-                                暱稱：<input id="nickNameInput" onfocus="this.select()" /><button v-on:click="EditInfo('nickName')">
+                                暱稱：<input id="nickNameInput" onfocus="this.select()" /><button v-on:click="EditNick">
                                     確認
                                 </button><button v-on:click="Cancel">取消</button></li>
                         </template>
 
-                        @*<li class="list-group-item">暱稱：{{MemberInfo.nickName}}</li>*@
-                        <li class="list-group-item">Email：{{MemberInfo.email}}</li>
-                        <li class="list-group-item">電話：{{MemberInfo.phoneNumber}}</li>
-                        <li class="list-group-item">生日：{{Birth}}</li>
+                        <template v-if="isEditEmail">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditEmail">
+                                Email：{{MemberInfo.email}}
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li class="list-group-item">
+                                Email：<input id="EmailInput" onfocus="this.select()" /><button v-on:click="EditEmail">
+                                    確認
+                                </button><button v-on:click="Cancel">取消</button>
+                            </li>
+                        </template>
+
+                        <template v-if="isEditPhone">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditPhone">
+                                電話：{{MemberInfo.phoneNumber}}
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li class="list-group-item">
+                                電話：<input id="PhoneInput" onfocus="this.select()" /><button v-on:click="EditPhone">
+                                    確認
+                                </button><button v-on:click="Cancel">取消</button>
+                            </li>
+                        </template>
+                     
+                        <template v-if="isEditBirth">
+                            <li class="list-group-item" style="cursor:pointer" v-on:click="EditBirth">
+                                生日：{{Birth}}
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li class="list-group-item">
+                                生日：<input id="BirthInput" onfocus="this.select()" /><button v-on:click="EditBirth">
+                                    確認
+                                </button><button v-on:click="Cancel">取消</button>
+                            </li>
+                        </template>
+                        
+                        @*<li class="list-group-item">生日：{{Birth}}</li>*@
                     </ul>
                 </div>
 
@@ -63,9 +99,7 @@
                                 aria-labelledby="flush-headingOne">
                                 <div class="accordion-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item">商品1</li>
-                                        <li class="list-group-item">商品2</li>
-                                        <li class="list-group-item">商品3</li>
+                                        <li class="list-group-item">商品1</li>                                       
                                     </ul>
                                 </div>
                             </div>
