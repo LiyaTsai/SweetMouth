@@ -1,6 +1,3 @@
-var de = document.getElementById("de");
-//de.innerHTML += `<li>33333333333</li>`
-
 var webApiBaseUri = "https://localhost:7096/"; //����e�������|�g�_�ӥH�ᴫ����o�N�n
 var appVue = new Vue({
     el: "#appVue",
@@ -25,6 +22,7 @@ var appVue = new Vue({
         _this.MakeProInfo();
         _this.GetPrice();
         _this.addToCart();
+        _this.checkClickEvent();
     },
     methods: {
         MakeProInfo: function () {
@@ -63,7 +61,7 @@ var appVue = new Vue({
                         // if (this.ProductInfo[i].tag.length > 1) {
                         //     this.ProductInfo[i].tag = "";
                         // }
-                        arr.push(item); //這裡報錯
+                        arr.push(item);
                     }
                 }
                 _this.ProductInfo = arr;
@@ -92,20 +90,8 @@ var appVue = new Vue({
             //console.log(this.itempage);
         },
 
-        addToCart() {
-            // console.log("我在加入購物車");
-            let _this = this;
-            setTimeout(() => {
-                var cartBtn = document.getElementById("addToCartBtn");
-                cartBtn.addEventListener("click", function () {
-                    axios.get(
-                        console.log("click加入購物車")`${webApiBaseUri} / api / Product`.then((a) => {
-                            console.log(a);
-                            // let productID = a.
-                        })
-                    );
-                });
-            }, 500);
+        addToCart(id) {
+            sessionStorage.setItem("buyProductID", id);
         },
     },
 });
