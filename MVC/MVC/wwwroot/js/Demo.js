@@ -31,28 +31,38 @@ var appVue = new Vue({
             axios.get(`${webApiBaseUri}api/Product`).then((a) => {
                 _this.ProductInfo = a.data;
                 let arr = [];
-                let x = this.ProductInfo.length
+                let x = this.ProductInfo.length;
                 for (i = 0; i < x; i++) {
+                    // 檢查上架狀態avalible
                     let item = {};
                     if (this.ProductInfo[i].avalible == true) {
                         item = this.ProductInfo[i];
                     }
-                    this.ProductInfo[i].tag = this.ProductInfo[i].tag.split("|")
-                    let taglength = this.ProductInfo[i].tag.length
+                    // 切分tag標籤
+
+                    this.ProductInfo[i].tag = this.ProductInfo[i].tag.split("|");
+
+                    let a = this.ProductInfo[i].tag.filter((x) => x == "狗狗可食" || x == "含酒");
+                    console.log(a);
+
+                    let taglength = this.ProductInfo[i].tag.length;
                     for (j = 0; j < taglength; j++) {
-                        if (this.ProductInfo[i].tag[j] == '狗狗可食' || this.ProductInfo[i].tag[j] == '含酒') {
+                        // 找到有"狗狗可食"或"含酒"的標籤以顯示
+                        if (this.ProductInfo[i].tag[j] == "狗狗可食" || this.ProductInfo[i].tag[j] == "含酒") {
+                            //如有指定標籤則留下
                             let x = this.ProductInfo[i].tag[j];
                             this.ProductInfo[i].tag = [];
-                            this.ProductInfo[i].tag[0] = x;
+                            this.ProductInfo[i].tag = x;
                         }
                     }
+                    // 其餘標籤均清空
                     if (this.ProductInfo[i].tag.length > 1) {
-                        this.ProductInfo[i].tag = [];
+                        this.ProductInfo[i].tag = "";
                     }
                 }
-                console.log(this.ProductInfo)
+                console.log(this.ProductInfo);
 
-                arr.push(item);
+                arr.push(item); //這裡報錯  Uncaught (in promise) ReferenceError: item is not defined
                 _this.ProductInfo = arr;
                 console.log(this.ProductInfo);
             });
@@ -77,6 +87,10 @@ var appVue = new Vue({
         countpage() {
             //this.itempage = Math.ceil(this.itempage / 8);
             //console.log(this.itempage);
+        },
+
+        addToCart() {
+            let _this = this;
         },
     },
 });
