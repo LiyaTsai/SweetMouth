@@ -86,11 +86,18 @@ namespace MVC.Controllers
             return View();
         }
 
+        public IActionResult lesson()
+        {
+            ViewBag.btitle = "甜點課程";
+            return View();
+        }
+
         public IActionResult Calendar()
         {
             ViewBag.btitle = "甜點課程";
             return View();
         }
+
         public IActionResult memberfrom()
         {
             ViewBag.btitle = "會員表單";
