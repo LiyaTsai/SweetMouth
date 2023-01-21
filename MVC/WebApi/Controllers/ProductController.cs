@@ -41,7 +41,8 @@ namespace WebApi.Controllers
                 ImageName = x.ImageName,
                 Avalible = x.Avalible,
                 Tag = x.Tag,
-                Description = x.Description
+                Description = x.Description,
+                Category = x.Category,
             }
             );
         }
