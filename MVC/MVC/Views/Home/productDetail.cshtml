@@ -7,10 +7,10 @@
     <div class="container">
         <h1 class="display-3 mb-3 animated slideInDown text-primary">甜點細節</h1>
         <nav aria-label="breadcrumb animated slideInDown">
-@*            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">這裡能不能自動產生路徑</li>
+            @*            <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
+            <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
+            <li class="breadcrumb-item text-dark active" aria-current="page">這裡能不能自動產生路徑</li>
             </ol>*@
         </nav>
     </div>
@@ -33,23 +33,23 @@
 
                 <!-- Carousel Start -->
                 @*<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="w-100" src="~/img/blackChocolate.jpg" alt="Image" />
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                                data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                                data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img class="w-100" src="~/img/blackChocolate.jpg" alt="Image" />
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+                </div>
                 </div>*@
                 <!-- Carousel End -->
 
@@ -64,7 +64,7 @@
                         <div class="col-12">
                             <div class="col-12">
                                 <div class="">
-                                    <span class="text-secondary btn mx-3 rounded-pill border-1" v-for ="t in tagArray">{{t}}  </span>
+                                    <span class="text-secondary btn mx-3 rounded-pill border-1 momo-pd-tag" v-for="t in tagArray">{{t}}  </span>
 
                                 </div>
                                 <p class="text-primary display-6 col-12">
@@ -76,10 +76,8 @@
                             </div>
 
                             <div class="col-8">
-                                <div v-for="i in size" class="momo-pd-size">
-                                    <span>{{i}}</span>
-                                    @*<span v-if="">{{i}}</span>
-                                    <span v-else="">{{i}}</span>*@
+                                <div v-for="(_size,i) in size" class="momo-pd-size" :key="i">
+                                    <span :id="i" v-on:click="specification(i)" class="acive" >{{_size}}</span>
                                 </div>
                                 <div class="my-2">
                                     <span class="text-primary me-1 display-6" v-for="p in price">${{p}}</span>
@@ -89,14 +87,14 @@
                                     <span>數量</span>
                                     <input type="number" name="" id="" class="border-primary text-center momo-product-amount" min="0" max="20">
                                 </div>
-                            <!-- <span class="me-2">
-                                加入收藏
-                                <i class="fal fa-heart"></i>
-                                <i class="fas fa-heart"></i>
-                            </span> -->
-                            <button class="btn btn-primary rounded-pill mt-2 py-1 px-3" type="submit">
-                                送出訂單
-                            </button>
+                                <!-- <span class="me-2">
+                                    加入收藏
+                                    <i class="fal fa-heart"></i>
+                                    <i class="fas fa-heart"></i>
+                                </span> -->
+                                <button class="btn btn-primary rounded-pill mt-2 py-1 px-3" type="submit">
+                                    加入購物車
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -178,10 +176,8 @@
     </div>
 </div>*@
 <!-- Testimonial End -->
-
-
 @section Scripts{
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-        <script src="~/js/productdetail.js"></script>
+    <script src="~/js/productdetail.js"></script>
 }

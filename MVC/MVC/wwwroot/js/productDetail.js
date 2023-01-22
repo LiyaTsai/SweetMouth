@@ -26,13 +26,13 @@ var appVue = new Vue({
     mounted() {
         _this = this;
         _this.GetProduct();
-        _this.spcification();
+        _this.specification();
     },
     methods: {
         GetProduct: function () {
             let _this = this;
             axios.get(`${webApiBaseUrl}api/Product/${urlProductID}`).then((a) => {
-                console.log(a.data);
+                // console.log(a.data);
                 _this.productID = a.data.productID;
                 _this.productName = a.data.productName;
                 _this.flavor = a.data.flavor;
@@ -43,10 +43,10 @@ var appVue = new Vue({
                 _this.description = a.data.description;
                 _this.tagArray = a.data.tagArray;
             });
-            console.log(_this.description);
         },
-        spcification() {
-            // if (size.lenght)
+        specification() {
+            console.log("在specification裡");
+            console.log();
         },
     },
 });
