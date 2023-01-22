@@ -8,12 +8,7 @@ var appVue = new Vue({
         // ProductName: "",
         // Specifications: "",
         lowerPrice: [],
-        // Flavor: "",
-        // Size: "",
-        // imageName: "",
-        // Avalible: "",
-        // Tag: "",
-        // Description: "",
+        cetagory: "",
         baseUrl: "https://localhost:7146/Home/productDetail",
         itempage: 0,
     },
@@ -29,6 +24,7 @@ var appVue = new Vue({
             let _this = this;
             axios.get(`${webApiBaseUri}api/Product`).then((a) => {
                 _this.ProductInfo = a.data;
+                _this.cetagory = a.data.cetagory;
                 let arr = [];
                 let x = this.ProductInfo.length;
                 for (i = 0; i < x; i++) {
@@ -90,8 +86,26 @@ var appVue = new Vue({
             //console.log(this.itempage);
         },
 
-        addToCart(id) {
-            sessionStorage.setItem("buyProductID", id);
+        addToCart(id, price, amount) {
+            // console.log("按下加入加入購物車");
+            _price = price.split("|")[0];
+            let session = sessionStorage;
+
+            if (session[id]) {
+                let tempPrice = _price;
+                let tempAmount = session.getItem(id).split("|")[1];
+                tempAmount++;
+                value = `${_price}|${tempAmount}`;
+                session.removeItem(id);
+                session.setItem(id, value);
+            } else {
+                let value = `${_price}|${amount}`;
+                session.setItem(id, value);
+            }
+        },
+
+        category() {
+            //切分頁
         },
     },
 });

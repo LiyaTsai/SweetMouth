@@ -26,6 +26,7 @@ var appVue = new Vue({
     mounted() {
         _this = this;
         _this.GetProduct();
+        _this.spcification();
     },
     methods: {
         GetProduct: function () {
@@ -35,14 +36,17 @@ var appVue = new Vue({
                 _this.productID = a.data.productID;
                 _this.productName = a.data.productName;
                 _this.flavor = a.data.flavor;
-                _this.size = a.data.size;
+                _this.size = a.data.size.split("|");
                 _this.tag = a.data.tag;
-                _this.Price = a.data.price;
+                _this.Price = a.data.price.split("|");
                 _this.imageName = a.data.imageName;
                 _this.description = a.data.description;
                 _this.tagArray = a.data.tagArray;
             });
-            // console.log(_this.productName);
+            console.log(_this.description);
+        },
+        spcification() {
+            // if (size.lenght)
         },
     },
 });

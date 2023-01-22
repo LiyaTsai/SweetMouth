@@ -184,6 +184,11 @@ a:hover {
   text-decoration: none;
 }
 .anchor-tag:hover {
+  color: #C73F13;
+  text-decoration: none;
+}
+
+.bg-primary {
   color: #FF6C3E;
   text-decoration: none;
 }
@@ -202,4 +207,17 @@ a:hover {
 
 .bg-t3 {
   background-color: #F38B0B !important;
+}
+
+.momo-pd-size {
+  padding: 0.3rem 1rem;
+  margin: 2rem 1rem 2rem 1rem;
+  border: 1px solid #C73F13;
+  border-radius: 0.5rem;
+  color: #FF6C3E;
+}
+.momo-pd-size:hover {
+  cursor: pointer;
+  background-color: #C73F13;
+  color: #FFFACA;
 }/*# sourceMappingURL=momoStyle.css.map */

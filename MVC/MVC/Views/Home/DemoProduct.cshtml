@@ -2,9 +2,9 @@
     <div class="container">
         <h1 class="display-3 mb-3 animated slideInDown text-primary">產品清單</h1>
         <nav aria-label="breadcrumb animated slideInDown">
-@*            <ol class="breadcrumb mb-0" id="de">
-                <li class="breadcrumb-item"><a class="text-body" href="#">首頁</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">產品</li>
+            @*            <ol class="breadcrumb mb-0" id="de">
+            <li class="breadcrumb-item"><a class="text-body" href="#">首頁</a></li>
+            <li class="breadcrumb-item text-dark active" aria-current="page">產品</li>
             </ol>*@
         </nav>
     </div>
@@ -30,7 +30,7 @@
                 <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                     <li class="nav-item me-2">
 
-                        <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#tab-1">常備品項</a>
+                        <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#tab-1" >常備品項</a>
 
                     </li>
                     <li class="nav-item me-2">
@@ -44,65 +44,13 @@
                 </ul>
             </div>
         </div>
-        <div class="tab-content" v-for="i in ProductInfo">
-            <div id="tab-1" class="tab-pane fade show p-0 active" v-if="i.category == '常備品項'">
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
                 <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" >
-                        
-                        <div class="product-item">
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for="i in ProductInfo">
+
+                        <div class="product-item" v-if="i.category == '常備品項'">
                             <div class="position-relative bg-light overflow-hidden">
-                               
-                                    <a :href="baseUrl +'?productID='+i.productId">
-                                        <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
-                                            :title=`${i.productName}` />
-                                    </a> 
-                                <div v-if="i.tag.length >= 1"
-                                    class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                    {{i.tag}}
-                                </div>
-                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
-                                    py-1 px-3 momo-off-shelve">
-                                    下架
-                                    </button>*@
-                            </div>
-                            <div class="text-center p-4">
-                                <span>
-                                    <a :href="baseUrl +'?productId='+i.productId"
-                                       class="anchor-tag">{{i.productName}}</a>
-                                </span>
-                                <br />
-
-                                <span class="text-primary me-1">{{i.flavor}}</span>
-                                <span class="text-primary me-1">${{i.price}}</span>
-                                <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" :href="baseUrl +'?productId='+i.productId">
-                                        <i class="fa fa-eye text-primary me-2"></i>
-                                        查看商品
-                                    </a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                    <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
-                                        <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
-                                    </div>
-                                </small>
-                            </div>
-                            <div>
-                        </div>
-                        </div>
-                    </span>
-                </div>
-            </div>
-            <div id="tab-2" class="tab-pane fade show p-0 active">
-                <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"v-else-if="i.category == '泡芙'">
-
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-
                                 <a :href="baseUrl +'?productID='+i.productId">
                                     <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
                                          :title=`${i.productName}` />
@@ -136,229 +84,167 @@
                                 </small>
                                 <small class="w-50 text-center py-2">
                                     @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                    <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
-                                        <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
+                                    <div class="text-body" href="" v-on:click="addToCart(i.productId,i.price,1)" id="addToCartBtn">
+                                        <i class="fa fa-shopping-bag text-primary me-2" id="addCartBtn" value="i.productId"></i>加入購物車
                                     </div>
                                 </small>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="tab-pane fade show p-0 active" v-else-if="i.category == 泡芙">
+                <div class="product-item">
+                    <div class="position-relative bg-light overflow-hidden">
+                        <a :href="baseUrl +'?productID='+i.productId">
+                            <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
+                                 :title=`${i.productName}` />
+                        </a>
+                        <div v-if="i.tag.length >= 1"
+                             class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                            {{i.tag}}
+                        </div>
+                        <div>
                             <div>
+
+                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
+                                py-1 px-3 momo-off-shelve">
+                                下架
+                                </button>*@
+                                <div class="text-center p-4">
+                                    <span>
+                                        <a :href="baseUrl +'?productId='+i.productId"
+                                           class="anchor-tag">{{i.productName}}</a>
+                                    </span>
+                                    <br />
+
+                                    <span class="text-primary me-1">{{i.flavor}}</span>
+                                    <span class="text-primary me-1">${{i.price}}</span>
+                                    <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
+                                </div>
+                                <div class="d-flex border-top">
+                                    <small class="w-50 text-center border-end py-2">
+                                        <a class="text-body" :href="baseUrl +'?productId='+i.productId">
+                                            <i class="fa fa-eye text-primary me-2"></i>
+                                            查看商品
+                                        </a>
+                                    </small>
+                                    <small class="w-50 text-center py-2">
+                                        @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
+                                        <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
+                                            <i class="fa fa-shopping-bag text-primary me-2" id="addCartBtn" value="i.productId"></i>加入購物車
+                                        </div>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-3" class="tab-pane fade show p-0 active" v-else="i.category == 季節限定">
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="product-item">
+                            <div class="position-relative bg-light overflow-hidden">
+                                <a :href="baseUrl +'?productID='+i.productId">
+                                    <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
+                                         :title=`${i.productName}` />
+                                </a>
+                                <div v-if="i.tag.length >= 1"
+                                     class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                    {{i.tag}}
+                                </div>
+                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
+                                py-1 px-3 momo-off-shelve">
+                                下架
+                                </button>*@
+                            </div>
+                            <div class="text-center p-4">
+                                <span>
+                                    <a :href="baseUrl +'?productId='+i.productId"
+                                       class="anchor-tag">{{i.productName}}</a>
+                                </span>
+                                <br />
+                                <span class="text-primary me-1">{{i.flavor}}</span>
+                                <span class="text-primary me-1">${{i.price}}</span>
+                                <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="w-50 text-center border-end py-2">
+                                    <a class="text-body" :href="baseUrl +'?productId='+i.productId">
+                                        <i class="fa fa-eye text-primary me-2"></i>
+                                        查看商品
+                                    </a>
+                                </small>
+                                <small class="w-50 text-center py-2">
+                                    @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
+                                    <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
+                                        <i class="fa fa-shopping-bag text-primary me-2" id="addCartBtn" value="i.productId"></i>加入購物車
+                                    </div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-2" class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-else-if="i.category == '泡芙'">
+
+                            <div class="product-item">
+                                <div class="position-relative bg-light overflow-hidden">
+
+                                    <a :href="baseUrl +'?productID='+i.productId">
+                                        <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
+                                             :title=`${i.productName}` />
+                                    </a>
+                                    <div v-if="i.tag.length >= 1"
+                                         class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                        {{i.tag}}
+                                    </div>
+                                    @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
+                                    py-1 px-3 momo-off-shelve">
+                                    下架
+                                    </button>*@
+                                </div>
+                                <div class="text-center p-4">
+                                    <span>
+                                        <a :href="baseUrl +'?productId='+i.productId"
+                                           class="anchor-tag">{{i.productName}}</a>
+                                    </span>
+                                    <br />
+
+                                    <span class="text-primary me-1">{{i.flavor}}</span>
+                                    <span class="text-primary me-1">${{i.price}}</span>
+                                    <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
+                                </div>
+                                <div class="d-flex border-top">
+                                    <small class="w-50 text-center border-end py-2">
+                                        <a class="text-body" :href="baseUrl +'?productId='+i.productId">
+                                            <i class="fa fa-eye text-primary me-2"></i>
+                                            查看商品
+                                        </a>
+                                    </small>
+                                    <small class="w-50 text-center py-2">
+                                        @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
+                                        <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
+                                            <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
+                                        </div>
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-            <div id="tab-2" class="tab-pane fade show p-0 active" v-else-if="i.category == '泡芙'">
-                <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-
-                                <a :href="baseUrl +'?productID='+i.productId">
-                                    <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
-                                         :title=`${i.productName}` />
-                                </a>
-                                <div v-if="i.tag.length >= 1"
-                                     class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                    {{i.tag}}
-                                </div>
-                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
-                                py-1 px-3 momo-off-shelve">
-                                下架
-                                </button>*@
-                            </div>
-                            <div class="text-center p-4">
-                                <span>
-                                    <a :href="baseUrl +'?productId='+i.productId"
-                                       class="anchor-tag">{{i.productName}}</a>
-                                </span>
-                                <br />
-
-                                <span class="text-primary me-1">{{i.flavor}}</span>
-                                <span class="text-primary me-1">${{i.price}}</span>
-                                <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" :href="baseUrl +'?productId='+i.productId">
-                                        <i class="fa fa-eye text-primary me-2"></i>
-                                        查看商品
-                                    </a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                    <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
-                                        <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
-                                    </div>
-                                </small>
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                        </span>
-                    </div>
-                </div>
-                <div id="tab-2" class="tab-pane fade show p-0 active">
-                    <div class="row g-4">
-                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-else-if="i.category == '泡芙'">
-
-                            <div class="product-item">
-                                <div class="position-relative bg-light overflow-hidden">
-
-                                    <a :href="baseUrl +'?productID='+i.productId">
-                                        <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
-                                             :title=`${i.productName}` />
-                                    </a>
-                                    <div v-if="i.tag.length >= 1"
-                                         class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                        {{i.tag}}
-                                    </div>
-                                    @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
-                                    py-1 px-3 momo-off-shelve">
-                                    下架
-                                    </button>*@
-                                </div>
-                                <div class="text-center p-4">
-                                    <span>
-                                        <a :href="baseUrl +'?productId='+i.productId"
-                                           class="anchor-tag">{{i.productName}}</a>
-                                    </span>
-                                    <br />
-
-                                    <span class="text-primary me-1">{{i.flavor}}</span>
-                                    <span class="text-primary me-1">${{i.price}}</span>
-                                    <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" :href="baseUrl +'?productId='+i.productId">
-                                            <i class="fa fa-eye text-primary me-2"></i>
-                                            查看商品
-                                        </a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                        <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
-                                            <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
-                                        </div>
-                                    </small>
-                                </div>
-                                <div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="tab-3" class="tab-pane fade show p-0 active" v-else="i.category == '季節限定'">
-                <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-
-                                <a :href="baseUrl +'?productID='+i.productId">
-                                    <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
-                                         :title=`${i.productName}` />
-                                </a>
-                                <div v-if="i.tag.length >= 1"
-                                     class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                    {{i.tag}}
-                                </div>
-                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
-                                py-1 px-3 momo-off-shelve">
-                                下架
-                                </button>*@
-                            </div>
-                            <div class="text-center p-4">
-                                <span>
-                                    <a :href="baseUrl +'?productId='+i.productId"
-                                       class="anchor-tag">{{i.productName}}</a>
-                                </span>
-                                <br />
-
-                                <span class="text-primary me-1">{{i.flavor}}</span>
-                                <span class="text-primary me-1">${{i.price}}</span>
-                                <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" :href="baseUrl +'?productId='+i.productId">
-                                        <i class="fa fa-eye text-primary me-2"></i>
-                                        查看商品
-                                    </a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                    <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
-                                        <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
-                                    </div>
-                                </small>
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                        </span>
-                    </div>
-                </div>
-                <div id="tab-2" class="tab-pane fade show p-0 active">
-                    <div class="row g-4">
-                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-else-if="i.category == '泡芙'">
-
-                            <div class="product-item">
-                                <div class="position-relative bg-light overflow-hidden">
-
-                                    <a :href="baseUrl +'?productID='+i.productId">
-                                        <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
-                                             :title=`${i.productName}` />
-                                    </a>
-                                    <div v-if="i.tag.length >= 1"
-                                         class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                        {{i.tag}}
-                                    </div>
-                                    @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4
-                                    py-1 px-3 momo-off-shelve">
-                                    下架
-                                    </button>*@
-                                </div>
-                                <div class="text-center p-4">
-                                    <span>
-                                        <a :href="baseUrl +'?productId='+i.productId"
-                                           class="anchor-tag">{{i.productName}}</a>
-                                    </span>
-                                    <br />
-
-                                    <span class="text-primary me-1">{{i.flavor}}</span>
-                                    <span class="text-primary me-1">${{i.price}}</span>
-                                    <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" :href="baseUrl +'?productId='+i.productId">
-                                            <i class="fa fa-eye text-primary me-2"></i>
-                                            查看商品
-                                        </a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                        <div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn">
-                                            <i class="fa fa-shopping-bag text-primary me-2" value="i.productId"></i>加入購物車
-                                        </div>
-                                    </small>
-                                </div>
-                                <div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </div>
+</div>
+</div>
     </div>
 </div>
 
 @section Scripts{
-<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-<script src="~/js/Demo.js"></script>
-}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <script src="~/js/Demo.js"></script>
+    }
