@@ -3,12 +3,14 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
+        orgProductInfo: [],
         ProductInfo: [],
         // ProductID: "",
         // ProductName: "",
         // Specifications: "",
         lowerPrice: [],
-        cetagory: "",
+        smallSize: [],
+        category: "常備品項",
         baseUrl: "https://localhost:7146/Home/productDetail",
         itempage: 0,
     },
@@ -16,6 +18,7 @@ var appVue = new Vue({
         _this = this;
         _this.MakeProInfo();
         _this.GetPrice();
+        _this.GetSize();
         _this.addToCart();
         _this.checkClickEvent();
     },
@@ -24,13 +27,13 @@ var appVue = new Vue({
             let _this = this;
             axios.get(`${webApiBaseUri}api/Product`).then((a) => {
                 _this.ProductInfo = a.data;
-                _this.cetagory = a.data.cetagory;
+                _this.orgProductInfo = a.data; //給tab分頁用
                 let arr = [];
                 let x = this.ProductInfo.length;
                 for (i = 0; i < x; i++) {
                     // 檢查上架狀態avalible
                     let item = {};
-                    if (this.ProductInfo[i].avalible == true) {
+                    if (this.ProductInfo[i].avalible == true && this.ProductInfo[i].category === _this.category) {
                         item = this.ProductInfo[i];
 
                         // 切分tag標籤
@@ -65,6 +68,31 @@ var appVue = new Vue({
             });
         },
 
+        productCheck(_e) {
+            let arr = [];
+            let x = this.ProductInfo.length;
+            for (i = 0; i < x; i++) {
+                // 檢查上架狀態avalible
+                let item = {};
+                if (this.ProductInfo[i].avalible == true && this.ProductInfo[i].category === _e) {
+                    item = this.ProductInfo[i];
+
+                    // 切分tag標籤
+                    item.tag = item.tag.split("|");
+
+                    const tempArr = item.tag.filter((x) => x == "狗狗可食" || x == "含酒");
+                    if (tempArr.length >= 1) {
+                        item.tag = item.tag.filter((x) => x == "狗狗可食" || x == "含酒")[0];
+                    } else {
+                        item.tag = "";
+                    }
+                    arr.push(item);
+                }
+            }
+            _this.ProductInfo = arr;
+            console.log(this.ProductInfo);
+        },
+
         GetPrice: function () {
             let _this = this;
             let p = 0;
@@ -81,31 +109,54 @@ var appVue = new Vue({
             }, 200);
         },
 
+        GetSize: function () {
+            let _this = this;
+            let s = "";
+            let arr = [];
+            setTimeout(() => {
+                // console.log(_this.ProductInfo);
+                // console.log(typeof _this.ProductInfo[1].price);
+                for (i = 0; i < _this.ProductInfo.length; i++) {
+                    s = _this.ProductInfo[i].size.split("|")[0];
+                    _this.ProductInfo[i].size = s;
+                    arr.push(s);
+                }
+                _this.smallSize = arr;
+            }, 200);
+        },
+
         countpage() {
             //this.itempage = Math.ceil(this.itempage / 8);
             //console.log(this.itempage);
         },
 
-        addToCart(id, price, amount) {
-            // console.log("按下加入加入購物車");
-            _price = price.split("|")[0];
+        addToCart(id, size, price, amount) {
+            // console.log(size);
+            let _price = price.split("|")[0];
+            let _size = size.split("|")[0];
             let session = sessionStorage;
 
             if (session[id]) {
-                let tempPrice = _price;
-                let tempAmount = session.getItem(id).split("|")[1];
-                tempAmount++;
-                value = `${_price}|${tempAmount}`;
+                let _amount = 0;
+                _amount = session.getItem(id).split("|")[2];
+                _amount++;
+                value = `${_size}|${_price}|${_amount}`;
                 session.removeItem(id);
                 session.setItem(id, value);
             } else {
-                let value = `${_price}|${amount}`;
+                let value = `${_size}|${_price}|${amount}`;
                 session.setItem(id, value);
             }
         },
 
-        category() {
-            //切分頁
+        categoryChg(e) {
+            const _this = this;
+            var _e = e;
+            _this.ProductInfo = _this.orgProductInfo.filter((x) => x.category === e); //篩選我要的分類
+            _this.productCheck(_e);
+            _this.GetPrice();
+            _this.GetSize();
+            console.log(e);
         },
     },
 });
