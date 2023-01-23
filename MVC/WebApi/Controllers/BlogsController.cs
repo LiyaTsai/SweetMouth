@@ -25,11 +25,10 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<BlogDTO>> Get()
         {
-            return _context.Blog.Include(a => a.Product).Include(b => b.Member).Select(item => new BlogDTO
+            return _context.Blog.Include(b => b.Member).Include(a => a.Product).Select(item => new BlogDTO
             {
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
-                ProductID = item.ProductId,
                 Floor = item.Floor,
                 Title = item.Title,
                 SubTitle = item.SubTitle,
@@ -40,6 +39,9 @@ namespace WebApi.Controllers
                 // Member 資料表
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
+                // Product 資料表
+                ProductID = item.Product.ProductId,
+                Tag = item.Product.Tag,
             });
         }
 
@@ -56,14 +58,17 @@ namespace WebApi.Controllers
             BlogDTO blogDTO = new BlogDTO
             {
                 ArticleID = blog.ArticleId,
-                MemberID = blog.MemberId,
-                ProductID = blog.ProductId,
+
                 Floor = blog.Floor,
                 Title = blog.Title,
                 SubTitle = blog.SubTitle,
                 Time = blog.Time,
                 Article = blog.Article,
                 ImageName = blog.ImageName,
+                // Member 資料表
+                MemberID = blog.MemberId,
+                // Product 資料表
+                ProductID = blog.ProductId,
             };
             return blogDTO;
         }
