@@ -26,7 +26,7 @@
         <!-- aside-left -->
         <div class="row g-5 justify-content-center">
             <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
-
+                <div>{{imageName}}</div>
                 <img class="w-100" :src=`/img/${imageName}` :alt=`${productName}`
                      :title=`${productName}` />
 
@@ -77,11 +77,14 @@
 
                             <div class="col-8">
                                 <div v-for="(_size,i) in size" class="momo-pd-size" :key="i">
-                                    <span :id="i" v-on:click="specification(i)" class="acive" >{{_size}}</span>
+                                    @*<span :id="i" v-on:click="specification" class="acive">{{_size+i}}</span>*@
+                                    @*如果用span當按鈕的話要點到字才會觸發事件，div的話點到整行都行*@
+                                    <div v-on:click="specification(i)" class="acive">{{_size}}</div>
                                 </div>
                                 <div class="my-2">
-                                    <span class="text-primary me-1 display-6" v-for="p in price">${{p}}</span>
+                                    @*<span class="text-primary me-1 display-6" v-for="p in price">${{p}}</span>*@
                                     @*<span class="text-body text-decoration-line-through">${{price+50}}</span>*@
+                                    <span class="text-primary me-1 display-6">{{price}}</span>
                                 </div>
                                 <div>
                                     <span>數量</span>

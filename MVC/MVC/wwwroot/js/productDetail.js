@@ -15,7 +15,8 @@ var appVue = new Vue({
         productID: "",
         productName: "",
         // Specifications: "",
-        price: 0,
+        PriceArray:[],
+        price: "",
         flavor: "",
         size: "",
         imageName: "",
@@ -38,15 +39,30 @@ var appVue = new Vue({
                 _this.flavor = a.data.flavor;
                 _this.size = a.data.size.split("|");
                 _this.tag = a.data.tag;
-                _this.Price = a.data.price.split("|");
+
+                //先弄一個放價格的array出來，如果裡面只有一項，就拿來當價格，如果有一項以上就請顧客選擇規格
+                _this.PriceArray = a.data.price.split("|");
+                _this.price = (_this.PriceArray.length == 1) ? _this.PriceArray[0] : "請選擇規格";
+
                 _this.imageName = a.data.imageName;
                 _this.description = a.data.description;
-                _this.tagArray = a.data.tagArray;
+                _this.tagArray = a.data.tagArray;               
             });
+
+            setTimeout(() => {
+                console.log(_this.PriceArray.length)
+                for (let i = 0; i < _this.PriceArray.length; i++) {
+                    console.log(_this.PriceArray[i])
+                }
+
+
+            }, 200)
         },
-        specification() {
-            console.log("在specification裡");
-            console.log();
+        specification:function(x) {
+            //console.log("在specification裡");
+            //console.log(x)
+            //console.log(_this.PriceArray[x])
+            this.price=this.PriceArray[x]
         },
     },
 });
