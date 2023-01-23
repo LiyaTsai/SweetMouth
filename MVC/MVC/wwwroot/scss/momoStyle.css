@@ -30,6 +30,10 @@
   color: #3F2300;
 }
 
+.text-p3 {
+  color: #FF6C3E;
+}
+
 .btn-primary {
   color: #C77613;
   background-color: #F38B0B;
@@ -184,6 +188,11 @@ a:hover {
   text-decoration: none;
 }
 .anchor-tag:hover {
+  color: #C73F13;
+  text-decoration: none;
+}
+
+.bg-primary {
   color: #FF6C3E;
   text-decoration: none;
 }
