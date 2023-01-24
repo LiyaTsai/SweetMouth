@@ -212,12 +212,22 @@ a
 
 //productDetail
 .momo-pd-size
-    padding: 0.3rem 1rem
-    margin: 2rem 1rem 2rem 1rem
+    width: 5rem
+    padding: 0.3rem 0rem
+    margin: 2rem 1rem 1rem 1rem
     border: 1px solid $pcolor4
-    border-radius: 0.5rem
+    border-radius: 0.6rem
     color: $pcolor3
-    &:hover
+    text-align: center
+    &:hover,.momo-pd-size-active
+        cursor: pointer
+        background-color: $pcolor4
+        color: $tcolor0
+        box-shadow: 0 0 0 .05rem $pcolor4
+
+.btn
+    &:focus,&:active
+        box-shadow: 0 0 0 .05rem $pcolor4
         cursor: pointer
         background-color: $pcolor4
         color: $tcolor0
