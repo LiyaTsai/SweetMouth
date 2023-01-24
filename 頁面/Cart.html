@@ -248,39 +248,93 @@
         <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container">
                 <h1 class="display-3 mb-3 animated slideInDown text-secondary">購物車</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a class="text-body" href="#">首頁</a></li>
-                        <li class="breadcrumb-item"><a class="text-body" href="#">甜嘴page</a></li>
-                    </ol>
-                </nav>
+                <nav aria-label="breadcrumb animated slideInDown"></nav>
             </div>
         </div>
         <!-- Page Header End -->
 
-        <!-- 內容 Start -->
-        <div class="container">
-            <h1 class="display-4 text-primary">選購商品</h1>
-            <div class="my-2 momo-cart-border">
-                <!-- 商品start -->
-                <div class="px-1 my-5">
-                    <div class="row align-items-center">
-                        <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
-                        <label for="{{productID}}" class="col-3 ms-5"
-                            >{{productName}} <br />
-                            {{specification}}</label
-                        >
-                        <img class="col-3" :src=`/img/${imageName}.jpg` :alt="productName"
-                        :title=`${productName}-${specifications}`/>
-                        <input type="number" name="" id="" min="1" max="20" class="col-1" value="{{amount}}" />
-                        <button class="col-1 rounded-pill btn-outline-primary">DEL</button>
+        <div class="container" id="appVue">
+            <div class="row w-100">
+                <!-- left -->
+                <!-- 購買商品清單 Start -->
+                <session class="col-md-9 col-sm-12">
+                    <h1 class="display-5 text-primary section-header text-center">選購商品</h1>
+                    <!-- 商品start -->
+                    <div class="my-4 momo-cart-border">
+                        <div class="px-1 my-5">
+                            <div class="row align-items-center">
+                                <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
+                                <img class="col-4" :src=`/img/${imageName}.jpg` :alt="productName"
+                                :title=`${productName}-${flavor}` />
+                                <label for="{{productID}}" class="col-4 ms-2"
+                                    >{{productName}} <br />
+                                    {{flavor}}</label
+                                >
+                                <div class="col-2">
+                                    <label for="" class="text-center">數量</label>
+                                    <input type="number" name="" id="" min="1" max="20" value="{{amount}}" />
+                                </div>
+                                <button class="col-1 mx-3 rounded-pill btn-outline-danger">X</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- 商品end -->
+                    <!-- 商品end -->
+
+                    <!-- 購買商品清單 End -->
+                </session>
+                <!-- right -->
+                <session class="col-md-3 col-sm-12">
+                    <h1 class="display-5 text-primary section-header text-center">訂購</h1>
+                    <!-- 從會員資料拉 start -->
+                    <div class="col-12">
+                        <form action="">
+                            <fieldset>
+                                <legend>訂購人資訊</legend>
+                                <div>
+                                    <label for="">訂購人</label>
+                                    <label for="">{{memberName}}</label>
+                                </div>
+                                <div>
+                                    <label for="">會員電話</label>
+                                    <label for="">{{memberPhone}}</label>
+                                </div>
+                                <div>
+                                    <label for="">地址</label>
+                                    <label for="">{{memberAddress}}</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!-- 從會員資料拉 end -->
+
+                    <!-- 金額與付款 start -->
+                    <div class="col-12">
+                        <form action="">
+                            <fieldset>
+                                <legend>商品資訊</legend>
+                                <div>
+                                    <label for="discount">折扣代碼</label>
+                                    <input type="text" name="" id="discount" placeholder="請輸入折扣代碼" />
+                                    <span>{{discount_info}}</span>
+                                </div>
+                                <div>
+                                    <label for="">訂單總價</label>
+                                    <span>{{totalPrice}}</span>
+                                </div>
+                                <div>
+                                    <!-- 付款 -->
+                                </div>
+                                <!-- <div>
+                                    <label for="">備註</label>
+                                    <textarea placeholder="如有其他需求，請於此註明"></textarea>
+                                </div> -->
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!-- 金額與付款 end -->
+                </session>
             </div>
         </div>
-
-        <!-- 內容 End -->
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark footer pt-5 wow fadeIn" data-wow-delay="0.1s">
