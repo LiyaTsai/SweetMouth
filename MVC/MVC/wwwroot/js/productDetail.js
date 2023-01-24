@@ -73,7 +73,7 @@ var appVue = new Vue({
 
         addToCart(size, price) {
             let amount = document.querySelector("#productAmount").value;
-            let id = urlProductID;
+            let productId = urlProductID;
             console.log(amount);
             console.log(size);
             console.log(price);

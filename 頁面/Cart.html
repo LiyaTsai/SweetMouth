@@ -253,6 +253,7 @@
         </div>
         <!-- Page Header End -->
 
+        <!-- 內容 Start -->
         <div class="container" id="appVue">
             <div class="row w-100">
                 <!-- left -->
@@ -266,10 +267,10 @@
                                 <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
                                 <img class="col-4" :src=`/img/${imageName}.jpg` :alt="productName"
                                 :title=`${productName}-${flavor}` />
-                                <label for="{{productID}}" class="col-4 ms-2"
-                                    >{{productName}} <br />
-                                    {{flavor}}</label
-                                >
+                                <label for="{{productID}}" class="col-4 ms-2">
+                                    {{productName}} <br />
+                                    {{flavor}}
+                                </label>
                                 <div class="col-2">
                                     <label for="" class="text-center">數量</label>
                                     <input type="number" name="" id="" min="1" max="20" value="{{amount}}" />
@@ -279,7 +280,6 @@
                         </div>
                     </div>
                     <!-- 商品end -->
-
                     <!-- 購買商品清單 End -->
                 </session>
                 <!-- right -->
@@ -306,7 +306,6 @@
                         </form>
                     </div>
                     <!-- 從會員資料拉 end -->
-
                     <!-- 金額與付款 start -->
                     <div class="col-12">
                         <form action="">
@@ -325,9 +324,9 @@
                                     <!-- 付款 -->
                                 </div>
                                 <!-- <div>
-                                    <label for="">備註</label>
-                                    <textarea placeholder="如有其他需求，請於此註明"></textarea>
-                                </div> -->
+                            <label for="">備註</label>
+                            <textarea placeholder="如有其他需求，請於此註明"></textarea>
+                        </div> -->
                             </fieldset>
                         </form>
                     </div>
@@ -335,6 +334,7 @@
                 </session>
             </div>
         </div>
+        <!-- 內容 End -->
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark footer pt-5 wow fadeIn" data-wow-delay="0.1s">
