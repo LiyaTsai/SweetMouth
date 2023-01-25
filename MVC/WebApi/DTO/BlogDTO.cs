@@ -19,5 +19,6 @@ namespace WebApi.DTO
         // Product資料表
         public int? ProductID { get; set; }
         public string? Tag { get; set; }
+        public string? ProductImageName { get; set; }
     }
 }

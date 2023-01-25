@@ -42,6 +42,7 @@ namespace WebApi.Controllers
                 // Product 資料表
                 ProductID = item.Product.ProductId,
                 Tag = item.Product.Tag,
+                ProductImageName=item.Product.ImageName,
             });
         }
 
