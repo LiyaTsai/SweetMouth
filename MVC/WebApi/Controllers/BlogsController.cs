@@ -25,7 +25,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<BlogDTO>> Get()
         {
-            return _context.Blog.Include(b => b.Member).Include(a => a.Product).Select(item => new BlogDTO
+            return _context.Blog.Include(a => a.Product).Include(b => b.Member).Select(item => new BlogDTO
             {
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
@@ -42,6 +42,7 @@ namespace WebApi.Controllers
                 // Product 資料表
                 ProductID = item.Product.ProductId,
                 Tag = item.Product.Tag,
+                //ImageName = item.Product.ImageName
             });
         }
 

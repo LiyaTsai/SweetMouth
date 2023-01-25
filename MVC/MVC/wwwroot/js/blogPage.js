@@ -1,5 +1,5 @@
 var webApiBaseUrl = "https://localhost:7096/";  //axios請求會送到的Web Api網址
-var articleID = window.location.search          //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
+var articleID = window.location.search  //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
 
 
 var appVue = new Vue({
@@ -10,8 +10,8 @@ var appVue = new Vue({
         author: null,
         time: null,
         article: null,
-        floors: [],                          //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
-        articlePoster: [],                   //存放樓主的文章資料(articleID一樣且樓層數等於零的)
+        floors: [], //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
+        articlePoster: [], //存放樓主的文章資料(articleID一樣且樓層數等於零的)
         TagInfo: [], // Tag
         nickName: sessionStorage.getItem("nickName"),
     },
@@ -62,7 +62,7 @@ var appVue = new Vue({
                 let request = {};
                 let Time = new Date();
                 //let Time = _this.dateFormate();
-                console.log(Time)
+                //console.log(Time)
                 _this.floors.length += 1;
 
                 request.ArticleID = articleID.split("=")[1];
