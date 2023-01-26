@@ -217,9 +217,16 @@ a:hover {
   border-radius: 0.6rem;
   color: #FF6C3E;
   text-align: center;
-}
-.momo-pd-size:hover, .momo-pd-size .momo-pd-size-active {
   cursor: pointer;
+}
+.momo-pd-size:hover {
+  cursor: pointer;
+  background-color: #C73F13;
+  color: #FFFACA;
+  box-shadow: 0 0 0 0.05rem #C73F13;
+}
+
+.momo-pd-size-active {
   background-color: #C73F13;
   color: #FFFACA;
   box-shadow: 0 0 0 0.05rem #C73F13;

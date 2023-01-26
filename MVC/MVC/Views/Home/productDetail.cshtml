@@ -80,7 +80,7 @@
                                     @*<button type="button" class="btn momo-pd-size" data-bs-toggle="button" aria-pressed="true" v-on:click="specification(i)" autocomplete="off" >{{_size}}</button>*@
                                     @*<button type="button" class="btn momo-pd-size" v-on:click="specification(i)" >{{_size}}</button>*@
 
-                                    <button type="button" class="btn momo-pd-size momo-pd-size-active" v-on:click="specification(i)" v-if="_size == currentSize">{{_size}}</button>
+                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i)" v-if="_size == currentSize">{{_size}}</button>
                                     <button type="button" class="btn momo-pd-size" v-on:click="specification(i)" v-else>{{_size}}</button>
                                     @*<span :id="i" v-on:click="specification" class="acive">{{_size+i}}</span>*@
                                     @*如果用span當按鈕的話要點到字才會觸發事件，div的話點到整行都行*@

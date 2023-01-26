@@ -1,13 +1,15 @@
 var webApiBaseUrl = "https://localhost:7096/"; //axios請求會送到的Web Api網址
 var primaryKey = window.location.search;
-//console.log(primaryKey);
-//console.log(primaryKey.split("=")[2])
-//console.log(primaryKey.split("=")[1].split("?")[0])
-
-//https:URL?productName = 莓果?specifications = 顆
-// urlProductName = primaryKey.split("=")[1].split("?")[0];
-// urlSpecifications = primaryKey.split("=")[2];
 urlProductID = primaryKey.split("=")[1];
+
+let momoSizeBtn = document.querySelectorAll("button[class='btn momo-pd-size']");
+momoSizeBtn[0].addEventListener("click", function () {
+    momoSizeBtn[0].style.backgroundColor = "#C73F13";
+    momoSizeBtn[0].style.color = "#FFFACA";
+    momoSizeBtn[0].style.boxShadow = "0 0 0 .05rem #C73F13";
+    // 罷工
+});
+
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -40,7 +42,7 @@ var appVue = new Vue({
                 _this.productName = a.data.productName;
                 _this.flavor = a.data.flavor;
                 _this.size = a.data.size.split("|");
-                currentSize = _this.size[0];
+                // currentSize = _this.size[0];
                 _this.sizeArray = a.data.size.split("|");
                 _this.tag = a.data.tag;
 
@@ -69,30 +71,34 @@ var appVue = new Vue({
 
             console.log("x = " + x);
             console.log(_this.size[x]);
+            currentSize = _this.size[x];
         },
 
-        addToCart(size, price) {
+        addToCart(x, size, price) {
             let amount = document.querySelector("#productAmount").value;
             let productId = urlProductID;
             console.log(amount);
-            console.log(size);
+            console.log(productId);
+            console.log(_this.currentSize);
             console.log(price);
-
+            console.log(_this.imageName);
             // let _price = price.split("|")[0];
             // let _size = size.split("|")[0];
             let session = sessionStorage;
 
-            // if (session[id]) {
-            //     let _amount = 0;
-            //     _amount = session.getItem(id).split("|")[2];
-            //     _amount++;
-            //     value = `${_size}|${_price}|${_amount}`;
-            //     session.removeItem(id);
-            //     session.setItem(id, value);
-            // } else {
-            //     let value = `${_size}|${_price}|${amount}`;
-            //     session.setItem(id, value);
-            // }
+            if (session[id]) {
+                let _amount = 0;
+                _amount = session.getItem(id).split("|")[2];
+                _amount++;
+                value = `${規格我寫不出來}|${price}|${amount}|${_this.imageName}`;
+                session.removeItem(id);
+                session.setItem(id, value);
+            } else {
+                let value = `${規格我寫不出來}|${price}|${amount}|${_this.imageName}`;
+                session["productList"] += `|${id}`;
+                session.setItem(id, value);
+                session.setItem("productList", productList);
+            }
         },
     },
 });
