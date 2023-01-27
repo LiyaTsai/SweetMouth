@@ -35,6 +35,9 @@ var appVue = new Vue({
                     if (this.NewsInfo[i].floor == 0 && this.NewsInfo[i].time.split("-")[1] == date) {
                         item = this.NewsInfo[i];
                         item.time = item.time.split("T")[0];
+                        if (item.imageName == null) {
+                            item.imageName = item.productImageName;
+                        }
                         NewsList.push(item);
                     }
                 }

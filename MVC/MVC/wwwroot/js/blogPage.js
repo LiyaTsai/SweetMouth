@@ -12,13 +12,11 @@ var appVue = new Vue({
         article: null,
         floors: [], //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
         articlePoster: [], //存放樓主的文章資料(articleID一樣且樓層數等於零的)
-        TagInfo: [], // Tag
-        nickName: sessionStorage.getItem("nickName"),
+        nickName: sessionStorage.getItem("nickName"), //使用者暱稱
     },
     mounted() {
         _this = this;
         _this.LogFloor();
-        _this.MakeHashTag();
     },
     methods: {
         LogFloor: function () {
@@ -31,6 +29,14 @@ var appVue = new Vue({
                             let item = {};
                             item = a.data[i];
                             item.time = item.time.split("T")[0]
+                            if (item.imageName == null) {
+                                item.imageName = item.productImageName;
+                            }
+                            if (item.tag == null) {
+                                item.tag = '甜嘴MoBlog|問題討論';
+                            }
+                            // item.imageName ? item.imageName : item.imageName = item.productImageName;
+                            // item.tag ? item.tag : item.tag = '無';
                             _this.articlePoster.push(item)
                         }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
                         else {                                  //其他同文章ID(同一篇文章下的留言)

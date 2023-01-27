@@ -1,9 +1,9 @@
 ﻿@section Styles {
-<style>
-    li {
-        list-style-type: none;
-    }
-</style>
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
 
 }
 
@@ -22,10 +22,10 @@
             <small>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].nickName}}</li>
                         @*發文者暱稱*@
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>&nbsp; {{articlePoster[0].nickName}}</li>
                         <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
-                        <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
+                        @* <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>&nbsp;event</li> *@
                     </ol>
                 </nav>
             </small>
@@ -56,7 +56,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>{{f.nickName}}
+                                                <i class="fas fa-user"></i>&nbsp;{{f.nickName}}
                                             </li>
                                             <li class="breadcrumb-item">{{f.time}}</li>
                                         </ol>
@@ -69,7 +69,7 @@
                             <!-- 新增留言區 -->
                             <form action="" class="needs-validation" novalidate>
                                 <div class="input-group">
-                                    <span class="input-group-text"> <i class="fas fa-user"></i>{{nickName}}</span>
+                                    <span class="input-group-text"> <i class="fas fa-user"></i>&nbsp;{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
                                         required />
                                     <div class="invalid-feedback">
@@ -89,16 +89,17 @@
         <div class="col-md-4">
             <h2 class="text-secondary">Tags</h2>
 
-            <div class="form-check-inline" v-for="i in TagInfo">
-                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{i.hashTag1}}</a>
+            <div class="form-check-inline">
+                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}</a>
             </div>
 
         </div>
         <!-- Tags End -->
+
     </div>
 </div>
 <!-- 最新消息文章內頁 End -->
 @section Scripts
-{
-<script src="~/js/blogpage.js"></script>
+    {
+    <script src="~/js/blogpage.js"></script>
 }

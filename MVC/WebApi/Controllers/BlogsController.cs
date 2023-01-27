@@ -42,7 +42,7 @@ namespace WebApi.Controllers
                 // Product 資料表
                 ProductID = item.Product.ProductId,
                 Tag = item.Product.Tag,
-                ProductImageName=item.Product.ImageName,
+                ProductImageName = item.Product.ImageName,
             });
         }
 
@@ -59,7 +59,6 @@ namespace WebApi.Controllers
             BlogDTO blogDTO = new BlogDTO
             {
                 ArticleID = blog.ArticleId,
-
                 Floor = blog.Floor,
                 Title = blog.Title,
                 SubTitle = blog.SubTitle,
