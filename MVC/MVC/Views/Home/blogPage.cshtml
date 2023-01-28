@@ -8,6 +8,10 @@
             cursor: pointer;
             color: #FFA83E;
         }
+
+        .fa-edit:hover {
+            color: #631800;
+        }
     </style>
 }
 
@@ -63,22 +67,33 @@
                                                 <i class="fas fa-user"></i>&nbsp;{{item.nickName}}
                                             </li>
                                             <li class="breadcrumb-item me-auto">{{item.time}}</li>
-                                            <li><i class="fas fa-edit" @@click="edit(item.floor)"></i></li>
+                                            @* 編輯按鈕(需登入) *@
+                                            <li>
+                                                <template v-if="MemberID==item.memberID">
+                                                    <i class="fas fa-edit" @@click="edit(item.floor)"></i>
+                                                </template>
+                                            </li>
                                         </ol>
                                     </nav>
                                     @* <p>{{item.article}}</p> *@
                                 </li>
                                 <li>
+                                    @* 編輯 template *@
                                     <template v-if="item.Edit==true">
-                                        <textarea cols="40" rows="1" v-model="item.article"></textarea>
 
-                                        <button type="button" class="btn btn-outline-primary">修改</button>
+                                        <textarea class="form-control mb-2" placeholder="編輯留言.."
+                                            style="height: 150px;resize: none;" v-model="item.article"></textarea>
+
+                                        <button type="button" class="btn btn-outline-primary"
+                                            @@click="update(item)">修改</button>
                                         <button type="button" class="btn btn-outline-warning"
                                             @@click="cancel">取消</button>
-                                        <button type="button" class="btn btn-danger">刪除</button>
+                                        <button type="button" class="btn btn-danger"
+                                            @@click="deletefloor(item.floor)">刪除</button>
 
                                     </template>
 
+                                    @* 讀取 template *@
                                     <template v-else>
                                         <p>{{item.article}}</p>
                                     </template>

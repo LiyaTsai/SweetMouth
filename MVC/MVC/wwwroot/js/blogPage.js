@@ -1,7 +1,6 @@
 var webApiBaseUrl = "https://localhost:7096/";  //axios請求會送到的Web Api網址
 var articleID = window.location.search  //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
 
-
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -12,6 +11,7 @@ var appVue = new Vue({
         article: null,
         floors: [], //存放所有非樓主的文章資料(articleID一樣且樓層數大於等於1的)
         articlePoster: [], //存放樓主的文章資料(articleID一樣且樓層數等於零的)
+        MemberID: sessionStorage.getItem("MemberID"),
         nickName: sessionStorage.getItem("nickName"), //使用者暱稱
         // 編輯容器
         article_E: null,
@@ -43,7 +43,6 @@ var appVue = new Vue({
                         }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
                         else {                                  //其他同文章ID(同一篇文章下的留言)
                             _this.floors.push(a.data[i]);       //塞進floors
-                            //item.Edit = false;
                             //console.log(_this.floors)
                         }
                     } else { continue; } //GET出來的如果文章ID不符就跳過
@@ -119,6 +118,33 @@ var appVue = new Vue({
                 floorsList.push(item);
             }
             _this.floors = floorsList;
+        },
+
+        // Post編輯留言
+        update: function (item) {
+            console.log(item)
+            let request = {};
+            request.articleID = articleID.split("=")[1];
+            request.floor = item.floor;
+            request.memberID = sessionStorage.getItem("MemberID");
+            request.time = new Date();
+            request.article = item.article;
+            axios.put(`${webApiBaseUrl}api/Blogs/${articleID.split("=")[1]}/${item.floor}`, request).then(res => {
+                alert(res.data);
+                _this.LogFloor();
+                _this.cancel();
+            })
+        },
+
+        // 刪除留言
+        deletefloor: function (floor) {
+            let ret = confirm('確定要刪除嗎?');
+            if (ret == true) {
+                axios.delete(`${webApiBaseUrl}api/Blogs/${articleID.split("=")[1]}/${floor}`).then(res => {
+                    alert(res.data);
+                    _this.LogFloor();
+                })
+            }
         },
     },
 });
