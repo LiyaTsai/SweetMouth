@@ -3,8 +3,12 @@
         li {
             list-style-type: none;
         }
-    </style>
 
+        .fa-edit {
+            cursor: pointer;
+            color: #FFA83E;
+        }
+    </style>
 }
 
 <!-- Page Header Start -->
@@ -50,21 +54,37 @@
 
 
 
-                            <ul v-for="f in floors">
+                            <ul v-for="item in floors">
                                 @*這裡開始v-for，以下的li為留言設計圖*@
                                 <li class="mb-1">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>&nbsp;{{f.nickName}}
+                                                <i class="fas fa-user"></i>&nbsp;{{item.nickName}}
                                             </li>
-                                            <li class="breadcrumb-item">{{f.time}}</li>
+                                            <li class="breadcrumb-item me-auto">{{item.time}}</li>
+                                            <li><i class="fas fa-edit" @@click="edit(item.floor)"></i></li>
                                         </ol>
                                     </nav>
-                                    <p>{{f.article}}</p>
-                                    <hr />
+                                    @* <p>{{item.article}}</p> *@
+                                </li>
+                                <li>
+                                    <template v-if="item.Edit==true">
+                                        <textarea cols="40" rows="1" v-model="item.article"></textarea>
+
+                                        <button type="button" class="btn btn-outline-primary">修改</button>
+                                        <button type="button" class="btn btn-outline-warning"
+                                            @@click="cancel">取消</button>
+                                        <button type="button" class="btn btn-danger">刪除</button>
+
+                                    </template>
+
+                                    <template v-else>
+                                        <p>{{item.article}}</p>
+                                    </template>
                                 </li>
                             </ul>
+                            <hr />
 
                             <!-- 新增留言區 -->
                             <form action="" class="needs-validation" novalidate>
@@ -72,9 +92,6 @@
                                     <span class="input-group-text"> <i class="fas fa-user"></i>&nbsp;{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
                                         required />
-                                    <div class="invalid-feedback">
-                                        請輸入留言
-                                    </div>
                                     <button type="button" class="btn btn-primary" @@click="insert">送出</button>
                                 </div>
                             </form>
