@@ -70,19 +70,20 @@
                                             @* 編輯按鈕(需登入) *@
                                             <li>
                                                 <template v-if="MemberID==item.memberID">
-                                                    <i class="fas fa-edit" @@click="edit(item.floor)"></i>
+                                                    <i class="fas fa-edit" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="編輯留言"
+                                                        @@click="edit(item.floor)"></i>
                                                 </template>
                                             </li>
                                         </ol>
                                     </nav>
-                                    @* <p>{{item.article}}</p> *@
                                 </li>
                                 <li>
                                     @* 編輯 template *@
                                     <template v-if="item.Edit==true">
 
                                         <textarea class="form-control mb-2" placeholder="編輯留言.."
-                                            style="height: 150px;resize: none;" v-model="item.article"></textarea>
+                                            style="height: 100px;resize: none;" v-model="item.article"></textarea>
 
                                         <button type="button" class="btn btn-outline-primary"
                                             @@click="update(item)">修改</button>
@@ -96,10 +97,10 @@
                                     @* 讀取 template *@
                                     <template v-else>
                                         <p>{{item.article}}</p>
+                                        <hr />
                                     </template>
                                 </li>
                             </ul>
-                            <hr />
 
                             <!-- 新增留言區 -->
                             <form action="" class="needs-validation" novalidate>

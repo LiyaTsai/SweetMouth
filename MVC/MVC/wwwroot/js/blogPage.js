@@ -42,7 +42,10 @@ var appVue = new Vue({
                             _this.articlePoster.push(item)
                         }   //如果同樣的文章ID資料，樓層是0層，也就是樓主，就把它塞進articlePoster
                         else {                                  //其他同文章ID(同一篇文章下的留言)
-                            _this.floors.push(a.data[i]);       //塞進floors
+                            let item = {};
+                            item = a.data[i];
+                            item.time = item.time.split("T")[0]
+                            _this.floors.push(item);       //塞進floors
                             //console.log(_this.floors)
                         }
                     } else { continue; } //GET出來的如果文章ID不符就跳過
@@ -122,7 +125,7 @@ var appVue = new Vue({
 
         // Post編輯留言
         update: function (item) {
-            console.log(item)
+            //console.log(item)
             let request = {};
             request.articleID = articleID.split("=")[1];
             request.floor = item.floor;

@@ -41,6 +41,12 @@ var appVue = new Vue({
                         NewsList.push(item);
                     }
                 }
+                // 時間排序 (新-舊)
+                NewsList.sort(function (a, b) {
+                    let timeA = a.time;
+                    let timeB = b.time;
+                    return timeA < timeB ? 1 : -1;
+                });
                 this.NewsInfo = NewsList;
             })
         },
@@ -56,6 +62,12 @@ var appVue = new Vue({
                         ProList.push(item);
                     }
                 }
+                // 時間排序 (新-舊)
+                ProList.sort(function (a, b) {
+                    let timeA = a.time;
+                    let timeB = b.time;
+                    return timeA < timeB ? 1 : -1;
+                })
                 this.ProInfo = ProList;
             })
         },
@@ -71,8 +83,13 @@ var appVue = new Vue({
                         blogList.push(item);
                     }
                 }
+                // 時間排序 (新-舊)
+                blogList.sort(function (a, b) {
+                    let timeA = a.time;
+                    let timeB = b.time;
+                    return timeA < timeB ? 1 : -1;
+                })
                 this.BlogInfo = blogList;
-                //console.log(_this.BlogInfo)
             })
         },
     },
