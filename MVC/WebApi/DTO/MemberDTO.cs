@@ -10,5 +10,6 @@
         public string? Password { get; set; }
         public DateTime? BirthDay { get; set; }
         public string? FavoriteProduct { get; set; }
+        public IEnumerable<int>? orderID { get; set; } 
     }
 }

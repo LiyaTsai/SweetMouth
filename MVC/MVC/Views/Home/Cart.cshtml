@@ -17,22 +17,22 @@
     <div class="row w-100">
         <!-- left -->
         <!-- 購買商品清單 Start -->
-        <session class="col-md-9 col-sm-12">
+        <div class="col-md-9 col-sm-12">
             <h1 class="display-5 text-primary section-header text-center">選購商品</h1>
             <!-- 商品start -->
-            <div class="my-4 momo-cart-border">
+            <div class="my-4 momo-cart-border" v-for="(pro,key) in productArray" :key="key">
                 <div class="px-1 my-5">
                     <div class="row align-items-center">
                         <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
-                        <img class="col-4" :src=`/img/${imageName}.jpg` :alt="productName"
-                             :title=`${productName}-${flavor}` />
-                        <label for="{{productID}}" class="col-4 ms-2">
-                            {{productName}} <br />
-                            {{flavor}}{{size}}
+                        <img class="col-4" :src=`/img/${pro.imageName}` :alt="pro.productName"
+                             :title=`${pro.productName}-${ImgArray[key]}` />
+                        <label for=`${pro.productId}` class="col-4 ms-2">
+                            {{pro.productName}} <br />
+                            {{pro.flavor}}{{pro.size}}
                         </label>
                         <div class="col-2">
                             <label for="" class="text-center">數量</label>
-                            <input type="number" name="" id="" min="1" max="20" value="{{amount}}" />
+                            <input type="number" name="" id="" min="1" max="20" :value=pro.amount />
                         </div>
                         <button class="col-1 mx-3 rounded-pill btn-outline-danger">X</button>
                     </div>
@@ -40,15 +40,15 @@
             </div>
             <!-- 商品end -->
             <!-- 購買商品清單 End -->
-        </session>
+        </div>
         <!-- right -->
-        <session class="col-md-3 col-sm-12">
+        <div class="col-md-3 col-sm-12">
             <h1 class="display-5 text-primary section-header text-center">訂購</h1>
             <!-- 從會員資料拉 start -->
             <div class="col-12">
                 <form action="">
                     <fieldset>
-                        <legend>訂購人資訊</legend>
+                        <legend class="text-t4">訂購人資訊</legend>
                         <div>
                             <label for="">訂購人</label>
                             <label for="">{{memberName}}</label>
@@ -66,18 +66,21 @@
             </div>
             <!-- 從會員資料拉 end -->
             <!-- 金額與付款 start -->
-            <div class="col-12">
+            <div class="col-12 my-3">
                 <form action="">
                     <fieldset>
-                        <legend>商品資訊</legend>
+                        <legend class=" text-t4">商品資訊</legend>
                         <div>
                             <label for="discount">折扣代碼</label>
-                            <input type="text" name="" id="discount" placeholder="請輸入折扣代碼" />
-                            <span>{{discount_info}}</span>
+                            <input type="text" name="" id="discount" placeholder="請輸入折扣代碼" class="" />
+                            @*  class我寫好了給我留著PLZ  *@
+                            @*discount_info幫我寫"已打8折"、"運費以免"*@
+                            @*<span class="text-secondary">{{discount_info}}</span>*@
                         </div>
                         <div>
                             <label for="">訂單總價</label>
-                            <span>{{totalPrice}}</span>
+                            @*  class我寫好了給我留著PLZ  *@
+                            @*<span class="text-secondary">{{totalPrice}}</span>*@
                         </div>
                         <div>
                             <!-- 付款 -->
@@ -90,7 +93,7 @@
                 </form>
             </div>
             <!-- 金額與付款 end -->
-        </session>
+        </div>
     </div>
 </div>
 <!-- 內容 End -->

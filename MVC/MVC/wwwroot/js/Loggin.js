@@ -4,19 +4,6 @@ var password = document.getElementById("password");     //密碼輸入欄位
 var webApiBaseUrl = "https://localhost:7096/"
 
 
-//var navbarCollapse = new Vue({
-//    el: "#navbarCollapse",
-//    name: "navbarCollapse",
-//    data: {
-//        MemID: 0,
-//        nickName: null,
-//        MemberbaseUrl: "https://localhost:7146/Home/MemberInfo",
-//    },
-//    mounted() {
-//    },
-//    methods: {
-//    },
-//})
 
 
 
@@ -46,14 +33,16 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
                 //$("#loginModal").modal('hide');
                 break;
             }
-            else { isMem = false; }
+            else {
+                isMem = false;
+            }
         }
         if (isMem) {
             axios.get(`${webApiBaseUrl}api/Member/${sessionStorage.getItem("MemberID") }`).then(b => {
                 alert(`${b.data.name}歡迎登入`);
-            });
-            $("#loginModal").modal('hide');
-            //setTimeout(() => { location = location; },150)          
+                $("#loginModal").modal('hide');
+                setTimeout(() => { location = location; }, 150)  
+            });                   
         }
         else {
             alert("帳號密碼輸入錯誤");
