@@ -141,7 +141,7 @@ var appVue = new Vue({
             // console.log(size);
             let _price = price.split("|")[0];
             let _size = size.split("|")[0];
-            let session = sessionStorage;
+            let session = localStorage;
             let _id = 0;
             _id = id;
             i = _id - 10001;

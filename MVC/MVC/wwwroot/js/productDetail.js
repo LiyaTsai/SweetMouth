@@ -77,25 +77,44 @@ momoSizeBtn[0].addEventListener("click", function () {
                 //console.log();
                 //console.log("x = " + x);
                 //console.log(_this.size[x]);
-                currentSize = _this.size[x];
+                this.currentSize = _this.size[x];
+                console.log(this.currentSize)
                 this.arraykey = x;
                 document.getElementById("productAmount").value = 1;
                 //console.log(e.target);               
                 Mother = document.getElementsByClassName("btn momo-pd-size");
                 for (let i = 0; i < Mother.length; i++) {
-                    Mother[i].style ="background:white; color:rgb(255,108,62)"
+                    Mother[i].style ="background:white; color:rgb(255,108,62);"
                 }
-                e.target.style = "background:rgb(199,63,19); color:white";
-                console.log(e.target.style)
+                e.target.style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
             },
 
             addToCart: function (x, size, price) {
-                
+                let _price = price.split("|")[0];
+                let _size = size.split("|")[0];
+                let session = localStorage;
+                let _id = 0;
+                _id = id;
+                i = _id - 10001;
+                let _imageName = _this.ProductInfo[i].imageName;
+
+                if (session[id]) {
+                    let _amount = 0;
+                    _amount = session.getItem(id).split("|")[2];
+                    _amount++;
+                    value = `${_size}|${_price}|${_amount}|${_imageName}`;
+                    session.removeItem(id);
+                    session.setItem(id, value);
+                } else {
+                    let value = `${_size}|${_price}|${amount}|${_imageName}`;
+                    session["productList"] += `|${id}`;
+                    session.setItem(id, value);
+                    session.setItem("productList", productList);
+                }
             },
             amountChange: function (e) {               
                 this.amount = e.target.value;
                 this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount
-                
             },
         },
     });
