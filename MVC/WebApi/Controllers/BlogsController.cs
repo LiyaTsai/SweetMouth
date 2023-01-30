@@ -25,11 +25,10 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<BlogDTO>> Get()
         {
-            return _context.Blog.Include(a => a.Product).Include(b => b.Member).Select(item => new BlogDTO
+            return _context.Blog.Include(b => b.Member).Include(a => a.Product).Select(item => new BlogDTO
             {
                 ArticleID = item.ArticleId,
                 MemberID = item.MemberId,
-                ProductID = item.ProductId,
                 Floor = item.Floor,
                 Title = item.Title,
                 SubTitle = item.SubTitle,
@@ -40,6 +39,10 @@ namespace WebApi.Controllers
                 // Member 資料表
                 MemberName = item.Member.Name,
                 NickName = item.Member.NickName,
+                // Product 資料表
+                ProductID = item.Product.ProductId,
+                Tag = item.Product.Tag,
+                ProductImageName = item.Product.ImageName,
             });
         }
 
@@ -56,14 +59,16 @@ namespace WebApi.Controllers
             BlogDTO blogDTO = new BlogDTO
             {
                 ArticleID = blog.ArticleId,
-                MemberID = blog.MemberId,
-                ProductID = blog.ProductId,
                 Floor = blog.Floor,
                 Title = blog.Title,
                 SubTitle = blog.SubTitle,
                 Time = blog.Time,
                 Article = blog.Article,
                 ImageName = blog.ImageName,
+                // Member 資料表
+                MemberID = blog.MemberId,
+                // Product 資料表
+                ProductID = blog.ProductId,
             };
             return blogDTO;
         }
@@ -73,15 +78,23 @@ namespace WebApi.Controllers
 
         // PUT: api/Blogs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBlog(int id, Blog blog)
+        [HttpPut("{ArticleID}/{Floor}")]
+        public async Task<string> PutBlog(int ArticleID, int Floor, BlogDTO blogDTO)
         {
-            if (id != blog.ArticleId)
+            if (ArticleID != blogDTO.ArticleID && Floor != blogDTO.Floor)
             {
-                return BadRequest();
+                return "ID不正確";
             }
-
-            _context.Entry(blog).State = EntityState.Modified;
+            Blog blg = await _context.Blog.FindAsync(blogDTO.ArticleID, Floor);
+            blg.ArticleId= blogDTO.ArticleID;
+            blg.MemberId = blogDTO.MemberID;
+            blg.Floor = blogDTO.Floor;
+            blg.ProductId = blogDTO.ProductID;
+            blg.Title= blogDTO.Title;
+            blg.SubTitle = blogDTO.SubTitle;
+            blg.Time = blogDTO.Time;
+            blg.Article= blogDTO.Article;
+            _context.Entry(blg).State = EntityState.Modified;
 
             try
             {
@@ -89,9 +102,9 @@ namespace WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BlogExists(id))
+                if (!BlogExists(ArticleID) && !BlogExists(Floor))
                 {
-                    return NotFound();
+                    return "找不到欲修改的記錄!";
                 }
                 else
                 {
@@ -99,7 +112,7 @@ namespace WebApi.Controllers
                 }
             }
 
-            return NoContent();
+            return "修改成功!";
         }
 
         // POST: api/Blogs
@@ -125,19 +138,19 @@ namespace WebApi.Controllers
         }
 
         // DELETE: api/Blogs/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBlog(int id)
+        [HttpDelete("{ArticleID}/{Floor}")]
+        public async Task<string> DeleteBlog(int ArticleID, int Floor)
         {
-            var blog = await _context.Blog.FindAsync(id);
+            var blog = await _context.Blog.FindAsync(ArticleID, Floor);
             if (blog == null)
             {
-                return NotFound();
+                return "找不到欲刪除的記錄!";
             }
 
             _context.Blog.Remove(blog);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return "刪除成功!";
         }
 
         private bool BlogExists(int id)

@@ -35,9 +35,9 @@ var appVue = new Vue({
                 //console.log(_this.articlePostNum)
                 request.memberID = sessionStorage.getItem("MemberID");
                 request.floor = 0;
-                request.productID = 10001;
+                request.productID = null;
                 request.time = Time;
-                request.imageName = 'newPostblog'; // 預設圖片
+                request.imageName = 'newPostblog.jpg'; // 預設圖片
                 request.title = _this.Title;
                 request.SubTitle = _this.SubTitle;
                 request.Article = _this.article;

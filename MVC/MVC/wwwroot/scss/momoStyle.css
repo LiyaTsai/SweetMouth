@@ -30,15 +30,19 @@
   color: #3F2300;
 }
 
+.text-p3 {
+  color: #FF6C3E;
+}
+
 .btn-primary {
   color: #C77613;
   background-color: #F38B0B;
   border-color: #F38B0B;
 }
 .btn-primary:hover {
-  color: #1E1100;
-  background-color: #F38B0B;
-  border-color: #C79713;
+  color: #FFFACA;
+  background-color: #FF6C3E;
+  border-color: #FF6C3E;
 }
 
 .btn-check:focus + .btn-primary,
@@ -207,6 +211,30 @@ a:hover {
 
 .bg-t3 {
   background-color: #F38B0B !important;
+}
+
+.momo-card {
+  border: 1px solid #FFF;
+}
+
+.momo-card-header {
+  background-color: #F38B0B;
+  border-radius: 1rem 1rem 0 0 !important;
+  color: #FFFACA;
+}
+
+.momo-card-body {
+  background-color: #FFD8A8;
+}
+
+.momo-member-list-edit {
+  background-color: #FFBDA8;
+  color: #631800;
+}
+.momo-member-list-edit:focus {
+  background-color: #F38B0B;
+  color: #FFD8A8;
+  cursor: pointer;
 }
 
 .momo-pd-size {

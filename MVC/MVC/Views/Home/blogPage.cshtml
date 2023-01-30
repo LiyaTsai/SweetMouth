@@ -1,10 +1,18 @@
 ﻿@section Styles {
-<style>
-    li {
-        list-style-type: none;
-    }
-</style>
+    <style>
+        li {
+            list-style-type: none;
+        }
 
+        .fa-edit {
+            cursor: pointer;
+            color: #FFA83E;
+        }
+
+        .fa-edit:hover {
+            color: #631800;
+        }
+    </style>
 }
 
 <!-- Page Header Start -->
@@ -22,14 +30,14 @@
             <small>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fas fa-user"></i>{{articlePoster[0].nickName}}</li>
                         @*發文者暱稱*@
+                        <li class="breadcrumb-item"><i class="fas fa-user"></i>&nbsp; {{articlePoster[0].nickName}}</li>
                         <li class="breadcrumb-item">{{articlePoster[0].time}}</li>
-                        <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>event</li>
+                        @* <li class="breadcrumb-item"><i class="fas fa-tags pr-1"></i>&nbsp;event</li> *@
                     </ol>
                 </nav>
             </small>
-            <img :src=`/img/${articlePoster[0].imageName}.jpg` class="img-fluid" alt="" />
+            <img :src=`/img/${articlePoster[0].imageName}` class="img-fluid" alt="" />
             <h2 class="text-secondary">{{articlePoster[0].subTitle}}</h2>
             <p>
                 {{articlePoster[0].article}}
@@ -50,31 +58,56 @@
 
 
 
-                            <ul v-for="f in floors">
+                            <ul v-for="item in floors">
                                 @*這裡開始v-for，以下的li為留言設計圖*@
                                 <li class="mb-1">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <i class="fas fa-user"></i>{{f.nickName}}
+                                                <i class="fas fa-user"></i>&nbsp;{{item.nickName}}
                                             </li>
-                                            <li class="breadcrumb-item">{{f.time}}</li>
+                                            <li class="breadcrumb-item me-auto">{{item.time}}</li>
+                                            @* 編輯按鈕(需登入) *@
+                                            <li>
+                                                <template v-if="MemberID==item.memberID">
+                                                    <i class="fas fa-edit" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="編輯留言"
+                                                        @@click="edit(item.floor)"></i>
+                                                </template>
+                                            </li>
                                         </ol>
                                     </nav>
-                                    <p>{{f.article}}</p>
-                                    <hr />
+                                </li>
+                                <li>
+                                    @* 編輯 template *@
+                                    <template v-if="item.Edit==true">
+
+                                        <textarea class="form-control mb-2" placeholder="編輯留言.."
+                                            style="height: 100px;resize: none;" v-model="item.article"></textarea>
+
+                                        <button type="button" class="btn btn-outline-primary"
+                                            @@click="update(item)">修改</button>
+                                        <button type="button" class="btn btn-outline-warning"
+                                            @@click="cancel">取消</button>
+                                        <button type="button" class="btn btn-danger"
+                                            @@click="deletefloor(item.floor)">刪除</button>
+
+                                    </template>
+
+                                    @* 讀取 template *@
+                                    <template v-else>
+                                        <p>{{item.article}}</p>
+                                        <hr />
+                                    </template>
                                 </li>
                             </ul>
 
                             <!-- 新增留言區 -->
                             <form action="" class="needs-validation" novalidate>
                                 <div class="input-group">
-                                    <span class="input-group-text"> <i class="fas fa-user"></i>{{nickName}}</span>
+                                    <span class="input-group-text"> <i class="fas fa-user"></i>&nbsp;{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
                                         required />
-                                    <div class="invalid-feedback">
-                                        請輸入留言
-                                    </div>
                                     <button type="button" class="btn btn-primary" @@click="insert">送出</button>
                                 </div>
                             </form>
@@ -89,16 +122,17 @@
         <div class="col-md-4">
             <h2 class="text-secondary">Tags</h2>
 
-            <div class="form-check-inline" v-for="i in TagInfo">
-                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{i.hashTag1}}</a>
+            <div class="form-check-inline">
+                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}</a>
             </div>
 
         </div>
         <!-- Tags End -->
+
     </div>
 </div>
 <!-- 最新消息文章內頁 End -->
 @section Scripts
-{
-<script src="~/js/blogpage.js"></script>
+    {
+    <script src="~/js/blogpage.js"></script>
 }

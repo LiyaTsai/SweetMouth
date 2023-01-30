@@ -93,7 +93,8 @@ namespace WebApi.Controllers
             mem.NickName = mDTO.NickName;
             mem.Email = mDTO.Email;
             mem.PhoneNumber = mDTO.PhoneNumber;
-            //mem.BirthDay = mDTO.BirthDay;
+            mem.Birthday = mDTO.BirthDay;
+            mem.FavoriteProduct=mDTO.FavoriteProduct;
             _context.Entry(mem).State = EntityState.Modified;
             try
             {
