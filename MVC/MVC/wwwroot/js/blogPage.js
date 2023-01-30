@@ -1,5 +1,6 @@
-var webApiBaseUrl = "https://localhost:7096/";  //axios請求會送到的Web Api網址
-var articleID = window.location.search  //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
+var webApiBaseUrl = "https://localhost:7096/"; //axios請求會送到的Web Api網址
+var articleID = window.location.search; //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
+
 
 var appVue = new Vue({
     el: "#appVue",

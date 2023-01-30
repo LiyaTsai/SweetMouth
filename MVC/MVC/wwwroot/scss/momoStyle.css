@@ -235,4 +235,32 @@ a:hover {
   background-color: #F38B0B;
   color: #FFD8A8;
   cursor: pointer;
+.momo-pd-size {
+  width: 5rem;
+  padding: 0.3rem 0rem;
+  margin: 2rem 1rem 1rem 1rem;
+  border: 1px solid #C73F13;
+  border-radius: 0.6rem;
+  color: #FF6C3E;
+  text-align: center;
+  cursor: pointer;
+}
+.momo-pd-size:hover {
+  cursor: pointer;
+  background-color: #C73F13;
+  color: #FFFACA;
+  box-shadow: 0 0 0 0.05rem #C73F13;
+}
+
+.momo-pd-size-active {
+  background-color: #C73F13;
+  color: #FFFACA;
+  box-shadow: 0 0 0 0.05rem #C73F13;
+}
+
+.btn:focus, .btn:active {
+  box-shadow: 0 0 0 0.05rem #C73F13;
+  cursor: pointer;
+  background-color: #C73F13;
+  color: #FFFACA;
 }/*# sourceMappingURL=momoStyle.css.map */

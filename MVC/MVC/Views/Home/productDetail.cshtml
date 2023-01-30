@@ -7,10 +7,10 @@
     <div class="container">
         <h1 class="display-3 mb-3 animated slideInDown text-primary">甜點細節</h1>
         <nav aria-label="breadcrumb animated slideInDown">
-@*            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">這裡能不能自動產生路徑</li>
+            @*            <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
+            <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
+            <li class="breadcrumb-item text-dark active" aria-current="page">這裡能不能自動產生路徑</li>
             </ol>*@
         </nav>
     </div>
@@ -26,81 +26,83 @@
         <!-- aside-left -->
         <div class="row g-5 justify-content-center">
             <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+                @*<div>{{imageName}}</div>*@
+                <img class="w-100" :src=`/img/${imageName}` :alt=`${productName}`
+                     :title=`${productName}` />
 
-                <img class="w-100" :src=`/img/${imageName}.jpg` :alt="productName"
-                     :title=`${productName}-${specifications}` />
-
-
+                     
                 <!-- Carousel Start -->
                 @*<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="w-100" src="~/img/blackChocolate.jpg" alt="Image" />
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                                data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                                data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img class="w-100" src="~/img/blackChocolate.jpg" alt="Image" />
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+                </div>
                 </div>*@
                 <!-- Carousel End -->
 
             </div>
             <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
-                    {{ProductName}} 
-                    {{Specifications}}
+                    {{productName}}
+                    {{flavor}}
                 </p>
                 <form>
                     <div class="row g-3">
                         <div class="col-12">
-                            <div class="col-4">
+                            <div class="col-12">
                                 <div class="">
-                                    <span class="text-secondary">tag</span>
-                                </div>                            
+                                    <span class="text-secondary btn mx-3 rounded-pill border-1 momo-pd-tag" v-for="t in tagArray">{{t}}  </span>
+                                </div>
+                                <p class="text-primary display-6 col-12">
+                                    甜點介紹
+                                </p>
                                 <p>
-                                    DES掛這裡 {{Description}}
+                                    {{description}}
                                 </p>
                             </div>
 
                             <div class="col-8">
-                                <div>
-                                    @*<span>累積銷售已達999</span>*@
+                                <div v-for="(_size,i) in size" :key="i">
+
+                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i,$event)">{{_size}}</button>
+                                    @*<button type="button" class="btn momo-pd-size" v-on:click="specification(i)" v-if="_size == currentSize">{{_size}}</button>
+                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i)" v-else>{{_size}}</button>*@
+                                    @*<span :id="i" v-on:click="specification" class="acive">{{_size+i}}</span>*@
+                                    @*如果用span當按鈕的話要點到字才會觸發事件，div的話點到整行都行*@
+                                    @* <div v-on:click="specification(i)"  class="momo-pd-size">{{_size}}</div>*@
+
                                 </div>
                                 <div class="my-2">
-                                    <span class="text-primary me-1">{{Price}}</span>
-                                    <span class="text-body text-decoration-line-through">${{Price+50}}</span>
+                                    @*<span class="text-primary me-1 display-6" v-for="p in price">${{p}}</span>*@
+                                    @*<span class="text-body text-decoration-line-through">${{price+50}}</span>*@
+                                    <span class="text-primary me-1 display-6">{{price}}</span>
                                 </div>
                                 <div>
                                     <span>數量</span>
-                                    <input type="number" name="" id="" class="border-primary text-center momo-product-amount" min="0" max="20">
+                                    <input type="number" id="productAmount" name="productAmount" class="border-primary text-center momo-product-amount" min="1" max="20" value="1" v-on:change="amountChange">
                                 </div>
-                            <!-- <span class="me-2">
-                                加入收藏
-                                <i class="fal fa-heart"></i>
-                                <i class="fas fa-heart"></i>
-                            </span> -->
-                            <button class="btn btn-primary rounded-pill mt-2 py-1 px-3" type="submit">
-                                送出訂單
-                            </button>
+                                <!-- <span class="me-2">
+                                    加入收藏
+                                    <i class="fal fa-heart"></i>
+                                    <i class="fas fa-heart"></i>
+                                </span> -->
+                                <div class="btn btn-primary rounded-pill mt-2 py-1 px-3" v-on:click="addToCart(i,size,price)">
+                                    <i class="fa fa-shopping-bag text-primary me-2" id="addCartBtn"></i>加入購物車
+                                </div>
                             </div>
-
-
-
-
-
-
-
-
-                            
                         </div>
                     </div>
                 </form>
@@ -181,10 +183,8 @@
     </div>
 </div>*@
 <!-- Testimonial End -->
-
-
 @section Scripts{
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-        <script src="~/js/productdetail.js"></script>
+    <script src="~/js/productdetail.js"></script>
 }
