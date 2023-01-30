@@ -7,8 +7,9 @@ var appVue = new Vue({
         NewsInfo: [],
         ProInfo: [],
         BlogInfo: [],
+        SearchInfo: [],
         // 搜尋關建字
-        Title: null,
+        keyWord: null,
     },
     mounted() {
         this.dateFormate();
@@ -61,6 +62,9 @@ var appVue = new Vue({
                     if (this.ProInfo[i].productID != null) {
                         item = this.ProInfo[i];
                         item.time = item.time.split("T")[0];
+                        if (item.imageName == null) {
+                            item.imageName = item.productImageName;
+                        }
                         ProList.push(item);
                     }
                 }
@@ -82,6 +86,9 @@ var appVue = new Vue({
                     if (this.BlogInfo[i].floor == 0 && this.BlogInfo[i].productID == null) { // 樓層 = 0 發文者
                         item = this.BlogInfo[i];
                         item.time = item.time.split("T")[0]
+                        if (item.imageName == null) {
+                            item.imageName = item.productImageName;
+                        }
                         blogList.push(item);
                     }
                 }
@@ -94,22 +101,52 @@ var appVue = new Vue({
                 this.BlogInfo = blogList;
             })
         },
+
         // 搜尋文章
         Search: function () {
             let request = {};
-            request.title = this.Title;
+            request.title = this.keyWord;
             axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
                 let itemList = [];
                 for (i = 0; i < res.data.length; i++) {
                     let item = {};
                     item = res.data[i];
                     item.time = item.time.split("T")[0];
+                    if (item.imageName == null) {
+                        item.imageName = item.productImageName;
+                    }
                     itemList.push(item);
                 }
                 //console.log(itemList);
-                this.NewsInfo = itemList;
-                this.Title = '';
+                this.SearchInfo = itemList;
+                this.keyWord = '';
             })
         },
+
+        // Enter 搜尋
+        // pressEn: function (e) {
+        //     console.log(e);
+        //     $(document).keydown(function (e) {
+        //         if (e.keyCode == 13) {
+        //             console.log(13);
+        //             let request = {};
+        //             request.title = this.keyWord;
+        //             axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
+        //                 let itemList = [];
+        //                 for (i = 0; i < res.data.length; i++) {
+        //                     let item = {};
+        //                     item = res.data[i];
+        //                     item.time = item.time.split("T")[0];
+        //                     if (item.imageName == null) {
+        //                         item.imageName = item.productImageName;
+        //                     }
+        //                     itemList.push(item);
+        //                 }
+        //                 this.SearchInfo = itemList;
+        //                 this.keyWord = '';
+        //             })
+        //         }
+        //     });
+        // },
     },
 })
