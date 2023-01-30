@@ -7,6 +7,8 @@ var appVue = new Vue({
         NewsInfo: [],
         ProInfo: [],
         BlogInfo: [],
+        // 搜尋關建字
+        Title: null,
     },
     mounted() {
         this.dateFormate();
@@ -90,6 +92,23 @@ var appVue = new Vue({
                     return timeA < timeB ? 1 : -1;
                 })
                 this.BlogInfo = blogList;
+            })
+        },
+        // 搜尋文章
+        Search: function () {
+            let request = {};
+            request.title = this.Title;
+            axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
+                let itemList = [];
+                for (i = 0; i < res.data.length; i++) {
+                    let item = {};
+                    item = res.data[i];
+                    item.time = item.time.split("T")[0];
+                    itemList.push(item);
+                }
+                //console.log(itemList);
+                this.NewsInfo = itemList;
+                this.Title = '';
             })
         },
     },
