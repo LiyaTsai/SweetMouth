@@ -30,7 +30,7 @@
                 <img class="w-100" :src=`/img/${imageName}` :alt=`${productName}`
                      :title=`${productName}` />
 
-
+                     
                 <!-- Carousel Start -->
                 @*<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -56,7 +56,7 @@
             </div>
             <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
-                    {{productId}}
+                    {{productID}}
                     {{productName}}
                     {{flavor}}
                 </p>
@@ -79,13 +79,11 @@
                                 <div v-for="(_size,i) in size" :key="i">
                                     @*<button type="button" class="btn momo-pd-size" data-bs-toggle="button" aria-pressed="true" v-on:click="specification(i)" autocomplete="off" >{{_size}}</button>*@
                                     @*<button type="button" class="btn momo-pd-size" v-on:click="specification(i)" >{{_size}}</button>*@
-
-                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i)" v-if="_size == currentSize">{{_size}}</button>
-                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i)" v-else>{{_size}}</button>
+                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i,$event)" v-if="_size == currentSize">{{_size}}</button>
+                                    <button type="button" class="btn momo-pd-size" v-on:click="specification(i,$event)" v-else>{{_size}}</button>
                                     @*<span :id="i" v-on:click="specification" class="acive">{{_size+i}}</span>*@
                                     @*如果用span當按鈕的話要點到字才會觸發事件，div的話點到整行都行*@
-                                   @* <div v-on:click="specification(i)"  class="momo-pd-size">{{_size}}</div>*@
-                                   
+                                   @* <div v-on:click="specification(i)"  class="momo-pd-size">{{_size}}</div>*@                                 
                                 </div>
                                 <div class="my-2">
                                     @*<span class="text-primary me-1 display-6" v-for="p in price">${{p}}</span>*@
@@ -94,7 +92,7 @@
                                 </div>
                                 <div>
                                     <span>數量</span>
-                                    <input type="number" name="" id="productAmount" class="border-primary text-center momo-product-amount" min="1" max="20" value="1">
+                                    <input type="number" id="productAmount" name="productAmount" class="border-primary text-center momo-product-amount" min="1" max="20" value="1" v-on:change="amountChange">
                                 </div>
                                 <!-- <span class="me-2">
                                     加入收藏
