@@ -1,18 +1,18 @@
 ﻿@section Styles {
-    <style>
-        li {
-            list-style-type: none;
-        }
+<style>
+    li {
+        list-style-type: none;
+    }
 
-        .fa-edit {
-            cursor: pointer;
-            color: #FFA83E;
-        }
+    .fa-edit {
+        cursor: pointer;
+        color: #FFA83E;
+    }
 
-        .fa-edit:hover {
-            color: #631800;
-        }
-    </style>
+    .fa-edit:hover {
+        color: #631800;
+    }
+</style>
 }
 
 <!-- Page Header Start -->
@@ -103,7 +103,7 @@
                             </ul>
 
                             <!-- 新增留言區 -->
-                            <form action="" class="needs-validation" novalidate>
+                            <form action="">
                                 <div class="input-group">
                                     <span class="input-group-text"> <i class="fas fa-user"></i>&nbsp;{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
@@ -133,6 +133,6 @@
 </div>
 <!-- 最新消息文章內頁 End -->
 @section Scripts
-    {
-    <script src="~/js/blogpage.js"></script>
+{
+<script src="~/js/blogpage.js"></script>
 }
