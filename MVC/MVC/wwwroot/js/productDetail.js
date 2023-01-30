@@ -89,26 +89,25 @@ momoSizeBtn[0].addEventListener("click", function () {
                 e.target.style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
             },
 
-            addToCart: function (x, size, price) {
-                let _price = price.split("|")[0];
-                let _size = size.split("|")[0];
+            addToCart: function () {
+                let _price = this.PriceArray[this.arraykey];
+                //let _size = this.size;
                 let session = localStorage;
-                let _id = 0;
-                _id = id;
-                i = _id - 10001;
-                let _imageName = _this.ProductInfo[i].imageName;
+                let _id = urlProductID + "(" + this.currentSize;
+                //i = _id - 10001;
+                let _imageName = this.imageName;
 
-                if (session[id]) {
-                    let _amount = 0;
-                    _amount = session.getItem(id).split("|")[2];
-                    _amount++;
-                    value = `${_size}|${_price}|${_amount}|${_imageName}`;
-                    session.removeItem(id);
-                    session.setItem(id, value);
+                if (session[_id]) {
+                    //let _amount = 0;
+                    let _amount = parseInt(session.getItem(_id).split("|")[1]);
+                    _amount+=parseInt(this.amount);
+                    value = `${_price}|${_amount}|${_imageName}`;
+                    session.removeItem(_id);
+                    session.setItem(_id, value);
                 } else {
-                    let value = `${_size}|${_price}|${amount}|${_imageName}`;
-                    session["productList"] += `|${id}`;
-                    session.setItem(id, value);
+                    let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
+                    session["productList"] += `|${_id}`;
+                    session.setItem(_id, value);
                     session.setItem("productList", productList);
                 }
             },

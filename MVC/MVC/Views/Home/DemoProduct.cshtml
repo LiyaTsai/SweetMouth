@@ -85,7 +85,7 @@
                                 </small>
                                 <small class="w-50 text-center py-2">
                                     @*<div class="text-body" href="" v-on:click="addToCart(i.productId)" id="addToCartBtn" >*@
-                                    <div class="text-body momo-menu-btn" href="" v-on:click="addToCart(i.productId,i.size,i.price,1)" id="addToCartBtn">
+                                    <div class="text-body momo-menu-btn" href="" v-on:click="addToCart(i.productId,i.size,i.price,1,$event)" id="addToCartBtn" style="cursor:pointer">
                                         <i class="fa fa-shopping-bag text-primary me-2" id="addCartBtn" value="i.productId"></i>加入購物車
                                     </div>
                                 </small>

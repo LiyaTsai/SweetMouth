@@ -1,4 +1,4 @@
-var webApiBaseUri = "https://localhost:7096/"; //����e�������|�g�_�ӥH�ᴫ����o�N�n
+var webApiBaseUri = "https://localhost:7096/"; 
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -137,27 +137,25 @@ var appVue = new Vue({
         },
 
         // 存到session
-        addToCart(id, size, price, amount) {
-            // console.log(size);
+        addToCart(id, size, price, amount,e) {
             let _price = price.split("|")[0];
             let _size = size.split("|")[0];
             let session = localStorage;
-            let _id = 0;
-            _id = id;
-            i = _id - 10001;
-            let _imageName = _this.ProductInfo[i].imageName;
-
-            if (session[id]) {
+            let _id ="";
+            _id = id+"("+_size;
+            i = id - 10001;
+            let _imageName = e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].src.split("img/")[1];
+            if (session[_id]) {
                 let _amount = 0;
-                _amount = session.getItem(id).split("|")[2];
+                _amount = session.getItem(_id).split("|")[1];
                 _amount++;
-                value = `${_size}|${_price}|${_amount}|${_imageName}`;
-                session.removeItem(id);
-                session.setItem(id, value);
+                value = `${_price}|${_amount}|${_imageName}`;
+                session.removeItem(_id);
+                session.setItem(_id, value);
             } else {
-                let value = `${_size}|${_price}|${amount}|${_imageName}`;
-                session["productList"] += `|${id}`;
-                session.setItem(id, value);
+                let value = `${_price}|${amount}|${_imageName}`;
+                session["productList"] += `|${_id}`;
+                session.setItem(_id, value);
                 session.setItem("productList", productList);
             }
         },
