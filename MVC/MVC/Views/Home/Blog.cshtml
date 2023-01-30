@@ -1,11 +1,11 @@
 ﻿@section Styles
-    {
-    <style>
-        .imgs {
-            max-height: 100%;
-            max-width: 100%;
-        }
-    </style>
+{
+<style>
+    .imgs {
+        max-height: 100%;
+        max-width: 100%;
+    }
+</style>
 }
 
 <!-- Page Header Start -->
@@ -16,19 +16,6 @@
 </div>
 <!-- Page Header End -->
 
-@* 搜尋 bar *@
-@* <div class="d-flex justify-content-end col-6 mb-3">
-<input type="text" class="form-control">
-<div class="input-group">
-<select class="form-select">
-<option selected>請選擇..</option>
-<option value="1">One</option>
-<option value="2">Two</option>
-<option value="3">Three</option>
-</select>
-<button class="btn btn-outline-secondary" type="button">搜尋</button>
-</div>
-</div> *@
 
 <!-- Blog Start -->
 <div class="container-xxl py-5" id="appVue">
@@ -44,7 +31,8 @@
                         class="btn btn-primary rounded-pill py-sm-3 px-sm-5 mb-3">發表文章</a>
                 </div>
             </div>
-            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+
+            <div class="col-lg-6 text-start text-lg-end wow slideInRight mb-3" data-wow-delay="0.1s">
                 <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                     @* 最新訊息按鈕 *@
                     <li class="nav-item me-2">
@@ -59,6 +47,23 @@
                         <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">綜合討論</a>
                     </li>
                 </ul>
+
+                @* 搜尋 bar *@
+                <form action="">
+                    <div class="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" v-model="Title">
+                            @* <select class="form-select">
+                                <option selected>請選擇..</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                </select> *@
+                            <button class="btn btn-outline-secondary" type="button" @@click="Search">搜尋</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
 
@@ -149,6 +154,6 @@
 <!-- Blog End -->
 
 @section Scripts
-    {
-    <script src="~/js/Blog.js"></script>
+{
+<script src="~/js/Blog.js"></script>
 }

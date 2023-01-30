@@ -1,4 +1,4 @@
-﻿    @{
+﻿@{
     ViewData["Title"] = "首頁";
 }
 
@@ -11,8 +11,8 @@
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-start">
-                            <div class="col-lg-7 col-md-10">
-                                <h1 class="display-2 mb-5 animated slideInDown">生活要過、<br />甜點配酒！</h1>
+                            <div class="col-lg-7">
+                                <h1 class="display-2 mb-5 animated slideInDown text-primary">生活要過、<br />甜點配酒！</h1>
                                 @*<p class="mb-4 text-dark">這個放本店廣告，旁邊放logo</p>*@
                                 <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"
                                     class="btn btn-primary rounded-pill py-sm-3 px-sm-5">會員登入</a>
@@ -30,7 +30,8 @@
                             <div class="col-lg-7">
                                 <h1 class="display-2 mb-5 animated slideInDown">生活要過、 <br />甜點配酒！</h1>
                                 @*<p class="mb-4 text-dark">這個放廣告</p>*@
-                                <a asp-controller="Home" asp-action="DemoProduct" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">甜點品項</a>
+                                <a asp-controller="Home" asp-action="DemoProduct"
+                                    class="btn btn-primary rounded-pill py-sm-3 px-sm-5">甜點品項</a>
                                 @*<a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">這要寫啥好呢</a>*@
                             </div>
                         </div>
@@ -45,7 +46,8 @@
                             <div class="col-lg-7">
                                 <h1 class="display-2 mb-5 animated slideInDown">生活要過、 <br />甜點配酒！</h1>
                                 @*<p class="mb-4 text-dark">這個放廣告</p>*@
-                                <a asp-controller="Home" asp-action="Blog" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">甜嘴MoBlog</a>
+                                <a asp-controller="Home" asp-action="Blog"
+                                    class="btn btn-primary rounded-pill py-sm-3 px-sm-5">甜嘴MoBlog</a>
                                 @*<a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">這要寫啥好呢</a>*@
                             </div>
                         </div>
@@ -102,7 +104,8 @@
                     <img class="img-fluid mb-4" src="img/icon-1.png" alt="">
                     <h4 class="mb-3">最新活動</h4>
                     <p class="mb-4">最新活動與課程</p>
-                    <a asp-controller="Home" asp-action="Class" class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill">甜點課程</a>
+                    <a asp-controller="Home" asp-action="Class"
+                        class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill">甜點課程</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -110,7 +113,8 @@
                     <img class="img-fluid mb-4" src="img/icon-2.png" alt="">
                     <h4 class="mb-3">客製化蛋糕</h4>
                     <p class="mb-4">訂購蛋糕</p>
-                    <a asp-controller="Home" asp-action="orderCustomizedCake" class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill">前往訂購</a>
+                    <a asp-controller="Home" asp-action="orderCustomizedCake"
+                        class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill">前往訂購</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -118,7 +122,8 @@
                     <img class="img-fluid mb-4" src="img/icon-3.png" alt="">
                     <h4 class="mb-3">最新消息</h4>
                     <p class="mb-4">Blog文章</p>
-                    <a asp-controller="Home" asp-action="Blog" class=" btn-outline-primary btn border-2 py-2 px-4 rounded-pill">甜嘴MoBlog</a>
+                    <a asp-controller="Home" asp-action="Blog"
+                        class=" btn-outline-primary btn border-2 py-2 px-4 rounded-pill">甜嘴MoBlog</a>
                 </div>
             </div>
         </div>
@@ -129,137 +134,137 @@
 <!-- Firm Visit Start -->
 @*<div class="container-fluid bg-primary bg-icon mt-5 py-6">
     <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
-                <h1 class="display-5 text-white mb-3">客訂蛋糕</h1>
-                <p class="text-white mb-0">客訂蛋糕服務</p>
-            </div>
-            <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
-                <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="">客訂蛋糕頁面</a>
-            </div>
-        </div>
+    <div class="row g-5 align-items-center">
+    <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
+    <h1 class="display-5 text-white mb-3">客訂蛋糕</h1>
+    <p class="text-white mb-0">客訂蛋糕服務</p>
     </div>
-</div>
-<!-- Firm Visit End -->
+    <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
+    <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="">客訂蛋糕頁面</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Firm Visit End -->
 
-<!-- Testimonial Start -->
-<div class="container-fluid bg-light bg-icon py-6 mb-5">
+    <!-- Testimonial Start -->
+    <div class="container-fluid bg-light bg-icon py-6 mb-5">
     <div class="container">
-        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
-            style="max-width: 500px;">
-            <h1 class="display-5 mb-3">好評不斷</h1>
-            <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                    Clita erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" alt="">
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                    Clita erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" alt="">
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                    Clita erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" alt="">
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                    Clita erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg" alt="">
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+    style="max-width: 500px;">
+    <h1 class="display-5 mb-3">好評不斷</h1>
+    <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
     </div>
-</div>
-<!-- Testimonial End -->
-<!-- Blog Start -->
-<div class="container-xxl py-5">
+    <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
+    Clita erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" alt="">
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
+    Clita erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" alt="">
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
+    Clita erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" alt="">
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
+    Clita erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg" alt="">
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Testimonial End -->
+    <!-- Blog Start -->
+    <div class="container-xxl py-5">
     <div class="container">
-        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
-            style="max-width: 500px;">
-            <h1 class="display-5 mb-3">最新文章</h1>
-            <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                <div class="bg-light p-4">
-                    <a class="d-block h5 lh-base mb-4" href="">
-                        How to cultivate organic fruits and vegetables in own
-                        firm
-                    </a>
-                    <div class="text-muted border-top pt-4">
-                        <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
-                        <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                <div class="bg-light p-4">
-                    <a class="d-block h5 lh-base mb-4" href="">
-                        How to cultivate organic fruits and vegetables in own
-                        firm
-                    </a>
-                    <div class="text-muted border-top pt-4">
-                        <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
-                        <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                <div class="bg-light p-4">
-                    <a class="d-block h5 lh-base mb-4" href="">
-                        How to cultivate organic fruits and vegetables in own
-                        firm
-                    </a>
-                    <div class="text-muted border-top pt-4">
-                        <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
-                        <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+    style="max-width: 500px;">
+    <h1 class="display-5 mb-3">最新文章</h1>
+    <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
     </div>
-</div>
-<!-- Blog End -->*@
+    <div class="row g-4">
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <img class="img-fluid" src="img/blog-1.jpg" alt="">
+    <div class="bg-light p-4">
+    <a class="d-block h5 lh-base mb-4" href="">
+    How to cultivate organic fruits and vegetables in own
+    firm
+    </a>
+    <div class="text-muted border-top pt-4">
+    <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
+    <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+    <img class="img-fluid" src="img/blog-2.jpg" alt="">
+    <div class="bg-light p-4">
+    <a class="d-block h5 lh-base mb-4" href="">
+    How to cultivate organic fruits and vegetables in own
+    firm
+    </a>
+    <div class="text-muted border-top pt-4">
+    <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
+    <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+    <img class="img-fluid" src="img/blog-3.jpg" alt="">
+    <div class="bg-light p-4">
+    <a class="d-block h5 lh-base mb-4" href="">
+    How to cultivate organic fruits and vegetables in own
+    firm
+    </a>
+    <div class="text-muted border-top pt-4">
+    <small class="me-3"><i class="fa fa-user text-primary me-2"></i>Admin</small>
+    <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>01 Jan, 2045</small>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Blog End -->*@
