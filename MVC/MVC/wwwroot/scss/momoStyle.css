@@ -13,25 +13,37 @@
   color: #FFA83E !important;
 }
 
-.text-secondary {
-  color: #FF6C3E !important;
-  font-family: monospace;
-}
-
 .text-body {
   color: #F38B0B !important;
 }
 
-.text-dark {
-  color: #1E1100;
+.text-t3 {
+  color: #F38B0B;
+}
+
+.text-t4 {
+  color: #C77613;
 }
 
 .text-t6 {
   color: #3F2300;
 }
 
-.text-p3 {
-  color: #FF6C3E;
+.text-dark {
+  color: #1E1100;
+}
+
+.text-secondary {
+  color: #FF6C3E !important;
+  font-family: monospace;
+}
+
+.text-p5 {
+  color: #631800;
+}
+
+.text-o3 {
+  color: #C79713;
 }
 
 .btn-primary {
@@ -90,7 +102,7 @@
 }
 
 .btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem #FFFACA;
+  box-shadow: 0 0 0 0rem #FFFACA;
 }
 
 .btn-outline-primary:disabled, .btn-outline-primary.disabled {
@@ -100,7 +112,6 @@
 
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
-  color: #FFFACA;
   background-color: #F38B0B;
   border-color: #FFD76A;
   box-shadow: 0 0 0 0.25rem #FFA83E;
@@ -260,9 +271,28 @@ a:hover {
   box-shadow: 0 0 0 0.05rem #C73F13;
 }
 
+.momo-pd-tag {
+  border: solid #FF6C3E 2px;
+}
+
 .btn:focus, .btn:active {
   box-shadow: 0 0 0 0.05rem #C73F13;
   cursor: pointer;
   background-color: #C73F13;
   color: #FFFACA;
+}
+
+.momo-navbar {
+  padding: auto 1rem;
+}
+.momo-navbar .nav-item:hover {
+  background-color: #FFBDA8;
+}
+
+.momo-w90 {
+  width: 90px;
+}
+
+.momo-cate-btn {
+  border-radius: 1rem;
 }/*# sourceMappingURL=momoStyle.css.map */
