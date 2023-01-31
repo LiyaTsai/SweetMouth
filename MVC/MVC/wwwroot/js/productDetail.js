@@ -4,7 +4,7 @@ urlProductID = primaryKey.split("=")[1];
 
 let momoSizeBtn = document.querySelectorAll("button[class='btn momo-pd-size']");
 //let amount = document.querySelector("#productAmount");
-amount = document.getElementById("productAmount")
+//amount = document.getElementById("productAmount")
 
 console.log(momoSizeBtn)
 momoSizeBtn[0].addEventListener("click", function () {
@@ -37,7 +37,18 @@ momoSizeBtn[0].addEventListener("click", function () {
         mounted() {
             _this = this;
             _this.GetProduct();
-            _this.specification();
+            //_this.specification();
+            setTimeout(() => {
+                if (_this.sizeArray.length == 1) {
+                    this.price = `價格  $${this.PriceArray[0]}`;
+                    this.currentSize = _this.size[0];
+                    this.arraykey = 0;
+                    document.getElementById("productAmount").value = 1;
+                    this.amount = 1;
+                    Mother = document.getElementsByClassName("btn momo-pd-size");
+                    Mother[0].style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
+                }
+            }, 200)
         },
         methods: {
             GetProduct: function () {
@@ -49,7 +60,7 @@ momoSizeBtn[0].addEventListener("click", function () {
                     _this.flavor = a.data.flavor;
                     _this.size = a.data.size.split("|");
                     // currentSize = _this.size[0];
-                    _this.sizeArray = a.data.size.split("|");
+                    _this.sizeArray = a.data.size.split("|");                   
                     _this.tag = a.data.tag;
 
                     //先弄一個放價格的array出來，如果裡面只有一項，就拿來當價格，如果有一項以上就請顧客選擇規格
@@ -59,7 +70,6 @@ momoSizeBtn[0].addEventListener("click", function () {
                     _this.imageName = a.data.imageName;
                     _this.description = a.data.description;
                     _this.tagArray = a.data.tagArray;
-                    console.log(this.size)
                 });
 
                 setTimeout(() => {
@@ -70,45 +80,36 @@ momoSizeBtn[0].addEventListener("click", function () {
                 }, 200);
             },
             specification: function (x,e) {
-                //console.log("在specification裡");
-                //console.log(x)
-                //console.log(_this.PriceArray[x])
                 this.price = `價格  $${this.PriceArray[x]}`;
-                //console.log();
-                //console.log("x = " + x);
-                //console.log(_this.size[x]);
                 this.currentSize = _this.size[x];
-                console.log(this.currentSize)
                 this.arraykey = x;
-                document.getElementById("productAmount").value = 1;
-                //console.log(e.target);               
+                document.getElementById("productAmount").value = 1;             
                 Mother = document.getElementsByClassName("btn momo-pd-size");
                 for (let i = 0; i < Mother.length; i++) {
                     Mother[i].style ="background:white; color:rgb(255,108,62);"
                 }
                 e.target.style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
             },
-
             addToCart: function () {
-                let _price = this.PriceArray[this.arraykey];
-                //let _size = this.size;
-                let session = localStorage;
-                let _id = urlProductID + "(" + this.currentSize;
-                //i = _id - 10001;
-                let _imageName = this.imageName;
+                if (this.price == "請選擇規格") { alert("請選擇規格") }
+                else {
+                    let _price = this.PriceArray[this.arraykey];
+                    let session = localStorage;
+                    let _id = urlProductID + "(" + this.currentSize;
+                    let _imageName = this.imageName;
 
-                if (session[_id]) {
-                    //let _amount = 0;
-                    let _amount = parseInt(session.getItem(_id).split("|")[1]);
-                    _amount+=parseInt(this.amount);
-                    value = `${_price}|${_amount}|${_imageName}`;
-                    session.removeItem(_id);
-                    session.setItem(_id, value);
-                } else {
-                    let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
-                    session["productList"] += `|${_id}`;
-                    session.setItem(_id, value);
-                    session.setItem("productList", productList);
+                    if (session[_id]) {
+                        let _amount = parseInt(session.getItem(_id).split("|")[1]);
+                        _amount += parseInt(this.amount);
+                        value = `${_price}|${_amount}|${_imageName}`;
+                        session.removeItem(_id);
+                        session.setItem(_id, value);
+                    } else {
+                        let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
+                        session["productList"] += `|${_id}`;
+                        session.setItem(_id, value);
+                        session.setItem("productList", productList);
+                    }
                 }
             },
             amountChange: function (e) {               
