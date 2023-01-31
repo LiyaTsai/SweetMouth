@@ -157,15 +157,43 @@
                 </div>
                 <div class="modal-footer">
                     <a asp-controller="Home" asp-action="memberfrom" class="mr-auto">還沒有帳號？</a>
-                    @*<a href="" class="mr-auto" data-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#registerModal">還沒有帳號?</a>*@
+                    @*<a class="mr-auto" style="cursor:pointer" href="" >忘記密碼?</a>*@
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#ForgotModal" data-bs-dismiss="modal"
+                       class="mr-auto active" id="forgetPassw">忘記密碼?</a>
                     <button type="submit" class="btn btn-primary rounded-pill" id="logginBtn">登入</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- 登入_Modal End -->
-
+    <!--忘記密碼Modal Begin-->
+    <div class="modal fade" id="ForgotModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content momo-border-radius">
+                <div class="modal-header bg-t2 momo-login-div-top">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">忘記密碼</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="loginmail">
+                                <h5 class=" text-t6">Email</h5>
+                            </label><br>
+                            <input class="form-control text-t6" type="email" name="" id="email_id" placeholder="請輸入E-mail"
+                                   required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary rounded-pill" id="forgotBtn" data-bs-dismiss="modal">寄出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--忘記密碼Modal End-->
     @RenderBody()
 
     <!-- Footer Start -->
@@ -264,6 +292,12 @@
     <script src="~/js/main.js"></script>
 
     <!-- 客製 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("h1lYhg33p0GFUtc3s");
+        })();
+    </script>
     <script src="~/js/Loggin.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 

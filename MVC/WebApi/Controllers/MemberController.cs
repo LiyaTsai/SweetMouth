@@ -57,6 +57,7 @@ namespace WebApi.Controllers
                 Email = mem.Email,
                 PhoneNumber = mem.PhoneNumber,
                 Birthday = mem.Birthday,
+                Password = mem.Password,
             };
         }
 

@@ -1,7 +1,7 @@
 ﻿@section Styles{
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 }
-<h1 class="text-center my-5">後台版型 | 資料表</h1>
+<h1 class="text-center my-5">後台版型 | </h1>
 
 <div class="container" id="appVue">
     <button type="button" class="btn btn-outline-success" @@click="showModal">新增資料</button>
@@ -10,13 +10,9 @@
             @*顯示資料*@
             <table class="table table-striped table-hover">
                 @*表頭*@
-                <thead>
+                <thead v-for="inner in ColumnArray">
                     <tr>
-                        <td>表頭1</td>
-                        <td>表頭2</td>
-                        <td>表頭3</td>
-                        <td>表頭4</td>
-                        <td>按鈕</td>
+                        <td>inner</td>
                     </tr>
                 </thead>
 

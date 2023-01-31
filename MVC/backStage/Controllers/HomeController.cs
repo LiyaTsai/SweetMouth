@@ -12,14 +12,15 @@ namespace backStage.Controllers
         {
             _logger = logger;
         }
-
+       
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult template()
+        public IActionResult template(string type)
         {
+            ViewBag.type = type;
             return View();
         }
 

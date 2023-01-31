@@ -2,10 +2,7 @@
 loginmail = $("#loginmail")                             //帳號輸入欄位
 var password = document.getElementById("password");     //密碼輸入欄位
 var webApiBaseUrl = "https://localhost:7096/"
-
-
-
-
+forgotBtn = document.getElementById("forgotBtn");
 
 logginBtn.addEventListener("click", function () {       //為登入按鈕加入事件聆聽
     axios.get(`${webApiBaseUrl}api/Member`).then(a => {
@@ -49,4 +46,60 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
             $("#password").val("")
         }
     })
+})
+forgotBtn.addEventListener("click", function(){
+    mail = document.getElementById("email_id").value;
+    //Tempid = 0;
+    const EmailPromise = new Promise((resolve, reject) => {
+        axios.get(`${webApiBaseUrl}api/Member`).then(x => {
+            let y = x.data;
+            for (let i = 0; i < y.length; i++) {
+                if (y[i].email == mail) { resolve(y[i].memberId); break; }
+            }
+            resolve(0)
+        })
+    })
+    EmailPromise.then((val) => {
+        if (val == 0) {
+            alert("請確認此Email已註冊");
+        }
+        else {
+            axios.get(`${webApiBaseUrl}api/Member/` + val).then(a => {
+                console.log(a.data.password)
+                let params = {
+                    from_name: a.data.name,
+                    email_id: mail,
+                    message: "您的密碼是："+a.data.password
+                }
+                emailjs.send('service_fxukuhb', 'template_ap40fri', params).then(function (res) {
+                    alert('驗證信已成功寄出，快去看看吧');
+                })
+            })
+        }
+    })
+    //axios.get(`${webApiBaseUrl}api/Member`).then(x => {
+    //    let y = x.data;       
+    //    for (let i = 0; i < y.length; i++) {
+    //        if (y[i].email == mail) { Tempid = y[i].memberId; break; }
+    //    }
+    //})
+
+    //setTimeout(() => {
+    //    console.log(mail)
+    //    if (Tempid == 0) {
+    //        alert("請確認此Email已註冊")
+    //    }
+    //    else {
+    //        axios.get(`${webApiBaseUrl}api/Member/` + Tempid).then(a => {
+    //            let params = {
+    //                from_name: a.data.name,
+    //                email_id: mail,
+    //                message: "測試測試寄信"
+    //            }
+    //            emailjs.send('service_fxukuhb', 'template_ap40fri', params).then(function (res) {
+    //                alert('success ' + res.status);
+    //            })
+    //        })
+    //    }
+    //}, 250)
 })
