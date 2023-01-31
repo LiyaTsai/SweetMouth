@@ -85,7 +85,7 @@ namespace WebApi.Controllers
             {
                 return "ID不正確";
             }
-            Blog blg = await _context.Blog.FindAsync(blogDTO.ArticleID, Floor);
+            Blog blg = await _context.Blog.FindAsync(blogDTO.ArticleID, blogDTO.Floor);
             blg.ArticleId = blogDTO.ArticleID;
             blg.MemberId = blogDTO.MemberID;
             blg.Floor = blogDTO.Floor;
@@ -158,9 +158,11 @@ namespace WebApi.Controllers
         public async Task<IEnumerable<BlogDTO>> FilterTitle(BlogDTO BlogDTO)
         {
             return _context.Blog
-                .Where(blg => blg.Title.Contains(BlogDTO.Title)).Select(blg => new BlogDTO
+                .Where(blg => blg.Title.Contains(BlogDTO.Title) || blg.Member.NickName.Contains(BlogDTO.NickName))
+                .Select(blg => new BlogDTO
                 {
                     ArticleID = blg.ArticleId,
+                    Floor= blg.Floor,
                     MemberID = blg.MemberId,
                     ProductID = blg.ProductId,
                     ImageName = blg.ImageName,
@@ -172,21 +174,6 @@ namespace WebApi.Controllers
                     NickName = blg.Member.NickName,
                 });
         }
-
-        // 搜尋暱稱
-        //[HttpPost("FilterNickName")]
-        //public async Task<IEnumerable<MemberDTO>> FilterNickName([FromBody] MemberDTO MemberDTO)
-        //{
-        //    return _context.Member.Where(
-        //    mem => mem.NickName.Contains(MemberDTO.NickName)).Select(mem => new MemberDTO
-        //    {
-        //        MemberID = mem.MemberId,
-        //        Name= mem.Name,
-        //        NickName = mem.NickName,
-        //        Email = mem.Email,
-        //        PhoneNumber= mem.PhoneNumber,
-        //    });
-        //}
 
         private bool BlogExists(int id)
         {

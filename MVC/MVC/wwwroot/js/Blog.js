@@ -104,44 +104,60 @@ var appVue = new Vue({
 
         // 搜尋文章
         Search: function () {
-            let request = {};
-            request.title = this.keyWord;
-            axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
-                let itemList = [];
-                for (i = 0; i < res.data.length; i++) {
-                    let item = {};
-                    item = res.data[i];
-                    item.time = item.time.split("T")[0];
-                    if (item.imageName == null) {
-                        item.imageName = item.productImageName;
+            let searchInput = document.getElementById('searchInput').value
+            if (searchInput == '') {
+                alert('請輸入關鍵字!!')
+                return;
+            } else {
+                let request = {};
+                request.title = this.keyWord;
+                request.nickName = this.keyWord;
+
+                axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
+                    let itemList = [];
+                    for (i = 0; i < res.data.length; i++) {
+                        if (res.data[i].floor == 0) {
+                            //console.log(res.data[i])
+                            let item = {};
+                            item = res.data[i];
+                            item.time = item.time.split("T")[0];
+                            if (item.imageName == null) {
+                                item.imageName = item.productImageName;
+                            }
+                            itemList.push(item);
+                        }
                     }
-                    itemList.push(item);
-                }
-                //console.log(itemList);
-                this.SearchInfo = itemList;
-                this.keyWord = '';
-            })
+                    //console.log(itemList);
+                    this.SearchInfo = itemList;
+                    this.keyWord = '';
+                })
+            }
         },
 
         // Enter 搜尋
-        // pressEn: function (e) {
-        //     console.log(e);
+        // pressEnter: function () {
         //     $(document).keydown(function (e) {
         //         if (e.keyCode == 13) {
-        //             console.log(13);
+        //             console.log('13')
         //             let request = {};
         //             request.title = this.keyWord;
+        //             request.nickName = this.keyWord;
+
         //             axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
         //                 let itemList = [];
         //                 for (i = 0; i < res.data.length; i++) {
-        //                     let item = {};
-        //                     item = res.data[i];
-        //                     item.time = item.time.split("T")[0];
-        //                     if (item.imageName == null) {
-        //                         item.imageName = item.productImageName;
+        //                     if (res.data[i].floor == 0) {
+        //                         //console.log(res.data[i])
+        //                         let item = {};
+        //                         item = res.data[i];
+        //                         item.time = item.time.split("T")[0];
+        //                         if (item.imageName == null) {
+        //                             item.imageName = item.productImageName;
+        //                         }
+        //                         itemList.push(item);
         //                     }
-        //                     itemList.push(item);
         //                 }
+        //                 //console.log(itemList);
         //                 this.SearchInfo = itemList;
         //                 this.keyWord = '';
         //             })
