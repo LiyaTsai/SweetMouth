@@ -102,7 +102,7 @@
 }
 
 .btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem #FFFACA;
+  box-shadow: 0 0 0 0rem #FFFACA;
 }
 
 .btn-outline-primary:disabled, .btn-outline-primary.disabled {
@@ -112,7 +112,6 @@
 
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
-  color: #FFFACA;
   background-color: #F38B0B;
   border-color: #FFD76A;
   box-shadow: 0 0 0 0.25rem #FFA83E;
@@ -288,4 +287,8 @@ a:hover {
 
 .momo-w90 {
   width: 90px;
+}
+
+.momo-cate-btn {
+  border-radius: 1rem;
 }/*# sourceMappingURL=momoStyle.css.map */

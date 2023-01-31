@@ -14,108 +14,107 @@ momoSizeBtn[0].addEventListener("click", function () {
     // 罷工
 });
 
-    var appVue = new Vue({
-        el: "#appVue",
-        name: "appVue",
-        data: {
-            productID: "",
-            productName: "",
-            // Specifications: "",
-            arraykey:0,
-            PriceArray: [],
-            price: "",
-            flavor: "",
-            size: "",
-            sizeArray: "",
-            imageName: "",
-            tag: "",
-            description: "",
-            tagArray: [],
-            currentSize: "",
-            amount: 0,
-        },
-        mounted() {
-            _this = this;
-            _this.GetProduct();
-            //_this.specification();
-            setTimeout(() => {
-                if (_this.sizeArray.length == 1) {
-                    this.price = `價格  $${this.PriceArray[0]}`;
-                    this.currentSize = _this.size[0];
-                    this.arraykey = 0;
-                    document.getElementById("productAmount").value = 1;
-                    this.amount = 1;
-                    Mother = document.getElementsByClassName("btn momo-pd-size");
-                    Mother[0].style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
-                }
-            }, 200)
-        },
-        methods: {
-            GetProduct: function () {
-                let _this = this;
-                axios.get(`${webApiBaseUrl}api/Product/${urlProductID}`).then((a) => {
-                    // console.log(a.data);
-                    _this.productID = urlProductID;
-                    _this.productName = a.data.productName;
-                    _this.flavor = a.data.flavor;
-                    _this.size = a.data.size.split("|");
-                    // currentSize = _this.size[0];
-                    _this.sizeArray = a.data.size.split("|");                   
-                    _this.tag = a.data.tag;
+var appVue = new Vue({
+    el: "#appVue",
+    name: "appVue",
+    data: {
+        productID: "",
+        productName: "",
+        // Specifications: "",
+        arraykey: 0,
+        PriceArray: [],
+        price: "",
+        flavor: "",
+        size: "",
+        sizeArray: "",
+        imageName: "",
+        tag: "",
+        description: "",
+        tagArray: [],
+        currentSize: "",
+        amount: 0,
+    },
+    mounted() {
+        _this = this;
+        _this.GetProduct();
+        //_this.specification();
+        setTimeout(() => {
+            if (_this.sizeArray.length == 1) {
+                this.price = `價格  $${this.PriceArray[0]}`;
+                this.currentSize = _this.size[0];
+                this.arraykey = 0;
+                document.getElementById("productAmount").value = 1;
+                this.amount = 1;
+                Mother = document.getElementsByClassName("btn momo-pd-size");
+                Mother[0].style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
+            }
+        }, 200);
+    },
+    methods: {
+        GetProduct: function () {
+            let _this = this;
+            axios.get(`${webApiBaseUrl}api/Product/${urlProductID}`).then((a) => {
+                // console.log(a.data);
+                _this.productID = urlProductID;
+                _this.productName = a.data.productName;
+                _this.flavor = a.data.flavor;
+                _this.size = a.data.size.split("|");
+                // currentSize = _this.size[0];
+                _this.sizeArray = a.data.size.split("|");
+                _this.tag = a.data.tag;
 
                 _this.tag = a.data.tag;
 
-                    _this.imageName = a.data.imageName;
-                    _this.description = a.data.description;
-                    _this.tagArray = a.data.tagArray;
-                });
+                _this.imageName = a.data.imageName;
+                _this.description = a.data.description;
+                _this.tagArray = a.data.tagArray;
+            });
 
-                setTimeout(() => {
-                    // console.log("價格陣列長度 " + _this.PriceArray.length);
-                    for (let i = 0; i < _this.PriceArray.length; i++) {
-                        // console.log("價格 " + _this.PriceArray[i]);
-                    }
-                }, 200);
-            },
-            specification: function (x,e) {
-                this.price = `價格  $${this.PriceArray[x]}`;
-                this.currentSize = _this.size[x];
-                this.arraykey = x;
-                document.getElementById("productAmount").value = 1;             
-                Mother = document.getElementsByClassName("btn momo-pd-size");
-                for (let i = 0; i < Mother.length; i++) {
-                    Mother[i].style ="background:white; color:rgb(255,108,62);"
+            setTimeout(() => {
+                // console.log("價格陣列長度 " + _this.PriceArray.length);
+                for (let i = 0; i < _this.PriceArray.length; i++) {
+                    // console.log("價格 " + _this.PriceArray[i]);
                 }
-                e.target.style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
-            },
-            addToCart: function () {
-                if (this.price == "請選擇規格") { alert("請選擇規格") }
-                else {
-                    let _price = this.PriceArray[this.arraykey];
-                    let session = localStorage;
-                    let _id = urlProductID + "(" + this.currentSize;
-                    let _imageName = this.imageName;
-
-                    if (session[_id]) {
-                        let _amount = parseInt(session.getItem(_id).split("|")[1]);
-                        _amount += parseInt(this.amount);
-                        value = `${_price}|${_amount}|${_imageName}`;
-                        session.removeItem(_id);
-                        session.setItem(_id, value);
-                    } else {
-                        let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
-                        session["productList"] += `|${_id}`;
-                        session.setItem(_id, value);
-                        session.setItem("productList", productList);
-                    }
-                }
-            },
-            amountChange: function (e) {               
-                this.amount = e.target.value;
-                this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount
-            },
+            }, 200);
         },
+        specification: function (x, e) {
+            this.price = `價格  $${this.PriceArray[x]}`;
+            this.currentSize = _this.size[x];
+            this.arraykey = x;
+            document.getElementById("productAmount").value = 1;
+            Mother = document.getElementsByClassName("btn momo-pd-size");
+            for (let i = 0; i < Mother.length; i++) {
+                Mother[i].style = "background:white; color:rgb(255,108,62);";
+            }
+            e.target.style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
+        },
+        addToCart: function () {
+            if (this.price == "請選擇規格") {
+                alert("請選擇規格");
+            } else {
+                let _price = this.PriceArray[this.arraykey];
+                let session = localStorage;
+                let _id = urlProductID + "(" + this.currentSize;
+                let _imageName = this.imageName;
 
+                if (session[_id]) {
+                    let _amount = parseInt(session.getItem(_id).split("|")[1]);
+                    _amount += parseInt(this.amount);
+                    value = `${_price}|${_amount}|${_imageName}`;
+                    session.removeItem(_id);
+                    session.setItem(_id, value);
+                } else {
+                    let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
+                    session["productList"] += `|${_id}`;
+                    session.setItem(_id, value);
+                    session.setItem("productList", productList);
+                }
+            }
+        },
+        amountChange: function (e) {
+            this.amount = e.target.value;
+            this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount;
+        },
         addToCart: function () {
             console.log("我按了加入購物車");
             console.log(this.currentSize);
