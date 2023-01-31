@@ -6,7 +6,7 @@ let momoSizeBtn = document.querySelectorAll("button[class='btn momo-pd-size']");
 //let amount = document.querySelector("#productAmount");
 //amount = document.getElementById("productAmount")
 
-console.log(momoSizeBtn)
+console.log(momoSizeBtn);
 momoSizeBtn[0].addEventListener("click", function () {
     momoSizeBtn[0].style.backgroundColor = "#C73F13";
     momoSizeBtn[0].style.color = "#FFFACA";
@@ -63,9 +63,7 @@ momoSizeBtn[0].addEventListener("click", function () {
                     _this.sizeArray = a.data.size.split("|");                   
                     _this.tag = a.data.tag;
 
-                    //先弄一個放價格的array出來，如果裡面只有一項，就拿來當價格，如果有一項以上就請顧客選擇規格
-                    _this.PriceArray = a.data.price.split("|");
-                    _this.price = _this.PriceArray.length == 1 ? _this.PriceArray[0] : "請選擇規格";
+                _this.tag = a.data.tag;
 
                     _this.imageName = a.data.imageName;
                     _this.description = a.data.description;
@@ -117,8 +115,43 @@ momoSizeBtn[0].addEventListener("click", function () {
                 this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount
             },
         },
-    });
 
+        addToCart: function () {
+            console.log("我按了加入購物車");
+            console.log(this.currentSize);
+            console.log(this._price);
+            console.log(this._amount);
+            if (this.currentSize == "") {
+                this.currentSize = this.sizeArray[0];
+            }
+
+            this._price = this.PriceArray[this.arraykey];
+            //let _size = this.size;
+            let session = localStorage;
+            let _id = urlProductID + "(" + this.currentSize;
+            //i = _id - 10001;
+            let _imageName = this.imageName;
+
+            if (session[_id]) {
+                let _amount = 1;
+                _amount = parseInt(session.getItem(_id).split("|")[1]);
+                _amount += parseInt(this.amount);
+                value = `${_price}|${_amount}|${_imageName}`;
+                session.removeItem(_id);
+                session.setItem(_id, value);
+            } else {
+                let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
+                session["productList"] += `|${_id}`;
+                session.setItem(_id, value);
+                session.setItem("productList", productList);
+            }
+        },
+        amountChange: function (e) {
+            this.amount = e.target.value;
+            this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount;
+        },
+    },
+});
 
 // setTimeout(function () {
 //     console.log(appVue.ProductName);

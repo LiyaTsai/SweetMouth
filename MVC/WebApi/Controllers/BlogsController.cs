@@ -155,18 +155,22 @@ namespace WebApi.Controllers
 
         // 搜尋文章 api/Blogs/FilterTitle
         [HttpPost("FilterTitle")]
-        public async Task<IEnumerable<BlogDTO>> FilterTitle([FromBody] BlogDTO BlogDTO)
+        public async Task<IEnumerable<BlogDTO>> FilterTitle(BlogDTO BlogDTO)
         {
-            return _context.Blog.Include(b => b.Member).Include(a => a.Product)
+            return _context.Blog
                 .Where(blg => blg.Title.Contains(BlogDTO.Title)).Select(blg => new BlogDTO
-            {
-                ArticleID = blg.ArticleId,
-                MemberID = blg.MemberId,
-                ProductID = blg.ProductId,
-                ImageName= blg.ImageName,
-                Time = blg.Time,
-                Title = blg.Title,
-            });
+                {
+                    ArticleID = blg.ArticleId,
+                    MemberID = blg.MemberId,
+                    ProductID = blg.ProductId,
+                    ImageName = blg.ImageName,
+                    Time = blg.Time,
+                    Title = blg.Title,
+
+                    // 外鍵
+                    ProductImageName = blg.Product.ImageName, 
+                    NickName = blg.Member.NickName,
+                });
         }
 
         // 搜尋暱稱
