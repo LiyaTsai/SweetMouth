@@ -114,6 +114,12 @@ var appVue = new Vue({
                 request.nickName = this.keyWord;
 
                 axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
+                    if (res.data.length == 0) {
+                        //alert('找不到文章!!')
+                        document.getElementById('errMessage').textContent = '找不到文章!!';
+                    } else {
+                        document.getElementById('errMessage').textContent = '';
+                    }
                     let itemList = [];
                     for (i = 0; i < res.data.length; i++) {
                         if (res.data[i].floor == 0) {
