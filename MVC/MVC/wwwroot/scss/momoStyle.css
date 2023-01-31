@@ -13,25 +13,37 @@
   color: #FFA83E !important;
 }
 
-.text-secondary {
-  color: #FF6C3E !important;
-  font-family: monospace;
-}
-
 .text-body {
   color: #F38B0B !important;
 }
 
-.text-dark {
-  color: #1E1100;
+.text-t3 {
+  color: #F38B0B;
+}
+
+.text-t4 {
+  color: #C77613;
 }
 
 .text-t6 {
   color: #3F2300;
 }
 
-.text-p3 {
-  color: #FF6C3E;
+.text-dark {
+  color: #1E1100;
+}
+
+.text-secondary {
+  color: #FF6C3E !important;
+  font-family: monospace;
+}
+
+.text-p5 {
+  color: #631800;
+}
+
+.text-o3 {
+  color: #C79713;
 }
 
 .btn-primary {
@@ -265,4 +277,11 @@ a:hover {
   cursor: pointer;
   background-color: #C73F13;
   color: #FFFACA;
+}
+
+.momo-navbar {
+  padding: auto 1rem;
+}
+.momo-navbar .nav-item:hover {
+  background-color: #FFBDA8;
 }/*# sourceMappingURL=momoStyle.css.map */
