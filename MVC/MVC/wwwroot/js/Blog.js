@@ -142,33 +142,47 @@ var appVue = new Vue({
 
         // Enter 搜尋
         // pressEnter: function () {
-        //     $(document).keydown(function (e) {
-        //         if (e.keyCode == 13) {
-        //             console.log('13')
-        //             let request = {};
-        //             request.title = this.keyWord;
-        //             request.nickName = this.keyWord;
 
-        //             axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
-        //                 let itemList = [];
-        //                 for (i = 0; i < res.data.length; i++) {
-        //                     if (res.data[i].floor == 0) {
-        //                         //console.log(res.data[i])
-        //                         let item = {};
-        //                         item = res.data[i];
-        //                         item.time = item.time.split("T")[0];
-        //                         if (item.imageName == null) {
-        //                             item.imageName = item.productImageName;
-        //                         }
-        //                         itemList.push(item);
+        //     $('#searchInput').keyup(function (e) {
+        //         if (e.keyCode == 13) {
+        //             //console.log('13')
+        //             let searchInput = document.getElementById('searchInput').value
+        //             if (searchInput == '') {
+        //                 alert('請輸入關鍵字!!')
+        //                 return;
+        //             } else {
+        //                 let request = {};
+        //                 request.title = this.keyWord;
+        //                 request.nickName = this.keyWord;
+
+        //                 axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
+        //                     if (res.data.length == 0) {
+        //                         //alert('找不到文章!!')
+        //                         document.getElementById('errMessage').textContent = '找不到文章!!';
+        //                     } else {
+        //                         document.getElementById('errMessage').textContent = '';
         //                     }
-        //                 }
-        //                 //console.log(itemList);
-        //                 this.SearchInfo = itemList;
-        //                 this.keyWord = '';
-        //             })
+        //                     let itemList = [];
+        //                     for (i = 0; i < res.data.length; i++) {
+        //                         if (res.data[i].floor == 0) {
+        //                             //console.log(res.data[i])
+        //                             let item = {};
+        //                             item = res.data[i];
+        //                             item.time = item.time.split("T")[0];
+        //                             if (item.imageName == null) {
+        //                                 item.imageName = item.productImageName;
+        //                             }
+        //                             itemList.push(item);
+        //                         }
+        //                     }
+        //                     //console.log(itemList);
+        //                     this.SearchInfo = itemList;
+        //                     this.keyWord = '';
+        //                 })
+        //             }
         //         }
         //     });
+
         // },
     },
 })
