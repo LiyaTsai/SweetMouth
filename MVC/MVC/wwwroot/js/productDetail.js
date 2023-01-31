@@ -63,7 +63,9 @@ var appVue = new Vue({
                 _this.sizeArray = a.data.size.split("|");
                 _this.tag = a.data.tag;
 
-                _this.tag = a.data.tag;
+                //先弄一個放價格的array出來，如果裡面只有一項，就拿來當價格，如果有一項以上就請顧客選擇規格
+                _this.PriceArray = a.data.price.split("|");
+                _this.price = _this.PriceArray.length == 1 ? _this.PriceArray[0] : "請選擇規格";
 
                 _this.imageName = a.data.imageName;
                 _this.description = a.data.description;
@@ -81,6 +83,7 @@ var appVue = new Vue({
             this.price = `價格  $${this.PriceArray[x]}`;
             this.currentSize = _this.size[x];
             this.arraykey = x;
+            this.amount = 1;
             document.getElementById("productAmount").value = 1;
             Mother = document.getElementsByClassName("btn momo-pd-size");
             for (let i = 0; i < Mother.length; i++) {
@@ -95,8 +98,7 @@ var appVue = new Vue({
                 let _price = this.PriceArray[this.arraykey];
                 let session = localStorage;
                 let _id = urlProductID + "(" + this.currentSize;
-                let _imageName = this.imageName;
-
+                let _imageName = this.imageName;               
                 if (session[_id]) {
                     let _amount = parseInt(session.getItem(_id).split("|")[1]);
                     _amount += parseInt(this.amount);
@@ -113,41 +115,8 @@ var appVue = new Vue({
         },
         amountChange: function (e) {
             this.amount = e.target.value;
-            this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount;
-        },
-        addToCart: function () {
-            console.log("我按了加入購物車");
-            console.log(this.currentSize);
-            console.log(this._price);
-            console.log(this._amount);
-            if (this.currentSize == "") {
-                this.currentSize = this.sizeArray[0];
-            }
-
-            this._price = this.PriceArray[this.arraykey];
-            //let _size = this.size;
-            let session = localStorage;
-            let _id = urlProductID + "(" + this.currentSize;
-            //i = _id - 10001;
-            let _imageName = this.imageName;
-
-            if (session[_id]) {
-                let _amount = 1;
-                _amount = parseInt(session.getItem(_id).split("|")[1]);
-                _amount += parseInt(this.amount);
-                value = `${_price}|${_amount}|${_imageName}`;
-                session.removeItem(_id);
-                session.setItem(_id, value);
-            } else {
-                let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
-                session["productList"] += `|${_id}`;
-                session.setItem(_id, value);
-                session.setItem("productList", productList);
-            }
-        },
-        amountChange: function (e) {
-            this.amount = e.target.value;
-            this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount;
+            if (this.price != "請選擇規格") { this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount; }
+            else { alert("請選擇規格"); e.target.value = 1; this.amount = e.target.value; }
         },
     },
 });
