@@ -20,22 +20,26 @@ var appVue = new Vue({
     methods: {
         dateFormate: function () {
             let date = new Date();
-            // let year = date.getFullYear();
+            let year = date.getFullYear();
             let month = date.getMonth() + 1;
             // let day = date.getDate();
             // let hours = date.getHours();
             // let minutes = date.getMinutes();
             // let seconds = date.getSeconds();
-            return month;
+            return year + '-' + + '0' + month;
         },
         News: function () {
             axios.get(`${webApiBaseUri}api/Blogs`).then(res => {
                 this.NewsInfo = res.data;
-                let date = '0' + this.dateFormate().toString();
+                let date = this.dateFormate().toString();
+                let dateYear = date.split("-")[0];
+                let dateMonth = date.split("-")[1];
+                // console.log(dateMonth);
+                // console.log(this.NewsInfo[0].time.split("-")[0])
                 let NewsList = [];
                 for (i = 0; i < this.NewsInfo.length; i++) {
                     let item = {};
-                    if (this.NewsInfo[i].floor == 0 && this.NewsInfo[i].time.split("-")[1] == date) {
+                    if (this.NewsInfo[i].floor == 0 && this.NewsInfo[i].time.split("-")[0] == dateYear && this.NewsInfo[i].time.split("-")[1] == dateMonth) {
                         item = this.NewsInfo[i];
                         item.time = item.time.split("T")[0];
                         if (item.imageName == null) {
