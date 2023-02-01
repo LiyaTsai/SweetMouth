@@ -8,12 +8,15 @@ var appVue = new Vue({
         SubTitle: null,
         article: null,
         ProductInfo: [],
+        selectedImg: 'newPostblog.jpg', // 預設圖片
+        selectedProId: null,
     },
     mounted() {
         this.LogAricleID();
         this.LogProInfo();
     },
     methods: {
+        // 撈文章ID
         LogAricleID: function () {
             axios.get(`${webApiBaseUri}api/Blogs`).then(res => {
                 //_this.articlePostNum = res.data;
@@ -24,18 +27,15 @@ var appVue = new Vue({
         },
         // 撈商品圖
         LogProInfo: function () {
-            let productList = [];
             axios.get(`${webApiBaseUri}api/Product`).then(res => {
-                for (i = 0; i < res.data.length; i++) {
-                    if (res.data[i].avalible == true && res.data[i].category == '常備品項') {
-                        let item = [];
-                        item = res.data[i];
-                        productList.push(item);
-                    }
-                }
-                this.ProductInfo = productList;
-                console.log(this.ProductInfo);
+                this.ProductInfo = res.data;
+                //console.log(this.ProductInfo);
             })
+        },
+        // 取得商品ID
+        getProId: function () {
+            let obj = document.getElementById('selectItem');
+            this.selectedProId = obj.options[obj.selectedIndex].text.split("|")[0];
         },
         PostNewBlog: function () {
             if (sessionStorage.getItem("MemberID") == null) {
@@ -46,11 +46,12 @@ var appVue = new Vue({
 
                 request.articleID = this.articlePostNum += 1;
                 //console.log(_this.articlePostNum)
+                //console.log(this.selectedProId);
                 request.memberID = sessionStorage.getItem("MemberID");
                 request.floor = 0;
-                request.productID = null;
+                request.productID = this.selectedProId;
                 request.time = Time;
-                request.imageName = 'newPostblog.jpg'; // 預設圖片
+                request.imageName = this.selectedImg;
                 request.title = this.Title;
                 request.SubTitle = this.SubTitle;
                 request.Article = this.article;
