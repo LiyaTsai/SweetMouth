@@ -24,18 +24,22 @@
                 <h4>發表文章</h4>
             </div>
 
-            @* <div class="container">
-            <div class="col-8">
-            <img :src=`/img/${imageName}` class="mb-3 img-fluid rounded mx-auto d-block" alt="">
-            </div>
+            <div class="row mb-3">
+                <div class="col-8">
+                    <img :src=`/img/${selectedImg}` class="mb-3 img-fluid rounded mx-auto d-block" alt="">
+                </div>
 
-            <div class="col-4">
-            <select>
-            <option v-model="">
-            {{productId}}{{productName}}{{imageName}}</option>
-            </select>
+                <div class="col-4">
+                    <h6>商品心得</h6>
+                    <select id="selectItem" v-model="selectedImg" class="form-select" @@change="getProId">
+                        <option value="newPostblog.jpg">無</option>
+                        <option v-for="(i,k) in ProductInfo" :key="k" :value="i.imageName">
+                            <span style="display: none;">{{k}}</span>
+                            {{i.productName}}  {{i.flavor}}
+                        </option>
+                    </select>
+                </div>
             </div>
-            </div> *@
 
             @* <img src="~/img/newPostblog.jpg" class="mb-3 img-fluid rounded mx-auto d-block" alt=""> *@
 
@@ -77,10 +81,10 @@
     {
     <script src="~/js/blogpostform.js"></script>
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
+                    //ClassicEditor
+                    //.create(document.querySelector('#editor'))
+                    //.catch(error => {
+                    //console.error(error);
+                    //});
     </script>
 }
