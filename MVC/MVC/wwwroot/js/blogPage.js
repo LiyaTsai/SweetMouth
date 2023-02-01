@@ -6,6 +6,7 @@ var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
     data: {
+        baseUrl: "https://localhost:7146/Home/productDetail", // Tag 連結到商品購買頁面
         title: null,
         author: null,
         time: null,
@@ -36,7 +37,10 @@ var appVue = new Vue({
                                 item.imageName = item.productImageName;
                             }
                             if (item.tag == null) {
-                                item.tag = '甜嘴MoBlog|問題討論';
+                                item.tag = '甜嘴MoBlog|綜合討論';
+                                $(document).ready(function () {
+                                    $("#tagLink").attr('href', 'javascript:void(0)'); // 部落格文章連結停止跳轉
+                                });
                             }
                             // item.imageName ? item.imageName : item.imageName = item.productImageName;
                             // item.tag ? item.tag : item.tag = '無';

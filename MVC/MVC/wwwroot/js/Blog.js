@@ -61,7 +61,7 @@ var appVue = new Vue({
                 let ProList = [];
                 for (i = 0; i < this.ProInfo.length; i++) {
                     let item = {};
-                    if (this.ProInfo[i].productID != null) {
+                    if (this.ProInfo[i].productID != null && this.ProInfo[i].floor == 0) {
                         item = this.ProInfo[i];
                         item.time = item.time.split("T")[0];
                         if (item.imageName == null) {

@@ -22,7 +22,7 @@ var appVue = new Vue({
                 }
             });
         },
-        // 撈產品圖
+        // 撈商品圖
         LogProInfo: function () {
             let productList = [];
             axios.get(`${webApiBaseUri}api/Product`).then(res => {
