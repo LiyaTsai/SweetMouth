@@ -132,7 +132,7 @@ var appVue = new Vue({
 
 //留言板
 var webApiBaseUrl = "https://localhost:7096/"; //axios請求會送到的Web Api網址
-var productID = window.location.search; //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
+var articleID = window.location.search; //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
 
 var appVue = new Vue({
     el: "#appVue2",
@@ -161,7 +161,7 @@ var appVue = new Vue({
                 //先抓出所有的Blog文章資料
                 for (let i = 0; i < a.data.length; i++) {
                     //把所有抓出來的文章資料遍歷
-                    if (a.data[i].articleID == productID.split("=")[1]) {
+                    if (a.data[i].articleID == articleID.split("=")[1]) {
                         //如果抓出來的資料中文章ID=Route中的文章ID
                         if (a.data[i].floor == 0) {
                             let item = {};
@@ -204,7 +204,7 @@ var appVue = new Vue({
                 //console.log(Time)
                 _this.floors.length += 1;
 
-                request.ArticleID = productID.split("=")[1]; //即productID
+                request.ArticleID = articleID.split("=")[1]; //productID
                 request.MemberID = sessionStorage.getItem("MemberID");
                 request.Floor = _this.floors.length;
                 request.Time = Time;
@@ -254,12 +254,12 @@ var appVue = new Vue({
         update: function (item) {
             //console.log(item)
             let request = {};
-            request.articleID = productID.split("=")[1];
+            request.articleID = articleID.split("=")[1];
             request.floor = item.floor;
             request.memberID = sessionStorage.getItem("MemberID");
             request.time = new Date();
             request.article = item.article;
-            axios.put(`${webApiBaseUrl}api/Blogs/${productID.split("=")[1]}/${item.floor}`, request).then((res) => {
+            axios.put(`${webApiBaseUrl}api/Blogs/${articleID.split("=")[1]}/${item.floor}`, request).then((res) => {
                 alert(res.data);
                 _this.LogFloor();
                 _this.cancel();
@@ -270,7 +270,7 @@ var appVue = new Vue({
         deletefloor: function (floor) {
             let ret = confirm("確定要刪除嗎?");
             if (ret == true) {
-                axios.delete(`${webApiBaseUrl}api/Blogs/${productID.split("=")[1]}/${floor}`).then((res) => {
+                axios.delete(`${webApiBaseUrl}api/Blogs/${articleID.split("=")[1]}/${floor}`).then((res) => {
                     alert(res.data);
                     _this.LogFloor();
                 });

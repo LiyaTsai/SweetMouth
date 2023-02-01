@@ -24,11 +24,14 @@
                 <div class="px-1 my-5">
                     <div class="row align-items-center">
                         <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
-                        <img class="col-4" :src=`/img/${pro.imageName}` :alt="pro.productName"
+                        <img class="col-3" :src=`/img/${pro.imageName}` :alt="pro.productName"
                              :title=`${pro.productName}-${ImgArray[key]}` />
-                        <label for=`${pro.productId}` class="col-4 ms-2">
+                        <label for=`${pro.productId}` class="col-2 ms-2">
                             {{pro.productName}} <br />
                             {{pro.flavor}}{{pro.size}}
+                        </label>
+                        <label class="col-2 text-secondary">
+                            $ {{ pro.amount}}
                         </label>
                         <div class="col-2">
                             <label for="" class="text-center">數量</label>
