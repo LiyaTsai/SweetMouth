@@ -34,8 +34,6 @@ var appVue = new Vue({
                 let date = this.dateFormate().toString();
                 let dateYear = date.split("-")[0];
                 let dateMonth = date.split("-")[1];
-                // console.log(dateMonth);
-                // console.log(this.NewsInfo[0].time.split("-")[0])
                 let NewsList = [];
                 for (i = 0; i < this.NewsInfo.length; i++) {
                     let item = {};

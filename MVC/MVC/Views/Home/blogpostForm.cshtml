@@ -1,12 +1,12 @@
 ﻿@section Styles
-{
-<script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
-<style>
-    .ck-editor__editable[role="textbox"] {
-        /* editing area */
-        min-height: 400px;
-    }
-</style>
+    {
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            /* editing area */
+            min-height: 400px;
+        }
+    </style>
 }
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
@@ -23,50 +23,61 @@
             <div class="card-title">
                 <h4>發表文章</h4>
             </div>
-            <form action="">
-                <img src="~/img/newPostblog.jpg" class="mb-3 img-fluid rounded mx-auto d-block" alt="">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="請輸入文章標題.." size="20" v-model="Title" required>
-                    <label for="floatingInput">請輸入文章標題..</label>
+
+            <div class="container">
+                <div class="col-8">
+                    <img :src=`/img/${ProductInfo[0].imageName}` class="mb-3 img-fluid rounded mx-auto d-block" alt="">
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" placeholder="次標題.." size="20" v-model="SubTitle" required>
-                    <label for="floatingInput">次標題..</label>
-                </div>
+                <div class="col-4">
 
-                <div class="form-floating mb-3">
-                    <textarea name="" id="" cols="20" rows="10" class="form-control" placeholder="內容.."
-                        style="resize: none;height: 40%;width: 100%;" v-model="article" required></textarea>
-                    <label for="floatingInput">內容..</label>
                 </div>
+            </div>
 
-                @* <div class="form-floating mb-3">
-                    <textarea name="" id="editor" cols="20" rows="10" class="form-control" placeholder="內容.."
+            @* <img src="~/img/newPostblog.jpg" class="mb-3 img-fluid rounded mx-auto d-block" alt=""> *@
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="請輸入文章標題.." size="20" v-model="Title" required>
+                <label for="floatingInput">請輸入文章標題..</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="次標題.." size="20" v-model="SubTitle" required>
+                <label for="floatingInput">次標題..</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea name="" id="" cols="20" rows="10" class="form-control" placeholder="內容.."
                     style="resize: none;height: 40%;width: 100%;" v-model="article" required></textarea>
-                    </div> *@
+                <label for="floatingInput">內容..</label>
+            </div>
 
-                <div class="d-grid my-5">
-                    <div class="btn-group d-flex">
-                        <button type="button" class="btn btn-primary btn-block" @@click="PostNewBlog">
-                            送出資料
-                        </button>
-                        <button type="reset" class="btn btn-warning btn-block">清除表單</button>
-                    </div>
+            @* <div class="form-floating mb-3">
+            <textarea name="" id="editor" cols="20" rows="10" class="form-control" placeholder="內容.."
+            style="resize: none;height: 40%;width: 100%;" v-model="article" required></textarea>
+            </div> *@
+
+            <div class="d-grid my-5">
+                <div class="btn-group d-flex">
+                    <button type="button" class="btn btn-primary btn-block" @@click="PostNewBlog">
+                        送出資料
+                    </button>
+                    <button type="reset" class="btn btn-warning btn-block">清除表單</button>
                 </div>
-            </form>
+            </div>
+
         </div>
     </div>
 </div>
 
 @section Scripts
-{
-<script src="~/js/blogpostform.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+    {
+    <script src="~/js/blogpostform.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 }
