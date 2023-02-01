@@ -59,15 +59,19 @@ var appVue = new Vue({
         postNewSignUp: function () {
             let request = {};
             let Time = new Date();
+            mouth = ((Time.getMonth() + 1).length = 2) ? "0" + `${Time.getMonth() + 1}` : `${Time.getMonth() + 1}`
+            day = ((Time.getDate() + 1).length = 2) ? "0" + `${Time.getDate()}` : `${Time.getDate()}`
+            theTime = Time.getFullYear() + "-" + mouth + "-" + day
 
-            request.date = Time;
+            request.date = theTime;
             request.memberId = 99006;
             request.isJoin = true;
             //request.productID = 10001;
             //request.className = "777";
             //request.peopleNumber = _this.peoNum;
             //request.note = "77777";
-            request.isJoin = true;
+            //request.isJoin = true;
+            console.log(request)
             axios.post(`${webApiBaseUri}api/SignUp`,request).then(res => {
                 alert("報名成功")
 
