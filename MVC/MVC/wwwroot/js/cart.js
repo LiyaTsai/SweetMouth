@@ -4,6 +4,7 @@ var MemID =
     document.cookie.indexOf("MemberID") == -1
         ? sessionStorage.getItem("MemberID")
         : document.cookie.split("MemberID=")[1].split(";")[0];
+setTimeout(() => { console.log(document.getElementById("10003Input").value) },500)
 
 var appVue = new Vue({
     el: "#appVue",
@@ -53,15 +54,19 @@ var appVue = new Vue({
             }
             console.log(_this.productArray);
         },
-        amountChange: function (e) {
-            this.amount = e.target.value;
-            if (this.price != "請選擇規格") {
-                this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount;
-            } else {
-                alert("請選擇規格");
-                e.target.value = 1;
-                this.amount = e.target.value;
+        amountChange: function (id,size,e) {    //放進 商品id,規格,事件本身
+            var n = -1;                         //這個商品放在productArray的index
+            for (let i = 0; i < this.productArray.length; i++) {    //找到此商品的index並放入n
+                if (this.productArray[i].productId == id) {n=i }
             }
+            this.productArray[n].amount = parseInt(e.target.value)  //更新productArray中的amount
+            let local = localStorage;           
+            let localindex = id + "(" + size    //localstorage的key,以下更新localstorage
+            _price = local.getItem(localindex).split("|")[0];
+            _imgName = local.getItem(localindex).split("|")[2];
+            _value = _price + "|" + this.productArray[n].amount + "|" + _imgName;
+            local.removeItem(localindex);
+            local.setItem(localindex, _value);           
         },
     },
 });
