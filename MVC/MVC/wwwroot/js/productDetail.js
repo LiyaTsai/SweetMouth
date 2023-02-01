@@ -99,6 +99,8 @@ var appVue = new Vue({
                 let session = localStorage;
                 let _id = urlProductID + "(" + this.currentSize;
                 let _imageName = this.imageName;
+
+                // 存到local Storage
                 if (session[_id]) {
                     let _amount = parseInt(session.getItem(_id).split("|")[1]);
                     _amount += parseInt(this.amount);
@@ -111,8 +113,44 @@ var appVue = new Vue({
                     session.setItem(_id, value);
                     session.setItem("productList", productList);
                 }
+                // 動畫
+                var buttons = document.getElementsByClassName("momo-pd-cartAnimation");
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].onclick = function () {
+                        let x = event.pageX - this.offsetWidth / 2;
+                        let y = event.pageY - this.offsetWidth / 2;
+                        createBall01(x, y);
+                        console.log(x, y);
+                    };
+                }
+            }
+            function createBall01(left, top) {
+                console.log("ball01");
+                let bar = document.createElement("div");
+                bar.style.position = "absolute";
+                bar.style.left = left + "px";
+                bar.style.top = top + "px";
+                bar.style.width = "1rem";
+                bar.style.height = "1rem";
+                bar.style.borderRadius = "50%";
+                bar.style.backgroundColor = "#F38B0B";
+                bar.style.transition = "left 1s linear, top 1s cubic-bezier(0.5, -0.5, 1, 1)";
+
+                document.body.appendChild(bar);
+                // 添加动画属性
+                setTimeout(() => {
+                    let target = document.querySelector(".fa-shopping-cart");
+                    bar.style.left = target.offsetLeft + target.offsetWidth / 2 + "px";
+                    bar.style.top = target.offsetTop + "px";
+                }, 0);
+
+                // 結束動畫
+                bar.ontransitionend = function () {
+                    this.remove();
+                };
             }
         },
+
         amountChange: function (e) {
             this.amount = e.target.value;
             if (this.price != "請選擇規格") {
