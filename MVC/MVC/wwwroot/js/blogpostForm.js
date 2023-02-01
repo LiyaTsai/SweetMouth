@@ -7,40 +7,53 @@ var appVue = new Vue({
         Title: null,
         SubTitle: null,
         article: null,
+        ProductInfo: [],
     },
     mounted() {
-        _this = this;
-        _this.LogAricleID();
+        this.LogAricleID();
+        this.LogProInfo();
     },
     methods: {
         LogAricleID: function () {
-            let _this = this;
-            axios.get(`${webApiBaseUrl}api/Blogs`).then(res => {
+            axios.get(`${webApiBaseUri}api/Blogs`).then(res => {
                 //_this.articlePostNum = res.data;
                 for (let i = 0; i < res.data.length; i++) {
-                    _this.articlePostNum = res.data[i].articleID;
+                    this.articlePostNum = res.data[i].articleID;
                 }
             });
-
+        },
+        // 撈商品圖
+        LogProInfo: function () {
+            let productList = [];
+            axios.get(`${webApiBaseUri}api/Product`).then(res => {
+                for (i = 0; i < res.data.length; i++) {
+                    if (res.data[i].avalible == true && res.data[i].category == '常備品項') {
+                        let item = [];
+                        item = res.data[i];
+                        productList.push(item);
+                    }
+                }
+                this.ProductInfo = productList;
+                console.log(this.ProductInfo);
+            })
         },
         PostNewBlog: function () {
             if (sessionStorage.getItem("MemberID") == null) {
                 alert("請先登入會員")
             } else {
-                let _this = this;
                 let request = {};
                 let Time = new Date();
 
-                request.articleID = _this.articlePostNum += 1;
+                request.articleID = this.articlePostNum += 1;
                 //console.log(_this.articlePostNum)
                 request.memberID = sessionStorage.getItem("MemberID");
                 request.floor = 0;
                 request.productID = null;
                 request.time = Time;
                 request.imageName = 'newPostblog.jpg'; // 預設圖片
-                request.title = _this.Title;
-                request.SubTitle = _this.SubTitle;
-                request.Article = _this.article;
+                request.title = this.Title;
+                request.SubTitle = this.SubTitle;
+                request.Article = this.article;
                 axios.post(`${webApiBaseUri}api/Blogs`, request).then(res => {
                     alert("發文成功")
                     window.location = "/Home/Blog"

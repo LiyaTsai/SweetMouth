@@ -20,22 +20,24 @@ var appVue = new Vue({
     methods: {
         dateFormate: function () {
             let date = new Date();
-            // let year = date.getFullYear();
+            let year = date.getFullYear();
             let month = date.getMonth() + 1;
             // let day = date.getDate();
             // let hours = date.getHours();
             // let minutes = date.getMinutes();
             // let seconds = date.getSeconds();
-            return month;
+            return year + '-' + + '0' + month;
         },
         News: function () {
             axios.get(`${webApiBaseUri}api/Blogs`).then(res => {
                 this.NewsInfo = res.data;
-                let date = '0' + this.dateFormate().toString();
+                let date = this.dateFormate().toString();
+                let dateYear = date.split("-")[0];
+                let dateMonth = date.split("-")[1];
                 let NewsList = [];
                 for (i = 0; i < this.NewsInfo.length; i++) {
                     let item = {};
-                    if (this.NewsInfo[i].floor == 0 && this.NewsInfo[i].time.split("-")[1] == date) {
+                    if (this.NewsInfo[i].floor == 0 && this.NewsInfo[i].time.split("-")[0] == dateYear && this.NewsInfo[i].time.split("-")[1] == dateMonth) {
                         item = this.NewsInfo[i];
                         item.time = item.time.split("T")[0];
                         if (item.imageName == null) {
@@ -59,7 +61,7 @@ var appVue = new Vue({
                 let ProList = [];
                 for (i = 0; i < this.ProInfo.length; i++) {
                     let item = {};
-                    if (this.ProInfo[i].productID != null) {
+                    if (this.ProInfo[i].productID != null && this.ProInfo[i].floor == 0) {
                         item = this.ProInfo[i];
                         item.time = item.time.split("T")[0];
                         if (item.imageName == null) {
@@ -142,33 +144,47 @@ var appVue = new Vue({
 
         // Enter 搜尋
         // pressEnter: function () {
-        //     $(document).keydown(function (e) {
-        //         if (e.keyCode == 13) {
-        //             console.log('13')
-        //             let request = {};
-        //             request.title = this.keyWord;
-        //             request.nickName = this.keyWord;
 
-        //             axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
-        //                 let itemList = [];
-        //                 for (i = 0; i < res.data.length; i++) {
-        //                     if (res.data[i].floor == 0) {
-        //                         //console.log(res.data[i])
-        //                         let item = {};
-        //                         item = res.data[i];
-        //                         item.time = item.time.split("T")[0];
-        //                         if (item.imageName == null) {
-        //                             item.imageName = item.productImageName;
-        //                         }
-        //                         itemList.push(item);
+        //     $('#searchInput').keyup(function (e) {
+        //         if (e.keyCode == 13) {
+        //             //console.log('13')
+        //             let searchInput = document.getElementById('searchInput').value
+        //             if (searchInput == '') {
+        //                 alert('請輸入關鍵字!!')
+        //                 return;
+        //             } else {
+        //                 let request = {};
+        //                 request.title = this.keyWord;
+        //                 request.nickName = this.keyWord;
+
+        //                 axios.post(`${webApiBaseUri}api/Blogs/FilterTitle`, request).then(res => {
+        //                     if (res.data.length == 0) {
+        //                         //alert('找不到文章!!')
+        //                         document.getElementById('errMessage').textContent = '找不到文章!!';
+        //                     } else {
+        //                         document.getElementById('errMessage').textContent = '';
         //                     }
-        //                 }
-        //                 //console.log(itemList);
-        //                 this.SearchInfo = itemList;
-        //                 this.keyWord = '';
-        //             })
+        //                     let itemList = [];
+        //                     for (i = 0; i < res.data.length; i++) {
+        //                         if (res.data[i].floor == 0) {
+        //                             //console.log(res.data[i])
+        //                             let item = {};
+        //                             item = res.data[i];
+        //                             item.time = item.time.split("T")[0];
+        //                             if (item.imageName == null) {
+        //                                 item.imageName = item.productImageName;
+        //                             }
+        //                             itemList.push(item);
+        //                         }
+        //                     }
+        //                     //console.log(itemList);
+        //                     this.SearchInfo = itemList;
+        //                     this.keyWord = '';
+        //                 })
+        //             }
         //         }
         //     });
+
         // },
     },
 })

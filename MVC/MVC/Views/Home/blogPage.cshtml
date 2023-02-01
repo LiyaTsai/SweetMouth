@@ -112,7 +112,8 @@
             <h2 class="text-secondary">Tags</h2>
 
             <div class="form-check-inline">
-                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}</a>
+                <a id="tagLink" :href="baseUrl +'?productID='+articlePoster[0].productID"><i
+                        class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}</a>
             </div>
 
         </div>
@@ -122,6 +123,6 @@
 </div>
 <!-- 最新消息文章內頁 End -->
 @section Scripts
-{
-<script src="~/js/blogpage.js"></script>
+    {
+    <script src="~/js/blogpage.js"></script>
 }
