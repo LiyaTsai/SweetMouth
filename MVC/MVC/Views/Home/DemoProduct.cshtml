@@ -12,21 +12,18 @@
 <div class="container-xxl py-5" id="appVue">
     <div class="container">
         <div class="row g-0 gx-5 align-items-end">
-            <div class="col-lg-6">
-                <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px">
-                    <h1 class="display-5 mb-3 text-primary">甜點品項</h1>
+            <h1 class="section-header text-center display-5 mb-3 text-primary">甜點品項</h1>
+            <div class="col-lg-8 col-md-12">
+                <div class="mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                     @*style="max-width: 500px"*@>
                     @*<button class="btn btn-outline-primary"><i class="fas fa-pen text-primary"></i></button>*@
                     <p>
                         嘴裡吃點甜讓生活帶些甜
-                        因長期自體免疫狀況及經常在小兒科打滾(?!)，漸漸深知《原食材》對我們的重要性，因此在製作甜點時，不使用防腐劑、香精、膨鬆劑…等化學添加，不僅使用原食材，也堅持好食材，來呈現天然的美味。
-                        🍑🍍甜點裡所用各式果醬，也均是親自熬煮而成。
-                        🌡️唯有造型蛋糕，因外觀裝飾調色問題，得用少許食用色素。(均進口且符合食安標準)
-                        甜甜們減糖也減油，相對保存期限也較短，一律採「接單後製作」無法「即訂現取」🙅
-                        👯交期除非有特別指定日期(請私訊詢問)，均排單出貨喔，有時單量大可能需等上1~2個月，請耐心等候。
+                        因長期自體免疫狀況及經常在小兒科打滾(?!)，漸漸深知《原食材》對我們的重要性，因此在製作甜點時，不使用防腐劑、香精、膨鬆劑…等化學添加，不僅使用原食材，也堅持好食材，來呈現天然的美味。🍑🍍甜點裡所用各式果醬，也均是親自熬煮而成。🌡️唯有造型蛋糕，因外觀裝飾調色問題，得用少許食用色素。(均進口且符合食安標準)甜甜們減糖也減油，相對保存期限也較短，一律採「接單後製作」無法「即訂現取」🙅👯交期除非有特別指定日期(請私訊詢問)，均排單出貨喔，有時單量大可能需等上1~2個月，請耐心等候。
                     </p>
                 </div>
             </div>
-            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-12 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                 <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                     <li class="nav-item me-2">
 
@@ -49,10 +46,10 @@
                 <div class="row g-4">
                     <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for="i in ProductInfo">
 
-                        <div class="product-item" >
+                        <div class="product-item">
                             <div class="position-relative bg-light overflow-hidden">
                                 <a :href="baseUrl +'?productID='+i.productId">
-                                    <img class="img-fluid w-100" :src=`/img/${i.imageName}` :alt="i.productName"
+                                    <img class="img-fluid w-100 momo-menu-img" :src=`/img/${i.imageName}` :alt="i.productName"
                                          :title=`${i.productName}` />
                                 </a>
                                 <div v-if="i.tag.length >= 1"

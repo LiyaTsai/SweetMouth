@@ -33,6 +33,10 @@
   color: #1E1100;
 }
 
+.text-p2 {
+  color: #FF8E6A;
+}
+
 .text-secondary {
   color: #FF6C3E !important;
   font-family: monospace;
@@ -295,4 +299,20 @@ a:hover {
 
 .momo-cate-btn {
   border-radius: 1rem;
+}
+
+.momo-pd-img {
+  max-width: 300px;
+}
+
+.momo-menu-img {
+  height: 340px;
+}
+
+.fa-edit {
+  cursor: pointer;
+  color: #FFA83E;
+}
+.fa-edit:hover {
+  color: #631800;
 }/*# sourceMappingURL=momoStyle.css.map */
