@@ -315,4 +315,8 @@ a:hover {
 }
 .fa-edit:hover {
   color: #631800;
+}
+
+.momo-menu-btn {
+  cursor: pointer;
 }/*# sourceMappingURL=momoStyle.css.map */

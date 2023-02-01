@@ -91,7 +91,7 @@ var appVue = new Vue({
             }
             e.target.style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
         },
-        addToCart: function () {
+        addToCart: function (e) {
             if (this.price == "請選擇規格") {
                 alert("請選擇規格");
             } else {
@@ -111,7 +111,7 @@ var appVue = new Vue({
                     let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
                     session["productList"] += `|${_id}`;
                     session.setItem(_id, value);
-                    session.setItem("productList", productList);
+                    session.setItem("productList", this.productList);
                 }
                 // 動畫
                 var buttons = document.getElementsByClassName("momo-pd-cartAnimation");
@@ -134,7 +134,7 @@ var appVue = new Vue({
                 bar.style.height = "1rem";
                 bar.style.borderRadius = "50%";
                 bar.style.backgroundColor = "#F38B0B";
-                bar.style.transition = "left 1s linear, top 1s cubic-bezier(0.5, -0.5, 1, 1)";
+                bar.style.transition = "left 1s linear, top 1s cubic-bezier(0.7, -0.3, 1, 1)";
 
                 document.body.appendChild(bar);
                 // 添加动画属性
