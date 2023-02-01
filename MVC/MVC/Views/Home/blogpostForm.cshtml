@@ -33,9 +33,9 @@
                     <h6>商品心得</h6>
                     <select id="selectItem" v-model="selectedImg" class="form-select" @@change="getProId">
                         <option value="newPostblog.jpg">無</option>
-                        <option v-for="i in ProductInfo" :value="i.imageName">
-                            <span style="display: none;">{{i.productId}}|</span>
-                            {{i.productName}}/{{i.size}}/{{i.flavor}}
+                        <option v-for="(i,k) in ProductInfo" :key="k" :value="i.imageName">
+                            <span style="display: none;">{{k}}</span>
+                            {{i.productName}}  {{i.flavor}}
                         </option>
                     </select>
                 </div>
