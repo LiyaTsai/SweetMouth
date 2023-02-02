@@ -33,7 +33,7 @@ min-height: 400px;
                     <h6>商品心得</h6>
                     <select id="selectItem" v-model="selectedImg" class="form-select" @@change="getProId">
                         <option value="newPostblog.jpg">無</option>
-                        <option v-for="(i,k) in ProductInfo" :key="k" :value="i.imageName">
+                        <option v-for="(i,k) in ProductInfo" :key="k" :value="i.imageName" :id="i.productId+'Option'">
                             @* <span style="display: none;">{{k}}</span> *@
                             {{i.productName}} {{i.flavor}}
                         </option>
@@ -67,10 +67,13 @@ min-height: 400px;
 
             <div class="d-grid my-5">
                 <div class="btn-group d-flex">
-                    <button id="btnPost" type="button" class="btn btn-primary btn-block" @@click="PostNewBlog">
-                        送出資料
+                    <button type="reset" class="btn btn-warning btn-block" @@click="Clear">清除表單</button>
+                    <button id="" type="button" class="btn btn-primary btn-block" @@click="FillData">
+                        一鍵生成資料
                     </button>
-                    <button type="reset" class="btn btn-warning btn-block">清除表單</button>
+                    <button id="btnPost" type="button" class="btn btn-warning btn-block" @@click="PostNewBlog">
+                        送出資料
+                    </button>                   
                 </div>
             </div>
 

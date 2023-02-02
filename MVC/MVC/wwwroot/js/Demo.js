@@ -20,8 +20,8 @@ var appVue = new Vue({
         _this.MakeProInfo();
         _this.GetPrice();
         _this.GetSize();
-        _this.addToCart();
-        _this.checkClickEvent();
+        //_this.addToCart();
+        //_this.checkClickEvent();
     },
     methods: {
         // 撈出所有品項
@@ -67,6 +67,7 @@ var appVue = new Vue({
                 }
                 _this.ProductInfo = arr;
                 // console.log(this.ProductInfo.length);
+                console.log(this.ProductInfo)
             });
         },
 

@@ -24,7 +24,7 @@ var appVue = new Vue({
                 for (let i = 0; i < res.data.length; i++) {
                     this.articlePostNum = res.data[i].articleID;
                 }
-                //console.log(this.ProductInfo)
+                //console.log(this.articlePostNum)
             });
 
         },
@@ -79,5 +79,17 @@ var appVue = new Vue({
                 })
             }
         },
+        FillData: function () {
+            this.Title = "新文章標題";
+            this.SubTitle="哈囉你好我是次標題呦!"
+            this.article = "感謝各位蒞臨我們結業專題的發表現場，酒鬼芭娜娜很好吃喔"
+            this.selectedImg ="Tiramisu.jpg"
+        },
+        Clear: function () {
+            this.Title = "";
+            this.SubTitle = ""
+            this.article = ""
+            this.selectedImg = "newPostblog.jpg"
+        }
     },
 })
