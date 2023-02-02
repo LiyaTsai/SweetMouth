@@ -4,7 +4,7 @@ var MemID =
     document.cookie.indexOf("MemberID") == -1
         ? sessionStorage.getItem("MemberID")
         : document.cookie.split("MemberID=")[1].split(";")[0];
-setTimeout(() => { console.log(document.getElementById("10003Input").value) },500)
+//setTimeout(() => { console.log(document.getElementById("10003Input").value) },500)
 
 var appVue = new Vue({
     el: "#appVue",
