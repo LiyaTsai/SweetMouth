@@ -1,4 +1,4 @@
-var webApiBaseUri = "https://localhost:7096/"; 
+var webApiBaseUri = "https://localhost:7096/";
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -137,14 +137,17 @@ var appVue = new Vue({
         },
 
         // 存到session
-        addToCart(id, size, price, amount,e) {
+        addToCart(id, size, price, amount, e) {
             let _price = price.split("|")[0];
             let _size = size.split("|")[0];
             let session = localStorage;
-            let _id ="";
-            _id = id+"("+_size;
+            let _id = "";
+            _id = id + "(" + _size;
             i = id - 10001;
-            let _imageName = e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].src.split("img/")[1];
+            let _imageName =
+                e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].src.split(
+                    "img/"
+                )[1];
             if (session[_id]) {
                 let _amount = 0;
                 _amount = session.getItem(_id).split("|")[1];
@@ -156,7 +159,46 @@ var appVue = new Vue({
                 let value = `${_price}|${amount}|${_imageName}`;
                 session["productList"] += `|${_id}`;
                 session.setItem(_id, value);
-                session.setItem("productList", productList);
+                session.setItem("productList", this.productList);
+            }
+            // 動畫
+            var buttons = document.getElementsByClassName("momo-menu-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = function () {
+                    let x = e.pageX - this.offsetWidth / 2;
+                    let y = e.pageY - this.offsetWidth / 2;
+                    createBall02(x, y);
+                    console.log(x, y);
+                };
+            }
+
+            function createBall02(x, y) {
+                const bar = document.createElement("div");
+                bar.style.position = "absolute";
+                bar.style.left = "0";
+                bar.style.top = "0";
+                bar.style.width = "1rem";
+                bar.style.height = "1rem";
+                bar.style.borderRadius = "50%";
+                bar.style.backgroundColor = "#F38B0B";
+                // transform
+                bar.style.transform = "translate(" + x + "px," + y + "px)";
+                bar.style.transition = "transform 1s linear";
+
+                document.body.appendChild(bar);
+                // 添加动画属性
+                setTimeout(() => {
+                    let target = document.querySelector(".fa-shopping-cart");
+                    let targetX = target.offsetLeft + target.offsetWidth / 2;
+                    let targetY = target.offsetTop;
+                    bar.style.transform = "translate(" + targetX + "px," + targetY + "px)";
+                    // bar.style.transform = "translate(`${target}`)";
+                }, 100);
+
+                // 結束動畫
+                bar.ontransitionend = function () {
+                    this.remove();
+                };
             }
         },
 

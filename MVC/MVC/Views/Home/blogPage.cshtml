@@ -1,24 +1,15 @@
 ﻿@section Styles {
-<style>
-    li {
-        list-style-type: none;
-    }
-
-    .fa-edit {
-        cursor: pointer;
-        color: #FFA83E;
-    }
-
-    .fa-edit:hover {
-        color: #631800;
-    }
-</style>
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
 }
 
 <!-- Page Header Start -->
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">甜嘴MoBlog</h1>
+        <h1 class="display-3 mb-3 animated slideInDown text-primary">甜嘴MoBlog</h1>
     </div>
 </div>
 <!-- Page Header End -->
@@ -55,8 +46,6 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample" s>
                         <div class="accordion-body">
-
-
 
                             <ul v-for="item in floors">
                                 @*這裡開始v-for，以下的li為留言設計圖*@
@@ -123,7 +112,8 @@
             <h2 class="text-secondary">Tags</h2>
 
             <div class="form-check-inline">
-                <a href=""><i class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}</a>
+                <a id="tagLink" :href="baseUrl +'?productID='+articlePoster[0].productID"><i
+                        class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}</a>
             </div>
 
         </div>
@@ -133,6 +123,6 @@
 </div>
 <!-- 最新消息文章內頁 End -->
 @section Scripts
-{
-<script src="~/js/blogpage.js"></script>
+    {
+    <script src="~/js/blogpage.js"></script>
 }

@@ -17,20 +17,20 @@
 </div>
 <!-- Page Header End -->
 <!-- Contact Start -->
-<div class="container-xxl py-6 col-10" id="appVue">
+<div class="container-xxl py-6 col-10">
     <div class="container">
         <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-            <h1 class="display-5 mb-3">甜點細節</h1>
+            <h1 class="display-5 mb-3 text-primary">甜點細節</h1>
         </div>
 
         <!-- aside-left -->
-        <div class="row g-5 justify-content-center">
-            <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="row g-5 justify-content-center" id="appVue">
+            <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
                 @*<div>{{imageName}}</div>*@
-                <img class="w-100" :src=`/img/${imageName}` :alt=`${productName}`
+                <img class="w-100 momo-pd-img" :src=`/img/${imageName}` :alt=`${productName}`
                      :title=`${productName}` />
 
-                     
+
                 <!-- Carousel Start -->
                 @*<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -54,7 +54,7 @@
                 <!-- Carousel End -->
 
             </div>
-            <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4 display-6 text-primary">
                     {{productName}}
                     {{flavor}}
@@ -99,7 +99,7 @@
                                     <i class="fal fa-heart"></i>
                                     <i class="fas fa-heart"></i>
                                 </span> -->
-                                <div class="btn btn-primary rounded-pill mt-2 py-1 px-3" v-on:click="addToCart()">
+                                <div class="btn btn-primary rounded-pill mt-2 py-1 px-3 momo-pd-cartAnimation" v-on:click="addToCart()">
                                     <i class="fa fa-shopping-bag text-primary me-2" id="addCartBtn"></i>加入購物車
                                 </div>
                             </div>
@@ -108,83 +108,166 @@
                 </form>
             </div>
         </div>
+        <!-- 留言版 Strat -->
+        <div class="section-header text-start mx-auto mb-5 wow fadeInUp mt-4" data-wow-delay="0.9s">
+            <h1 class="display-5 mb-3 text-primary">留言板</h1>
+        </div>
+        <div class="row g-5 justify-content-center" id="appVue2">
+            <div class="accordion accordion-flush border mb-3" data-wow-delay="0.9s" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            留言板
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                         data-bs-parent="#accordionFlushExample" s>
+                        <div class="accordion-body">
+
+                            <ul v-for="item in floors">
+                                @*這裡開始v-for，以下的li為留言設計圖*@
+                                <li class="mb-1">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <i class="fas fa-user"></i>&nbsp;{{item.nickName}}
+                                            </li>
+                                            <li class="breadcrumb-item me-auto">{{item.time}}</li>
+                                            @* 編輯按鈕(需登入) *@
+                                            <li>
+                                                <template v-if="MemberID==item.memberID">
+                                                    <i class="fas fa-edit" data-bs-toggle="tooltip"
+                                                       data-bs-placement="top" title="編輯留言"
+                                                       @@click="edit(item.floor)"></i>
+                                                </template>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </li>
+                                <li>
+                                    @* 編輯 template *@
+                                    <template v-if="item.Edit==true">
+
+                                        <textarea class="form-control mb-2" placeholder="編輯留言.."
+                                                  style="height: 100px;resize: none;" v-model="item.article"></textarea>
+
+                                        <button type="button" class="btn btn-outline-primary"
+                                                @@click="update(item)">
+                                            修改
+                                        </button>
+                                        <button type="button" class="btn btn-outline-warning"
+                                                @@click="cancel">
+                                            取消
+                                        </button>
+                                        <button type="button" class="btn btn-danger"
+                                                @@click="deletefloor(item.floor)">
+                                            刪除
+                                        </button>
+
+                                    </template>
+
+                                    @* 讀取 template *@
+                                    <template v-else>
+                                        <p>{{item.article}}</p>
+                                        <hr />
+                                    </template>
+                                </li>
+                            </ul>
+
+                            <!-- 新增留言區 -->
+                            <form action="">
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fas fa-user"></i>&nbsp;{{nickName}}</span>
+                                    <input type="text" class="form-control" placeholder="留言.." v-model="article"
+                                           required />
+                                    <button type="button" class="btn btn-primary" @@click="insert">送出</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 留言版 End -->
     </div>
 </div>
 <!-- Contact End -->
+
 <!-- Testimonial Start -->
 @*<div class="container-fluid bg-light bg-icon py-6 mb-5">
     <div class="container">
-        <div class="section-header text-center mx-auto mb-5 wow fadeInUp"
-             data-wow-delay="0.1s"
-             style="max-width: 500px">
-            <h1 class="display-5 mb-3">好評不斷</h1>
-            <p>
+    <div class="section-header text-center mx-auto mb-5 wow fadeInUp"
+    data-wow-delay="0.1s"
+    style="max-width: 500px">
+    <h1 class="display-5 mb-3">好評不斷</h1>
+    <p>
 
-            </p>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
-                    erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" alt="" />
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
-                    erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" alt="" />
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
-                    erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" alt="" />
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item position-relative bg-white p-5 mt-4">
-                <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
-                <p class="mb-4">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
-                    erat ipsum et lorem et sit.
-                </p>
-                <div class="d-flex align-items-center">
-                    <img class="flex-shrink-0 rounded-circle" src="~/img/testimonial-4.jpg" alt="" />
-                    <div class="ms-3">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </p>
     </div>
-</div>*@
+    <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
+    erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" alt="" />
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
+    erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" alt="" />
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
+    erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" alt="" />
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+    <p class="mb-4">
+    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita
+    erat ipsum et lorem et sit.
+    </p>
+    <div class="d-flex align-items-center">
+    <img class="flex-shrink-0 rounded-circle" src="~/img/testimonial-4.jpg" alt="" />
+    <div class="ms-3">
+    <h5 class="mb-1">Client Name</h5>
+    <span>Profession</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>*@
 <!-- Testimonial End -->
 @section Scripts{
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
     <script src="~/js/productdetail.js"></script>
-}
+    }

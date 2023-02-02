@@ -2,133 +2,139 @@
 <!-- Page Header Start -->
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">甜嘴MoClass</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
+        <h1 class="display-3 mb-3 animated slideInDown text-primary">甜嘴MoClass</h1>
+@*        <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">首頁</a></li>
                 <li class="breadcrumb-item">甜嘴Mo課程</li>
             </ol>
-        </nav>
+        </nav>*@
     </div>
 </div>
 <!-- Page Header End -->
 <!-- Product Start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<div class="container-xxl py-5" id="appVue">
+<div class="container-xxl py-6" id="appVue">
     <div class="container">
-        <div class="row g-0 gx-5 align-items-end">
-            <div class="col-lg-6">
-                <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s"
-                     style="max-width: 500px">
-                    <h1 class="display-5 mb-3">實體課程</h1>
-                    @*<button class="btn btn-outline-primary"><i class="fas fa-pen text-primary"></i></button>*@
-                    <p>
-                      
-                    </p>
+        <!-- <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+            style="max-width: 500px;">
+            <h1 class="display-5 mb-3">課程</h1>
+        </div> -->
+        <div class="row g-4">
+
+
+            <div class="col-lg-5 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="img-fluid" src="~/img/blog-1.jpg" alt="">
+                <div class="bg-light p-3">
+                    <a class="d-block h3 lh-base mb-4 news" @* href="/img/未命名設計.png"*@>
+                        <a href=""
+                           data-fancybox="gallery"
+                           data-width="500"
+                           data-height="500"
+                           data-caption="
+                           @*&lt;strong&gt; *@&lt;em&gt; 【商品描述】
+
+                           <br>
+                           💡馬斯卡彭乳酪蛋糕體,基本蛋糕體操作手法和特性
+                           <br>
+                           💡課程全部使用北海道乳霜鮮奶油35%
+                           <br>
+                           💡如何打發動物性鮮奶油製作不分離的方式與保存賞味期
+                           <br>
+                           🉐實作品項每人帶回1條馬斯卡彭乳酪蛋糕卷和品嚐試吃份量的示範品項蛋糕"
+                           data-src="/img/cherrychococake.jpg"@* width="50" height="50"*@/>
+
+
+                           超好吃的手工提拉米蘇
+
+                    </a>
+
+                       <div class="text-muted border-top pt-4">
+                            <label class="me-3"><i class="fa fa-map-marker text-primary me-2"></i>高雄市苓雅區中正路100號</label>
+                            <label class="me-3"><i class="fa fa-calendar text-primary me-2"></i>2023/02/06</label>
+                       </div>
+
                 </div>
             </div>
-           @* <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                    <li class="nav-item me-2">
-                        <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill"
-                           href="#tab-1">預約</a>
-                    </li>
-                   <li class="nav-item me-2">
-                        <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">
-                            泡芙
-                        </a>
-                    </li>
-                    <li class="nav-item me-0">
-                        <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">季節限定</a>
-                    </li>
-                </ul>
-            </div>*@
-        </div>
-   
-        <div class="tab-content">
-            <div id="tab-1" class="tab-pane fade show p-0 active">
-                <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for="i in ProductInfo">
 
-
-
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden" @@click="toPD">
-                                <a asp-controller="Home" asp-action="productDetail" class="nav-item nav-link active">
-                                    <div>
-                                        <img class="img-fluid w-100" :src=`/img/${i.imageName}.jpg` :alt="i.productName" :title=`${i.productName}-${i.specifications}` />
-                                    </div>
-                                </a>
-
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                    tag只留狗狗可食跟含酒
-                                </div>
-                                @*<button class="rounded-pill bg-light text-primary position-absolute end-0 top-0 m-4 py-1 px-3 momo-off-shelve">
-                                下架
-                                </button>*@
-                            </div>
-                            <div class="text-center p-4">
-
-                                <a asp-controller="Home" asp-action="productDetail" class="nav-item nav-link active">{{i.productName}}</a>
-                                <span class="text-primary me-1">${{i.price}}</span>
-                                <span class="text-primary me-1">{{i.specifications}}</span>
-                                <!-- <span class="text-body text-decoration-line-through">$29.00</span> -->
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href="./img/TiramisuL.jpg">
-                                            <a
-                                                 href="./img/TiramisuL.jpg"
-                                                 data-fancybox="gallery"
-                                                 data-src="https://lipsum.app/id/2/1024x768"                            
-                                                 data-caption="&lt;strong&gt;&lt;em&gt;【商品描述】
-                                                 &lt;br&gt;💡蛋糕體+二種乳霜餡,交叉搭配舉一反三學習後靈活運用搭配自如
-                                                 &lt;br&gt;💡蛋糕卷的內外卷法技巧
-                                                 &lt;br&gt;💡馬斯卡彭乳酪蛋糕體,基本蛋糕體操作手法和特性
-                                                 &lt;br&gt;💡課程全部使用北海道乳霜鮮奶油35%
-                                                 &lt;br&gt;💡如何打發動物性鮮奶油製作不分離的方式與保存賞味期
-                                                 &lt;br&gt;&lt;font color=red&gt;🉐實作品項每人帶回1條馬斯卡彭乳酪蛋糕卷和品嚐試吃份量的示範品項蛋糕
-                                                 &lt;br&gt;💡蛋糕體+二種乳霜餡,交叉搭配舉一反三學習後靈活運用搭配自如
-                                                 &lt;br&gt;💡蛋糕卷的內外卷法技巧
-                                                 &lt;br&gt;💡馬斯卡彭乳酪蛋糕體,基本蛋糕體操作手法和特性
-                                                 &lt;br&gt;💡課程全部使用北海道乳霜鮮奶油35%
-                                                 &lt;br&gt;💡蛋糕體+二種乳霜餡,交叉搭配舉一反三學習後靈活運用搭配自如
-                                                 &lt;br&gt;💡蛋糕卷的內外卷法技巧
-                                                 &lt;br&gt;💡馬斯卡彭乳酪蛋糕體,基本蛋糕體操作手法和特性
-                                                 &lt;br&gt;💡課程全部使用北海道乳霜鮮奶油35%
-                                                 &lt;br&gt;『+$200製作升級款』或『選其他品項折$150』
-                                                 &lt;br&gt;&lt;font color=red&gt;🉐實作品項每人帶回1條馬斯卡彭乳酪蛋糕卷和品嚐試吃份量的示範品項蛋糕">
-
-                                                預覽課程</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href="">
-                                        <i class="fa fa-shopping-bag text-primary me-2"></i>加入購物車
-                                    </a>
-                                </small>
-                            </div>
-                            <div></div>
-                        </div>
-
-
-
+            <hr>
+            <h5>報名課程</h5>
+            <form>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary btn-block" @@click="postNewSignUp">
+                            送出資料
+                        </button>
 
                     </div>
 
-
-
-
-
                 </div>
-            </div>
+            </form>
+            <hr>
+            <h5>提拉米蘇</h5>
+            <h3>
+                好吃綿密口感細緻的提拉米蘇有著濃烈的咖啡香和酒味，夾層是吸附滿滿咖啡酒液的手指餅乾，搭配馬斯卡彭乳酪餡，表層灑滿無糖可可粉以及
+                層次豐富的乳酪，吃一口則讓人沉醉在其中，絕對是你夜晚的甜點首選。
+            </h3>
+            <hr>
+            <h5>特色配方</h5>
+            <h3>
+                💡蛋糕體+二種乳霜餡,交叉搭配舉一反三學習後靈活運用搭配自如
+                <br>
+                💡蛋糕卷的內外卷法技巧
+                <br>
+                💡馬斯卡彭乳酪蛋糕體,基本蛋糕體操作手法和特性
+                <br>
+                💡課程全部使用北海道乳霜鮮奶油35%
+                <br>
+                💡如何打發動物性鮮奶油製作不分離的方式與保存賞味期
+                <br>
+                🉐實作品項每人帶回1條馬斯卡彭乳酪蛋糕卷和品嚐試吃份量的示範品項蛋糕
+            </h3>
+            <hr>
+            <h5>食材</h5>
+            <h3>
+                鮮奶油230g
+                <br>
+                馬斯卡彭乳酪520g
+                <br>
+                奶酒10g
+                <br>
+                細砂糖50g
+                <br>
+                濃縮咖啡30g
+            </h3>
+            <hr>
+            <h5>餅乾層</h5>
+            <h3>
+                餅乾15g
+                <br>
+                奶酒10g
+                <br>
+                濃縮咖啡60g
+            </h3>
+            <hr>
+            <h5>裝　飾</h5>
+            <h3>防潮可可粉 3匙</h3>
+            <hr>
+            <h5>當日壽星可享優惠</h5>
+            <h3>
+                生日當天出示身份證件
+                即可享有優惠2選1:
+                『+$200製作升級款』或『選其他品項折$150』
+            </h3>
+
         </div>
+
     </div>
+
 </div>
 
 @section Scripts{
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
     <script src="~/js/Class.js"></script>
+    @*<script src="~/js/Demo.js"></script>*@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 }
