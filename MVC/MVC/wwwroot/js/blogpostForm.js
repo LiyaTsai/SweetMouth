@@ -10,7 +10,7 @@ var appVue = new Vue({
         ProductInfo: [],
         selectedImg: 'newPostblog.jpg', // 預設圖片
         selectedProId: null,
-        ChooseProId:null,
+        ChooseProId: null,
     },
     mounted() {
         this.LogAricleID();
@@ -26,7 +26,7 @@ var appVue = new Vue({
                 }
                 console.log(this.ProductInfo)
             });
-            
+
         },
         // 撈商品圖
         LogProInfo: function () {
@@ -40,7 +40,7 @@ var appVue = new Vue({
             let obj = document.getElementById('selectItem');
             /*this.selectedProId = obj.options[obj.selectedIndex].text.split("|")[0];*/
             this.selectedProId = this.ProductInfo[obj.selectedIndex].productId;
-            console.log("selectedProId:"+this.selectedProId)
+            console.log("selectedProId:" + this.selectedProId)
         },
         PostNewBlog: function () {
             if (sessionStorage.getItem("MemberID") == null) {
@@ -65,6 +65,16 @@ var appVue = new Vue({
                     window.location = "/Home/Blog"
                 })
             }
+        },
+        // Enter 鍵
+        pressEnter: function () {
+            $(document).ready(function () {
+                $('#Postarea').keypress(function (e) {
+                    let key = window.event ? e.keyCode : e.which;
+                    if (key == 13)
+                        $('#btnPost').click();
+                });
+            });
         },
     },
 })

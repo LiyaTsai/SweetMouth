@@ -149,8 +149,9 @@
                 <div class="m-5">
                     <div class="input-group">
                         <input type="text" class="form-control" id="searchInput" v-model="keyWord"
-                            placeholder="請輸入 *文章名稱* 或是 *發文者* ">
-                        <button class="btn btn-outline-secondary" type="button" @@click="Search">搜尋</button>
+                            placeholder="請輸入 *文章名稱* 或是 *發文者* " @@focus="pressEnter">
+                        <button id="btnSearch" class="btn btn-outline-secondary" type="button"
+                            @@click="Search">搜尋</button>
                     </div>
                 </div>
 
