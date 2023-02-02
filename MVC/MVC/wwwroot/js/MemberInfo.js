@@ -10,7 +10,7 @@ var appVue = new Vue({
         MemberInfo: [],
         Order: [],
         BlogMessage: [],
-        OrderMessage:[],
+        OrderMessage: [],
         Schedule: [],
         Birth: null,
         ClassInformation: [],
@@ -18,7 +18,7 @@ var appVue = new Vue({
         isEditNick: true,
         isEditEmail: true,
         isEditPhone: true,
-        isEditBirth:true,
+        isEditBirth: true,
     },
     mounted() {
         _this = this;
@@ -47,7 +47,7 @@ var appVue = new Vue({
                         _this.OrderMessage.push(x.data[i]);
                     }
                     else { continue; }
-                }                
+                }
             })
         },
         ClickToArticle: function (e) {
