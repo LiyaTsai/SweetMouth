@@ -103,6 +103,90 @@ namespace WebApi.Controllers
         //    return ProductDTO;
         //}
 
+        // GET: api/<ProductController>
+        [HttpPut("{id}")]
+        public async Task<string> Put(int id, ProductDTO pDTO)
+        {
+            if (id != pDTO.ProductId)
+            {
+                return "ID錯誤";
+            }
+            Product pro = await _context.Product.FindAsync(pDTO.ProductId);
+            pro.ProductId=pDTO.ProductId;
+            pro.ProductName=pDTO.ProductName;
+            pro.Size=pDTO.Size;
+            pro.ImageName=pDTO.ImageName;
+            pro.Avalible=pDTO.Avalible;
+            pro.Flavor=pDTO.Flavor;
+            pro.Tag=pDTO.Tag;
+            pro.Category=pDTO.Category;
+            
+            _context.Entry(pro).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
+                {
+                    return "找不到欲修改的紀錄";
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return "修改成功!";
+        }
+
+
+        private bool ProductExists(int id)
+        {
+            return _context.Product.Any(e => e.ProductId == id);
+        }
+
+
+
+
+
+        [HttpPost]
+        public async Task<Product> Post(ProductDTO pdto)
+        {
+            Product pro = new Product
+            {
+                ProductName = pdto.ProductName,
+                Size = pdto.Size,
+                Flavor = pdto.Flavor,
+                Price = pdto.Price,
+                //BirthDay = mdto.BirthDay,
+                Tag = pdto.Tag,
+                Category=pdto.Category,
+                Avalible=pdto.Avalible,
+                ImageName= pdto.ImageName,
+            };
+            _context.Product.Add(pro);
+            await _context.SaveChangesAsync();
+            return pro;
+        }
+
+
+
+        [HttpDelete("{id}")]
+        public async Task<string> Delete(int id)
+        {
+            var pro = await _context.Product.FindAsync(id);
+            if (pro == null)
+            {
+                return "找不到欲刪除的紀錄";
+            }
+
+            _context.Product.Remove(pro);
+            await _context.SaveChangesAsync();
+
+            return "刪除成功";
+        }
+
         //// POST api/<ProductController>
         //[HttpPost]
         //public void Post([FromBody] string value)

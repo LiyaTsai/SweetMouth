@@ -18,9 +18,23 @@ namespace backStage.Controllers
             return View();
         }
 
-        public IActionResult template(string type)
+        public IActionResult template()
         {
-            ViewBag.type = type;
+            return View();
+        }
+
+        public IActionResult Member( )
+        {
+            return View();
+        }
+
+        public IActionResult Blog()
+        {
+            return View();
+        }
+
+        public IActionResult Product()
+        {
             return View();
         }
 

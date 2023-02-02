@@ -47,7 +47,14 @@ logginBtn.addEventListener("click", function () {       //為登入按鈕加入�
         }
     })
 })
-forgotBtn.addEventListener("click", function(){
+
+document.getElementById("email_id").addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) {
+            forgotBtn.click();
+        }
+});
+
+forgotBtn.addEventListener("click", function () {
     mail = document.getElementById("email_id").value;
     //Tempid = 0;
     const EmailPromise = new Promise((resolve, reject) => {
@@ -69,7 +76,7 @@ forgotBtn.addEventListener("click", function(){
                 let params = {
                     from_name: a.data.name,
                     email_id: mail,
-                    message: "您的密碼是："+a.data.password
+                    message: "您的密碼是：" + a.data.password
                 }
                 emailjs.send('service_fxukuhb', 'template_ap40fri', params).then(function (res) {
                     alert('驗證信已成功寄出，快去看看吧');
@@ -77,29 +84,4 @@ forgotBtn.addEventListener("click", function(){
             })
         }
     })
-    //axios.get(`${webApiBaseUrl}api/Member`).then(x => {
-    //    let y = x.data;       
-    //    for (let i = 0; i < y.length; i++) {
-    //        if (y[i].email == mail) { Tempid = y[i].memberId; break; }
-    //    }
-    //})
-
-    //setTimeout(() => {
-    //    console.log(mail)
-    //    if (Tempid == 0) {
-    //        alert("請確認此Email已註冊")
-    //    }
-    //    else {
-    //        axios.get(`${webApiBaseUrl}api/Member/` + Tempid).then(a => {
-    //            let params = {
-    //                from_name: a.data.name,
-    //                email_id: mail,
-    //                message: "測試測試寄信"
-    //            }
-    //            emailjs.send('service_fxukuhb', 'template_ap40fri', params).then(function (res) {
-    //                alert('success ' + res.status);
-    //            })
-    //        })
-    //    }
-    //}, 250)
 })

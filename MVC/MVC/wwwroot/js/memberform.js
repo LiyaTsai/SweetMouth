@@ -35,11 +35,13 @@ var appVue = new Vue({
                 axios.post(webApiBaseUrl + 'api/Member', TempObj).then(x => {
                     alert("Seccess");
                     window.location = '/Home/product';
-                })
-                axios.get(webApiBaseUrl + 'api/Member').where(y => {
-                    y.email = _this.email;
-                    y.phoneNumber = _this.phoneNumber;
-                }).then(z => _this.memberId = z.memberId)
+                });
+                axios.get(webApiBaseUrl + 'api/Member')
+                    .where(y => {
+                        y.email = _this.email;
+                        y.phoneNumber = _this.phoneNumber;
+                    })
+                    .then(z => { _this.memberId = z.memberId })
 
             }
 

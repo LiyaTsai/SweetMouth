@@ -1,7 +1,7 @@
 ﻿@section Styles{
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 }
-<h1 class="text-center my-5">後台版型 | </h1>
+<h1 class="text-center my-5">後台版型 | 資料表</h1>
 
 <div class="container" id="appVue">
     <button type="button" class="btn btn-outline-success" @@click="showModal">新增資料</button>
@@ -10,9 +10,13 @@
             @*顯示資料*@
             <table class="table table-striped table-hover">
                 @*表頭*@
-                <thead v-for="inner in ColumnArray">
+                <thead>
                     <tr>
-                        <td>inner</td>
+                        <td>表頭1</td>
+                        <td>表頭2</td>
+                        <td>表頭3</td>
+                        <td>表頭4</td>
+                        <td>按鈕</td>
                     </tr>
                 </thead>
 
@@ -57,7 +61,7 @@
 
     <!-- modal 視窗 -->
     <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,20 +92,20 @@
 </div>
 
 @section Scripts {
-<script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
-<script src="~/js/template.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.table').dataTable({
-            fixedHeader: {
-                header: true,
-            },
-            language: {
-                // 搜尋 dataTables i18n
-                url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/zh-HANT.json'
-            }
+    <script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/js/template.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table').dataTable({
+                fixedHeader: {
+                    header: true,
+                },
+                language: {
+                    // 搜尋 dataTables i18n
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/zh-HANT.json'
+                }
+            });
         });
-    });
-</script>
+    </script>
 }

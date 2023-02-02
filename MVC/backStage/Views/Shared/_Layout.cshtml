@@ -26,9 +26,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="template">後台公版</a>*@
-                            <a class="nav-link text-dark" href="https://localhost:7101/Home/template?Member">會員</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Member">會員</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                               asp-action="Blog">留言</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                               asp-action="Product">商品</a>
                         </li>
                     </ul>
                     @* <partial name="_LoginPartial" /> *@

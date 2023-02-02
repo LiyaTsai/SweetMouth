@@ -96,6 +96,7 @@ namespace WebApi.Controllers
             mem.PhoneNumber = mDTO.PhoneNumber;
             mem.Birthday = mDTO.BirthDay;
             mem.FavoriteProduct=mDTO.FavoriteProduct;
+            mem.Password = mDTO.Password;
             _context.Entry(mem).State = EntityState.Modified;
             try
             {

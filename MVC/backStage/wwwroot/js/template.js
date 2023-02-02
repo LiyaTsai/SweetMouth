@@ -1,6 +1,4 @@
 ﻿var webApiBaseAddress = "";
-thepage = window.location.href.split("?")[1];
-document.getElementsByClassName("text-center my-5")[0].innerHTML = thepage + "後台"
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -39,7 +37,6 @@ var appVue = new Vue({
         item1_E: null,
         item2_E: null,
         item3_E: null,
-        DataArray:[],
     },
     mounted: function () {
         _this = this;
@@ -47,19 +44,14 @@ var appVue = new Vue({
     },
     methods: {
         start: function () {
-            axios.get(`https://localhost:7096/api/` + thepage).then(x => {
-                for (let i = 0; i < x.data.length; i++) {
-                    TempData = {}
-                    TempData.memberId = x.data[i].memberId;
-                    TempData.name = x.data[i].name;
-                    TempData.nickName = x.data[i].nickName;
-                    TempData.email = x.data[i].email;
-                    TempData.phoneNumber = x.data[i].phoneNumber;
-                    TempData.password = x.data[i].password;
-                    this.DataArray.push(HTMLTemplateElement)
-                }
-            })
-            setTimeout(() => { console.log(this.DataArray) },200)
+            let _this = this;
+            let List = [];
+            for (i = 0; i < _this.p.length; i++) {
+                let item = {}
+                item = _this.p[i]
+                List.push(item)
+            }
+            _this.p_item = List;
         },
         edit: function (id) {
             let _this = this;
