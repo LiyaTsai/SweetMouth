@@ -192,6 +192,7 @@ var appVue = new Vue({
                     let targetX = target.offsetLeft + target.offsetWidth / 2;
                     let targetY = target.offsetTop;
                     bar.style.transform = "translate(" + targetX + "px," + targetY + "px)";
+                    // bar.style.transform = "translate(`${target}`)";
                 }, 100);
 
                 // 結束動畫
