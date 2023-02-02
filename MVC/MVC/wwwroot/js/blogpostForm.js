@@ -8,9 +8,9 @@ var appVue = new Vue({
         SubTitle: null,
         article: null,
         ProductInfo: [],
+        // 圖片選擇參數
         selectedImg: 'newPostblog.jpg', // 預設圖片
         selectedProId: null,
-        ChooseProId: null,
     },
     mounted() {
         this.LogAricleID();
@@ -24,7 +24,7 @@ var appVue = new Vue({
                 for (let i = 0; i < res.data.length; i++) {
                     this.articlePostNum = res.data[i].articleID;
                 }
-                console.log(this.ProductInfo)
+                //console.log(this.ProductInfo)
             });
 
         },
@@ -35,17 +35,30 @@ var appVue = new Vue({
                 //console.log(this.ProductInfo);
             })
         },
-        // 取得商品ID
+        // 取商品ID
         getProId: function () {
             let obj = document.getElementById('selectItem');
             /*this.selectedProId = obj.options[obj.selectedIndex].text.split("|")[0];*/
             this.selectedProId = this.ProductInfo[obj.selectedIndex].productId;
-            console.log("selectedProId:" + this.selectedProId)
+            //console.log("selectedProId:" + this.selectedProId)
         },
         PostNewBlog: function () {
+            let ret = confirm('確定要送出嗎?');
+            let title = document.getElementById('inputTitle').value;
+            let article = document.getElementById('Postarea').value;
             if (sessionStorage.getItem("MemberID") == null) {
                 alert("請先登入會員")
-            } else {
+            }
+            else if (title == '') {
+                alert('請輸入文章標題')
+            }
+            else if (article == '') {
+                alert('請輸入內容')
+            }
+            else if (ret == false) {
+                return;
+            }
+            else {
                 let request = {};
                 let Time = new Date();
 
@@ -65,16 +78,6 @@ var appVue = new Vue({
                     window.location = "/Home/Blog"
                 })
             }
-        },
-        // Enter 鍵
-        pressEnter: function () {
-            $(document).ready(function () {
-                $('#Postarea').keypress(function (e) {
-                    let key = window.event ? e.keyCode : e.which;
-                    if (key == 13)
-                        $('#btnPost').click();
-                });
-            });
         },
     },
 })

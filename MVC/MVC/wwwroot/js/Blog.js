@@ -106,9 +106,9 @@ var appVue = new Vue({
 
         // 搜尋文章
         Search: function () {
-            let searchInput = document.getElementById('searchInput').value
+            let searchInput = document.getElementById('searchInput').value;
             if (searchInput == '') {
-                alert('請輸入關鍵字!!')
+                document.getElementById('errMessage').textContent = '請輸入關鍵字!!';
                 return;
             } else {
                 let request = {};

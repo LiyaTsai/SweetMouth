@@ -1,16 +1,16 @@
 ﻿@section Styles
     {
     <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
-    <style>
-        .ck-editor__editable[role="textbox"] {
-            /* editing area */
-            min-height: 400px;
-        }
-    </style>
+    @* <style>
+.ck-editor__editable[role="textbox"] {
+/* editing area */
+min-height: 400px;
+}
+</style> *@
 }
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown text-secondary">甜嘴Blog</h1>
+        <h1 class="display-3 mb-3 animated slideInDown text-secondary text-primary">甜嘴Blog</h1>
     </div>
 </div>
 
@@ -34,7 +34,7 @@
                     <select id="selectItem" v-model="selectedImg" class="form-select" @@change="getProId">
                         <option value="newPostblog.jpg">無</option>
                         <option v-for="(i,k) in ProductInfo" :key="k" :value="i.imageName">
-                            <span style="display: none;">{{k}}</span>
+                            @* <span style="display: none;">{{k}}</span> *@
                             {{i.productName}} {{i.flavor}}
                         </option>
                     </select>
@@ -44,7 +44,8 @@
             @* <img src="~/img/newPostblog.jpg" class="mb-3 img-fluid rounded mx-auto d-block" alt=""> *@
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="請輸入文章標題.." size="20" v-model="Title" required>
+                <input type="text" id="inputTitle" class="form-control" placeholder="請輸入文章標題.." size="20"
+                    v-model="Title" required>
                 <label for="floatingInput">請輸入文章標題..</label>
             </div>
 
@@ -55,8 +56,7 @@
 
             <div class="form-floating mb-3">
                 <textarea name="" id="Postarea" cols="20" rows="10" class="form-control" placeholder="內容.."
-                    style="resize: none;height: 40%;width: 100%;" v-model="article" required
-                    @@focus="pressEnter"></textarea>
+                    style="resize: none;height: 40%;width: 100%;" v-model="article" required></textarea>
                 <label for="floatingInput">內容..</label>
             </div>
 
@@ -81,11 +81,11 @@
 @section Scripts
     {
     <script src="~/js/blogpostform.js"></script>
-    <script>
-                                //ClassicEditor
-                                //.create(document.querySelector('#editor'))
-                                //.catch(error => {
-                                //console.error(error);
-                                //});
-    </script>
+    @* <script>
+ClassicEditor
+.create(document.querySelector('#editor'))
+.catch(error => {
+console.error(error);
+});
+</script> *@
 }
