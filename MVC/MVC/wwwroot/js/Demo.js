@@ -144,6 +144,7 @@ var appVue = new Vue({
             let session = localStorage;
             let _id = "";
             _id = id + "(" + _size;
+            console.log("id:" + _id)
             i = id - 10001;
             let _imageName =
                 e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].src.split(
@@ -158,7 +159,8 @@ var appVue = new Vue({
                 session.setItem(_id, value);
             } else {
                 let value = `${_price}|${amount}|${_imageName}`;
-                session["productList"] += `|${_id}`;
+                this.productList = session["productList"];
+                this.productList += `|${_id}`;
                 session.setItem(_id, value);
                 session.setItem("productList", this.productList);
             }
@@ -169,7 +171,7 @@ var appVue = new Vue({
                     let x = e.pageX - this.offsetWidth / 2;
                     let y = e.pageY - this.offsetWidth / 2;
                     createBall02(x, y);
-                    console.log(x, y);
+                    //console.log(x, y);
                 };
             }
 
