@@ -319,4 +319,9 @@ a:hover {
 
 .momo-menu-btn {
   cursor: pointer;
+}
+
+.momo-addCartBTN {
+  border-radius: 1rem;
+  margin: 30px 0;
 }/*# sourceMappingURL=momoStyle.css.map */

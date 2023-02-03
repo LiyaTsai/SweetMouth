@@ -67,7 +67,7 @@ var appVue = new Vue({
                 }
                 _this.ProductInfo = arr;
                 // console.log(this.ProductInfo.length);
-                console.log(this.ProductInfo)
+                console.log(this.ProductInfo);
             });
         },
 
