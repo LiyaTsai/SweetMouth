@@ -8,6 +8,9 @@ forgotBtn = document.getElementById("forgotBtn");
 $(window).ready(() => {
     if (sessionStorage.getItem("MemberID") == null) {
         $('#loginModal').modal('show');
+    } else {
+        $('#Modal-close').removeAttr('disabled');
+        //$('#Modal-close').removeAttr('data-bs-keyboard');
     }
 })
 
