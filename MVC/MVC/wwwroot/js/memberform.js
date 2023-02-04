@@ -46,6 +46,9 @@ var appVue = new Vue({
             }
 
         },
+        MakeNewData: function () {
+            this.email="thisIsTestEmail@gmail.com"
+        }
     },
 })
 
