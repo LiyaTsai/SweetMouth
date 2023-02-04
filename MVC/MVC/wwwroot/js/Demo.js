@@ -158,8 +158,13 @@ var appVue = new Vue({
                 session.removeItem(_id);
                 session.setItem(_id, value);
             } else {
+                //let value = `${_price}|${amount}|${_imageName}`;
+                //session["productList"] += `|${_id}`;
+                //session.setItem(_id, value);
+                //session.setItem("productList", this.productList);
                 let value = `${_price}|${amount}|${_imageName}`;
-                session["productList"] += `|${_id}`;
+                this.productList = session["productList"];
+                this.productList += `|${_id}`;
                 session.setItem(_id, value);
                 session.setItem("productList", this.productList);
             }
@@ -205,7 +210,7 @@ var appVue = new Vue({
         },
 
         // 類別標籤
-        categoryChg(e) {
+        categoryChg:function(e) {
             const _this = this;
             var _e = e;
             _this.ProductInfo = _this.orgProductInfo.filter((x) => x.category === e); //篩選我要的分類
@@ -214,10 +219,10 @@ var appVue = new Vue({
             _this.GetSize();
             console.log(e);
         },
-        forSearchUse() {
+        forSearchUse:function() {
             this.ProductInfo = [];
         },
-        Search() {
+        Search:function() {
             if (!this.value) {
                 alert("請輸入關鍵字");
                 return false;

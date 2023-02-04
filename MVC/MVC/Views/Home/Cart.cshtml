@@ -37,7 +37,7 @@
                             <input type="number" name="" :id="pro.productId+'Input'" min="1" max="20" :value=pro.amount v-on:change="amountChange(pro.productId,pro.size,$event)" />
                         </div>
                         <div class="col-1">
-                            <button class="mx-3 rounded-pill btn-outline-danger" @@click="delete(id)">X</button>
+                            <button class="mx-3 rounded-pill btn-outline-danger" @@click="Mydelete(pro.productId,pro.size)">X</button>
                         </div>
                     </div>
                 </div>
