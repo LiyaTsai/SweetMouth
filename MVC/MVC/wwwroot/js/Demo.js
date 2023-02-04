@@ -144,7 +144,7 @@ var appVue = new Vue({
             let session = localStorage;
             let _id = "";
             _id = id + "(" + _size;
-            console.log("id:" + _id)
+            console.log("id:" + _id);
             i = id - 10001;
             let _imageName =
                 e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].src.split(
@@ -214,6 +214,55 @@ var appVue = new Vue({
             _this.GetPrice();
             _this.GetSize();
             console.log(e);
+        },
+
+        // 搜尋文章
+        Search: function () {
+            let searchInput = document.getElementById("searchInput").value;
+            if (searchInput == "") {
+                document.getElementById("errMessage").textContent = "請輸入關鍵字!!";
+                return;
+            } else {
+                let request = {};
+                request.ProductName = this.keyWord;
+                request.nickName = this.keyWord;
+
+                axios.post(`${webApiBaseUri}api/Product/FilterName`, request).then((res) => {
+                    if (res.data.length == 0) {
+                        //alert('找不到文章!!')
+                        document.getElementById("errMessage").textContent = "找不到此項甜點";
+                        searchInput.textContent = "";
+                    } else {
+                        document.getElementById("errMessage").textContent = "";
+                    }
+                    let itemList = [];
+                    for (i = 0; i < res.data.length; i++) {
+                        if (res.data[i].floor == 0) {
+                            //console.log(res.data[i])
+                            let item = {};
+                            item = res.data[i];
+                            item.time = item.time.split("T")[0];
+                            if (item.imageName == null) {
+                                item.imageName = item.productImageName;
+                            }
+                            itemList.push(item);
+                        }
+                    }
+                    //console.log(itemList);
+                    this.SearchInfo = itemList;
+                    this.keyWord = "";
+                });
+            }
+        },
+
+        // Enter 搜尋
+        pressEnter: function () {
+            $(document).ready(function () {
+                $("#searchInput").keypress(function (e) {
+                    let key = window.event ? e.keyCode : e.which;
+                    if (key == 13) $("#btnSearch").click();
+                });
+            });
         },
     },
 });

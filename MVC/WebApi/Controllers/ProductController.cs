@@ -112,15 +112,15 @@ namespace WebApi.Controllers
                 return "ID錯誤";
             }
             Product pro = await _context.Product.FindAsync(pDTO.ProductId);
-            pro.ProductId=pDTO.ProductId;
-            pro.ProductName=pDTO.ProductName;
-            pro.Size=pDTO.Size;
-            pro.ImageName=pDTO.ImageName;
-            pro.Avalible=pDTO.Avalible;
-            pro.Flavor=pDTO.Flavor;
-            pro.Tag=pDTO.Tag;
-            pro.Category=pDTO.Category;
-            
+            pro.ProductId = pDTO.ProductId;
+            pro.ProductName = pDTO.ProductName;
+            pro.Size = pDTO.Size;
+            pro.ImageName = pDTO.ImageName;
+            pro.Avalible = pDTO.Avalible;
+            pro.Flavor = pDTO.Flavor;
+            pro.Tag = pDTO.Tag;
+            pro.Category = pDTO.Category;
+
             _context.Entry(pro).State = EntityState.Modified;
             try
             {
@@ -146,10 +146,6 @@ namespace WebApi.Controllers
             return _context.Product.Any(e => e.ProductId == id);
         }
 
-
-
-
-
         [HttpPost]
         public async Task<Product> Post(ProductDTO pdto)
         {
@@ -161,9 +157,9 @@ namespace WebApi.Controllers
                 Price = pdto.Price,
                 //BirthDay = mdto.BirthDay,
                 Tag = pdto.Tag,
-                Category=pdto.Category,
-                Avalible=pdto.Avalible,
-                ImageName= pdto.ImageName,
+                Category = pdto.Category,
+                Avalible = pdto.Avalible,
+                ImageName = pdto.ImageName,
             };
             _context.Product.Add(pro);
             await _context.SaveChangesAsync();
@@ -185,6 +181,59 @@ namespace WebApi.Controllers
             await _context.SaveChangesAsync();
 
             return "刪除成功";
+        }
+
+        // 搜尋甜點 api/Product/FilterTitle
+        [HttpPost("FilterName")]
+        public async Task<IEnumerable<Product>> FilterName(Product p)
+        {
+            //return _context.Product
+            //    .Where(spd => spd.ProductName.Contains(ProductDTO.ProductName).Select(spd => new ProductDTO
+            //    {
+            //        ProductId = spd.ProductId,
+            //        ProductName = spd.ProductName,
+            //        Size = spd.Size,
+            //        Flavor = spd.Flavor,
+            //        ImageName = spd.ImageName,
+            //        Price = spd.Price,
+            //        Category = spd.Category,
+            //        Tag = spd.Tag,
+            //        Description = spd.Description,
+            //        tagArray = spd.tagArray,
+
+            //    }));
+
+            //var result = _context.Product.Select(spd => new Product
+            //{
+            //    ProductId = spd.ProductId,
+            //    ProductName = spd.ProductName,
+            //    Size = spd.Size,
+            //    Flavor = spd.Flavor,
+            //    ImageName = spd.ImageName,
+            //    Price = spd.Price,
+            //    Category = spd.Category,
+            //    Tag = spd.Tag,
+            //    Description = spd.Description
+            //    //tagArray = spd.tagArray,
+            //});
+            //if (!string.IsNullOrWhiteSpace(p.ProductName))
+            //{
+            //    result = result.where(x => x.ProductName.Contains(p.ProductName));
+            //};
+
+            var result = _context.Product.Where(x => x.ProductName.Contains(p.ProductName)).Select(spd => new Product
+            {
+                ProductId = spd.ProductId,
+                ProductName = spd.ProductName,
+                Size = spd.Size,
+                Flavor = spd.Flavor,
+                ImageName = spd.ImageName,
+                Price = spd.Price,
+                Category = spd.Category,
+                Tag = spd.Tag,
+                Description = spd.Description
+            });
+            return result;
         }
 
         //// POST api/<ProductController>
