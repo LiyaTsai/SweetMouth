@@ -24,6 +24,10 @@ var appVue = new Vue({
         memberName: "",
         memberPhone: "",
         memberAddress: "",
+        totalPrice: 0,
+        coupon: "",
+        discount_info: "",
+        speDis: 1,
     },
     mounted() {
         let _this = this;
@@ -50,12 +54,34 @@ var appVue = new Vue({
                     TempObj.amount = local.getItem(_this.IDandSpeArray[i]).split("|")[1];
                     TempObj.price = local.getItem(_this.IDandSpeArray[i]).split("|")[0];
                     _this.productArray.push(TempObj);
-                    // console.log("for2");
                 });
             }
-            console.log(_this.productArray);
+            // console.log(_this.productArray);
+            // _this.speDis = parseInt(local.getItem("discount"));
+
+            let total = 0;
+            let partal = 0;
+            setTimeout(() => {
+                for (let i = 0; i < _this.productArray.length; i++) {
+                    partal = 0;
+                    partal = parseInt(_this.productArray[i].price) * parseInt(_this.productArray[i].amount);
+                    // console.log(partal);
+                    total += partal;
+                    // console.log(total);
+                }
+                if (local.getItem("discount") == null) {
+                    _this.totalPrice = total;
+                    _this.discount_info = "輸入折扣代碼享優惠";
+                } else {
+                    _this.speDis = parseFloat(local.getItem("discount"));
+                    _this.totalPrice = total * _this.speDis;
+                    _this.discount_info = "已使用8折優惠";
+                }
+            }, 1000);
         },
-        amountChange: function (id, size,e) {
+        amountChange: function (id, size, e) {
+            let _this = this;
+
             //放進 商品id,規格,事件本身
             var n = -1; //這個商品放在productArray的index
             for (let i = 0; i < this.productArray.length; i++) {
@@ -72,24 +98,80 @@ var appVue = new Vue({
             _value = _price + "|" + this.productArray[n].amount + "|" + _imgName;
             local.removeItem(localindex);
             local.setItem(localindex, _value);
+            // this.totalPrice();
+            console.log(this.productArray);
+            let total = 0;
+            let partal = 0;
+            setTimeout(() => {
+                for (let i = 0; i < _this.productArray.length; i++) {
+                    partal = 0;
+                    partal = parseInt(_this.productArray[i].price) * parseInt(_this.productArray[i].amount);
+                    total += partal;
+                }
+                if (local.getItem("discount") == null) {
+                    _this.totalPrice = total;
+                    _this.discount_info = "輸入折扣代碼享優惠";
+                } else {
+                    _this.speDis = parseFloat(local.getItem("discount"));
+                    _this.totalPrice = total * _this.speDis;
+                    _this.discount_info = "已使用8折優惠";
+                }
+            }, 1000);
         },
         Mydelete(id, size) {
             console.log("del");
-            console.log(id +"("+ size);
+            console.log(id + "(" + size);
             let ret = confirm("確定要刪除嗎?");
             if (ret == true) {
                 let localindex = "|" + id + "(" + size;
                 let localindex2 = id + "(" + size;
-                TempProductList = localStorage["productList"]
-                console.log("TempProductList: " + TempProductList)
-                console.log("localindex: " + localindex);
-                console.log("0: "+TempProductList.split(localindex)[0])
-                console.log(typeof TempProductList.split(localindex)[1])
-                console.log("1: " + TempProductList.split(localindex)[1])
-                console.log("1.length: " + TempProductList.split(localindex)[1].length)
+                TempProductList = localStorage["productList"];
+                // console.log("TempProductList: " + TempProductList)
+                // console.log("localindex: " + localindex);
+                // console.log("0: "+TempProductList.split(localindex)[0])
+                // console.log(typeof TempProductList.split(localindex)[1])
+                // console.log("1: " + TempProductList.split(localindex)[1])
+                // console.log("1.length: " + TempProductList.split(localindex)[1].length)
                 localStorage.removeItem(localindex2);
-                localStorage.setItem("productList", TempProductList.split(localindex)[0] + TempProductList.split(localindex)[1]);
-                location = location
+                localStorage.setItem(
+                    "productList",
+                    TempProductList.split(localindex)[0] + TempProductList.split(localindex)[1]
+                );
+                location = location;
+            }
+            // this.totalPrice();
+        },
+        orderDessert: function () {
+            // console.log("clear");
+            alert(`已收到${memberName}的訂單`);
+            localStorage.clear();
+        },
+        useDiscount: function () {
+            let _this = this;
+            _this.coupon == "momo80" ? eightyPercentOff() : noDiscount();
+
+            function eightyPercentOff() {
+                let total = 0;
+                let partal = 0;
+                // setTimeout(() => {
+                for (let i = 0; i < _this.productArray.length; i++) {
+                    partal = 0;
+                    partal = parseInt(_this.productArray[i].price) * parseInt(_this.productArray[i].amount);
+                    console.log(partal);
+                    total += partal;
+                    console.log(total);
+                }
+                _this.speDis = 0.8;
+                local.setItem("discount", 0.8);
+                _this.totalPrice = total * parseFloat(_this.speDis);
+                _this.discount_info = "已使用8折優惠";
+                _this.coupon = "";
+                // }, 1000);
+            }
+            function noDiscount() {
+                alert("折扣代碼有誤");
+                local.removeItem("discount");
+                _this.coupon = "";
             }
         },
     },

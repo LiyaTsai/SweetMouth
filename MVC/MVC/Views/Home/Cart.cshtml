@@ -61,10 +61,10 @@
                             <label for="">會員電話</label>
                             <label for="">{{memberPhone}}</label>
                         </div>
-                        <div>
+                        @*<div>
                             <label for="">地址</label>
                             <label for="">{{memberAddress}}</label>
-                        </div>
+                        </div>*@
                     </fieldset>
                 </form>
             </div>
@@ -75,20 +75,23 @@
                     <fieldset>
                         <legend class=" text-t4">商品資訊</legend>
                         <div>
-                            <label for="discount">折扣代碼</label>
-                            <input type="text" name="" id="discount" placeholder="請輸入折扣代碼" class="" />
+                            <label for="discount" >折扣代碼</label>
+                            <input type="text" name="" id="discount" placeholder="請輸入折扣代碼" class="" v-model="coupon" />
+                            <div class="text-secondary">{{discount_info}}</div>
+                            <button class="btn btn-primary momo-addCartBTN" @@click="useDiscount">使用</button>
                             @*  class我寫好了給我留著PLZ  *@
                             @*discount_info幫我寫"已打8折"、"運費以免"*@
-                            @*<span class="text-secondary">{{discount_info}}</span>*@
                         </div>
                         <div>
-                            <label for="">訂單總價</label>
+                            <label for="">訂單總價</label><br />
+                            <span class="text-primary display-6">{{totalPrice}}</span>
                             @*  class我寫好了給我留著PLZ  *@
                             @*<span class="text-secondary">{{totalPrice}}</span>*@
                         </div>
                         <div>
                             <!-- 付款 -->
-                            <button class="btn btn-primary momo-addCartBTN">送出訂單</button>
+
+                            <button class="btn btn-primary momo-addCartBTN" @@click="orderDessert">送出訂單</button>
                         </div>
                         <!-- <div>
                             <label for="">備註</label>

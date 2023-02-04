@@ -210,7 +210,7 @@ var appVue = new Vue({
         },
 
         // 類別標籤
-        categoryChg:function(e) {
+        categoryChg: function (e) {
             const _this = this;
             var _e = e;
             _this.ProductInfo = _this.orgProductInfo.filter((x) => x.category === e); //篩選我要的分類
@@ -219,10 +219,10 @@ var appVue = new Vue({
             _this.GetSize();
             console.log(e);
         },
-        forSearchUse:function() {
+        forSearchUse: function () {
             this.ProductInfo = [];
         },
-        Search:function() {
+        Search: function () {
             if (!this.value) {
                 alert("請輸入關鍵字");
                 return false;
