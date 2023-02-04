@@ -33,22 +33,11 @@ var appVue = new Vue({
         tagArray: [],
         currentSize: "",
         amount: 0,
+        productList:null,
     },
     mounted() {
         _this = this;
-        _this.GetProduct();
-        //_this.specification();
-        setTimeout(() => {
-            if (_this.sizeArray.length == 1) {
-                this.price = `價格  $${this.PriceArray[0]}`;
-                this.currentSize = _this.size[0];
-                this.arraykey = 0;
-                document.getElementById("productAmount").value = 1;
-                this.amount = 1;
-                Mother = document.getElementsByClassName("btn momo-pd-size");
-                Mother[0].style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
-            }
-        }, 200);
+        _this.GetProduct();       
     },
     methods: {
         GetProduct: function () {
@@ -65,23 +54,22 @@ var appVue = new Vue({
 
                 //先弄一個放價格的array出來，如果裡面只有一項，就拿來當價格，如果有一項以上就請顧客選擇規格
                 _this.PriceArray = a.data.price.split("|");
-                _this.price = _this.PriceArray.length == 1 ? _this.PriceArray[0] : "請選擇規格";
+                _this.price = _this.PriceArray.length == 1 ? "價格 $"+_this.PriceArray[0] : "請選擇規格";
 
                 _this.imageName = a.data.imageName;
                 _this.description = a.data.description;
-                _this.tagArray = a.data.tagArray;
+                _this.tagArray = a.data.tagArray;          
+                this.$nextTick(function () {
+                    if (this.PriceArray.length == 1) {
+                        Mother = document.getElementsByClassName("btn momo-pd-size");
+                        Mother[0].style = "background:white; color:rgb(255,108,62);";
+                    }
+                })
             });
-
-            setTimeout(() => {
-                // console.log("價格陣列長度 " + _this.PriceArray.length);
-                for (let i = 0; i < _this.PriceArray.length; i++) {
-                    // console.log("價格 " + _this.PriceArray[i]);
-                }
-            }, 200);
         },
         specification: function (x, e) {
             this.price = `價格  $${this.PriceArray[x]}`;
-            this.currentSize = _this.size[x];
+            this.currentSize = this.size[x];
             this.arraykey = x;
             this.amount = 1;
             document.getElementById("productAmount").value = 1;
@@ -109,7 +97,11 @@ var appVue = new Vue({
                     session.setItem(_id, value);
                 } else {
                     let value = `${_price}|${parseInt(this.amount)}|${_imageName}`;
-                    session["productList"] += `|${_id}`;
+                    //session["productList"] += `|${_id}`;
+                    //session.setItem(_id, value);
+                    //session.setItem("productList", this.productList);
+                    this.productList = session["productList"];
+                    this.productList += `|${_id}`;
                     session.setItem(_id, value);
                     session.setItem("productList", this.productList);
                 }
@@ -153,6 +145,8 @@ var appVue = new Vue({
 
         amountChange: function (e) {
             this.amount = e.target.value;
+            console.log(this.PriceArray)
+            console.log(this.PriceArray[this.arraykey])
             if (this.price != "請選擇規格") {
                 this.price = "價格 $" + parseInt(this.PriceArray[this.arraykey]) * this.amount;
             } else {
@@ -162,7 +156,18 @@ var appVue = new Vue({
             }
         },
     },
+    watch: {
+        PriceArray: function () {
+            this.$nextTick(function () {
+                if (this.PriceArray.length == 1) {
+                    Mother = document.getElementsByClassName("btn momo-pd-size");
+                    Mother[0].style = "background:white; color:rgb(255,108,62);";
+                }
+            })
+        }
+    }
 });
+
 
 // setTimeout(function () {
 //     console.log(appVue.ProductName);
@@ -172,7 +177,7 @@ var appVue = new Vue({
 var webApiBaseUrl = "https://localhost:7096/"; //axios請求會送到的Web Api網址
 var articleID = window.location.search; //把跳轉後的網址中 ?id= ，也就是query紀錄抓出來，這裡 articleID="?id={文章ID}"
 
-var appVue = new Vue({
+var appVue2 = new Vue({
     el: "#appVue2",
     name: "appVue2",
     data: {

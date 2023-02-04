@@ -39,6 +39,7 @@ var appVue = new Vue({
             });
             for (let i = 1; i < local.getItem("productList").split("|").length; i++) {
                 _this.IDandSpeArray.push(local.getItem("productList").split("|")[i]);
+                // console.log("for");
             }
             _this.IDandSpeArray = _this.IDandSpeArray.sort();
             for (let i = 0; i < _this.IDandSpeArray.length; i++) {
@@ -50,23 +51,38 @@ var appVue = new Vue({
                     TempObj.amount = local.getItem(_this.IDandSpeArray[i]).split("|")[1];
                     TempObj.price = local.getItem(_this.IDandSpeArray[i]).split("|")[0];
                     _this.productArray.push(TempObj);
+                    // console.log("for2");
                 });
             }
             console.log(_this.productArray);
         },
-        amountChange: function (id,size,e) {    //放進 商品id,規格,事件本身
-            var n = -1;                         //這個商品放在productArray的index
-            for (let i = 0; i < this.productArray.length; i++) {    //找到此商品的index並放入n
-                if (this.productArray[i].productId == id) {n=i }
+        amountChange: function (id, size) {
+            //放進 商品id,規格,事件本身
+            var n = -1; //這個商品放在productArray的index
+            for (let i = 0; i < this.productArray.length; i++) {
+                //找到此商品的index並放入n
+                if (this.productArray[i].productId == id) {
+                    n = i;
+                }
             }
-            this.productArray[n].amount = parseInt(e.target.value)  //更新productArray中的amount
-            let local = localStorage;           
-            let localindex = id + "(" + size    //localstorage的key,以下更新localstorage
+            this.productArray[n].amount = parseInt(e.target.value); //更新productArray中的amount
+            let local = localStorage;
+            let localindex = id + "(" + size; //localstorage的key,以下更新localstorage
             _price = local.getItem(localindex).split("|")[0];
             _imgName = local.getItem(localindex).split("|")[2];
             _value = _price + "|" + this.productArray[n].amount + "|" + _imgName;
             local.removeItem(localindex);
-            local.setItem(localindex, _value);           
+            local.setItem(localindex, _value);
+        },
+        delete(id, size) {
+            console.log("del");
+            console.log(id + size);
+            let ret = confirm("確定要刪除嗎?");
+            if (ret == true) {
+                let localindex = id + "(" + size;
+                console.log(localindex);
+                local.removeItem(localindex);
+            }
         },
     },
 });

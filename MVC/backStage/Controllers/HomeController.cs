@@ -12,13 +12,28 @@ namespace backStage.Controllers
         {
             _logger = logger;
         }
-
+       
         public IActionResult Index()
         {
             return View();
         }
 
         public IActionResult template()
+        {
+            return View();
+        }
+
+        public IActionResult Member( )
+        {
+            return View();
+        }
+
+        public IActionResult Blog()
+        {
+            return View();
+        }
+
+        public IActionResult Product()
         {
             return View();
         }

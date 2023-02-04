@@ -10,7 +10,7 @@ var appVue = new Vue({
         MemberInfo: [],
         Order: [],
         BlogMessage: [],
-        OrderMessage:[],
+        OrderMessage: [],
         Schedule: [],
         Birth: null,
         ClassInformation: [],
@@ -18,7 +18,7 @@ var appVue = new Vue({
         isEditNick: true,
         isEditEmail: true,
         isEditPhone: true,
-        isEditBirth:true,
+        isEditBirth: true,
     },
     mounted() {
         _this = this;
@@ -31,7 +31,6 @@ var appVue = new Vue({
                 _this.MemberInfo = a.data;
                 dat = a.data.birthday;
                 _this.Birth = dat.split("T")[0];
-                console.log(_this.MemberInfo)
             });
             axios.get(`${webApiBaseUrl}api/Blogs`).then(x => {
                 for (let i = 0; i < x.data.length; i++) {
@@ -47,7 +46,7 @@ var appVue = new Vue({
                         _this.OrderMessage.push(x.data[i]);
                     }
                     else { continue; }
-                }                
+                }
             })
         },
         ClickToArticle: function (e) {
@@ -73,8 +72,9 @@ var appVue = new Vue({
                         TempPut.name = nameInput.value;
                         TempPut.nickName = this.MemberInfo.nickName;
                         TempPut.email = this.MemberInfo.email;
+                        TempPut.password = this.MemberInfo.password
                         TempPut.phoneNumber = this.MemberInfo.phoneNumber;
-                        TempPut.birthDay = this.MemberInfo.birthDay;
+                        TempPut.birthDay = this.MemberInfo.birthday;
                         axios.put(`${webApiBaseUrl}api/Member/` + MemID, TempPut)
                     }
                 }
@@ -108,11 +108,12 @@ var appVue = new Vue({
                     if (conf) {
                         var TempPut = {};
                         TempPut.memberID = MemID;
+                        TempPut.password = this.MemberInfo.password
                         TempPut.name = this.MemberInfo.name;
                         TempPut.nickName = nickNameInput.value;
                         TempPut.email = this.MemberInfo.email;
                         TempPut.phoneNumber = this.MemberInfo.phoneNumber;
-                        TempPut.birthDay = this.MemberInfo.birthDay;
+                        TempPut.birthDay = this.MemberInfo.birthday;
                         axios.put(`${webApiBaseUrl}api/Member/` + MemID, TempPut)
                     }
                 }
@@ -146,11 +147,12 @@ var appVue = new Vue({
                     if (conf) {
                         var TempPut = {};
                         TempPut.memberID = MemID;
+                        TempPut.password = this.MemberInfo.password
                         TempPut.name = this.MemberInfo.name;
                         TempPut.nickName = this.MemberInfo.nickName;
                         TempPut.email = Input.value;
                         TempPut.phoneNumber = this.MemberInfo.phoneNumber;
-                        TempPut.birthDay = this.MemberInfo.birthDay;
+                        TempPut.birthDay = this.MemberInfo.birthday;
                         axios.put(`${webApiBaseUrl}api/Member/` + MemID, TempPut)
                     }
                 }
@@ -188,7 +190,8 @@ var appVue = new Vue({
                         TempPut.nickName = this.MemberInfo.nickName;
                         TempPut.email = this.MemberInfo.phoneNumber;
                         TempPut.phoneNumber = Input.value;
-                        TempPut.birthDay = this.MemberInfo.birthDay;
+                        TempPut.birthDay = this.MemberInfo.birthday;
+                        TempPut.password = this.MemberInfo.password;
                         axios.put(`${webApiBaseUrl}api/Member/` + MemID, TempPut)
                     }
                 }
@@ -223,6 +226,7 @@ var appVue = new Vue({
                     if (conf) {
                         var TempPut = {};
                         TempPut.memberID = MemID;
+
                         TempPut.name = this.MemberInfo.name;
                         TempPut.nickName = this.MemberInfo.nickName;
                         TempPut.email = this.MemberInfo.phoneNumber;
