@@ -14,6 +14,7 @@ var appVue = new Vue({
         category: "常備品項",
         baseUrl: "https://localhost:7146/Home/productDetail",
         itempage: 0,
+        value: "",
     },
     mounted() {
         _this = this;
@@ -67,7 +68,7 @@ var appVue = new Vue({
                 }
                 _this.ProductInfo = arr;
                 // console.log(this.ProductInfo.length);
-                console.log(this.ProductInfo);
+                // console.log(this.ProductInfo);
             });
         },
 
@@ -144,7 +145,6 @@ var appVue = new Vue({
             let session = localStorage;
             let _id = "";
             _id = id + "(" + _size;
-            console.log("id:" + _id);
             i = id - 10001;
             let _imageName =
                 e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].src.split(
@@ -158,6 +158,10 @@ var appVue = new Vue({
                 session.removeItem(_id);
                 session.setItem(_id, value);
             } else {
+                //let value = `${_price}|${amount}|${_imageName}`;
+                //session["productList"] += `|${_id}`;
+                //session.setItem(_id, value);
+                //session.setItem("productList", this.productList);
                 let value = `${_price}|${amount}|${_imageName}`;
                 this.productList = session["productList"];
                 this.productList += `|${_id}`;
@@ -171,7 +175,7 @@ var appVue = new Vue({
                     let x = e.pageX - this.offsetWidth / 2;
                     let y = e.pageY - this.offsetWidth / 2;
                     createBall02(x, y);
-                    //console.log(x, y);
+                    console.log(x, y);
                 };
             }
 
@@ -206,7 +210,7 @@ var appVue = new Vue({
         },
 
         // 類別標籤
-        categoryChg(e) {
+        categoryChg:function(e) {
             const _this = this;
             var _e = e;
             _this.ProductInfo = _this.orgProductInfo.filter((x) => x.category === e); //篩選我要的分類
@@ -215,54 +219,40 @@ var appVue = new Vue({
             _this.GetSize();
             console.log(e);
         },
-
-        // 搜尋文章
-        Search: function () {
-            let searchInput = document.getElementById("searchInput").value;
-            if (searchInput == "") {
-                document.getElementById("errMessage").textContent = "請輸入關鍵字!!";
-                return;
-            } else {
-                let request = {};
-                request.ProductName = this.keyWord;
-                request.nickName = this.keyWord;
-
-                axios.post(`${webApiBaseUri}api/Product/FilterName`, request).then((res) => {
-                    if (res.data.length == 0) {
-                        //alert('找不到文章!!')
-                        document.getElementById("errMessage").textContent = "找不到此項甜點";
-                        searchInput.textContent = "";
-                    } else {
-                        document.getElementById("errMessage").textContent = "";
-                    }
-                    let itemList = [];
-                    for (i = 0; i < res.data.length; i++) {
-                        if (res.data[i].floor == 0) {
-                            //console.log(res.data[i])
-                            let item = {};
-                            item = res.data[i];
-                            item.time = item.time.split("T")[0];
-                            if (item.imageName == null) {
-                                item.imageName = item.productImageName;
-                            }
-                            itemList.push(item);
-                        }
-                    }
-                    //console.log(itemList);
-                    this.SearchInfo = itemList;
-                    this.keyWord = "";
-                });
-            }
+        forSearchUse:function() {
+            this.ProductInfo = [];
         },
-
-        // Enter 搜尋
-        pressEnter: function () {
-            $(document).ready(function () {
-                $("#searchInput").keypress(function (e) {
-                    let key = window.event ? e.keyCode : e.which;
-                    if (key == 13) $("#btnSearch").click();
-                });
+        Search:function() {
+            if (!this.value) {
+                alert("請輸入關鍵字");
+                return false;
+            }
+            axios.get(`${webApiBaseUri}api/Product?name=${this.value}`).then((a) => {
+                if (a.data.length) {
+                    _this.ProductInfo = a.data;
+                } else {
+                    alert("查無此資料");
+                    return false;
+                }
+                let arr = [];
+                for (i = 0; i < a.data.length; i++) {
+                    // 檢查上架狀態avalible
+                    let item = {};
+                    item = this.ProductInfo[i];
+                    // 切分tag標籤
+                    item.tag = item.tag.split("|");
+                    const tempArr = item.tag.filter((x) => x == "狗狗可食" || x == "含酒");
+                    if (tempArr.length >= 1) {
+                        item.tag = item.tag.filter((x) => x == "狗狗可食" || x == "含酒")[0];
+                    } else {
+                        item.tag = "";
+                    }
+                    arr.push(item);
+                }
+                _this.ProductInfo = arr;
             });
+            this.GetPrice();
+            this.GetSize();
         },
     },
 });

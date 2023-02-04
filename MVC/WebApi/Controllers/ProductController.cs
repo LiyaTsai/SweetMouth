@@ -27,9 +27,9 @@ namespace WebApi.Controllers
 
         // GET: api/<ProductController>
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public async Task<IEnumerable<Product>> Get(string? name)
         {
-            return _context.Product.Select(x =>
+            var result = _context.Product.Select(x =>
             new Product
             {
                 ProductId = x.ProductId,
@@ -43,8 +43,12 @@ namespace WebApi.Controllers
                 Tag = x.Tag,
                 Description = x.Description,
                 Category = x.Category,
+            });
+            if (!string.IsNullOrWhiteSpace(name)) {
+                result = result.Where(x => x.ProductName.Contains(name));
             }
-            );
+            result = result.Where(x => x.Avalible == true);
+            return result;
         }
 
 

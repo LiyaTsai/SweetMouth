@@ -4,9 +4,7 @@ var MemID =
     document.cookie.indexOf("MemberID") == -1
         ? sessionStorage.getItem("MemberID")
         : document.cookie.split("MemberID=")[1].split(";")[0];
-setTimeout(() => {
-    console.log(document.getElementById("10003Input").value);
-}, 500);
+//setTimeout(() => { console.log(document.getElementById("10003Input").value) },500)
 
 var appVue = new Vue({
     el: "#appVue",
@@ -41,7 +39,6 @@ var appVue = new Vue({
             });
             for (let i = 1; i < local.getItem("productList").split("|").length; i++) {
                 _this.IDandSpeArray.push(local.getItem("productList").split("|")[i]);
-                console.log("for");
             }
             _this.IDandSpeArray = _this.IDandSpeArray.sort();
             for (let i = 0; i < _this.IDandSpeArray.length; i++) {
@@ -53,12 +50,12 @@ var appVue = new Vue({
                     TempObj.amount = local.getItem(_this.IDandSpeArray[i]).split("|")[1];
                     TempObj.price = local.getItem(_this.IDandSpeArray[i]).split("|")[0];
                     _this.productArray.push(TempObj);
-                    console.log("for2");
+                    // console.log("for2");
                 });
             }
             console.log(_this.productArray);
         },
-        amountChange: function (id, size, e) {
+        amountChange: function (id, size,e) {
             //放進 商品id,規格,事件本身
             var n = -1; //這個商品放在productArray的index
             for (let i = 0; i < this.productArray.length; i++) {
@@ -75,6 +72,25 @@ var appVue = new Vue({
             _value = _price + "|" + this.productArray[n].amount + "|" + _imgName;
             local.removeItem(localindex);
             local.setItem(localindex, _value);
+        },
+        Mydelete(id, size) {
+            console.log("del");
+            console.log(id +"("+ size);
+            let ret = confirm("確定要刪除嗎?");
+            if (ret == true) {
+                let localindex = "|" + id + "(" + size;
+                let localindex2 = id + "(" + size;
+                TempProductList = localStorage["productList"]
+                console.log("TempProductList: " + TempProductList)
+                console.log("localindex: " + localindex);
+                console.log("0: "+TempProductList.split(localindex)[0])
+                console.log(typeof TempProductList.split(localindex)[1])
+                console.log("1: " + TempProductList.split(localindex)[1])
+                console.log("1.length: " + TempProductList.split(localindex)[1].length)
+                localStorage.removeItem(localindex2);
+                localStorage.setItem("productList", TempProductList.split(localindex)[0] + TempProductList.split(localindex)[1]);
+                location = location
+            }
         },
     },
 });
