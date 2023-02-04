@@ -1,4 +1,4 @@
-var webApiBaseUrl = "https://localhost:7096/";  //¥ı§â«e­±ªº¸ô®|¼g°_¨Ó¥H«á´«¾÷§ï³o´N¦n
+var webApiBaseUrl = "https://localhost:7096/";  //å…ˆæŠŠå‰é¢çš„è·¯å¾‘å¯«èµ·ä¾†ä»¥å¾Œæ›æ©Ÿæ”¹é€™å°±å¥½
 var appVue = new Vue({
     el: "#appVue",
     name: "appVue",
@@ -10,7 +10,7 @@ var appVue = new Vue({
         nickName: null,
         phoneNumber: null,
         birthDay: null,
-        memberId:null,
+        memberId: null,
     },
     mounted() {
 
@@ -21,11 +21,10 @@ var appVue = new Vue({
             var TempObj = {};
             if (_this.email == '' || _this.password == '' || _this.CheckPass == '' ||
                 _this.name == '' || _this.nickName == '' || _this.phoneNumber == '' || _this.birthDay == '') {
-                alert("½Ğ¤Å¯dªÅ");
+                alert("è«‹å‹¿ç•™ç©º");
             }
-            else if (_this.CheckPass != _this.password) { alert("½T»{±K½X¿é¤J¿ù»~") }
-            else
-            {
+            else if (_this.CheckPass != _this.password) { alert("ç¢ºèªå¯†ç¢¼è¼¸å…¥éŒ¯èª¤") }
+            else {
                 TempObj.email = _this.email;
                 TempObj.password = _this.password;
                 TempObj.name = _this.name;
@@ -41,7 +40,8 @@ var appVue = new Vue({
                         y.email = _this.email;
                         y.phoneNumber = _this.phoneNumber;
                     })
-                    .then(z => { _this.memberId = z.memberId })}
+                    .then(z => { _this.memberId = z.memberId })
+            }
         },
         MakeNewData: function () {
             //console.log(this.email);
@@ -54,14 +54,11 @@ var appVue = new Vue({
             this.email = "ThisIsTest@gmail.com";
             this.password = "18000000";
             this.CheckPass = "18000000";
-            this.name = "§A¦n§Ú¬O´ú¸Õ¤H­û";
-            this.nickName = "¤p´ú";
+            this.name = "ä½ å¥½æˆ‘æ˜¯æ¸¬è©¦äººå“¡";
+            this.nickName = "å°æ¸¬";
             this.phoneNumber = "0955555555";
             this.birthDay = "1900-11-05";
         },
-        MakeNewData: function () {
-            this.email="thisIsTestEmail@gmail.com"
-        }
     },
 })
 
