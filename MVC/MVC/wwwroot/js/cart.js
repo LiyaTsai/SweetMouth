@@ -41,7 +41,7 @@ var appVue = new Vue({
             });
             for (let i = 1; i < local.getItem("productList").split("|").length; i++) {
                 _this.IDandSpeArray.push(local.getItem("productList").split("|")[i]);
-                console.log("for");
+                // console.log("for");
             }
             _this.IDandSpeArray = _this.IDandSpeArray.sort();
             for (let i = 0; i < _this.IDandSpeArray.length; i++) {
@@ -53,12 +53,12 @@ var appVue = new Vue({
                     TempObj.amount = local.getItem(_this.IDandSpeArray[i]).split("|")[1];
                     TempObj.price = local.getItem(_this.IDandSpeArray[i]).split("|")[0];
                     _this.productArray.push(TempObj);
-                    console.log("for2");
+                    // console.log("for2");
                 });
             }
             console.log(_this.productArray);
         },
-        amountChange: function (id, size, e) {
+        amountChange: function (id, size) {
             //放進 商品id,規格,事件本身
             var n = -1; //這個商品放在productArray的index
             for (let i = 0; i < this.productArray.length; i++) {
@@ -75,6 +75,16 @@ var appVue = new Vue({
             _value = _price + "|" + this.productArray[n].amount + "|" + _imgName;
             local.removeItem(localindex);
             local.setItem(localindex, _value);
+        },
+        delete(id, size) {
+            console.log("del");
+            console.log(id + size);
+            let ret = confirm("確定要刪除嗎?");
+            if (ret == true) {
+                let localindex = id + "(" + size;
+                console.log(localindex);
+                local.removeItem(localindex);
+            }
         },
     },
 });
