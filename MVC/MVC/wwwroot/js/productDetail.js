@@ -37,19 +37,7 @@ var appVue = new Vue({
     },
     mounted() {
         _this = this;
-        _this.GetProduct();
-        //_this.specification();
-        //setTimeout(() => {
-        //    if (_this.sizeArray.length == 1) {
-        //        this.price = `價格  $${this.PriceArray[0]}`;
-        //        this.currentSize = _this.size[0];
-        //        this.arraykey = 0;
-        //        document.getElementById("productAmount").value = 1;
-        //        this.amount = 1;
-        //        Mother = document.getElementsByClassName("btn momo-pd-size");
-        //        Mother[0].style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
-        //    }
-        //}, 500);
+        _this.GetProduct();       
     },
     methods: {
         GetProduct: function () {
@@ -66,20 +54,17 @@ var appVue = new Vue({
 
                 //先弄一個放價格的array出來，如果裡面只有一項，就拿來當價格，如果有一項以上就請顧客選擇規格
                 _this.PriceArray = a.data.price.split("|");
-                _this.price = _this.PriceArray.length == 1 ? _this.PriceArray[0] : "請選擇規格";
+                _this.price = _this.PriceArray.length == 1 ? "價格 $"+_this.PriceArray[0] : "請選擇規格";
 
                 _this.imageName = a.data.imageName;
                 _this.description = a.data.description;
-                _this.tagArray = a.data.tagArray;
-                if (_this.sizeArray.length == 1) {
-                    this.price = `價格  $${this.PriceArray[0]}`;
-                    this.currentSize = _this.size[0];
-                    this.arraykey = 0;
-                    document.getElementById("productAmount").value = 1;
-                    this.amount = 1;
-                    Mother = document.getElementsByClassName("btn momo-pd-size");
-                    Mother[0].style = "background:rgb(199,63,19); color:white;box-shadow: 0 0 0 .05rem rgb(199,63,19)";
-                }
+                _this.tagArray = a.data.tagArray;          
+                this.$nextTick(function () {
+                    if (this.PriceArray.length == 1) {
+                        Mother = document.getElementsByClassName("btn momo-pd-size");
+                        Mother[0].style = "background:white; color:rgb(255,108,62);";
+                    }
+                })
             });
         },
         specification: function (x, e) {
@@ -171,7 +156,18 @@ var appVue = new Vue({
             }
         },
     },
+    watch: {
+        PriceArray: function () {
+            this.$nextTick(function () {
+                if (this.PriceArray.length == 1) {
+                    Mother = document.getElementsByClassName("btn momo-pd-size");
+                    Mother[0].style = "background:white; color:rgb(255,108,62);";
+                }
+            })
+        }
+    }
 });
+
 
 // setTimeout(function () {
 //     console.log(appVue.ProductName);
