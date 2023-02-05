@@ -141,7 +141,11 @@
 }
 
 .momo-logoname {
-  text-shadow: #3F2300 1px 0 3px;
+  text-shadow: #633700 1px 0 3px;
+}
+
+.momo-slogan {
+  text-shadow: #C73F13 1px 0 2px;
 }
 
 .momo-product-amount:focus {

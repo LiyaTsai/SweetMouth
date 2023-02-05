@@ -122,6 +122,7 @@ var appVue = new Vue({
             console.log("del");
             console.log(id + "(" + size);
             let ret = confirm("確定要刪除嗎?");
+
             if (ret == true) {
                 let localindex = "|" + id + "(" + size;
                 let localindex2 = id + "(" + size;
@@ -142,9 +143,10 @@ var appVue = new Vue({
             // this.totalPrice();
         },
         orderDessert: function () {
-            // console.log("clear");
-            alert(`已收到${memberName}的訂單`);
+            console.log("clear");
+            alert(`已收到${this.memberName}的訂單`);
             localStorage.clear();
+            window.location = "/Home/product";
         },
         useDiscount: function () {
             let _this = this;
