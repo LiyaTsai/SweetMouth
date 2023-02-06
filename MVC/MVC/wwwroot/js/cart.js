@@ -143,7 +143,7 @@ var appVue = new Vue({
             // this.totalPrice();
         },
         orderDessert: function () {
-            alert(`已收到${this.memberName}的訂單`+window.location.href);
+            alert(`已收到${this.memberName}的訂單`);
             localStorage.clear();
             window.location.href = "https://localhost:7146/Home/DemoProduct";
         },
