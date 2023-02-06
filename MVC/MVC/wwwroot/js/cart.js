@@ -145,7 +145,7 @@ var appVue = new Vue({
         orderDessert: function () {
             alert(`已收到${this.memberName}的訂單`+window.location.href);
             localStorage.clear();
-            window.location.href = "https://localhost:7146/DemoProduct";
+            window.location.href = "https://localhost:7146/Home/DemoProduct";
         },
         useDiscount: function () {
             let _this = this;
