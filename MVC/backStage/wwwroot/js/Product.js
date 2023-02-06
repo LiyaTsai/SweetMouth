@@ -94,10 +94,10 @@ var appVue = new Vue({
             TempObj.description = ii.description;
             TempObj.tagArray = [];
             console.log(TempObj)
-            axios.put(`https://localhost:7096/api/Product/` + id, TempObj).then(a => {
-                alert("修改成功");
-                location = location;
-            })                      
+            //axios.put(`https://localhost:7096/api/Product/` + id, TempObj).then(a => {
+            //    alert("修改成功");
+            //    location = location;
+            //})                      
         },
         Create: function () {
             TheFile = document.getElementById("NewFile");

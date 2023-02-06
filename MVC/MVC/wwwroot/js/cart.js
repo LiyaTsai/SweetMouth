@@ -122,17 +122,10 @@ var appVue = new Vue({
             console.log("del");
             console.log(id + "(" + size);
             let ret = confirm("確定要刪除嗎?");
-
             if (ret == true) {
                 let localindex = "|" + id + "(" + size;
                 let localindex2 = id + "(" + size;
                 TempProductList = localStorage["productList"];
-                // console.log("TempProductList: " + TempProductList)
-                // console.log("localindex: " + localindex);
-                // console.log("0: "+TempProductList.split(localindex)[0])
-                // console.log(typeof TempProductList.split(localindex)[1])
-                // console.log("1: " + TempProductList.split(localindex)[1])
-                // console.log("1.length: " + TempProductList.split(localindex)[1].length)
                 localStorage.removeItem(localindex2);
                 localStorage.setItem(
                     "productList",
@@ -150,25 +143,20 @@ var appVue = new Vue({
         },
         useDiscount: function () {
             let _this = this;
-            _this.coupon == "momo80" ? eightyPercentOff() : noDiscount();
+            if (_this.coupon == "momo80") { eightyPercentOff() }
+            else { noDiscount(); }
 
             function eightyPercentOff() {
                 let total = 0;
-                let partal = 0;
-                // setTimeout(() => {
                 for (let i = 0; i < _this.productArray.length; i++) {
-                    partal = 0;
                     partal = parseInt(_this.productArray[i].price) * parseInt(_this.productArray[i].amount);
-                    console.log(partal);
                     total += partal;
-                    console.log(total);
                 }
                 _this.speDis = 0.8;
                 local.setItem("discount", 0.8);
                 _this.totalPrice = total * parseFloat(_this.speDis);
                 _this.discount_info = "已使用8折優惠";
                 _this.coupon = "";
-                // }, 1000);
             }
             function noDiscount() {
                 alert("折扣代碼有誤");
