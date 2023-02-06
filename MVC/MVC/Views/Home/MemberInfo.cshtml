@@ -129,7 +129,9 @@
                                 <div class="accordion-body">
                                     <ul class="list-group" v-for="b in BlogMessage">
                                         <li class="list-group-item" v-on:click="ClickToArticle" style="cursor:pointer"
-                                            :value=b.articleID>{{b.article}}</li>
+                                            :value=b.articleID v-if="b.floor==0">我的文章：{{b.article}}</li>
+                                        <li class="list-group-item" v-on:click="ClickToArticle" style="cursor:pointer"
+                                            :value=b.articleID v-else>留言：{{b.article}}</li>
                                     </ul>
                                 </div>
                             </div>
