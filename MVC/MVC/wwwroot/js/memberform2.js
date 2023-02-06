@@ -33,7 +33,7 @@ var appVue = new Vue({
                 TempObj.birthDay = _this.birthDay;
                 axios.post(webApiBaseUrl + 'api/Member', TempObj).then(x => {
                     alert("Seccess");
-                    window.location = '/Home/product';
+                    window.location = '/Home/DemoProduct';
                 });
                 axios.get(webApiBaseUrl + 'api/Member')
                     .where(y => {
