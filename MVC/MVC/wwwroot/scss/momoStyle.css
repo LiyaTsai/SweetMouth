@@ -313,6 +313,10 @@ a:hover {
   height: 340px;
 }
 
+.momo-blog-img {
+  width: 800px;
+}
+
 .fa-edit {
   cursor: pointer;
   color: #FFA83E;
