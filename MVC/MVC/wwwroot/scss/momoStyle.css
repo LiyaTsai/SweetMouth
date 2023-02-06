@@ -313,6 +313,10 @@ a:hover {
   height: 340px;
 }
 
+.momo-blog-img {
+  width: 800px;
+}
+
 .fa-edit {
   cursor: pointer;
   color: #FFA83E;
@@ -335,4 +339,8 @@ a:hover {
   background-color: #C73F13;
   border-color: #FFBDA8;
   box-shadow: 0 0 0 0.25rem rgba(225, 83, 97, 0.5);
+}
+
+.accordion-button {
+  font-size: 2rem;
 }/*# sourceMappingURL=momoStyle.css.map */

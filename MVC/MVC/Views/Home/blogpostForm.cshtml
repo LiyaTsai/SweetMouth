@@ -10,27 +10,27 @@ min-height: 400px;
 }
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown text-secondary text-primary">甜嘴Blog</h1>
+        <h1 class="display-3 mb-3 animated slideInDown text-primary">甜嘴Blog</h1>
     </div>
 </div>
 
 <div class="container mb-5" id="appVue">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header display-6 section-header text-center text-secondary my-2">
             甜嘴MoBlog
         </div>
         <div class="card-body">
             <div class="card-title">
-                <h4>發表文章</h4>
+                <h4 class=" text-secondary">發表文章</h4>
             </div>
 
             <div class="row mb-3">
                 <div class="col-8">
-                    <img :src=`/img/${selectedImg}` class="mb-3 img-fluid rounded mx-auto d-block" alt="">
+                    <img :src=`/img/${selectedImg}` class="mb-3 img-fluid rounded momo-blog-img" alt="">
                 </div>
 
-                <div class="col-4">
-                    <h6>商品心得</h6>
+                <div class="col-4 text-secondary">
+                    <h6 class=" section-header text-start">商品心得</h6>
                     <select id="selectItem" v-model="selectedImg" class="form-select" @@change="getProId">
                         <option value="newPostblog.jpg">無</option>
                         <option v-for="(i,k) in ProductInfo" :key="k" :value="i.imageName" :id="i.productId+'Option'">
@@ -73,7 +73,7 @@ min-height: 400px;
                     </button>
                     <button id="btnPost" type="button" class="btn btn-warning btn-block" @@click="PostNewBlog">
                         送出資料
-                    </button>                   
+                    </button>
                 </div>
             </div>
 
