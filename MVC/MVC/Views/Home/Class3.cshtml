@@ -61,7 +61,7 @@
             <form>
                 <div class="row g-3">
                     <div class="col-12">
-                        <button type="button" class="btn btn-primary btn-block" @@click="postNewSignUp">
+                        <button type="button" class="btn btn-primary btn-block" @@click="postNewSignUp" id="Send">
                             送出資料
                         </button>
 
@@ -136,6 +136,10 @@
     @*<script src="~/js/Demo.js"></script>*@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script>
+        Send = document.getElementById("Send")
+        Send.addEventListener("click",()=>{alert("收到課程囉，期待到時候見面!")})
+    </script>
 }
 
 

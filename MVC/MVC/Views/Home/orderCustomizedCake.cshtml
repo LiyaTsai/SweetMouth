@@ -100,7 +100,7 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" />
+                                <input type="text" class="form-control" id="Thename" placeholder="Your Name" />
                                 <label for="name">蛋糕要給誰</label>
                             </div>
                         </div>
@@ -133,13 +133,13 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="flaver-like" placeholder="Subject" />
+                                <input type="text" class="form-control" id="flaver" placeholder="Subject" />
                                 <label for="subject">我想要吃...(如:喜歡的水果、口味......)</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="flaver-hate" placeholder="Subject" />
+                                <input type="text" class="form-control" id="hate" placeholder="Subject" />
                                 <label for="subject">我不想吃到...(如:過敏原、討厭的水果......)</label>
                             </div>
                         </div>
@@ -157,9 +157,10 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
+                            <button class="btn btn-primary rounded-pill py-3 px-5" type="submit" id="send">
                                 送出訂單
                             </button>
+                            <input type="button" class="btn btn-primary rounded-pill py-3 px-5" value="一鍵生成" id="PutIn"/>
                         </div>
                     </div>
                 </form>
@@ -168,3 +169,25 @@
     </div>
 </div>
 <!-- Contact End -->
+@section Scripts{
+<script>
+        var Thename = document.getElementById("Thename");
+    var PutIn = document.getElementById("PutIn");
+    var subject = document.getElementById("subject");
+    var flaver = document.getElementById("flaver");
+        var hate = document.getElementById("hate");
+    var duedate = document.getElementById("duedate");
+    var message = document.getElementById("message");
+    var nameY = document.getElementById("nameY")
+    PutIn.addEventListener("click",()=>{
+        nameY.checked=true;
+            Thename.value = "資展國際";
+        subject.value="慶賀結業順利";
+            hate.value = "我不要吃到百香果，會酸";
+            flaver.value="我想吃到草莓欸";
+            duedate.value="2023-03-01";
+        console.log("yes")
+    })
+        document.getElementById("send").addEventListener("click",()=>{alert("已收到您的訂單囉，請耐心等待")})
+</script>
+}
