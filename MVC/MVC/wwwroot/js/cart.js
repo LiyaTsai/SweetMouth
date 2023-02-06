@@ -28,6 +28,7 @@ var appVue = new Vue({
         coupon: "",
         discount_info: "",
         speDis: 1,
+        baseUrl: "https://localhost:7146/Home/productDetail",
     },
     mounted() {
         let _this = this;
@@ -142,8 +143,11 @@ var appVue = new Vue({
         },
         useDiscount: function () {
             let _this = this;
-            if (_this.coupon == "momo80") { eightyPercentOff() }
-            else { noDiscount(); }
+            if (_this.coupon == "momo80") {
+                eightyPercentOff();
+            } else {
+                noDiscount();
+            }
 
             function eightyPercentOff() {
                 let total = 0;

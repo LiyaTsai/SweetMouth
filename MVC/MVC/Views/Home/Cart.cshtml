@@ -21,23 +21,33 @@
             <!-- 商品start -->
             <div class="my-4 momo-cart-border" v-for="(pro,key) in productArray" :key="key">
                 <div class="px-1 my-5">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center col-12">
                         <!-- <input type="checkbox" name="check" id="{{productID}}" class="col-1" /> -->
-                        <img class="col-3" :src=`/img/${pro.imageName}` :alt="pro.productName"
-                             :title=`${pro.productName}-${ImgArray[key]}` />
-                        <label for=`${pro.productId}` class="col-2 ms-2">
-                            {{pro.productName}} <br />
-                            {{pro.flavor}}{{pro.size}}
-                        </label>
-                        <label class="col-2 text-secondary">
+                        <div class="col-3 ms-3">
+                            <a :href="baseUrl +'?productID='+pro.productId">
+                                <img :src=`/img/${pro.imageName}` :alt="pro.productName"
+                                     :title=`${pro.productName}-${ImgArray[key]}`
+                                     class="col-12" />
+                            </a>
+                        </div>
+                        <div class="col-3 ms-1">
+                            <a :href="baseUrl +'?productID='+pro.productId">
+                                <label for=`${pro.productId}` class="col-12 ms-2">
+                                    {{pro.productName}} <br />
+                                    {{pro.flavor}}{{pro.size}}
+                                </label>
+                            </a>
+                        </div>
+
+                        <label class="col-2 text-secondary  momo-cart-name">
                             $ {{pro.amount*pro.price}}
                         </label>
                         <div class="col-2">
-                            <label for="" class="text-center">數量</label>
-                            <input type="number" name="" :id="pro.productId+'Input'" min="1" max="20" :value=pro.amount v-on:change="amountChange(pro.productId,pro.size,$event)" />
+                            <label for="" class="text-center  ">數量</label>
+                            <input type="number" name="" :id="pro.productId+'Input'" min="1" max="20" :value=pro.amount v-on:change="amountChange(pro.productId,pro.size,$event)" class="" />
                         </div>
                         <div class="col-1">
-                            <button class="mx-3 rounded-pill btn-outline-danger" @@click="Mydelete(pro.productId,pro.size)">X</button>
+                            <button class="mx-3 rounded-pill btn-outline-danger momo-cart-name" @@click="Mydelete(pro.productId,pro.size)">X</button>
                         </div>
                     </div>
                 </div>
@@ -62,8 +72,8 @@
                             <label for="">{{memberPhone}}</label>
                         </div>
                         @*<div>
-                            <label for="">地址</label>
-                            <label for="">{{memberAddress}}</label>
+                        <label for="">地址</label>
+                        <label for="">{{memberAddress}}</label>
                         </div>*@
                     </fieldset>
                 </form>
@@ -90,7 +100,6 @@
                         </div>
                         <div>
                             <!-- 付款 -->
-
                             @*<button class="btn btn-primary momo-addCartBTN" @@click="orderDessert">送出訂單</button>*@
                             <input type="button" class="btn btn-primary momo-addCartBTN" value="送出訂單" @@click="orderDessert" />
                         </div>
