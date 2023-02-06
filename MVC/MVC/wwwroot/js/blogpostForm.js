@@ -80,11 +80,11 @@ var appVue = new Vue({
             }
         },
         FillData: function () {
-            this.selectedProId = 10017;
+            this.selectedProId = 10006;
             this.Title = "新文章標題";
             this.SubTitle = "哈囉你好我是次標題呦!"
             this.article = "感謝各位蒞臨我們結業專題的發表現場，酒鬼芭娜娜很好吃喔"
-            this.selectedImg = "Tiramisu.jpg"
+            this.selectedImg = "blackChocolate.jpg"
         },
         Clear: function () {
             this.Title = "";
