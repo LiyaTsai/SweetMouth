@@ -14,9 +14,11 @@
 </div>
 <!-- Page Header End -->
 <!-- 最新消息文章內頁 Start -->
-<div class="container" id="appVue">
+<div class="container mb-5" id="appVue">
     <h1 class="sixsch text-primary">{{articlePoster[0].title}}</h1> @*發文者title*@
+
     <div class="row">
+
         <div class="col-md-4">
             <small>
                 <nav aria-label="breadcrumb">
@@ -29,7 +31,6 @@
                 </nav>
             </small>
             <img :src=`/img/${articlePoster[0].imageName}` class="img-fluid momo-blog-img" alt="" />
-
         </div>
 
         <div class="col-md-8">
@@ -37,11 +38,11 @@
             <h2 class="text-secondary text-end my-2">Tags</h2>
             <div class="text-end">
 
-            <div class="form-check-inline">
-                <a id="tagLink" :href="baseUrl +'?productID='+articlePoster[0].productID" class="">
-                    <i class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}
-                </a>
-            </div>
+                <div class="form-check-inline">
+                    <a id="tagLink" :href="baseUrl +'?productID='+articlePoster[0].productID" class="">
+                        <i class="fas fa-tags pr-1 me-1"></i>{{articlePoster[0].tag}}
+                    </a>
+                </div>
             </div>
 
             <div>
@@ -58,12 +59,12 @@
                     <div class="accordion-header" id="flush-headingOne">
 
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                             留言板
                         </button>
                     </div>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                         data-bs-parent="#accordionFlushExample" s>
+                        data-bs-parent="#accordionFlushExample" s>
                         <div class="accordion-body">
 
                             <ul v-for="item in floors">
@@ -79,8 +80,8 @@
                                             <li>
                                                 <template v-if="MemberID==item.memberID">
                                                     <i class="fas fa-edit" data-bs-toggle="tooltip"
-                                                       data-bs-placement="top" title="編輯留言"
-                                                       @@click="edit(item.floor)"></i>
+                                                        data-bs-placement="top" title="編輯留言"
+                                                        @@click="edit(item.floor)"></i>
                                                 </template>
                                             </li>
                                         </ol>
@@ -91,18 +92,15 @@
                                     <template v-if="item.Edit==true">
 
                                         <textarea class="form-control mb-2" placeholder="編輯留言.."
-                                                  style="height: 100px;resize: none;" v-model="item.article"></textarea>
+                                            style="height: 100px;resize: none;" v-model="item.article"></textarea>
 
-                                        <button type="button" class="btn btn-outline-primary"
-                                                @@click="update(item)">
+                                        <button type="button" class="btn btn-outline-primary" @@click="update(item)">
                                             修改
                                         </button>
-                                        <button type="button" class="btn btn-outline-warning"
-                                                @@click="cancel">
+                                        <button type="button" class="btn btn-outline-warning" @@click="cancel">
                                             取消
                                         </button>
-                                        <button type="button" class="btn btn-danger"
-                                                @@click="deletefloor(item.floor)">
+                                        <button type="button" class="btn btn-danger" @@click="deletefloor(item.floor)">
                                             刪除
                                         </button>
 
@@ -121,7 +119,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text"> <i class="fas fa-user"></i>&nbsp;{{nickName}}</span>
                                     <input type="text" class="form-control" placeholder="留言.." v-model="article"
-                                           required />
+                                        required />
                                     <button type="button" class="btn btn-primary" @@click="insert">送出</button>
                                 </div>
                             </form>
